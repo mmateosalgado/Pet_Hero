@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
-
-    <head>
+<head>
         <LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA=screen>
     </head>
     <body>
@@ -13,9 +12,15 @@
             <br>
             <div class="login">
                     <input type="text" placeholder="username" name="user"><br>
+                    <input type="text" placeholder="full name" name="name"><br>
+                    <input type="text" placeholder="Email" name="email"><br>
                     <input type="password" placeholder="password" name="password"><br>
-                    <input type="button" value="Login"><br>
-                    <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/register.php"> Ya tienes una cuenta? </a>
+                    <input type="date" name="date" max="20-01-01"><br>
+                    <input type="button" value="Register">
+                   
             </div>
+            
+          
     </body>
+
 </html>
