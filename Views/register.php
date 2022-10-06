@@ -11,13 +11,24 @@
             </div>
             <br>
             <div class="login">
-                    <input type="text" placeholder="username" name="user"><br>
-                    <input type="text" placeholder="full name" name="name"><br>
+                    <input type="text" placeholder="Nombre de usuario" name="user"><br>
+                    <input type="text" placeholder="Nombre y Apellido" name="name"><br>
                     <input type="text" placeholder="Email" name="email"><br>
-                    <input type="password" placeholder="password" name="password"><br>
+                    <input type="password" placeholder="Contraseña" name="password"><br>
                     <input type="date" name="date" max="20-01-01"><br>
-                    <input type="button" value="Register">
-                   
+                    <div class="ac_type">      
+                        Dueño <input type="radio" name="accountType">
+                        Guardián <input type="radio" name="accountType">
+                    </div>
+                    <div class="ac_type">      
+                        Mujer <input type="radio" name="sexo">
+                        Hombre <input type="radio" name="sexo">
+                        Otro <input type="radio" name="sexo">
+                    </div>
+                    <input type="button" value="Registrarse"><br>
+                    <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
+                     <br> <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/index.php"> Ya tienes una cuenta? </a>
+                    </div>
             </div>
             
           

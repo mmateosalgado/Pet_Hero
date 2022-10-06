@@ -65,6 +65,39 @@ body{
 	width: 350px;
 	padding: 10px;
 	z-index: 2;
+	
+}
+
+.ac_type{
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.6);
+	margin-top: 10px;
+	display: flex;
+	width: 260px;
+	justify-content: center ;
+	/*border : 2px groove;
+	border-color: rgba(255,255,255,0.6);*/
+	
+}
+
+
+
+
+.text {
+	font-family: 'Exo', sans-serif;
+	font-size: 10px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.6);
+	width: 260px;
+	justify-content: center ;
+	padding: 5px;
+}
+
+.text a {
+	color: #6bca48;
+
 }
 
 .login input[type=text]{
@@ -83,7 +116,7 @@ body{
 .login input[type=date]{
 	width: 250px;
 	height: 30px;
-	background: transparent;
+	background: transparent; 
 	border: 1px solid rgba(255,255,255,0.6);
 	border-radius: 2px;
 	color: rgba(255,255,255,0.6);

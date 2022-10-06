@@ -12,10 +12,12 @@
             </div>
             <br>
             <div class="login">
-                    <input type="text" placeholder="username" name="user"><br>
-                    <input type="password" placeholder="password" name="password"><br>
-                    <input type="button" value="Login"><br>
-                    <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/register.php"> Ya tienes una cuenta? </a>
-            </div>
+                    <input type="text" placeholder="Nombre de usuario" name="user"><br>
+                    <input type="password" placeholder="Contraseña" name="password"><br>
+                    <input type="button" value="Iniciar Sesión"><br>
+                    <div class="text">
+                    <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/register.php"> No tienes una cuenta? </a>
+                    </div>
+                </div>
     </body>
 </html>
