@@ -21,9 +21,9 @@
                         Guardián <input type="radio" name="accountType">
                     </div>
                     <div class="ac_type">      
-                        Mujer <input type="radio" name="sexo">
-                        Hombre <input type="radio" name="sexo">
-                        Otro <input type="radio" name="sexo">
+                        Mujer <input type="radio" name="gender">
+                        Hombre <input type="radio" name="gender">
+                        Otro <input type="radio" name="gender">
                     </div>
                     <input type="button" value="Registrarse"><br>
                     <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.

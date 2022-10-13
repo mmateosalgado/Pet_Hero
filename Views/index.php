@@ -16,7 +16,8 @@
                     <input type="password" placeholder="Contraseña" name="password"><br>
                     <input type="button" value="Iniciar Sesión"><br>
                     <div class="text">
-                    <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/register.php"> No tienes una cuenta? </a>
+                    <?php echo (FRONT_ROOT);?>
+                    <a href="<?php echo ("http://localhost/".FRONT_ROOT."/Views/register.php");?>"> No tienes una cuenta? </a>
                     </div>
                 </div>
     </body>
