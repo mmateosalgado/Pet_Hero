@@ -1,6 +1,12 @@
 @import url(https://fonts.googleapis.com/css?family=Exo:100,200,400);
 @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro:700,400,300);
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -17,8 +23,8 @@ body{
 	left: -20px;
 	right: -40px;
 	bottom: -40px;
-	width: auto;
-	height: auto;
+	width: 101.33%;
+	height: 102.5%;
 	background-image: url(https://img.freepik.com/vector-gratis/paisaje-naturaleza-dibujos-animados-montana-bosque-arboles-hoja-caduca-despeje-troncos_107791-3706.jpg?w=1380&t=st=1664222584~exp=1664223184~hmac=3a7ca5b9001bcd28dc89b684ec0f8e8e6dbae51fa8396170317b25ca51310a5f);
 	background-size: cover;
 	-webkit-filter: blur(5px);
@@ -31,8 +37,8 @@ body{
 	left: -20px;
 	right: -40px;
 	bottom: -40px;
-	width: auto;
-	height: auto;
+	width: 101.33%;
+	height:102.5%;
 	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(0,0,0,0)), color-stop(100%,rgba(0,0,0,0.65))); /* Chrome,Safari4+ */
 	z-index: 1;
 	opacity: 0.7;
