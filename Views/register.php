@@ -28,6 +28,7 @@
                     <input type="button" value="Registrarse"><br>
                     <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
                      <br> <a href="http://localhost/Ejercicios/PetHero/Pet_Hero/Views/index.php"> Ya tienes una cuenta? </a>
+                     <br>
                     </div>
             </div>
             
