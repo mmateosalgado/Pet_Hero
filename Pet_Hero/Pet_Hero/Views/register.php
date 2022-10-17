@@ -1,7 +1,6 @@
 
-<form action="" method="post">
-    <div class="body"></div>
-            <div class="grad"></div>
+<form action="<?php echo FRONT_ROOT . "Home/Register" ?>" method="post">
+
             <div class="header">
                 <div>Pet<span>Hero</span></div>
             </div>
@@ -21,7 +20,7 @@
                         Hombre <input type="radio" name="gender" value="male">
                         Otro <input type="radio" name="gender" value="other">
                     </div>
-                    <input type="button" value="Registrarse"><br>
+                    <input type="submit" value="Registrarse"><br>
                     <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
                      <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
                     </div>

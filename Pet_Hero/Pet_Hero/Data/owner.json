@@ -1,0 +1,12 @@
+[
+    {
+        "id": 1,
+        "userName": "Facu",
+        "password": "1234",
+        "fullName": "Facundo Ferrari",
+        "age": null,
+        "email": "ferrarifacundo@outlook.com",
+        "gender": "male",
+        "type": "owner"
+    }
+]

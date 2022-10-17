@@ -1,6 +1,5 @@
-   <form action="<?php echo FRONT_ROOT."Home/Login"?>" method="post">
-   <div class="body"></div>
-            <div class="grad"></div>
+   <form action="<?php echo FRONT_ROOT . "Home/Login"?>" method="post">
+
             <div class="header">
                 <div>Pet<span>Hero</span></div>
             </div>
@@ -14,7 +13,8 @@
                     </div>
                     <input type="submit" value="Iniciar Sesión"><br>
                     <div class="text">
-                    <a> <?php echo $message;?></a>
+                    <a> <?php if(isset($message)) 
+                                { echo $message;} ?></a>
                     <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
                     </div>
                 </div>
