@@ -1,5 +1,11 @@
-   <form action="<?php echo FRONT_ROOT."Home/Login"?>" method="post">
-   <div class="body"></div>
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <!-- <LINK REL=StyleSheet HREF="css/style.css" TYPE="text/css" MEDIA=screen> -->
+    </head>
+    <body>
+    <div class="body"></div>
             <div class="grad"></div>
             <div class="header">
                 <div>Pet<span>Hero</span></div>
@@ -8,14 +14,11 @@
             <div class="login">
                     <input type="text" placeholder="Nombre de usuario" name="user" required><br>
                     <input type="password" placeholder="Contraseña" name="password" required><br>
-                    <div class="ac_type" required>      
-                        Dueño <input type="radio" name="accountType" value="owner" required>
-                        Guardián <input type="radio" name="accountType" value="guardian">
-                    </div>
-                    <input type="submit" value="Iniciar Sesión"><br>
+                    <input type="button" value="Iniciar Sesión"><br>
                     <div class="text">
-                    <a> <?php echo $message;?></a>
-                    <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
+                    <a><?php echo "FRONT_ROOT.Home/Index" ?></a>
+                    <a href="<?php echo FRONT_ROOT ?>Home/Index"> No tienes una cuenta? </a>
                     </div>
                 </div>
-   </form>
+    </body>
+</html>

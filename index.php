@@ -14,9 +14,9 @@
 
 	session_start();
 
-	require_once(VIEWS_PATH."header.php");
+	//require_once(VIEWS_PATH."header.php");
 
 	Router::Route(new Request());
 
-	require_once(VIEWS_PATH."footer.php");
+	//require_once(VIEWS_PATH."footer.php");
 ?>
