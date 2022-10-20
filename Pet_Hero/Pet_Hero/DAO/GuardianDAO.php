@@ -24,32 +24,44 @@ class GuardianDAO{
         $this->SaveData();
     }
 
-        public function RetrieveData()
-        {
-            $this->guardianList= array();
-            if(file_exists($this->fileName))
-            {
-                $jsonContent = file_get_contents($this->fileName);
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $guardian = new Guardian();
-                     $guardian->setId($valuesArray["id"]);
-                     $guardian->setUserName($valuesArray["userName"]);
-                     $guardian->setPassword($valuesArray["password"]);
-                     $guardian->setFullName($valuesArray["fullName"]);
-                     $guardian->setAge($valuesArray["age"]);
-                     $guardian->setEmail($valuesArray["email"]);
-                     $guardian->setGender($valuesArray["gender"]);
-                     $guardian->setType($valuesArray["type"]);
-                    $guardian->setCuil($valuesArray["cuil"]);
-                    $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
-                    $guardian->setCalificacion($valuesArray["calificacion"]);
+    public function getByUser($user) 
+    {
+      $this->RetrieveData();
+      foreach($this->guardianList as $guardian) 
+      {
+        if($guardian->getUserName() == $user)
+          return $guardian;
+      }
+      return null;
+    }
 
-                    array_push($this->guardianList, $guardian);
-                }
+    public function RetrieveData()
+    {
+        $this->guardianList= array();
+        if(file_exists($this->fileName))
+        {
+            $jsonContent = file_get_contents($this->fileName);
+            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+            foreach($arrayToDecode as $valuesArray)
+            {
+                $guardian = new Guardian();
+                $guardian->setId($valuesArray["id"]);
+                $guardian->setUserName($valuesArray["userName"]);                     
+                $guardian->setPassword($valuesArray["password"]);
+                $guardian->setFullName($valuesArray["fullName"]);
+                $guardian->setAge($valuesArray["age"]);
+                $guardian->setEmail($valuesArray["email"]);
+                $guardian->setGender($valuesArray["gender"]);
+                $guardian->setType($valuesArray["type"]);
+                $guardian->setCuil($valuesArray["cuil"]);
+                $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
+                $guardian->setCalificacion($valuesArray["calificacion"]);
+
+                array_push($this->guardianList, $guardian);
             }
         }
+    }
+
     public function SaveData()
     {
         $arrayToEncode= array();
@@ -72,6 +84,7 @@ class GuardianDAO{
         $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);
         file_put_contents($this->fileName,$jsonContent);
     }
+
     private function getNextId(){
         $id=0;
         foreach($this->guardianList as $guardian)
@@ -80,16 +93,5 @@ class GuardianDAO{
         }
         return $id+ 1;
         }
-
-        public function getByUser($user) 
-        {
-          $this->RetrieveData();
-          foreach($this->guardianList as $guardian) 
-          {
-            if($guardian->getUserName() == $user)
-              return $guardian;
-          }
-          return null;
-        }
-}
+    }
 ?>
