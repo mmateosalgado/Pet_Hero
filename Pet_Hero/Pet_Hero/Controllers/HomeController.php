@@ -6,93 +6,116 @@ use Models\Guardian;
 use Models\Owner;
 class HomeController
 {
-    private $ownerDAO;
-    private $guardianDAO;
+        private $ownerDAO;
+        private $guardianDAO;
 
-    public function __construct()
-    {
-      $this->ownerDAO = new OwnerDAO();
-      $this->guardianDAO = new GuardianDAO();
-    }
+        public function __construct()
+        {
+        $this->ownerDAO = new OwnerDAO();
+        $this->guardianDAO = new GuardianDAO();
+        }
 
-    public function Index($message = "")
-    {
-        require_once(VIEWS_PATH."login.php");
-    }
+        public function Index($message = "")
+        {
+            require_once(VIEWS_PATH."login.php");
+        }
 
-    public function ViewRegister()
-    {
-        require_once(VIEWS_PATH."register.php");
-    }
+        public function ViewRegister()
+        {
+            require_once(VIEWS_PATH."register.php");
+        }
 
-    public function Login($user,$password,$accountType)
-    {
-        if($accountType=="owner")
-        {   
-            $owner = new Owner();
-            $owner = $this->ownerDAO->getByUser($user);
-            if(isset($owner))
+        public function Login($user,$password,$accountType)
+        {
+            if($accountType=="owner")
+            {   
+                $owner = new Owner();
+                $owner = $this->ownerDAO->getByUser($user);
+                if(isset($owner))
+                {
+                if($owner->getPassword()==$password)
+                {
+                    $_SESSION['userName'] = $owner->getUserName();
+                    $_SESSION['type'] = $owner->getType();
+                    require_once(VIEWS_PATH."inicio.php");
+                
+                }else
+                {
+                    $this->Index("Usuario o contraseña incorrectos"); 
+                }}else
+                {
+                    $this->Index("Usuario o contraseña incorrectos"); 
+                }
+                
+            }elseif($accountType=="guardian")
             {
-            if($owner->getPassword()==$password)
-            {
-                $_SESSION['userName'] = $owner->getUserName();
-                $_SESSION['type'] = $owner->getType();
-                require_once(VIEWS_PATH."inicio.php");
-              
-            }else
-            {
-                $this->Index("Usuario o contraseña incorrectos"); 
-            }}else
-            {
-                $this->Index("Usuario o contraseña incorrectos"); 
+                $guardian = new Guardian();
+                $guardian = $this->guardianDAO->getByUser($user);
+                if(isset($guardian))
+                {
+                if($guardian->getPassword()==$password)
+                {
+                    $_SESSION['userName'] = $guardian->getUserName();
+                    $_SESSION['type'] = $guardian->getType();
+                    require_once(VIEWS_PATH.'lobbyGuardian.php');
+                }else
+                {
+                    $this->Index("Usuario o contraseña incorrectos"); 
+                }}else
+                {
+                    $this->Index("Usuario o contraseña incorrectos"); 
+                }
             }
+            else{
+                $this->Index("TIPO DE CUENTA NO ENCONTRADA");
+            }
+
+        }
+
+        public function Register($user,$name,$email,$password,$date,$accountType,$gender)
+        {
+            if($accountType=="owner")
+            {   
+                $validacionOwnerUser=$this->ownerDAO->getByUser($user);
+
+                if($validacionOwnerUser!=null){
+                    $this->Index("- El usuario ya existe!");
+                }else{
+                    $validacionOwnerEmail=$this->ownerDAO->getByEmail($email);
+
+                    if($validacionOwnerEmail!=null){
+                        $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
+                    }else{
+                        $owner = new Owner();
+
+                        $owner->setUserName($user);
+                        $owner->setPassword($password);
+                        $owner->setFullName($name);
+                        $owner->setAge($date);//fecha de nacimiento 
+                        $owner->setEmail($email);
+                        $owner->setGender($gender);
+                        $owner->setType( $accountType);
             
-        }elseif($accountType=="guardian")
-        {
-            $guardian = new Guardian();
-            $guardian = $this->guardianDAO->getByUser($user);
-            if(isset($guardian))
+                        $this->ownerDAO->Add($owner);
+                        //Owner Lobby 
+                    }
+                }
+            }
+            else if($accountType=="guardian")
             {
-            if($guardian->getPassword()==$password)
-            {
-                $_SESSION['userName'] = $guardian->getUserName();
-                $_SESSION['type'] = $guardian->getType();
-                require_once(VIEWS_PATH."inicio.php");
-            }else
-            {
-                $this->Index("Usuario o contraseña incorrectos"); 
-            }}else
-            {
-                $this->Index("Usuario o contraseña incorrectos"); 
+                $validacionGuardianUser=$this->guardianDAO->getByUser($user);
+                if($validacionGuardianUser!=null){
+                    $this->Index("- El usuario ya existe!");
+                }else {
+                    $validacionGuardianEmail=$this->guardianDAO->getByEmail($email);
+
+                    if($validacionGuardianEmail!=null){
+                        $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
+                    }else{
+                        require_once(VIEWS_PATH."registerGuardian.php");
+                    }
+                }
             }
         }
-        else{
-            $this->Index("TIPO DE CUENTA NO ENCONTRADA");
-        }
-
     }
-
-    public function Register($user,$name,$email,$password,$date,$accountType,$gender)
-    {
-        if($accountType=="owner")
-        {   
-            $owner = new Owner();
-
-            $owner->setUserName($user);
-            $owner->setPassword($password);
-            $owner->setFullName($name);
-            $owner->setAge($date);//fecha de nacimiento 
-            $owner->setEmail($email);
-            $owner->setGender($gender);
-            $owner->setType( $accountType);
-
-            $this->ownerDAO->Add($owner);
-            $this->Index("Registro exitoso");
-        }
-        elseif($accountType=="guardian")
-        {
-            require_once(VIEWS_PATH."registerGuardian.php");
-        }
-    }
-}
 ?>
