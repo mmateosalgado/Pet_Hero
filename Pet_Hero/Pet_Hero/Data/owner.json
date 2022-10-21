@@ -18,5 +18,15 @@
         "email": "asd",
         "gender": "female",
         "type": "owner"
+    },
+    {
+        "id": 3,
+        "userName": "Mateo",
+        "password": "ssss",
+        "fullName": "Salgado",
+        "age": "2022-09-29",
+        "email": "salgadomateo001@gmail.com",
+        "gender": "female",
+        "type": "owner"
     }
 ]

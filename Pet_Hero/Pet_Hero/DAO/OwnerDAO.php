@@ -24,28 +24,50 @@ class OwnerDAO{
         $this->SaveData();
     }
 
-        public function RetrieveData()
+    public function getByUser($user) 
+    {
+        $this->RetrieveData();
+        foreach($this->ownerList as $owner) 
         {
-            $this->ownerList= array();
-            if(file_exists($this->fileName))
-            {
-                $jsonContent = file_get_contents($this->fileName);
-                $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $owner = new Owner();
-                     $owner->setId($valuesArray["id"]);
-                     $owner->setUserName($valuesArray["userName"]);
-                     $owner->setPassword($valuesArray["password"]);
-                     $owner->setFullName($valuesArray["fullName"]);
-                     $owner->setAge($valuesArray["age"]);
-                     $owner->setEmail($valuesArray["email"]);
-                     $owner->setGender($valuesArray["gender"]);
-                    $owner->setType( $valuesArray["type"]);
-                    array_push($this->ownerList, $owner);
-                }
-            }
+        if($owner->getUserName() == $user)
+            return $owner;
         }
+        return null;
+    }
+
+    public function getByEmail($email){
+        $this->RetrieveData();
+        foreach($this->ownerList as $owner) 
+        {
+        if($owner->getEmail() == $email)
+            return $owner;
+        }
+        return null;
+    }
+
+    public function RetrieveData()
+    {
+        $this->ownerList= array();
+        if(file_exists($this->fileName))
+        {
+            $jsonContent = file_get_contents($this->fileName);
+            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
+            foreach($arrayToDecode as $valuesArray)
+            {
+                $owner = new Owner();
+                $owner->setId($valuesArray["id"]);
+                $owner->setUserName($valuesArray["userName"]);
+                $owner->setPassword($valuesArray["password"]);
+                $owner->setFullName($valuesArray["fullName"]);
+                $owner->setAge($valuesArray["age"]);
+                $owner->setEmail($valuesArray["email"]);
+                $owner->setGender($valuesArray["gender"]);
+                $owner->setType( $valuesArray["type"]);
+                array_push($this->ownerList, $owner);
+           }
+        }
+    }
+
     public function SaveData()
     {
         $arrayToEncode= array();
@@ -64,6 +86,7 @@ class OwnerDAO{
         $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);
         file_put_contents($this->fileName,$jsonContent);
     }
+
     private function getNextId(){
         $id=0;
         foreach($this->ownerList as $owner)
@@ -72,16 +95,5 @@ class OwnerDAO{
         }
         return $id+ 1;
         }
-
-      public function getByUser($user) 
-      {
-        $this->RetrieveData();
-        foreach($this->ownerList as $owner) 
-        {
-          if($owner->getUserName() == $user)
-            return $owner;
-        }
-        return null;
-      }
-}   
+    }   
 ?>

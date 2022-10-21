@@ -38,6 +38,17 @@ class GuardianDAO{
       return null;
     }
 
+    public function getByEmail($email) 
+    {
+      $this->RetrieveData();
+      foreach($this->guardianList as $guardian) 
+      {
+        if($guardian->getEmail() == $email)
+          return $guardian;
+      }
+      return null;
+    }
+
     public function RetrieveData()
     {
         $this->guardianList= array();

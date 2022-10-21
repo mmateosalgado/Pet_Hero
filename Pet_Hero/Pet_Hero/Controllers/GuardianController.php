@@ -25,11 +25,15 @@
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
 
-            var_dump($user);
-            var_dump($password);
-            var_dump($name);
-
             $this->guardianDAO->Add($guardian);
+
+            $this->showGuardianLobby();
+        }
+
+        public function showGuardianLobby()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'lobbyGuardian.php');
         }
     }
 ?>
