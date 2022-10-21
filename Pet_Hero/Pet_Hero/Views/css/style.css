@@ -291,6 +291,32 @@ body{
 	box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
 	}
 
+	.btn_check{
+        background-image:url('https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png');
+        background-repeat:no-repeat;
+        height:50px;
+        width:50px;
+        background-size: 90px 70px;
+        background-position:center;
+		border: none;
+		cursor: pointer;
+    }
+
+	.btn_reject{
+        background-image:url('https://cdn-icons-png.flaticon.com/512/753/753345.pnghttps://image.shutterstock.com/image-vector/cross-mark-flat-round-red-260nw-673823434.jpg');
+        background-repeat:no-repeat;
+        height:50px;
+        width:50px;
+	/*	border-radius: 100%;*/
+        background-size: 90px 70px;
+        background-position:center;
+		border: none;
+		cursor: pointer;
+    }
+	.btn:hover{
+		opacity: 0.5;
+	}
+
 
 
 	.tbody{
@@ -362,7 +388,7 @@ body{
 			   width: 100%;
 		   }
 		   .table-wrapper:before{
-			   content: "Scroll vertically >";
+			   content: "<Scroll vertically>";
 			   display: block;
 			   text-align: right;
 			   font-size: 11px;
@@ -455,6 +481,7 @@ body{
 	}
 	a:nth-child(1) {
 		width: 100px;
+		background-image: "https://cdn-icons-png.flaticon.com/512/4645/4645949.png";
 	}
 	a:nth-child(2) {
 		width: 110px;

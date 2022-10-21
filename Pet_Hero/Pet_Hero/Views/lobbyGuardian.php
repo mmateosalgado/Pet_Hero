@@ -32,8 +32,8 @@
             <td>7 dias</td>
             <td>20/10</td>
             <td>27/10</td>
-            <td><button> <img width = "50px" height="50px" src="https://upload.wikimedia.org/wikipedia/commons/8/8c/White_check_mark_in_dark_green_rounded_square.svg"> </button></td>
-            <td><button> <img width = "50px" height="50px" src="https://comprasporinternet-mexico.com/wp-content/uploads/2019/03/cancelar.png"></td>
+            <td><button class="btn_check"> </button></td>
+            <td><button class = "btn_reject"> </td>
         </tr>
        
         <tbody>
