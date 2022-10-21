@@ -35,5 +35,11 @@
             require_once(VIEWS_PATH.'validate-sesion.php');
             require_once(VIEWS_PATH.'lobbyGuardian.php');
         }
+        public function showGuardianProfile()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            $userGuardian = $this->guardianDAO->getByUser($_SESSION["userName"]);
+            require_once(VIEWS_PATH.'profileGuardian.php');
+        }
     }
 ?>
