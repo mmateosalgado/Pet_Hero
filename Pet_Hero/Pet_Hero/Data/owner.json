@@ -8,5 +8,15 @@
         "email": "ferrarifacundo@outlook.com",
         "gender": "male",
         "type": "owner"
+    },
+    {
+        "id": 2,
+        "userName": "asd",
+        "password": "123",
+        "fullName": "dsa",
+        "age": "2022-10-05",
+        "email": "asd",
+        "gender": "female",
+        "type": "owner"
     }
 ]

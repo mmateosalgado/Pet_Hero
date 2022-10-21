@@ -1,3 +1,4 @@
+<?php $maxDate=date('Y-m-d');?>
 
 <form action="<?php echo FRONT_ROOT . "Home/Register" ?>" method="post">
 
@@ -10,7 +11,7 @@
                     <input type="text" placeholder="Nombre y Apellido" name="name" required><br>
                     <input type="text" placeholder="Email" name="email" required><br>
                     <input type="password" placeholder="Contraseña" name="password" required><br>
-                    <input type="date" name="date" max="20-01-01" required><br>
+                    <input type="date" name="date" max="<?php echo $maxDate?>" required><br>
                     <div class="ac_type" required>      
                         Dueño <input type="radio" name="accountType" value="owner" required>
                         Guardián <input type="radio" name="accountType" value="guardian">

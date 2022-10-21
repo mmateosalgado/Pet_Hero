@@ -115,5 +115,44 @@
         "cuil": null,
         "precioPorHora": null,
         "calificacion": null
+    },
+    {
+        "id": 10,
+        "userName": "Mateo",
+        "password": "2001-10-29",
+        "fullName": "asdasd",
+        "age": "salgadomateo001@gmail.com",
+        "email": "Salgado",
+        "gender": "guardian",
+        "type": "male",
+        "cuil": "938274652",
+        "precioPorHora": "300",
+        "calificacion": null
+    },
+    {
+        "id": 11,
+        "userName": "agaggini",
+        "password": "1995-12-13",
+        "fullName": "123456",
+        "age": "agaggini@email.com",
+        "email": "Andres Gaggini",
+        "gender": "guardian",
+        "type": "male",
+        "cuil": "938274652",
+        "precioPorHora": "300",
+        "calificacion": null
+    },
+    {
+        "id": 12,
+        "userName": "pedromaster",
+        "password": "mmmm",
+        "fullName": "Pedro Pascal",
+        "age": "1995-06-16",
+        "email": "pedro@gmail.com",
+        "gender": "male",
+        "type": "guardian",
+        "cuil": "938274652",
+        "precioPorHora": "50",
+        "calificacion": null
     }
 ]

@@ -81,32 +81,18 @@ class HomeController
             $owner->setUserName($user);
             $owner->setPassword($password);
             $owner->setFullName($name);
-           // $owner->setAge($valuesArray["age"]);
+            $owner->setAge($date);//fecha de nacimiento 
             $owner->setEmail($email);
             $owner->setGender($gender);
             $owner->setType( $accountType);
 
             $this->ownerDAO->Add($owner);
             $this->Index("Registro exitoso");
-            
-        }elseif($accountType=="guardian")
-        {
-            $guardian = new Guardian();
-
-            $guardian->setUserName($user);
-            $guardian->setPassword($password);
-            $guardian->setFullName($name);
-           // $guardian->setAge($valuesArray["age"]);
-            $guardian->setEmail($email);
-            $guardian->setGender($gender);
-            $guardian->setType( $accountType);
-
-            $this->guardianDAO->Add($guardian);
-            require_once(VIEWS_PATH."registerGuardian.php");
-            
         }
-
-          
+        elseif($accountType=="guardian")
+        {
+            require_once(VIEWS_PATH."registerGuardian.php");
+        }
     }
 }
 ?>
