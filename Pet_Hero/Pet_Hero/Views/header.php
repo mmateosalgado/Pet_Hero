@@ -5,6 +5,6 @@
         <LINK REL=StyleSheet HREF="<?php echo CSS_PATH;?>style.css" TYPE="text/css" MEDIA=screen>
     </head>
     <div class="body"></div>
-    <div class="grad"></div>
+   <!-- <div class="grad"></div> -->
     
 <body>
