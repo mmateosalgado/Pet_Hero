@@ -57,6 +57,7 @@ class HomeController
                 {
                     $_SESSION['userName'] = $guardian->getUserName();
                     $_SESSION['type'] = $guardian->getType();
+                    $_SESSION['URL'] = $guardian->getCalificacion();
                     require_once(VIEWS_PATH.'lobbyGuardian.php');
                 }else
                 {
@@ -116,6 +117,12 @@ class HomeController
                     }
                 }
             }
+        }
+        public function Logout()
+        {
+            session_destroy();
+
+            $this->Index("Sesión Cerrada con éxito<br>");
         }
     }
 ?>
