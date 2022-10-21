@@ -25,7 +25,11 @@
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
 
-            require_once(VIEWS_PATH.'testeo.php');
+            var_dump($user);
+            var_dump($password);
+            var_dump($name);
+
+            $this->guardianDAO->Add($guardian);
         }
     }
 ?>

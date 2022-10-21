@@ -19,8 +19,11 @@ class GuardianDAO{
     public function Add(Guardian $guardian)
     {
         $this->RetrieveData();
+
         $guardian->setId($this->getNextId());
+
         array_push($this->guardianList,$guardian);
+        
         $this->SaveData();
     }
 

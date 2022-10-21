@@ -88,7 +88,6 @@ class HomeController
 
             $this->ownerDAO->Add($owner);
             $this->Index("Registro exitoso");
-            
         }
         elseif($accountType=="guardian")
         {
