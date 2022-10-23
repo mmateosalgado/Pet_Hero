@@ -73,7 +73,7 @@ class HomeController
 
         }
 
-        public function Register($user,$name,$email,$password,$date,$accountType,$gender)
+        public function Register($user,$name,$email,$password,$date,$accountType,$gender,$telefono)
         {
             if($accountType=="owner")
             {   
@@ -96,7 +96,7 @@ class HomeController
                         $owner->setEmail($email);
                         $owner->setGender($gender);
                         $owner->setType( $accountType);
-            
+                        $owner->setTelefono($telefono);
                         $this->ownerDAO->Add($owner);
                         //Owner Lobby 
                     }

@@ -40,16 +40,13 @@
                     $this->parameters = $urlArray;
             }
             elseif ($_POST)
-                $this->parameters = $_POST;
-            
-            if($_FILES)
             {
-                unset($this->parameters["button"]);
-                
-                foreach($_FILES as $file)
-                {
-                    array_push($this->parameters, $file);
-                }
+                $this->parameters = $_POST;
+            }
+
+            if($_FILES) 
+            {
+                $this->parameters[] = $_FILES;
             }
         }
 

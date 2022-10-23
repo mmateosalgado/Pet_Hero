@@ -15,10 +15,13 @@ include('nav.php');?>
             <th>Fecha de nacimiento</th>
             <th>Email</th>
             <th>Genero</th>
+            <th>Telefono</th>
             <th>CUIL</th>
             <th>Precio x Hora</th>
-            <th>Fecha inicio disponibilidad</th>
-            <th>Fecha fin disponibilidad</th>
+            <th>Fecha inicio</th>
+            <th>Fecha Fin</th>
+            <th>Foto Perfil</th>
+
         </tr>
         </thead>
         <tbody>
@@ -28,11 +31,13 @@ include('nav.php');?>
             <td><?php echo $userGuardian->getAge();?> </td>
             <td><?php echo $userGuardian->getEmail();?></td>
             <td><?php echo $userGuardian->getGender();?></td>
+            <td><?php echo $userGuardian->getTelefono();?></td>
             <td><?php echo $userGuardian->getCuil();?></td>
             <td><?php echo $userGuardian->getPrecioPorHora();?></td>
-            <!-- telefono -->
             <td><?php echo $userGuardian->getFechaInicio();?></td>
             <td><?php echo $userGuardian->getFechaFin();?></td>
+            <td ><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="200px"></td>
+
         </tr>
         <tbody>
     </table>

@@ -24,5 +24,14 @@
             $userOwner = $this->ownerDAO->getByUser($_SESSION["userName"]);
             require_once(VIEWS_PATH.'profileOwner.php');
         }
+
+        public function showPets()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            //hacer que aca agarre la id del usuario para que solo te muestra sus mascotas
+            require_once(VIEWS_PATH.'myPets.php');
+        }
+
+
     }
 ?>

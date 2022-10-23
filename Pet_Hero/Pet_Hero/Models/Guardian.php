@@ -11,7 +11,8 @@
 		private $fechaFin;
 
 		private $fechaInicio;
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null)
+		private $fotoPerfil;
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null)
         {
             parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
@@ -78,6 +79,18 @@
 	 */
 	function setFechaInicio($fechaInicio): self {
 		$this->fechaInicio = $fechaInicio;
+		return $this;
+	}
+	/**
+	 * @return mixed
+	 */
+	function getFotoPerfil() {
+		return $this->fotoPerfil;
+	}
+	
+
+	function setFotoPerfil($fotoPerfil) {
+		$this->fotoPerfil = $fotoPerfil;
 		return $this;
 	}
 }
