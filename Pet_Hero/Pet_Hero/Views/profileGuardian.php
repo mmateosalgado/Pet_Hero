@@ -17,6 +17,8 @@ include('nav.php');?>
             <th>Genero</th>
             <th>CUIL</th>
             <th>Precio x Hora</th>
+            <th>Fecha inicio disponibilidad</th>
+            <th>Fecha fin disponibilidad</th>
         </tr>
         </thead>
         <tbody>
@@ -29,8 +31,8 @@ include('nav.php');?>
             <td><?php echo $userGuardian->getCuil();?></td>
             <td><?php echo $userGuardian->getPrecioPorHora();?></td>
             <!-- telefono -->
-            <!-- inicio de disponibilidad-->
-            <!-- fin    de disponibilidad-->
+            <td><?php echo $userGuardian->getFechaInicio();?></td>
+            <td><?php echo $userGuardian->getFechaFin();?></td>
         </tr>
         <tbody>
     </table>

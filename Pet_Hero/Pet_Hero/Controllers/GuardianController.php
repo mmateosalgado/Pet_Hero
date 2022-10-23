@@ -53,13 +53,15 @@
             if($iDisp<$fDisp){
                 $guardianToUpdate->setFechaInicio($iDisp);
                 $guardianToUpdate->setFechaFin($fDisp);
+                $this->guardianDAO->Update($guardianToUpdate);
+                echo "<script> if(confirm('Se actualizo la informacion correctamente!'));</script>";
+                $this->showGuardianProfile();
             }else{
-                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin'));</script>";
+                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin!'));</script>";
                 $this->showUpdateGuardian($user);
             }
 
-
-            //$this->guardianDAO->guardar
+            
         }
     }
 ?>
