@@ -35,9 +35,9 @@
             <td><button class="btn_check"> </button></td>
             <td><button class="btn_reject"> </button></td>
         </tr>
-       
         <tbody>
     </table>
+    
 </div>
 </div>
 </div>
