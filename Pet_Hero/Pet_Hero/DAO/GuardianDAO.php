@@ -70,6 +70,9 @@ class GuardianDAO{
                 $guardian->setCuil($valuesArray["cuil"]);
                 $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
                 $guardian->setCalificacion($valuesArray["calificacion"]);
+                $guardian->setFechaFin($valuesArray["fechaFin"]);
+                $guardian->setFechaInicio($valuesArray["fechaInicio"]);
+                $guardian->setTelefono($valuesArray["telefono"]);
 
                 array_push($this->guardianList, $guardian);
             }
@@ -92,6 +95,9 @@ class GuardianDAO{
                         $valuesArray["cuil"] = $guardian->getCuil();
                         $valuesArray["precioPorHora"]= $guardian->getPrecioPorHora();
                         $valuesArray["calificacion"]=  $guardian->getCalificacion();
+                        $valuesArray["fechaFin"]=  $guardian->getFechaFin();
+                        $valuesArray["fechaInicio"]=  $guardian->getFechaInicio();
+                        $valuesArray["telefono"]=  $guardian->getTelefono();
 
                         array_push($arrayToEncode,$valuesArray);
                     }

@@ -9,9 +9,9 @@
 
         private $petsList;
 
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null)
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$telefono=null)
         {
-            parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type);
+            parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
             $this->petsList=array();
         }

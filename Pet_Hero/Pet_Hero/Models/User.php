@@ -12,7 +12,9 @@
         private $gender;
         private $type;
 
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null)
+        private $telefono;
+
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$telefono=null)
         {
             $this->id=$id;
             $this->userName=$userName;
@@ -22,6 +24,7 @@
             $this->email=$email;
             $this->gender=$gender;
             $this->type=$type;
+            $this->telefono=$telefono;
         }
 
         public function getId(){
@@ -89,5 +92,14 @@
         public function setType($type){
             $this->type = $type;
         }
-    }
+    
+	function getTelefono() {
+		return $this->telefono;
+	}
+
+	function setTelefono($telefono): self {
+		$this->telefono = $telefono;
+		return $this;
+	}
+}
 ?>

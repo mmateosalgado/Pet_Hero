@@ -7,6 +7,10 @@
     box-sizing: border-box;
 }
 
+b{
+	position:absolute;
+}
+
 body{
 	margin: 0;
 	padding: 0;
@@ -467,7 +471,6 @@ body{
 	   /* SPAN-----------------------------------------------------------*/
 	   nav {
 		margin: 27px auto 0;
-	
 		position: relative;
 		width: 310px;
 		height: 50px;

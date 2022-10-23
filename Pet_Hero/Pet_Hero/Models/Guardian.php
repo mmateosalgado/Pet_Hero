@@ -7,13 +7,19 @@
         private $cuil;
         private $precioPorHora;
         private $calificacion;
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null)
+
+		private $fechaFin;
+
+		private $fechaInicio;
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null)
         {
-            parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type);
+            parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
             $this->cuil=$cuil;
             $this->precioPorHora= $precioPorHora;
             $this->calificacion= $calificacion;
+			$this->fechaInicio = $fechaInicio;
+			$this->fechaFin = $fechaFin;
         }
 
 	function getCuil() {
@@ -41,6 +47,37 @@
 
 	function setCalificacion($calificacion) {
 		$this->calificacion = $calificacion;
+		return $this;
+	}
+	/**
+	 * @return mixed
+	 */
+	function getFechaFin() {
+		return $this->fechaFin;
+	}
+	
+	/**
+	 * @param mixed $fechaFin 
+	 * @return Guardian
+	 */
+	function setFechaFin($fechaFin): self {
+		$this->fechaFin = $fechaFin;
+		return $this;
+	}
+	
+	/**
+	 * @return mixed
+	 */
+	function getFechaInicio() {
+		return $this->fechaInicio;
+	}
+	
+	/**
+	 * @param mixed $fechaInicio 
+	 * @return Guardian
+	 */
+	function setFechaInicio($fechaInicio): self {
+		$this->fechaInicio = $fechaInicio;
 		return $this;
 	}
 }

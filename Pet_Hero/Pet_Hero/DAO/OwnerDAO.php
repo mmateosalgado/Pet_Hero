@@ -63,6 +63,8 @@ class OwnerDAO{
                 $owner->setEmail($valuesArray["email"]);
                 $owner->setGender($valuesArray["gender"]);
                 $owner->setType( $valuesArray["type"]);
+                $owner->setTelefono( $valuesArray["telefono"]);
+
                 array_push($this->ownerList, $owner);
            }
         }
@@ -81,6 +83,7 @@ class OwnerDAO{
                         $valuesArray["email"]= $owner->getEmail();
                         $valuesArray["gender"]= $owner->getGender();
                         $valuesArray["type"]= $owner->getType();
+                        $valuesArray["telefono"]= $owner->getTelefono();
                         array_push($arrayToEncode,$valuesArray);
                     }
         $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);

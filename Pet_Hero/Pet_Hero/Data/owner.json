@@ -7,7 +7,8 @@
         "age": null,
         "email": "ferrarifacundo@outlook.com",
         "gender": "male",
-        "type": "owner"
+        "type": "owner",
+        "telefono" : "223345345"
     },
     {
         "id": 2,
@@ -17,7 +18,8 @@
         "age": "2022-10-05",
         "email": "asd",
         "gender": "female",
-        "type": "owner"
+        "type": "owner",
+        "telefono" : "223345345"
     },
     {
         "id": 3,
@@ -27,6 +29,7 @@
         "age": "2022-09-29",
         "email": "salgadomateo001@gmail.com",
         "gender": "female",
-        "type": "owner"
+        "type": "owner",
+        "telefono" : "223345345"
     }
 ]

@@ -13,12 +13,11 @@
                     </div>
                     <input type="submit" value="Iniciar Sesión"><br>
                     
-                        <div class="message">
-                    <a> <?php if(isset($message)) 
-                                { echo $message;} ?></a>
-                        </div>
-                        <div class="text">
-                    <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
-                    </div>
+                <div class="text">
+                <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
                 </div>
+                        
+                     <?php if(isset($message)) 
+                                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+            </div>
    </form>
