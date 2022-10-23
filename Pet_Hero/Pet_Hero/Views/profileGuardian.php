@@ -1,7 +1,7 @@
 <?php 
 include('nav.php');?>
 <div class="headerSP">
-<div>Bienvenido al Perfil de <span>Guardian</span></div>
+<div> Guardián: <span><?php echo $userGuardian->getuserName();?></span></div>
 </div>
 <div class="tabla">
 <div class="headerTable">

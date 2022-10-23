@@ -33,7 +33,7 @@
             <td>20/10</td>
             <td>27/10</td>
             <td><button class="btn_check"> </button></td>
-            <td><button class = "btn_reject"> </td>
+            <td><button class ="btn_reject"> </button> </td>
         </tr>
        
         <tbody>

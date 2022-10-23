@@ -12,9 +12,12 @@
                         Guardián <input type="radio" name="accountType" value="guardian">
                     </div>
                     <input type="submit" value="Iniciar Sesión"><br>
-                    <div class="text">
+                    
+                        <div class="message">
                     <a> <?php if(isset($message)) 
                                 { echo $message;} ?></a>
+                        </div>
+                        <div class="text">
                     <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
                     </div>
                 </div>

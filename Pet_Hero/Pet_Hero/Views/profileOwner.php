@@ -1,9 +1,12 @@
 <?php 
 include('nav.php');?>
 <div class="headerSP">
-<div>Bienvenido al Perfil de <span>Owner</span></div>
+    
+<div>Dueño: <span><?php echo $userOwner->getuserName();?></span></div>
+ 
 </div>
 <div class="tabla">
+    <center>
 <div class="headerTable">
     <div class="table-wrapper">
 
@@ -15,6 +18,7 @@ include('nav.php');?>
             <th>Fecha de nacimiento</th>
             <th>Email</th>
             <th>Genero</th>
+            <th>Telefono</th>
         </tr>
         </thead>
         <tbody>
@@ -24,10 +28,12 @@ include('nav.php');?>
             <td><?php echo $userOwner->getAge();?> </td>
             <td><?php echo $userOwner->getEmail();?></td>
             <td><?php echo $userOwner->getGender();?></td>
+            <td>223-306942</td>
         </tr>
        
         <tbody>
     </table>
 </div>
+</center>
 </div>
 </div>

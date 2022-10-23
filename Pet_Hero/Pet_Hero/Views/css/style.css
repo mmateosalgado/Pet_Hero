@@ -59,9 +59,10 @@ body{
 
 .headerSP{
 	position: absolute;
-	z-index: 2;
-	left: calc(50% - 255px);
-	top: calc(27% - 35px);
+	z-index: 1;
+	margin: 27px auto 0;
+	text-align: center;
+	position: relative;
 	color: #FFFFFF;
 	font-family: 'Exo', sans-serif;
 	font-size: 50px;
@@ -131,17 +132,29 @@ body{
 
 .text {
 	font-family: 'Exo', sans-serif;
-	font-size: 10px;
+	font-size: 14px;
 	font-weight: 400;
 	color: rgba(255,255,255,0.6);
 	width: 260px;
+	height: 25px;
 	justify-content: center ;
-	padding: 5px;
+	padding: 2px;
 }
 
 .text a {
 	color: #6bca48;
 
+}
+
+.message a {
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	/*color: rgba(255,255,255,0.6);*/
+	width: 260px;
+	justify-content: center ;
+	padding: 2px;
+	color:#ead775
 }
 
 .login input[type=text]{
@@ -303,7 +316,7 @@ body{
     }
 
 	.btn_reject{
-        background-image:url('https://cdn-icons-png.flaticon.com/512/753/753345.pnghttps://image.shutterstock.com/image-vector/cross-mark-flat-round-red-260nw-673823434.jpg');
+        background-image:url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fes%2Fsearch%2Fcancela&psig=AOvVaw1KmEioY57VWXs-f1z-pGtz&ust=1666467161032000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCMCYrYuI8voCFQAAAAAdAAAAABAF');
         background-repeat:no-repeat;
         height:50px;
         width:50px;
@@ -313,7 +326,11 @@ body{
 		border: none;
 		cursor: pointer;
     }
-	.btn:hover{
+	.btn_check:hover{
+		opacity: 0.5;
+	}
+
+	.btn_reject:hover{
 		opacity: 0.5;
 	}
 

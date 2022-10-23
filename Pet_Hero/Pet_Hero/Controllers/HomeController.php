@@ -122,7 +122,7 @@ class HomeController
         {
             session_destroy();
 
-            $this->Index("Sesión Cerrada con éxito<br>");
+            $this->Index("Sesión Cerrada con éxito");
         }
     }
 ?>
