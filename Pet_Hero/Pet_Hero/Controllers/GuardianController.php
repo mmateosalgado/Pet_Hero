@@ -2,7 +2,7 @@
     namespace Controllers;
     use DAO\GuardianDAO as GuardianDAO;
     use Models\Guardian as Guardian;
-
+    use Controllers\FileController as FileController;
     class GuardianController
     {
         private GuardianDAO $guardianDAO;
@@ -12,7 +12,7 @@
             $this->guardianDAO=new GuardianDAO();
         }
 
-        public function addCuilAndPPH($user,$name,$email,$password,$date,$accountType,$gender,$cuil,$pph){//PPH-> precio por hora o price per hour
+        public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono, $cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
             $guardian=new Guardian();
 
             $guardian->setUserName($user);
@@ -22,8 +22,23 @@
             $guardian->setEmail($email);
             $guardian->setGender($gender);
             $guardian->setType( $accountType);
+            $guardian->setTelefono($telefono);
+
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
+            $guardian->setFechaInicio($fechaInicio);
+            $guardian->setFechaFin($fechaFin);
+            
+            $fileController = new FileController();
+            if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
+            {
+                $guardian->setFotoPerfil($path_File1);
+            }
+            else 
+            {
+                $guardian->setFotoPerfil("Error else");
+
+            }
 
             $this->guardianDAO->Add($guardian);
 

@@ -1,4 +1,4 @@
-<form action="<?php echo FRONT_ROOT . "Guardian/addCuilAndPPH/"?>" method="post"><!-- No nos deja con el POST-->
+<form action="<?php echo FRONT_ROOT . "Guardian/addCuilAndPPH"?>" method="post" enctype="multipart/form-data"><!-- No nos deja con el POST-->
 
             <div class="header">
                 <div>Pet<span>Hero</span></div><br>
@@ -13,9 +13,13 @@
                     <input type="hidden" value="<?php echo $email?>" name="email">
                     <input type="hidden" value="<?php echo $gender?>" name="gender">
                     <input type="hidden" value="<?php echo $accountType?>" name="accountType">
+                    <input type="hidden" value="<?php echo $telefono?>" name="telefono">
 
-                    <input type="number" placeholder="Cuil" name="cuil" required><br>
+                    <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
                     <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
+                    <input type="date" placeholder="Fecha Inicio" name="fechaInicio" required>
+                    <input type="date" placeholder="Fecha Fin" name="fechaFin" required>
+                    <input type="file" name="photo" id="photo" placeholder="Foto de Perfil" required>
                     <input type="submit" value="Terminar Registro"><br>
                     <div class="text">
                     </div>

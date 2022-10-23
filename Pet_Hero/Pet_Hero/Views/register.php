@@ -21,6 +21,7 @@
                         Hombre <input type="radio" name="gender" value="male">
                         Otro <input type="radio" name="gender" value="other">
                     </div>
+                    <input type ="number" placeholder="telefono" name="telefono" required min=0><br>
                     <input type="submit" value="Registrarse"><br>
                     <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
                      <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
