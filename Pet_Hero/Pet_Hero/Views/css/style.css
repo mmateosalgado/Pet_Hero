@@ -232,7 +232,7 @@ body{
 	margin-top: 10px;
 }
 
-.update input[type=button]
+.update input[type=submit]
 {
 	width: 130px;
 	height: 30px;
@@ -334,23 +334,23 @@ body{
 	}
 
 	.btn_check{
-        background-image:url('https://cms-assets.tutsplus.com/cdn-cgi/image/width=850/uploads/users/523/posts/32694/final_image/tutorial-preview-large.png');
+        background-image:url('https://i.pinimg.com/564x/da/18/8c/da188ccb78f1017e9645542bb5e52d6b.jpg');
         background-repeat:no-repeat;
         height:50px;
         width:50px;
-        background-size: 90px 70px;
+        background-size: 50px 50px;
         background-position:center;
 		border: none;
 		cursor: pointer;
     }
 
 	.btn_reject{
-        background-image:url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.shutterstock.com%2Fes%2Fsearch%2Fcancela&psig=AOvVaw1KmEioY57VWXs-f1z-pGtz&ust=1666467161032000&source=images&cd=vfe&ved=0CA0QjRxqFwoTCMCYrYuI8voCFQAAAAAdAAAAABAF');
+        background-image:url('https://i.pinimg.com/564x/94/b4/7e/94b47e3843f8944e5a1e506a8322c060.jpg');
         background-repeat:no-repeat;
         height:50px;
         width:50px;
 	/*	border-radius: 100%;*/
-        background-size: 90px 70px;
+        background-size: 50px 50px;
         background-position:center;
 		border: none;
 		cursor: pointer;
@@ -497,7 +497,7 @@ body{
 	   nav {
 		margin: 27px auto 0;
 		position: relative;
-		width: 310px;
+		width: 430px;
 		height: 50px;
 		background-color: rgba(60,60,60,.5);;
 		border-radius: 8px;
@@ -532,10 +532,10 @@ body{
 		width: 110px;
 	}
 	a:nth-child(3) {
-		width: 100px;
+		width: 110px;
 	}
 	a:nth-child(4) {
-		width: 160px;
+		width: 110px;
 	}
 	a:nth-child(5) {
 		width: 120px;
@@ -552,16 +552,16 @@ body{
 		background-color: #ead775;
 	}
 	nav .start-blog, a:nth-child(3):hover~.animation {
-		width: 100px;
+		width: 110px;
 		left: 210px;
 		background-color: #967456;
 	}
-	/*nav .start-portefolio, a:nth-child(4):hover~.animation {
-		width: 160px;
-		left: 310px;
+	nav .start-portefolio, a:nth-child(4):hover~.animation {
+		width: 110px;
+		left: 320px;
 		background-color: #bc4b51;
 	}
-	nav .start-contact, a:nth-child(5):hover~.animation {
+	/*nav .start-contact, a:nth-child(5):hover~.animation {
 		width: 120px;
 		left: 470px;
 		background-color: #967456;

@@ -56,5 +56,25 @@
             $userGuardian = $this->guardianDAO->getByUser($_SESSION["userName"]);
             require_once(VIEWS_PATH.'profileGuardian.php');
         }
+
+        public function showUpdateGuardian($user){//+ inicio disponibilidad, fin disponibilidad
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'updateGuardian.php');
+        }
+
+        public function updateGuardian($iDisp,$fDisp,$user){
+            $guardianToUpdate=$this->guardianDAO->getByUser($user);
+
+            if($iDisp<$fDisp){
+                $guardianToUpdate->setFechaInicio($iDisp);
+                $guardianToUpdate->setFechaFin($fDisp);
+            }else{
+                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin'));</script>";
+                $this->showUpdateGuardian($user);
+            }
+
+
+            //$this->guardianDAO->guardar
+        }
     }
 ?>
