@@ -232,7 +232,7 @@ body{
 	margin-top: 10px;
 }
 
-.update input[type=button]
+.update input[type=submit]
 {
 	width: 130px;
 	height: 30px;

@@ -28,8 +28,10 @@ include('nav.php');?>
             <td><?php echo $userGuardian->getGender();?></td>
             <td><?php echo $userGuardian->getCuil();?></td>
             <td><?php echo $userGuardian->getPrecioPorHora();?></td>
+            <!-- telefono -->
+            <!-- inicio de disponibilidad-->
+            <!-- fin    de disponibilidad-->
         </tr>
-       
         <tbody>
     </table>
 </div>
@@ -37,5 +39,8 @@ include('nav.php');?>
 </div>  <!-- aca esta el boton mate, si queres metelo dentro de un form o ponele un href
            para que te lleve a donde te tenga que llevar (al home controller supongo) -->
 <div class="update">
-<input type="button" value="Modificar Datos">
+    <form action="<?php echo FRONT_ROOT."Guardian/showUpdateGuardian"?>" method="post">
+        <input type="hidden" value="<?php echo $userGuardian->getuserName();?>" name="user">>
+        <input type="submit" value="Modificar Datos">
+    </form>
 </div>
