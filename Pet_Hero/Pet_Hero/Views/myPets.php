@@ -27,22 +27,25 @@
             <th>Edad</th>
             <th>Gr x Porcion</th>
             <th>Descripcion</th>
+            <th>Plan Vacunacion</th>
             <th>Quitar</th>
         </tr>
         </thead>
         <tbody>
+            <?php foreach($petList as $pet){?>
         <tr>
-            <td><img width="60" height="60" src="https://t2.uc.ltmcdn.com/es/posts/8/7/8/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg"></td>
-            <td>Puppy</td>
-            <td>Perro</td>
-            <td>Chihuahua</td>
-            <td>7 kg</td>
-            <td>2 años</td>
-            <td>20gr</td>
-            <td>es kichito</td>
+            <td><img width="60" height="60" src="<?php echo $pet->getFoto();?>"></td>
+            <td><?php echo $pet->getName();?></td>
+            <td><?php echo $pet->getAnimal();?></td>
+            <td><?php echo $pet->getRace();?></td>
+            <td><?php echo $pet->getWeight();?></td>
+            <td><?php echo $pet->getAge();?></td>
+            <td><?php echo $pet->getGrXfoodPortion();?></td>
+            <td><?php echo $pet->getDescription();?></td>
+            <td><img width="60" height="60" src="<?php echo $pet->getPlanVacunacion();?>"></td>
             <td><button class ="btn_reject"> </button> </td>
         </tr>
-       
+        <?php }?>
         <tbody>
     </table>  
 </div>

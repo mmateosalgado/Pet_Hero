@@ -9,7 +9,20 @@
         "age": "3",
         "grXfoodPortion": "4",
         "weight": "5",
-        "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/golden-cachorro-e1549967733842-1024x650.jpg",
-        "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg"
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/golden-cachorro-e1549967733842-1024x650.jpg",
+        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg"
+    },
+    {
+        "id": 2,
+        "idOwner": 1,
+        "name": "Toby",
+        "animal": "perro",
+        "race": "Labrador",
+        "description": "acdadg",
+        "age": "5",
+        "grXfoodPortion": "300",
+        "weight": "5",
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/golden-cachorro-e1549967733842-1024x650.jpg",
+        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg"
     }
 ]

@@ -25,7 +25,7 @@
             $this->RetrieveData();
             $ownerPets=array();
             foreach($this->petsList as $pet){
-                if($pet->getOwnerId() == $idOwner){
+                if($pet->getIdOwner() == $idOwner){
                     array_push($ownerPets, $pet);
                 }
             }
