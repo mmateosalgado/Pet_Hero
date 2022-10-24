@@ -58,6 +58,7 @@
                 $valuesArray["weight"]=$pet->getWeight();
                 $valuesArray["photoProfile"]=$pet->getFoto();
                 $valuesArray["planVacunacion"]=$pet->getPlanVacunacion();
+                $valuesArray["video"]=$pet->getVideo();
 
                 array_push($arrayToEncode,$valuesArray);
             }
@@ -87,6 +88,7 @@
                     $pet->setWeight($valuesArray["weight"]);
                     $pet->setFoto($valuesArray["photoProfile"]);
                     $pet->setPlanVacunacion($valuesArray["planVacunacion"]);
+                    $pet->setVideo($valuesArray["video"]);
                     array_push($this->petsList,$pet);
                 }
             }

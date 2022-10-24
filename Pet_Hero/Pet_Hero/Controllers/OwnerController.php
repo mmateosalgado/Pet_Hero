@@ -2,25 +2,30 @@
     namespace Controllers;
     use DAO\OwnerDAO as OwnerDAO;
     use DAO\PetDao as PetDao;
+    use DAO\GuardianDAO as GuardianDAO;
 
     use Models\Owner as Owner;
     use Models\Pet as Pet;
+    use Models\Guardian as Guardian;
 
     use Controllers\FileController as FileController;
     class OwnerController
     {
         private  OwnerDAO $ownerDAO;
         private PetDao $petDAO;
+        private GuardianDAO $guardianDAO;
 
         public function __construct()
         {
             $this->ownerDAO=new OwnerDAO();
             $this->petDAO=new PetDao();
+            $this->guardianDAO=new GuardianDAO();
         }
 
         public function showOwnerLobby()
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
+            $guardianList = $this->guardianDAO->GetAll();
             require_once(VIEWS_PATH.'lobbyOwner.php');
         }
 
@@ -63,6 +68,11 @@
             if($path_File2 = $fileController->upload($files["planVacunacion"],"Plan-Vacunacion"))
             {
                 $pet->setPlanVacunacion($path_File2);
+            }
+            
+            if($path_File3 = $fileController->upload($files["video"],"Video"))
+            {
+                $pet->setVideo($path_File3);
             }
             
             $pet->setIdOwner($_SESSION["id"]);

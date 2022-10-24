@@ -18,7 +18,8 @@
                     <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
                     <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
                     <input type="date" placeholder="Fecha Inicio" name="fechaInicio" required>
-                    <input type="date" placeholder="Fecha Fin" name="fechaFin" required>
+                    <input type="date" placeholder="Fecha Fin" name="fechaFin" required><br>
+                    <label for="photo"> Foto de Perfil:</label>
                     <input type="file" name="photo" id="photo" placeholder="Foto de Perfil" required>
                     <input type="submit" value="Terminar Registro"><br>
                     <div class="text">

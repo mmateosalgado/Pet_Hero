@@ -50,40 +50,30 @@
 		$this->calificacion = $calificacion;
 		return $this;
 	}
-	/**
-	 * @return mixed
-	 */
+
 	function getFechaFin() {
 		return $this->fechaFin;
 	}
 	
-	/**
-	 * @param mixed $fechaFin 
-	 * @return Guardian
-	 */
-	function setFechaFin($fechaFin): self {
+
+
+
+	function setFechaFin($fechaFin) {
 		$this->fechaFin = $fechaFin;
 		return $this;
 	}
 	
-	/**
-	 * @return mixed
-	 */
+
 	function getFechaInicio() {
 		return $this->fechaInicio;
 	}
 	
-	/**
-	 * @param mixed $fechaInicio 
-	 * @return Guardian
-	 */
-	function setFechaInicio($fechaInicio): self {
+
+	function setFechaInicio($fechaInicio) {
 		$this->fechaInicio = $fechaInicio;
 		return $this;
 	}
-	/**
-	 * @return mixed
-	 */
+
 	function getFotoPerfil() {
 		return $this->fotoPerfil;
 	}

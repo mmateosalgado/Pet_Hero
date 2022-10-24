@@ -14,9 +14,9 @@
         private $foto;
         private $planVacunacion;
 
+        private $video;
 
-
-        public function __construct($id=null,$idOwner=null,$name=null,$animal=null,$race=null,$description=null,$age=null,$grXfoodPortion=null,$weight=null,$foto=null,$planVacunacion=null){
+        public function __construct($id=null,$idOwner=null,$name=null,$animal=null,$race=null,$description=null,$age=null,$grXfoodPortion=null,$weight=null,$foto=null,$planVacunacion=null,$video=null){
             $this->id = $id;
             $this->idOwner = $idOwner;
             $this->name = $name;
@@ -28,6 +28,7 @@
             $this->weight = $weight;
             $this->foto = $foto;
             $this->planVacunacion = $planVacunacion;
+            $this->video = $video;
         }
 
         public function getId(){
@@ -74,6 +75,11 @@
             return $this->planVacunacion;
         }
 
+        
+	    function getVideo() {
+		    return $this->video;
+	    }
+	
         public function setId($id){
             $this->id = $id;
         }
@@ -117,5 +123,10 @@
         public function setPlanVacunacion($planVacunacion){
             $this->planVacunacion = $planVacunacion;
         }
-    }
+
+	    function setVideo($video) {
+		    $this->video = $video;
+		return $this;
+	    }
+}
 ?>

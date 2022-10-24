@@ -24,17 +24,19 @@
         </tr>
         </thead>
         <tbody>
+        <?php foreach($guardianList as $guardian){?>
         <tr>
-            <td><img width="60" height="60" src="https://media-cdn.tripadvisor.com/media/photo-s/18/3a/c3/3c/alberto-lamandini.jpg"></td>
-            <td>Juan</td>
-            <td>XXXNN</td>
-            <td>-------</td>
-            <td>-------</td>
-            <td>-------</td>
-            <td>$750</td>
+        <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
+        <td><?php echo $guardian->getUserName() ;?></td>
+        <td><?php echo $guardian->getCalificacion() ;?></td>
+        <td><?php echo $guardian->getCuil() ;?></td>
+        <td><?php echo $guardian->getFechaInicio() ;?></td>
+        <td><?php echo $guardian->getFechaFin() ;?></td>
+        <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
             <td><button class="btn_check"> </button></td>
             <td><button class="btn_reject"> </button></td>
         </tr>
+        <?php }?>
         <tbody>
     </table>
     

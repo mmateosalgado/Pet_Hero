@@ -23,8 +23,12 @@ include('nav.php');?>
                     <input type="number" placeholder="Edad" name="age" required><br>
                     <input type="number" placeholder="Gr x Porción de comida" name="gxp" required><br>
                     <textarea placeholder="Descripción" form="agregarMascota" name="description"></textarea><br>
+                    <label for="photoProfile"> Foto de la Mascota :             </label>
                     <input type="file" name="photoProfile" id="photoProfile" placeholder="Foto de Perfil" required><br>
+                    <label for="photo"> Plan de Vacunación:</label>
                     <input type="file" name="planVacunacion" id="planVacunacion" placeholder="Plan de Vacunacion" required><br>
+                    <label for="video"> Video Opcional:   ......</label>
+                    <input type="file" name="video" id="video"><br>
                     <input type="submit" value="Añadir"><br>
                 
             </div>
