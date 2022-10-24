@@ -27,6 +27,31 @@ class GuardianDAO{
         $this->SaveData();
     }
 
+    public function Update(Guardian $guardian){
+        $this->RetrieveData();
+
+        $this->Delete($guardian->getUserName());
+        
+        //Ya deberia tener ID
+        array_push($this->guardianList,$guardian);
+
+        $this->SaveData();
+    }
+
+    public function Delete( $userName){
+        $this->RetrieveData();
+        $aux=0;
+
+        foreach ($this->guardianList as $savedGuardian) {
+            if($savedGuardian->getUserName()==$userName)
+            {
+                unset($this->guardianList[$aux]);
+            }
+            $aux++;
+        }
+        $this->SaveData();
+    }
+
     public function getByUser($user) 
     {
       $this->RetrieveData();
