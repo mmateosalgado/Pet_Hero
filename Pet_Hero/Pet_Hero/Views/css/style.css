@@ -252,6 +252,29 @@ body{
 	z-index: 2;
 }
 
+.addPet input[type=submit]
+{
+	width: 130px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+	position: absolute;
+	top: calc(38.5% - 75px);
+	left: calc(27% - 50px);
+	z-index: 2;
+}
+.addPet input[type=button]:hover
+{
+	opacity: 0.8;
+}
 .update input[type=button]:hover
 {
 	opacity: 0.8;
@@ -514,8 +537,10 @@ body{
 		text-transform: uppercase;
 		text-align: center;
 		color: white;
-		cursor: pointer;
+		cursor: pointer;  
+
 	}
+
 	nav .animation {
 		position: absolute;
 		height: 100%;

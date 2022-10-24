@@ -5,6 +5,13 @@
 <div class="headerSP">
 <div>Tus <span>Mascotas</span></div>
 </div>
+
+<div class="addPet">
+    <form action="<?php echo FRONT_ROOT."Owner/showAddPet"?>" method="post">
+        <input type="submit" value="Agregar Mascota">
+    </form>
+</div>
+
 <div class="tabla">
 <div class="headerTable">
     <div class="table-wrapper">
