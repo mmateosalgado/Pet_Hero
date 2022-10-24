@@ -368,11 +368,11 @@ background-color: #595958;
 	left: calc(27% - 50px);
 	z-index: 2;
 }
-.addPet input[type=button]:hover
+.addPet input[type=submit]:hover
 {
 	opacity: 0.8;
 }
-.update input[type=button]:hover
+.update input[type=submit]:hover
 {
 	opacity: 0.8;
 }
@@ -494,7 +494,8 @@ background-color: #595958;
 	   
 	   .table-wrapper{
 		   margin: 10px 70px 70px;
-		   box-shadow: 0px 35px 50px rgba( 0, 0, 0, 0.2 );
+		   width: 700PX;
+		   box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
 		  /* font-family: 'Exo', sans-serif;
 		   font-size: 35px;
 		   font-weight: 200;*/
