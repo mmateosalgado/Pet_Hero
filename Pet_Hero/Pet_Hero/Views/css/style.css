@@ -117,6 +117,103 @@ body{
 	
 }
 
+.addPetForm{
+	top: calc(35% - 75px);
+	left: calc(50% - 50px);
+	height: 420px;
+	position: absolute;
+	border-radius: 5%;
+	background-color: rgba(80,80,80,0.4);
+	box-shadow: 0 0 15px rgba(60,60,60);
+	padding: 10px;
+	z-index: 2;
+}
+
+.addPetForm input[type=text]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.addPetForm select{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.addPetForm textarea{
+
+	width: 250px;
+    height: 60px;
+    background: transparent;
+	font-family: 'Exo', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+	color: rgba(255,255,255,0.8);
+}
+
+.addPetForm a{
+	color: rgba(255,255,255,0.8);
+	font-family: 'Exo', sans-serif;
+	font-size: 15px;
+	font-weight: 400;
+	padding: 4px;
+}
+
+.addPetForm select:hover{
+background-color: #595958;
+}
+
+.addPetForm input[type=number]{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+	margin-top: 10px;
+}
+
+.addPetForm input[type=submit]
+{
+	width: 130px;
+	height: 30px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+	position: absolute;
+	z-index: 2;
+}
+
 .ac_type{
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;

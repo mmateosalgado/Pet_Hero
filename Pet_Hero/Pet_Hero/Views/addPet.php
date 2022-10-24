@@ -6,23 +6,25 @@ include('nav.php');?>
 <form action="<?php echo FRONT_ROOT . "Home/Register" ?>" method="post">
 
             <div class="header">
-                <div>Pet<span>Hero</span></div>
+                <div>Nueva<span> <br>Mascota</span></div>
             </div>
             <br>
-            <div class="login">
-                    <input type="text" placeholder="Nombre de usuario" name="user" required><br>
-                    <input type="text" placeholder="Nombre y Apellido" name="name" required><br>
-                    <input type="text" placeholder="Email" name="email" required><br>
-                    <input type="password" placeholder="Contraseña" name="password" required><br>
-                    <input type="date" name="date" max="<?php echo $maxDate?>" required><br>
-                    <div class="ac_type" required>      
-                        Dueño <input type="radio" name="accountType" value="owner" required>
-                        Guardián <input type="radio" name="accountType" value="guardian">
-                    </div>
-                    <input type ="number" placeholder="telefono" name="telefono" required min=0><br>
-                    <input type="submit" value="Registrarse"><br>
-                    <div class="text"> Al registrarte, aceptas nuestras Condiciones, la Política de privacidad y la Política de cookies.
-                     <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
-                    </div>
+            <div class="addPetForm">
+                    <input type="text" placeholder="Nombre" name="name" required><br>
+                    <select name="animal" required placeholder="Animal">
+                        <optgroup label="Animal"></optgroup>
+                         <option  value="perro" >Perro</option>
+                         <option  value="gato">Gato</option>
+                         <option   value="hamster">Hamster</option>
+                         <option   value="pez">Pez</option>
+                        </select><br>
+                    <input type="text" placeholder="Raza" name="raza" required><br>
+                    <input type="number" placeholder="Peso" name="weight" required><br>
+                    <input type="number" placeholder="Edad" name="age" required><br>
+                    <input type="number" placeholder="Gr x Porción de comida" name="age" required><br>
+                    <textarea placeholder="Descripción"></textarea><br>
+                
+                    <input type="submit" value="Añadir"><br>
+                
             </div>
 </form>
