@@ -4,7 +4,7 @@
         "userName": "Facu",
         "password": "1234",
         "fullName": "Facundo Ferrari",
-        "age": null,
+        "age": "2003-2-25",
         "email": "ferrarifacundo@outlook.com",
         "gender": "male",
         "type": "owner",
