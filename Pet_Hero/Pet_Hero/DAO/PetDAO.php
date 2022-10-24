@@ -56,6 +56,9 @@
                 $valuesArray["age"]=$pet->getAge();
                 $valuesArray["grXfoodPortion"]=$pet->getGrXfoodPortion();
                 $valuesArray["weight"]=$pet->getWeight();
+                $valuesArray["photoProfile"]=$pet->getFoto();
+                $valuesArray["planVacunacion"]=$pet->getPlanVacunacion();
+
                 array_push($arrayToEncode,$valuesArray);
             }
 
@@ -82,6 +85,8 @@
                     $pet->setAge($valuesArray["age"]);
                     $pet->setGrXfoodPortion($valuesArray["grXfoodPortion"]);
                     $pet->setWeight($valuesArray["weight"]);
+                    $pet->setFoto($valuesArray["photoProfile"]);
+                    $pet->setPlanVacunacion($valuesArray["planVacunacion"]);
                     array_push($this->petsList,$pet);
                 }
             }

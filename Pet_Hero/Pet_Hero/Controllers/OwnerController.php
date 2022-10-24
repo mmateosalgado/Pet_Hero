@@ -1,15 +1,21 @@
 <?php 
     namespace Controllers;
     use DAO\OwnerDAO as OwnerDAO;
-    use Models\Owner as Owner;
+    use DAO\PetDao as PetDao;
 
+    use Models\Owner as Owner;
+    use Models\Pet as Pet;
+
+    use Controllers\FileController as FileController;
     class OwnerController
     {
         private  OwnerDAO $ownerDAO;
+        private PetDao $petDAO;
 
         public function __construct()
         {
             $this->ownerDAO=new OwnerDAO();
+            $this->petDAO=new PetDao();
         }
 
         public function showOwnerLobby()
@@ -38,6 +44,30 @@
             require_once(VIEWS_PATH.'myPets.php');
         }
 
+        public function addPet($name,$animal,$race,$weight,$age,$gxp,$description,$files)
+        {
+            $pet= new Pet();
+            $pet->setName($name);
+            $pet->setAnimal($animal);
+            $pet->setRace($race);
+            $pet->setWeight($weight);
+            $pet->setAge($age);
+            $pet->setGrXfoodPortion($gxp);
+            $pet->setDescription($description);
+           $fileController= new FileController();
+            if($path_File1 = $fileController->upload($files["photoProfile"],"Foto-Pefil-Animal"))
+            {
+                $pet->setFoto($path_File1);
+            }
+            if($path_File2 = $fileController->upload($files["planVacunacion"],"Plan-Vacunacion"))
+            {
+                $pet->setPlanVacunacion($path_File2);
+            }
+            
+            $pet->setIdOwner($_SESSION["id"]);
 
+            $this->petDAO->Add($pet);
+            $this->showPets();
+        }
     }
 ?>

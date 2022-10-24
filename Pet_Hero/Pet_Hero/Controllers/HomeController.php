@@ -37,6 +37,7 @@ class HomeController
                 {
                     $_SESSION['userName'] = $owner->getUserName();
                     $_SESSION['type'] = $owner->getType();
+                    $_SESSION["id"]= $owner->getId();
                     require_once(VIEWS_PATH."lobbyOwner.php");
                 
                 }else

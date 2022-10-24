@@ -3,7 +3,7 @@
 <?php 
 include('nav.php');?>
 
-<form action="<?php echo FRONT_ROOT . "Home/Register" ?>" method="post">
+<form action="<?php echo FRONT_ROOT . "Owner/addPet" ?>"id="agregarMascota" method="post" enctype="multipart/form-data">
 
             <div class="header">
                 <div>Nueva<span> <br>Mascota</span></div>
@@ -18,13 +18,14 @@ include('nav.php');?>
                          <option   value="hamster">Hamster</option>
                          <option   value="pez">Pez</option>
                         </select><br>
-                    <input type="text" placeholder="Raza" name="raza" required><br>
+                    <input type="text" placeholder="Raza" name="race" required><br>
                     <input type="number" placeholder="Peso" name="weight" required><br>
                     <input type="number" placeholder="Edad" name="age" required><br>
-                    <input type="number" placeholder="Gr x Porción de comida" name="age" required><br>
-                    <textarea placeholder="Descripción"></textarea><br>
-                
+                    <input type="number" placeholder="Gr x Porción de comida" name="gxp" required><br>
+                    <textarea placeholder="Descripción" form="agregarMascota" name="description"></textarea><br>
+                    <input type="file" name="photoProfile" id="photoProfile" placeholder="Foto de Perfil" required><br>
+                    <input type="file" name="planVacunacion" id="planVacunacion" placeholder="Plan de Vacunacion" required><br>
                     <input type="submit" value="Añadir"><br>
                 
             </div>
-</form>
+</form>  
