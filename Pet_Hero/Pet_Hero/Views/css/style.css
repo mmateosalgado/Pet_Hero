@@ -344,7 +344,7 @@ background-color: #595958;
 	padding: 6px;
 	margin-top: 10px;
 	position: absolute;
-	top: calc(55% - 75px);
+	top: calc(60% - 75px);
 	left: calc(27% - 50px);
 	z-index: 2;
 }
