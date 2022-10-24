@@ -26,23 +26,31 @@
 
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
-            $guardian->setFechaInicio($fechaInicio);
-            $guardian->setFechaFin($fechaFin);
-            
-            $fileController = new FileController();
-            if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
+            if($fechaInicio > $fechaFin)
             {
-                $guardian->setFotoPerfil($path_File1);
-            }
-            else 
-            {
-                $guardian->setFotoPerfil("Error else");
+                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin!'));</script>";
+                require_once(VIEWS_PATH.'registerGuardian.php');
 
             }
+            else{
+                $guardian->setFechaInicio($fechaInicio);
+                $guardian->setFechaFin($fechaFin);
+                
+                $fileController = new FileController();
+                if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
+                {
+                    $guardian->setFotoPerfil($path_File1);
+                }
+                else 
+                {
+                    $guardian->setFotoPerfil("Error else");
+    
+                }
+                $this->guardianDAO->Add($guardian);
+    
+                $this->showGuardianLobby();
+            }
 
-            $this->guardianDAO->Add($guardian);
-
-            $this->showGuardianLobby();
         }
 
         public function showGuardianLobby()
