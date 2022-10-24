@@ -73,19 +73,19 @@ class OwnerDAO{
     public function SaveData()
     {
         $arrayToEncode= array();
-                    foreach($this->ownerList as $owner)
-                    {
-                        $valuesArray["id"]= $owner->getId();
-                        $valuesArray["userName"]= $owner->getUserName();
-                        $valuesArray["password"]= $owner->getPassword();
-                        $valuesArray["fullName"]= $owner->getFullName();
-                        $valuesArray["age"]= $owner->getAge();
-                        $valuesArray["email"]= $owner->getEmail();
-                        $valuesArray["gender"]= $owner->getGender();
-                        $valuesArray["type"]= $owner->getType();
-                        $valuesArray["telefono"]= $owner->getTelefono();
-                        array_push($arrayToEncode,$valuesArray);
-                    }
+        foreach($this->ownerList as $owner)
+        {
+            $valuesArray["id"]= $owner->getId();
+            $valuesArray["userName"]= $owner->getUserName();
+            $valuesArray["password"]= $owner->getPassword();
+            $valuesArray["fullName"]= $owner->getFullName();
+            $valuesArray["age"]= $owner->getAge();
+            $valuesArray["email"]= $owner->getEmail();
+            $valuesArray["gender"]= $owner->getGender();
+            $valuesArray["type"]= $owner->getType();
+            $valuesArray["telefono"]= $owner->getTelefono();
+            array_push($arrayToEncode,$valuesArray);
+        }
         $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);
         file_put_contents($this->fileName,$jsonContent);
     }
