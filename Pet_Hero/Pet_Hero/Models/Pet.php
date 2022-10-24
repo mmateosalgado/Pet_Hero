@@ -2,17 +2,21 @@
     namespace Models;
 
     class Pet{
-        public $id;
-        public $idOwner;
-        public $name;
-        public $animal;
-        public $race;
-        public $description;
-        public $age;
-        public $grXfoodPortion;
-        public $weight;
+        private $id;
+        private $idOwner;
+        private $name;
+        private $animal;
+        private $race;
+        private $description;
+        private $age;
+        private $grXfoodPortion;
+        private $weight;
+        private $foto;
+        private $planVacunacion;
 
-        public function __construct($id=null,$idOwner=null,$name=null,$animal=null,$race=null,$description=null,$age=null,$grXfoodPortion=null,$weight=null){
+
+
+        public function __construct($id=null,$idOwner=null,$name=null,$animal=null,$race=null,$description=null,$age=null,$grXfoodPortion=null,$weight=null,$foto=null,$planVacunacion=null){
             $this->id = $id;
             $this->idOwner = $idOwner;
             $this->name = $name;
@@ -22,6 +26,8 @@
             $this->age = $age;
             $this->grXfoodPortion = $grXfoodPortion;
             $this->weight = $weight;
+            $this->foto = $foto;
+            $this->planVacunacion = $planVacunacion;
         }
 
         public function getId(){
@@ -60,6 +66,14 @@
             return $this->weight;
         }
 
+        public function getFoto(){
+            return $this->foto;
+        }
+
+        public function getPlanVacunacion(){
+            return $this->planVacunacion;
+        }
+
         public function setId($id){
             $this->id = $id;
         }
@@ -94,6 +108,14 @@
 
         public function setWeight($weight){
             $this->weight = $weight;
+        }
+
+        public function setFoto($foto){
+            $this->foto = $foto;
+        }
+
+        public function setPlanVacunacion($planVacunacion){
+            $this->planVacunacion = $planVacunacion;
         }
     }
 ?>
