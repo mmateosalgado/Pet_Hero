@@ -99,7 +99,7 @@ class HomeController
                         $owner->setType( $accountType);
                         $owner->setTelefono($telefono);
                         $this->ownerDAO->Add($owner);
-                        //Owner Lobby 
+                        require_once(VIEWS_PATH."login.php");
                     }
                 }
             }
@@ -114,7 +114,7 @@ class HomeController
                     if($validacionGuardianEmail!=null){
                         $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
                     }else{
-                        require_once(VIEWS_PATH."registerGuardian.php");
+                        $this->Index("- Cuenta creada exitosamente!!");
                     }
                 }
             }

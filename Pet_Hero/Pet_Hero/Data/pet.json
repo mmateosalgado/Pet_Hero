@@ -24,5 +24,31 @@
         "weight": "5",
         "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/golden-cachorro-e1549967733842-1024x650.jpg",
         "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg"
+    },
+    {
+        "id": 3,
+        "idOwner": 4,
+        "name": "Firulais",
+        "animal": "perro",
+        "race": "Labrador",
+        "description": "no esta tan chikito",
+        "age": "3",
+        "grXfoodPortion": "400",
+        "weight": "18",
+        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/Firulais_significado.png",
+        "planVacunacion": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/b0922b69bac5f67df40c7e3fad643040--website-friends.jpg"
+    },
+    {
+        "id": 4,
+        "idOwner": 4,
+        "name": "Remi",
+        "animal": "hamster",
+        "race": "Orco",
+        "description": "Hamster obeso (en la foto estaba fitness)",
+        "age": "1",
+        "grXfoodPortion": "200",
+        "weight": "1",
+        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/mascotas-ninos-remedios_caseros_391471590_120559780_1706x960.jpg",
+        "planVacunacion": null
     }
 ]

@@ -8,7 +8,7 @@
         "email": "ferrarifacundo@outlook.com",
         "gender": "male",
         "type": "owner",
-        "telefono" : "223345345"
+        "telefono": "223345345"
     },
     {
         "id": 2,
@@ -19,7 +19,7 @@
         "email": "asd",
         "gender": "female",
         "type": "owner",
-        "telefono" : "223345345"
+        "telefono": "223345345"
     },
     {
         "id": 3,
@@ -30,6 +30,17 @@
         "email": "salgadomateo001@gmail.com",
         "gender": "female",
         "type": "owner",
-        "telefono" : "223345345"
+        "telefono": "223345345"
+    },
+    {
+        "id": 4,
+        "userName": "facu123",
+        "password": "1234",
+        "fullName": "Facundo Ferrari",
+        "age": "2003-02-25",
+        "email": "ferrarifacundof@outlook.com",
+        "gender": "male",
+        "type": "owner",
+        "telefono": "2233069546"
     }
 ]
