@@ -39,6 +39,3 @@ include('nav.php');?>
 </div>  <!-- aca esta el boton mate, si queres metelo dentro de un form o ponele un href
            para que te lleve a donde te tenga que llevar (al home controller supongo) -->
 
-<div class="update">
-<input type="button" value="Modificar Datos">
-</div>

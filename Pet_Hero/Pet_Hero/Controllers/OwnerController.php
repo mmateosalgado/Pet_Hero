@@ -18,6 +18,12 @@
             require_once(VIEWS_PATH.'lobbyOwner.php');
         }
 
+        public function showAddPet()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'addPet.php');
+        }
+
         public function showOwnerProfile()
         {
             require_once(VIEWS_PATH.'validate-sesion.php');

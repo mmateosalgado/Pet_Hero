@@ -36,8 +36,7 @@ include('nav.php');?>
             <td><?php echo $userGuardian->getPrecioPorHora();?></td>
             <td><?php echo $userGuardian->getFechaInicio();?></td>
             <td><?php echo $userGuardian->getFechaFin();?></td>
-            <td ><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="200px"></td>
-
+            <td ><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="50px" height="50px"></td>
         </tr>
         <tbody>
     </table>
@@ -51,3 +50,4 @@ include('nav.php');?>
         <input type="submit" value="Modificar Datos">
     </form>
 </div>
+

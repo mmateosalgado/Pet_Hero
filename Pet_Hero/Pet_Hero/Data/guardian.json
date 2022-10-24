@@ -31,6 +31,23 @@
         "calificacion": null,
         "fechaInicio": "2022-10-18",
         "fechaFin": "2022-10-28",
-        "photo": "http:\/\/localhost\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/Screenshot_2.png"
+        "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/Screenshot_2.png"
+    },
+    {
+        "id": 4,
+        "userName": "messi",
+        "password": "1",
+        "fullName": "Lionel Messi",
+        "age": "2022-10-19",
+        "email": "asdasd@aaaaaa",
+        "gender": "male",
+        "type": "guardian",
+        "telefono": "2234646453",
+        "cuil": "1231222",
+        "precioPorHora": "200",
+        "calificacion": null,
+        "fechaInicio": "2022-09-28",
+        "fechaFin": "2022-10-19",
+        "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
     }
 ]
