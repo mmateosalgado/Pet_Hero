@@ -25,8 +25,14 @@
         public function showOwnerLobby()
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
-            $guardianList = $this->guardianDAO->GetAll();
             require_once(VIEWS_PATH.'lobbyOwner.php');
+        }
+
+        public function showOwnerViewGuardians($fechaInicio,$fechaFin)
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            $guardianList = $this->guardianDAO->GetAll();
+            require_once(VIEWS_PATH.'lobbyViewGuardians.php');
         }
 
         public function showAddPet()
