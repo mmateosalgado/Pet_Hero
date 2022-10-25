@@ -25,10 +25,12 @@
         public function showOwnerLobby()
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
+            $petList=array();
+            $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
             require_once(VIEWS_PATH.'lobbyOwner.php');
         }
 
-        public function showOwnerViewGuardians($fechaInicio,$fechaFin)
+        public function showOwnerViewGuardians($fechaInicio,$fechaFin,$mascota,$race,$size)
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
             $guardianList = $this->guardianDAO->GetAll();

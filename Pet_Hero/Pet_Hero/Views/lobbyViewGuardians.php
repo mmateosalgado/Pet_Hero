@@ -4,11 +4,15 @@
 
 <div class="headerSP">
 <div>Guardianes <span>Disponibles</span></div>
+
 </div>
+
 <div class="tabla">
 <div class="headerTable">
-    <div class="table-wrapper">
 
+    <div class="table-wrapper">
+    <a> <b><font color="black"><?php echo "Del: ".$fechaInicio. " Hasta el: ".$fechaFin;?></font></b></a><br>
+    <a> <b><font color="black"><?php echo "Mascota: ".$mascota. "       Raza: ".$race. " Tamaño: ". $size;?></font></b></a>
     <table class="fl-table">
         <thead>
         <tr>
