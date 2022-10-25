@@ -50,11 +50,22 @@
             require_once(VIEWS_PATH.'myPets.php');
         }
 
-        public function addPet($name,$animal,$race,$weight,$age,$gxp,$description,$files)
+        public function addPet($name,$animal,$size,$weight,$age,$gxp,$description)
         {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            $pet= new Pet();
+            $pet->setAnimal($animal);
+            require_once(VIEWS_PATH.'addRace.php');
+
+        }
+
+        public function addRace($name,$animal,$size,$weight,$age,$gxp,$description,$race,$files)
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
             $pet= new Pet();
             $pet->setName($name);
             $pet->setAnimal($animal);
+            $pet->setSize($size);
             $pet->setRace($race);
             $pet->setWeight($weight);
             $pet->setAge($age);
@@ -76,9 +87,9 @@
             }
             
             $pet->setIdOwner($_SESSION["id"]);
-
             $this->petDAO->Add($pet);
             $this->showPets();
         }
+
     }
 ?>

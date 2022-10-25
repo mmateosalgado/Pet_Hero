@@ -12,7 +12,7 @@
             $this->guardianDAO=new GuardianDAO();
         }
 
-        public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono, $cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
+        public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
             $guardian=new Guardian();
 
             $guardian->setUserName($user);
@@ -23,7 +23,7 @@
             $guardian->setGender($gender);
             $guardian->setType( $accountType);
             $guardian->setTelefono($telefono);
-
+            $guardian->setTamanioParaCuidar($size);
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
             if($fechaInicio > $fechaFin)

@@ -23,6 +23,7 @@
             <th>Nombre de la Mascota</th>
             <th>Animal</th>
             <th>Raza</th>
+            <th>Tamaño</th>
             <th>Peso</th>
             <th>Edad</th>
             <th>Gr x Porcion</th>
@@ -39,6 +40,7 @@
             <td><?php echo $pet->getName();?></td>
             <td><?php echo $pet->getAnimal();?></td>
             <td><?php echo $pet->getRace();?></td>
+            <td><?php echo $pet->getSize();?></td>
             <td><?php echo $pet->getWeight();?></td>
             <td><?php echo $pet->getAge();?></td>
             <td><?php echo $pet->getGrXfoodPortion();?></td>

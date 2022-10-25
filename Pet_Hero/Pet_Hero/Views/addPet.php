@@ -18,17 +18,16 @@ include('nav.php');?>
                          <option   value="hamster">Hamster</option>
                          <option   value="pez">Pez</option>
                         </select><br>
-                    <input type="text" placeholder="Raza" name="race" required><br>
-                    <input type="number" placeholder="Peso" name="weight" required><br>
-                    <input type="number" placeholder="Edad" name="age" required><br>
-                    <input type="number" placeholder="Gr x Porción de comida" name="gxp" required><br>
+                        <label for="size"> Tamaño: </label>
+            <div class="ac_type" >      
+                        Grande <input type="radio" name="size" value="big" required id="size">
+                        Mediano <input type="radio" name="size" value="medium">
+                        Pequeño <input type="radio" name="size" value="small">
+            </div>
+                    <input type="number" placeholder="Peso" name="weight" min="0" required><br>
+                    <input type="number" placeholder="Edad" name="age" min="0" required><br>
+                    <input type="number" placeholder="Gr x Porción de comida" min="0" step="10" name="gxp" required><br>
                     <textarea placeholder="Descripción" form="agregarMascota" name="description"></textarea><br>
-                    <label for="photoProfile"> Foto de la Mascota :             </label>
-                    <input type="file" name="photoProfile" id="photoProfile" placeholder="Foto de Perfil" required><br>
-                    <label for="photo"> Plan de Vacunación:</label>
-                    <input type="file" name="planVacunacion" id="planVacunacion" placeholder="Plan de Vacunacion" required><br>
-                    <label for="video"> Video Opcional:   ......</label>
-                    <input type="file" name="video" id="video"><br>
                     <input type="submit" value="Añadir"><br>
                 
             </div>

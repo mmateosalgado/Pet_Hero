@@ -51,6 +51,7 @@
                 $valuesArray["idOwner"]= $pet->getIdOwner();
                 $valuesArray["name"]=$pet->getName();
                 $valuesArray["animal"]=$pet->getAnimal();
+                $valuesArray["size"]=$pet->getSize();
                 $valuesArray["race"]=$pet->getRace();
                 $valuesArray["description"]=$pet->getDescription();
                 $valuesArray["age"]=$pet->getAge();
@@ -81,6 +82,7 @@
                     $pet->setIdOwner($valuesArray["idOwner"]);
                     $pet->setName($valuesArray["name"]);
                     $pet->setAnimal($valuesArray["animal"]);
+                    $pet->setSize($valuesArray["size"]);
                     $pet->setRace($valuesArray["race"]);
                     $pet->setDescription($valuesArray["description"]);
                     $pet->setAge($valuesArray["age"]);

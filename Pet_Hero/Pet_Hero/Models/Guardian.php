@@ -12,7 +12,8 @@
 
 		private $fechaInicio;
 		private $fotoPerfil;
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null)
+		private $tamanioParaCuidar;
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null,$tamanioParaCuidar=null)
         {
             parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
@@ -21,6 +22,8 @@
             $this->calificacion= $calificacion;
 			$this->fechaInicio = $fechaInicio;
 			$this->fechaFin = $fechaFin;
+			$this->fotoPerfil = $fotoPerfil;
+			$this->tamanioParaCuidar= $tamanioParaCuidar;
         }
 
 	function getCuil() {
@@ -81,6 +84,21 @@
 
 	function setFotoPerfil($fotoPerfil) {
 		$this->fotoPerfil = $fotoPerfil;
+		return $this;
+	}
+	/**
+	 * @return mixed
+	 */
+	function getTamanioParaCuidar() {
+		return $this->tamanioParaCuidar;
+	}
+	
+	/**
+	 * @param mixed $tamanioParaCuidar 
+	 * @return Guardian
+	 */
+	function setTamanioParaCuidar($tamanioParaCuidar): self {
+		$this->tamanioParaCuidar = $tamanioParaCuidar;
 		return $this;
 	}
 }

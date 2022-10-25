@@ -4,27 +4,14 @@
         "idOwner": 1,
         "name": "Firulais",
         "animal": "perro",
-        "race": "Golden",
-        "description": "daadaaw",
-        "age": "6",
-        "grXfoodPortion": "200",
-        "weight": "8",
+        "size": "medium",
+        "race": "golden",
+        "description": "Perro rubio",
+        "age": "5",
+        "grXfoodPortion": "100",
+        "weight": "10",
         "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/golden-cachorro-e1549967733842-1024x650.jpg",
         "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg",
         "video": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Video\/video.mp4"
-    },
-    {
-        "id": 2,
-        "idOwner": 1,
-        "name": "adada",
-        "animal": "pez",
-        "race": "ada",
-        "description": "DADA",
-        "age": "4",
-        "grXfoodPortion": "6",
-        "weight": "4",
-        "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/descarga.jpg",
-        "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/png-transparent-laughing-koi-fish-laughing-out-loud-koi-carp-thumbnail.png",
-        "video": null
     }
 ]
