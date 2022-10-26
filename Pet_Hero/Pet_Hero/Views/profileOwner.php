@@ -4,32 +4,15 @@ include('nav.php');?>
     
 <div>Dueño: <span><?php echo $userOwner->getuserName();?></span></div>
  
-</div>
 
-    <div class="table-wrapper">
+    
+        <div class="textInfoUser" >
+            <span>Nombre de usuario:</span><?php echo $userOwner->getuserName();?><br>
+            <span>Nombre Completo:</span><?php echo $userOwner->getFullName();?><br>
+            <span>Fecha de nacimiento:</span><?php echo $userOwner->getAge();?> <br>
+            <span>Email:</span><?php echo $userOwner->getEmail();?><br>
+            <span>Genero:</span><?php echo $userOwner->getGender();?><br>
+            <span>Telefono:</span><?php echo $userOwner->getTelefono();?><br>
+        </div>
+        
 
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Nombre de usuario</th>
-            <th>Nombre Completo</th>
-            <th>Fecha de nacimiento</th>
-            <th>Email</th>
-            <th>Genero</th>
-            <th>Telefono</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><?php echo $userOwner->getuserName();?></td>
-            <td><?php echo $userOwner->getFullName();?></td>
-            <td><?php echo $userOwner->getAge();?> </td>
-            <td><?php echo $userOwner->getEmail();?></td>
-            <td><?php echo $userOwner->getGender();?></td>
-            <td>223-306942</td>
-        </tr>
-       
-        <tbody>
-    </table>
-</div>
-</center>
