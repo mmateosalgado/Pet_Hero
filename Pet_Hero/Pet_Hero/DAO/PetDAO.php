@@ -21,6 +21,11 @@
             $this->SaveData();
         }
 
+        public function GetAll()
+        {
+            $this->RetrieveData();
+            return $this->petsList;
+        }
         public function getAllByOwnerId($idOwner){
             $this->RetrieveData();
             $ownerPets=array();

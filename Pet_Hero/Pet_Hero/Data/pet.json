@@ -13,5 +13,20 @@
         "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/golden-cachorro-e1549967733842-1024x650.jpg",
         "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg",
         "video": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Video\/video.mp4"
+    },
+    {
+        "id": 2,
+        "idOwner": 1,
+        "name": "Payasito",
+        "animal": "pez",
+        "size": "medium",
+        "race": "payaso",
+        "description": "Parecido a Nemo pero m\u00e1s bonito",
+        "age": "2",
+        "grXfoodPortion": "50",
+        "weight": "1",
+        "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/descarga.jpg",
+        "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/png-transparent-laughing-koi-fish-laughing-out-loud-koi-carp-thumbnail.png",
+        "video": null
     }
 ]

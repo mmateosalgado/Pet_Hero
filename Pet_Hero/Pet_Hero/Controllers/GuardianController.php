@@ -4,16 +4,19 @@
     use Models\Guardian as Guardian;
 
     use DAO\ReserveDao as ReserveDao;
+    use DAO\PetDao AS PetDao;
     use Controllers\FileController as FileController;
     class GuardianController
     {
         private GuardianDAO $guardianDAO;
         private ReserveDao $reserveDAO;
+        private PetDAO $petDAO;
 
         public function __construct()
         {
             $this->guardianDAO=new GuardianDAO();
             $this->reserveDAO=new ReserveDAO();
+            $this->petDAO=new PetDAO();
         }
 
         public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
@@ -62,6 +65,7 @@
             require_once(VIEWS_PATH.'validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'lobbyGuardian.php');
         }
         public function showGuardianProfile()

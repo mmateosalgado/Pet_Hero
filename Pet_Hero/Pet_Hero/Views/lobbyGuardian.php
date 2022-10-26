@@ -25,20 +25,22 @@
         </tr>
         </thead>
         <tbody>
-        <?php if($reserveList != null) foreach($reserveList as $reserve){?>
+        <?php if($reserveList != null) foreach($reserveList as $reserve){
+            foreach($petList as $pet){if($pet->getId() == $reserve->getIdMascota()) { ?>
         <tr>
-            <td><img width="60" height="60" src="https://t2.uc.ltmcdn.com/es/posts/8/7/8/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg"></td>
-            <td>Puppy</td>
+            <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
+            <td><?php echo $pet->getName()?></td>
             <td><?php echo $reserve->getTipoMascota()?></td>
             <td><?php echo $reserve->getRace()?></td>
-            <td>7 dias</td>
+            <td><?php echo "10 días"; ?></td>
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo $reserve->getTotal()?></td>
             <td><button class="btn_check"> </button></td>
             <td><button class ="btn_reject"> </button> </td>
         </tr>
-       <?php }?>
+       <?php } }
+          }?>
         <tbody>
     </table>  
 </div>

@@ -73,6 +73,7 @@ class HomeController
                     $_SESSION["id"]= $guardian->getId();
                     $reserveList = array();
                     $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+                    $petList = $this->petDAO->GetAll();
                     require_once(VIEWS_PATH.'lobbyGuardian.php');
                 }else
                 {
