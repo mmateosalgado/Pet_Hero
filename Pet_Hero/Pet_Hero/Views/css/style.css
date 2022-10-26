@@ -429,7 +429,7 @@ background-color: #595958;
 	padding: 6px;
 	margin-top: 10px;
 	position: absolute;
-	top: calc(70% - 75px);
+	top: calc(75% - 75px);
 	left: calc(27% - 50px);
 	z-index: 2;
 }
