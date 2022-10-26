@@ -108,11 +108,27 @@ body{
 	position: absolute;
 	top: calc(50% - 75px);
 	left: calc(50% - 50px);
-	height: 150px;
-	width: 350px;
+	height: 185px;
+	width: 280px;
 	padding: 10px;
 	z-index: 2;
+	background-color: rgba(60,60,60,.4);
+	border-radius: 7px;
+	box-shadow: 0 0 15px rgba(60,60,60);	
+}
+
+.guardianRegister{
 	
+	height: 250px;
+	width: 280px;
+	position: absolute;
+	top: calc(50% - 75px);
+	left: calc(50% - 50px);
+	padding: 10px;
+	z-index: 2;
+	background-color: rgba(60,60,60,.4);
+	border-radius: 7px;
+	box-shadow: 0 0 15px rgba(60,60,60);	
 }
 
 .addPetForm{
@@ -309,6 +325,27 @@ background-color: #595958;
 	box-shadow: 0 0 15px rgba(30,30,30);
 }
 
+.textInfoUser {
+	font-family: 'Exo', sans-serif;
+	font-size: 18px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.6);
+	
+	top: 110%;
+	left:40%;
+	
+	width: fit-content;
+	
+	
+    margin-top: 10px;
+	justify-content: center ;
+	padding: 2px;
+	position: absolute;
+	background-color: rgba(30,30,30,0.6);
+	border-radius: 7px;
+	box-shadow: 0 0 15px rgba(30,30,30);
+}
+
 .text a {
 	color: #6bca48;
 	margin-right: auto;
@@ -339,6 +376,14 @@ background-color: #595958;
 	font-weight: 400;
 	padding: 4px;
 	margin-top: 10px;
+}
+
+ label{
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+    font-weight: 400;
+	color: rgba(255,255,255,0.6);
+
 }
 
 .login input[type=number]{

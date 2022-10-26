@@ -6,8 +6,8 @@ include('nav.php');?>
 
    
 
-      <!-- saquemos esta table -->
-        <center>
+    
+        
         <div class="textInfo">
             <span>Nombre de usuario:</span><?php echo $userGuardian->getuserName();?><br>
             <span>Nombre Completo:</span><?php echo $userGuardian->getFullName();?><br>

@@ -16,20 +16,22 @@
                     <input type="hidden" value="<?php echo $accountType?>" name="accountType">
                     <input type="hidden" value="<?php echo $telefono?>" name="telefono">
                     
-                    <label for="size"> Tamaño: </label>
-             <div class="ac_type" >      
-                        Grande <input type="radio" name="size" value="big" required id="size">
-                        Mediano <input type="radio" name="size" value="medium">
-                        Pequeño <input type="radio" name="size" value="small">
-             </div>
-                    <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
-                    <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
-                    <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
-                    <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
-                    <label for="photo"> Foto de Perfil:</label>
-                    <input type="file" name="photo" id="photo" placeholder="Foto de Perfil" required>
-                    <input type="submit" value="Terminar Registro"><br>
-                    <div class="text">
+                    <label for="size"> Tamaño de mascotas a cuidar: </label>
+                    <div class="ac_type" >      
+                                Grande <input type="radio" name="size" value="big" required id="size">
+                                Mediano <input type="radio" name="size" value="medium">
+                                Pequeño <input type="radio" name="size" value="small">
                     </div>
+                            <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
+                            <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
+                            <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
+                            <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
+                            <label for="photo"> Foto de Perfil:</label>
+                            <input type="file" name="photo" id="photo" placeholder="Foto de Perfil" required>
+                            <input type="submit" value="Terminar Registro"><br>
+                            <div class="text">
+                            <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
+                            </div>
+
                 </div>
    </form>
