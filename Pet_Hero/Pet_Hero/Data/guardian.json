@@ -49,5 +49,22 @@
         "fechaInicio": "2022-10-27",
         "fechaFin": "2023-01-25",
         "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
+    },
+    {
+        "id": 5,
+        "userName": "pepeArgento",
+        "password": "1234",
+        "fullName": "Pepe Argento",
+        "age": "1975-07-24",
+        "email": "pepeArgento@gmail.com",
+        "gender": "male",
+        "type": "guardian",
+        "telefono": "223546567",
+        "cuil": "324234234",
+        "precioPorHora": "350",
+        "calificacion": null,
+        "fechaInicio": "2022-10-24",
+        "fechaFin": "2023-02-25",
+        "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/pepe.jpg"
     }
 ]

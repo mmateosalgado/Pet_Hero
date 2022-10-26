@@ -50,5 +50,18 @@
         "weight": "1",
         "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/mascotas-ninos-remedios_caseros_391471590_120559780_1706x960.jpg",
         "planVacunacion": null
+    },
+    {
+        "id": 5,
+        "idOwner": 5,
+        "name": "Fatiga",
+        "animal": "perro",
+        "race": "Calle",
+        "description": "No hace nada",
+        "age": "6",
+        "grXfoodPortion": "300",
+        "weight": "8",
+        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/0perritoLindo.jpg",
+        "planVacunacion": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/Stamboulian-Calendario-Vacunacion-27-12-2021.jpg"
     }
 ]

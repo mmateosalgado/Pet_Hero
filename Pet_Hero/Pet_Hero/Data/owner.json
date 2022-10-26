@@ -42,5 +42,16 @@
         "gender": "male",
         "type": "owner",
         "telefono": "2233069546"
+    },
+    {
+        "id": 5,
+        "userName": "moniArgento",
+        "password": "1234",
+        "fullName": "Monica Argento",
+        "age": "2022-10-13",
+        "email": "moniArgento@gmail.com",
+        "gender": "female",
+        "type": "owner",
+        "telefono": "2234356465"
     }
 ]
