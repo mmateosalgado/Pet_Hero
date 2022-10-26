@@ -35,9 +35,10 @@
             require_once(VIEWS_PATH.'lobbyOwner.php');
         }
 
-        public function showOwnerViewGuardians($fechaInicio,$fechaFin,$mascota,$race,$size,$idPet)
+        public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
+            $newPet = $this->petDAO->getById($idPet);
             $guardianList = $this->guardianDAO->GetAll();
             require_once(VIEWS_PATH.'lobbyViewGuardians.php');
         }
