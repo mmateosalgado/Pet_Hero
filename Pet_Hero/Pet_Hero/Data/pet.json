@@ -28,5 +28,20 @@
         "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/descarga.jpg",
         "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/png-transparent-laughing-koi-fish-laughing-out-loud-koi-carp-thumbnail.png",
         "video": null
+    },
+    {
+        "id": 3,
+        "idOwner": 4,
+        "name": "Harry",
+        "animal": "perro",
+        "size": "small",
+        "race": "caniche",
+        "description": "chikito",
+        "age": "2",
+        "grXfoodPortion": "270",
+        "weight": "7",
+        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/b0922b69bac5f67df40c7e3fad643040--website-friends.jpg",
+        "planVacunacion": null,
+        "video": null
     }
 ]
