@@ -21,7 +21,6 @@
             <th>Fecha fin</th>
             <th>Total</th>
             <th>Cuidar</th>
-            <td><?php echo $_SESSION["id"];?></td>
             <th>Rechazar</th>
         </tr>
         </thead>

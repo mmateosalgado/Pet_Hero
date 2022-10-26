@@ -2,7 +2,9 @@
 namespace Controllers;
 use DAO\GuardianDAO as GuardianDAO;
 use DAO\OwnerDAO as OwnerDAO;
-use DAO\PetDao;
+use DAO\PetDao as PetDao;
+use DAO\ReserveDao as ReserveDao;
+
 use Models\Guardian;
 use Models\Owner;
 class HomeController
@@ -11,11 +13,14 @@ class HomeController
         private $guardianDAO;
         private $petDAO;
 
+        private ReserveDao $reserveDAO;
+
         public function __construct()
         {
         $this->ownerDAO = new OwnerDAO();
         $this->guardianDAO = new GuardianDAO();
         $this->petDAO = new PetDao();
+        $this->reserveDAO=new ReserveDAO();
         }
 
         public function Index($message = "")
@@ -66,6 +71,8 @@ class HomeController
                     $_SESSION['type'] = $guardian->getType();
                     $_SESSION['URL'] = $guardian->getCalificacion();
                     $_SESSION["id"]= $guardian->getId();
+                    $reserveList = array();
+                    $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
                     require_once(VIEWS_PATH.'lobbyGuardian.php');
                 }else
                 {
