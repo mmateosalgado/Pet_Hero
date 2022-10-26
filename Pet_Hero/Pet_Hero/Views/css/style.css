@@ -375,6 +375,7 @@ background-color: #595958;
 	margin-top: 10px;
 }
 
+
 .update input[type=submit]
 {
 	width: 130px;
@@ -765,3 +766,39 @@ background-color: #595958;
 		color: #6bca48;
 	}
 	
+
+	/*Ferraaa input para los botones de seleccionar boton */
+	.file-select {
+		position: relative;
+		display: inline-block;
+	  }
+	  
+	  .file-select::before {
+		background-color: #5678EF;
+		color: white;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		border-radius: 3px;
+		content: 'Seleccionar'; /* testo por defecto */
+		position: absolute;
+		left: 0;
+		right: 0;
+		top: 0;
+		bottom: 0;
+	  }
+	  
+	  .file-select input[type="file"] {
+		opacity: 0;
+		width: 200px;
+		height: 32px;
+		display: inline-block;
+	  }
+	  
+	  #src-file1::before {
+		content: 'Seleccionar Foto de Perfil 1';
+	  }
+	  
+	  #src-file2::before {
+		content: 'Seleccionar Plan de Vacunación';
+	  }

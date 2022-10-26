@@ -93,6 +93,7 @@ class GuardianDAO{
                 $guardian->setGender($valuesArray["gender"]);
                 $guardian->setType($valuesArray["type"]);
                 $guardian->setTelefono($valuesArray["telefono"]);
+                $guardian->setTamanioParaCuidar($valuesArray["tamanioParaCuidar"]);
                 $guardian->setCuil($valuesArray["cuil"]);
                 $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
                 $guardian->setCalificacion($valuesArray["calificacion"]);
@@ -120,6 +121,7 @@ class GuardianDAO{
                         $valuesArray["gender"]= $guardian->getGender();
                         $valuesArray["type"]= $guardian->getType();
                         $valuesArray["telefono"]=  $guardian->getTelefono();
+                        $valuesArray["tamanioParaCuidar"] = $guardian->getTamanioParaCuidar();
                         $valuesArray["cuil"] = $guardian->getCuil();
                         $valuesArray["precioPorHora"]= $guardian->getPrecioPorHora();
                         $valuesArray["calificacion"]=  $guardian->getCalificacion();

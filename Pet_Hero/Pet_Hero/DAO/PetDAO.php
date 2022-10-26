@@ -51,6 +51,7 @@
                 $valuesArray["idOwner"]= $pet->getIdOwner();
                 $valuesArray["name"]=$pet->getName();
                 $valuesArray["animal"]=$pet->getAnimal();
+                $valuesArray["size"]=$pet->getSize();
                 $valuesArray["race"]=$pet->getRace();
                 $valuesArray["description"]=$pet->getDescription();
                 $valuesArray["age"]=$pet->getAge();
@@ -58,6 +59,7 @@
                 $valuesArray["weight"]=$pet->getWeight();
                 $valuesArray["photoProfile"]=$pet->getFoto();
                 $valuesArray["planVacunacion"]=$pet->getPlanVacunacion();
+                $valuesArray["video"]=$pet->getVideo();
 
                 array_push($arrayToEncode,$valuesArray);
             }
@@ -80,6 +82,7 @@
                     $pet->setIdOwner($valuesArray["idOwner"]);
                     $pet->setName($valuesArray["name"]);
                     $pet->setAnimal($valuesArray["animal"]);
+                    $pet->setSize($valuesArray["size"]);
                     $pet->setRace($valuesArray["race"]);
                     $pet->setDescription($valuesArray["description"]);
                     $pet->setAge($valuesArray["age"]);
@@ -87,6 +90,7 @@
                     $pet->setWeight($valuesArray["weight"]);
                     $pet->setFoto($valuesArray["photoProfile"]);
                     $pet->setPlanVacunacion($valuesArray["planVacunacion"]);
+                    $pet->setVideo($valuesArray["video"]);
                     array_push($this->petsList,$pet);
                 }
             }

@@ -19,23 +19,26 @@
             <th>Cant tiempo</th>
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
+            <th>Total</th>
             <th>Cuidar</th>
             <th>Rechazar</th>
         </tr>
         </thead>
         <tbody>
+        <?php if($reserveList != null) foreach($reserveList as $reserve){?>
         <tr>
             <td><img width="60" height="60" src="https://t2.uc.ltmcdn.com/es/posts/8/7/8/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg"></td>
             <td>Puppy</td>
-            <td>Perro</td>
-            <td>Chihuahua</td>
+            <td><?php echo $reserve->getTipoMascota()?></td>
+            <td><?php echo $reserve->getRace()?></td>
             <td>7 dias</td>
-            <td>20/10</td>
-            <td>27/10</td>
+            <td><?php echo $reserve->getFechaInicio()?></td>
+            <td><?php echo $reserve->getFechaFin()?></td>
+            <td><?php echo $reserve->getTotal()?></td>
             <td><button class="btn_check"> </button></td>
             <td><button class ="btn_reject"> </button> </td>
         </tr>
-       
+       <?php }?>
         <tbody>
     </table>  
 </div>

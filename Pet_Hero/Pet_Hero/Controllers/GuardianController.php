@@ -2,17 +2,21 @@
     namespace Controllers;
     use DAO\GuardianDAO as GuardianDAO;
     use Models\Guardian as Guardian;
+
+    use DAO\ReserveDao as ReserveDao;
     use Controllers\FileController as FileController;
     class GuardianController
     {
         private GuardianDAO $guardianDAO;
+        private ReserveDao $reserveDAO;
 
         public function __construct()
         {
             $this->guardianDAO=new GuardianDAO();
+            $this->reserveDAO=new ReserveDAO();
         }
 
-        public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono, $cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
+        public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
             $guardian=new Guardian();
 
             $guardian->setUserName($user);
@@ -23,7 +27,7 @@
             $guardian->setGender($gender);
             $guardian->setType( $accountType);
             $guardian->setTelefono($telefono);
-
+            $guardian->setTamanioParaCuidar($size);
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
             if($fechaInicio > $fechaFin)
@@ -56,6 +60,8 @@
         public function showGuardianLobby()
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
+            $reserveList = array();
+            $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
             require_once(VIEWS_PATH.'lobbyGuardian.php');
         }
         public function showGuardianProfile()

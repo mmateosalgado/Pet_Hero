@@ -12,7 +12,8 @@
 
 		private $fechaInicio;
 		private $fotoPerfil;
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null)
+		private $tamanioParaCuidar;
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null,$tamanioParaCuidar=null)
         {
             parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
@@ -21,6 +22,8 @@
             $this->calificacion= $calificacion;
 			$this->fechaInicio = $fechaInicio;
 			$this->fechaFin = $fechaFin;
+			$this->fotoPerfil = $fotoPerfil;
+			$this->tamanioParaCuidar= $tamanioParaCuidar;
         }
 
 	function getCuil() {
@@ -50,40 +53,30 @@
 		$this->calificacion = $calificacion;
 		return $this;
 	}
-	/**
-	 * @return mixed
-	 */
+
 	function getFechaFin() {
 		return $this->fechaFin;
 	}
 	
-	/**
-	 * @param mixed $fechaFin 
-	 * @return Guardian
-	 */
-	function setFechaFin($fechaFin): self {
+
+
+
+	function setFechaFin($fechaFin) {
 		$this->fechaFin = $fechaFin;
 		return $this;
 	}
 	
-	/**
-	 * @return mixed
-	 */
+
 	function getFechaInicio() {
 		return $this->fechaInicio;
 	}
 	
-	/**
-	 * @param mixed $fechaInicio 
-	 * @return Guardian
-	 */
-	function setFechaInicio($fechaInicio): self {
+
+	function setFechaInicio($fechaInicio) {
 		$this->fechaInicio = $fechaInicio;
 		return $this;
 	}
-	/**
-	 * @return mixed
-	 */
+
 	function getFotoPerfil() {
 		return $this->fotoPerfil;
 	}
@@ -91,6 +84,16 @@
 
 	function setFotoPerfil($fotoPerfil) {
 		$this->fotoPerfil = $fotoPerfil;
+		return $this;
+	}
+
+	function getTamanioParaCuidar() {
+		return $this->tamanioParaCuidar;
+	}
+	
+
+	function setTamanioParaCuidar($tamanioParaCuidar) {
+		$this->tamanioParaCuidar = $tamanioParaCuidar;
 		return $this;
 	}
 }

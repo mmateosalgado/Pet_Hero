@@ -1,43 +1,29 @@
 <?php 
  include('nav.php');
 ?>
+<?php $minDate=date('Y-m-d');?>
+<form action="<?php echo FRONT_ROOT . "Owner/showOwnerViewGuardians"?>" method="post" enctype="multipart/form-data">
 
-<div class="headerSP">
-<div>Guardianes <span>Disponibles</span></div>
-</div>
-<div class="tabla">
-<div class="headerTable">
-    <div class="table-wrapper">
-
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Foto</th>
-            <th>Nombre</th>
-            <th>Calificacion</th>
-            <th>Disponibilidad</th>
-            <th>Fecha inicio</th>
-            <th>Fecha fin</th>
-            <th>Precio x Dia</th>
-            <th>Aceptar</th>
-            <th>Rechazar</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><img width="60" height="60" src="https://media-cdn.tripadvisor.com/media/photo-s/18/3a/c3/3c/alberto-lamandini.jpg"></td>
-            <td>Juan</td>
-            <td>XXXNN</td>
-            <td>-------</td>
-            <td>-------</td>
-            <td>-------</td>
-            <td>$750</td>
-            <td><button class="btn_check"> </button></td>
-            <td><button class="btn_reject"> </button></td>
-        </tr>
-        <tbody>
-    </table>
-    
-</div>
-</div>
-</div>
+            <div class="header">
+                <div>Pet<span>Hero</span></div><br>
+                <div>Ow<span>ner:</span></div>
+            </div>
+            <br>
+            <div class="login">
+                    <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
+                    <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
+                    <select name="mascota" required placeholder="Mascota" required>
+                    <optgroup label="Mascotas"></optgroup>
+                    <?php foreach($petList as $pet){?>
+                         <option  value="<?php echo $pet->getAnimal() ?>"> <?php echo $pet->getName(). " (". $pet->getAnimal()."-". $pet->getRace().")";?> </option>
+                         <input type="hidden" name="race" value="<?php echo $pet->getRace() ?>" />
+                         <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
+                         <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
+                         <?php } ?>
+                        </select><br>
+                    <input type="submit" value="Seleccionar Fechas"><br>
+                    <div class="text">
+                    </div>
+                    <div><?php if($message !=null) echo $message;?></div>
+                </div>
+   </form>
