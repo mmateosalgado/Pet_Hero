@@ -18,10 +18,12 @@
                          <option  value="<?php echo $pet->getAnimal() ?>"> <?php echo $pet->getName(). " (". $pet->getAnimal()."-". $pet->getRace().")";?> </option>
                          <input type="hidden" name="race" value="<?php echo $pet->getRace() ?>" />
                          <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
+                         <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
                          <?php } ?>
                         </select><br>
                     <input type="submit" value="Seleccionar Fechas"><br>
                     <div class="text">
                     </div>
+                    <div><?php if($message !=null) echo $message;?></div>
                 </div>
    </form>

@@ -86,18 +86,13 @@
 		$this->fotoPerfil = $fotoPerfil;
 		return $this;
 	}
-	/**
-	 * @return mixed
-	 */
+
 	function getTamanioParaCuidar() {
 		return $this->tamanioParaCuidar;
 	}
 	
-	/**
-	 * @param mixed $tamanioParaCuidar 
-	 * @return Guardian
-	 */
-	function setTamanioParaCuidar($tamanioParaCuidar): self {
+
+	function setTamanioParaCuidar($tamanioParaCuidar) {
 		$this->tamanioParaCuidar = $tamanioParaCuidar;
 		return $this;
 	}

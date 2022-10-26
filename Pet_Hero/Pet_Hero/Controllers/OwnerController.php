@@ -7,22 +7,27 @@
     use Models\Owner as Owner;
     use Models\Pet as Pet;
     use Models\Guardian as Guardian;
+    use Models\Reserve as Reserve;
 
     use Controllers\FileController as FileController;
+use DAO\ReserveDao;
+
     class OwnerController
     {
         private  OwnerDAO $ownerDAO;
         private PetDao $petDAO;
         private GuardianDAO $guardianDAO;
+        private ReserveDao $reserveDAO;
 
         public function __construct()
         {
             $this->ownerDAO=new OwnerDAO();
             $this->petDAO=new PetDao();
             $this->guardianDAO=new GuardianDAO();
+            $this->reserveDAO = new ReserveDAO();
         }
 
-        public function showOwnerLobby()
+        public function showOwnerLobby($message=null)
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
             $petList=array();
@@ -30,7 +35,7 @@
             require_once(VIEWS_PATH.'lobbyOwner.php');
         }
 
-        public function showOwnerViewGuardians($fechaInicio,$fechaFin,$mascota,$race,$size)
+        public function showOwnerViewGuardians($fechaInicio,$fechaFin,$mascota,$race,$size,$idPet)
         {
             require_once(VIEWS_PATH.'validate-sesion.php');
             $guardianList = $this->guardianDAO->GetAll();
@@ -97,6 +102,31 @@
             $pet->setIdOwner($_SESSION["id"]);
             $this->petDAO->Add($pet);
             $this->showPets();
+        }
+
+        public function addReserve($idOwner,$fechaInicio,$fechaFin,$mascota,$race,$idPet,$precio,$idGuardian)
+        {
+            $reserve = new Reserve();
+            $reserve->setIdOwner($idOwner);
+            $reserve->setFechaInicio($fechaInicio);
+            $reserve->setFechaFin($fechaFin);
+            $reserve->setTipoMascota($mascota);
+            $reserve->setRace($race);
+            $reserve->setIdMascota($idPet);
+            $reserve->setIdGuardian($idGuardian);
+            $reserve->setTotal($this->calcularTotal($fechaInicio,$fechaFin,$precio));
+            $reserve->setEstado("En espera");
+            $this->reserveDAO->Add($reserve);
+            $this->showOwnerLobby("Reserva enviada exitosamente");
+        }
+
+        public function calcularTotal($fechaInicio,$fechaFin,$precio)
+        {
+            $inicio =  date_create($fechaInicio);
+            $fin = date_create($fechaFin);
+            $dias = (int) date_diff($inicio,$fin);
+            $precio = $precio * $dias;
+            return $precio;
         }
 
     }

@@ -13,6 +13,17 @@
     <div class="table-wrapper">
     <a> <b><font color="black"><?php echo "Del: ".$fechaInicio. " Hasta el: ".$fechaFin;?></font></b></a><br>
     <a> <b><font color="black"><?php echo "Mascota: ".$mascota. "       Raza: ".$race. " Tamaño: ". $size;?></font></b></a>
+
+    <form action="<?php echo FRONT_ROOT . "Owner/addReserve"?>" method="post" enctype="multipart/form-data">
+
+    <input type="hidden" value="<?php echo $_SESSION["id"]?>" name="idOwner" >
+    <input type="hidden" value="<?php  echo $fechaInicio?>" name="fechaInicio">
+    <input type="hidden" value="<?php  echo $fechaFin?>" name="fechaFin">
+    <input type="hidden" value="<?php  echo $mascota?>" name="mascota">
+    <input type="hidden" value="<?php  echo $race?>" name="race">
+    <input type="hidden" value="<?php  echo $idPet?>" name="idPet"> 
+
+
     <table class="fl-table">
         <thead>
         <tr>
@@ -29,7 +40,7 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($guardianList as $guardian){if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin()){?>
+        <?php foreach($guardianList as $guardian){if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin() && $size == $guardian->getTamanioParaCuidar()){?>
         <tr>
         <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
         <td><?php echo $guardian->getUserName() ;?></td>
@@ -39,12 +50,16 @@
         <td><?php echo $guardian->getFechaFin() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
-            <td><button class="btn_check"> </button></td>
+
+        <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio"> 
+        
+            <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
             <td><button class="btn_reject"> </button></td>
         </tr>
         <?php }}?>
         <tbody>
     </table>
+    </form>
     
 </div>
 </div>

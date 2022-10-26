@@ -21,15 +21,16 @@
             $this->SaveData();
         }
         
-      /*  public function getById($id){
+        public function getByIdGuardian($idGuardian){
             $this->RetrieveData();
+            $reserveList= array();
             foreach($this->reserveList as $reserve){
-                if($reserve->getId() == $id){
-                    return $reserve;
+                if($reserve->getIdGuardian() == $idGuardian){
+                    array_push($reserveList,$reserve);
                 }
             }
-            return null;
-        }*/
+            return $reserveList;
+        }
 
         private function SaveData(){
             $arrayToEncode=array();
@@ -40,7 +41,10 @@
                 $valuesArray["idMascota"]=$reserve->getIdMascota();
                 $valuesArray["fechaInicio"]=$reserve->getFechaInicio();
                 $valuesArray["fechaFin"]=$reserve->getFechaFin();
+                $valuesArray["tipoMascota"]=$reserve->getTipoMascota();
+                $valuesArray["raza"] = $reserve->getrace();
                 $valuesArray["total"]=$reserve->getTotal();
+                $valuesArray["estado"] = $reserve->getEstado();
                 array_push($arrayToEncode,$valuesArray);
             }
 
@@ -63,8 +67,10 @@
                     $reserve->setIdMascota($valuesArray["idMascota"]);
                     $reserve->setFechaInicio($valuesArray["fechaInicio"]);
                     $reserve->setFechaFin($valuesArray["fechaFin"]);
+                    $reserve->setTipoMascota($valuesArray["tipoMascota"]);
+                    $reserve->setRace($valuesArray["raza"]);
                     $reserve->setTotal($valuesArray["total"]);
-
+                    $reserve->setEstado($valuesArray["estado"]);
                     array_push($this->reserveList,$reserve);
                 }
             }
