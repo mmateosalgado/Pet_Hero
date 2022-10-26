@@ -286,7 +286,7 @@ background-color: #595958;
 	height: 25px;
 	justify-content: center ;
 	padding: 2px;
-	position: absolute;
+	position: relative;
 }
 
 .textInfo {
