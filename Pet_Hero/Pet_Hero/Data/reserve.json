@@ -1,5 +1,6 @@
 [
     {
+        "idReserve": "1",
         "idGuardian": "5",
         "idOwner": "1",
         "idMascota": "1",
@@ -11,17 +12,7 @@
         "estado": "En Espera"
     },
     {
-        "idGuardian": "3",
-        "idOwner": "1",
-        "idMascota": "1",
-        "fechaInicio": "2022-10-26",
-        "fechaFin": "2022-10-27",
-        "tipoMascota": "perro",
-        "raza": "golden",
-        "total": 2400,
-        "estado": "En espera"
-    },
-    {
+        "idReserve": "3",
         "idGuardian": "5",
         "idOwner": "1",
         "idMascota": "2",
@@ -31,5 +22,17 @@
         "raza": "payaso",
         "total": 2400,
         "estado": "En espera"
+    },
+    {
+        "idReserve": "2",
+        "idGuardian": "3",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-10-26",
+        "fechaFin": "2022-10-27",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 2400,
+        "estado": "Confirmada"
     }
 ]

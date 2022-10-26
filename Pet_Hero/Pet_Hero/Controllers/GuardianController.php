@@ -4,6 +4,7 @@
     use Models\Guardian as Guardian;
 
     use DAO\ReserveDao as ReserveDao;
+    use Models\Reserve as Reserve;
     use DAO\PetDao AS PetDao;
     use Controllers\FileController as FileController;
     class GuardianController
@@ -95,6 +96,22 @@
             }
 
 
+        }
+
+        public function changeReserve($estado,$idReserve)
+        {  
+            $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
+            $reserveToUpdate->setEstado($estado);
+            $this->reserveDAO->Update($reserveToUpdate);
+            $this->showReservas();
+        }
+        public function showReservas()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            $reserveList = array();
+            $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            $petList = $this->petDAO->GetAll();
+            require_once(VIEWS_PATH.'viewReservesGuardian.php');
         }
     }
 ?>

@@ -10,7 +10,7 @@
     use Models\Reserve as Reserve;
 
     use Controllers\FileController as FileController;
-use DAO\ReserveDao;
+    use DAO\ReserveDao as ReserveDao;
 
     class OwnerController
     {
@@ -127,6 +127,16 @@ use DAO\ReserveDao;
             $dias = (int) date_diff($inicio,$fin);
             $precio = $precio * $dias;
             return $precio;
+        }
+
+        public function showReserves()
+        {
+            require_once(VIEWS_PATH.'validate-sesion.php');
+            $reserveList = array();
+            $reserveList = $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
+            $petList = $this->petDAO->GetAll();
+            $guardianList = $this->guardianDAO->GetAll();
+            require_once(VIEWS_PATH.'viewReservesOwner.php');
         }
 
     }

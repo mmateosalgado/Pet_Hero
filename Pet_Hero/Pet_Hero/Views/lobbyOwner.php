@@ -38,5 +38,6 @@
                     <div class="text">
                     </div>
                     <div><?php if($message !=null) {echo $message;} ?></div>
+                    <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas Confirmadas</a>
                 </div>
    </form>

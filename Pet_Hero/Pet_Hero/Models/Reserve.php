@@ -2,6 +2,7 @@
 namespace Models;
 class Reserve
 {
+    private $idReserve;
     private $idGuardian;
     private $idOwner;
     private $fechaInicio;
@@ -16,7 +17,8 @@ class Reserve
                        -Rechazado(si lo rechaza el guardian)
                        -Finalizado(si se cumple el contrato)*/
             
-            function __construct($idGuardian=null, $idOwner=null, $fechaInicio=null, $fechaFin=null, $total=null, $idMascota=null,$tipoMascota=null,$race=null,$estado=null) {
+            function __construct($idReserve=null,$idGuardian=null, $idOwner=null, $fechaInicio=null, $fechaFin=null, $total=null, $idMascota=null,$tipoMascota=null,$race=null,$estado=null) {
+                $this->idReserve = $idReserve;
                 $this->idGuardian = $idGuardian;
                 $this->idOwner = $idOwner;
                 $this->fechaInicio = $fechaInicio;
@@ -103,6 +105,15 @@ class Reserve
 
 	function setEstado($estado) {
 		$this->estado = $estado;
+		return $this;
+	}
+
+	function getIdReserve() {
+		return $this->idReserve;
+	}
+
+	function setIdReserve($idReserve) {
+		$this->idReserve = $idReserve;
 		return $this;
 	}
 }
