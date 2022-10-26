@@ -8,7 +8,7 @@ class FileController
      private $maxSize;
 
      function __construct() {
-           $this->allowedExtensions = array('png', 'jpg', 'gif','mp4');
+           $this->allowedExtensions = array('png', 'jpg', 'gif');
            $this->maxSize = 5000000;
            $this->uploadFilePath = IMG_ROOT;
      }
