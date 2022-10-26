@@ -16,7 +16,7 @@
         public function Add(Reserve $reserve)
         {
             $this->RetrieveData();
-            //$reserve->setId($this->getNextId());
+            $reserve->setIdReserve($this->getNextId());
             array_push($this->reserveList, $reserve);
             $this->SaveData();
         }
@@ -32,10 +32,32 @@
             return $reserveList;
         }
 
+        
+        public function getbyIdOwner($idOwner){
+            $this->RetrieveData();
+            $reserveList= array();
+            foreach($this->reserveList as $reserve){
+                if($reserve->getIdOwner() == $idOwner){
+                    array_push($reserveList,$reserve);
+                }
+            }
+            return $reserveList;
+        }
+
+        public function getByIdReserve($idReserve){
+            $this->RetrieveData();
+            foreach($this->reserveList as $reserve){
+                if($reserve->getIdReserve() == $idReserve){
+                    return  $reserve;
+                }
+            }
+            return null;
+        }
+
         private function SaveData(){
             $arrayToEncode=array();
             foreach($this->reserveList as $reserve){
-
+                $valuesArray["idReserve"]= $reserve->getIdReserve();
                 $valuesArray["idGuardian"]=$reserve->getIdGuardian();
                 $valuesArray["idOwner"]= $reserve->getIdOwner();
                 $valuesArray["idMascota"]=$reserve->getIdMascota();
@@ -62,6 +84,7 @@
                 foreach($arrayToDecode as $valuesArray)
                 {
                     $reserve=new Reserve();
+                    $reserve->setIdReserve($valuesArray["idReserve"]);
                     $reserve->setIdGuardian($valuesArray["idGuardian"]);
                     $reserve->setIdOwner($valuesArray["idOwner"]);
                     $reserve->setIdMascota($valuesArray["idMascota"]);
@@ -76,14 +99,37 @@
             }
         }
 
-        /*private function getNextId(){
+        public function Update(Reserve $reserve)
+        {
+            $this->RetrieveData();
+
+            $this->Delete($reserve->getIdReserve());
+            array_push($this->reserveList,$reserve);
+    
+            $this->SaveData();
+        }
+
+        public function Delete( $idReserve){
+            $this->RetrieveData();
+            $aux=0;
+    
+            foreach ($this->reserveList as $savedReserve) {
+                if($savedReserve->getIdReserve()==$idReserve)
+                {
+                    unset($this->reserveList[$aux]);
+                }
+                $aux++;
+            }
+            $this->SaveData();
+        }
+
+        private function getNextId(){
             $id=0;
 
             foreach($this->reserveList as $reserve){  
-                $id=($reserve->getId()>$id) ? $reserve->getId() : $id;
+                $id=($reserve->getIdReserve()>$id) ? $reserve->getIdReserve() : $id;
             }
-
             return $id+1;
-        }*/
+        }
     }
 ?>
