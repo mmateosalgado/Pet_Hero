@@ -4,8 +4,7 @@
 <div class="headerSP">
 <div>Reservas <span>Confirmadas</span></div>
 </div>
-<div class="tabla">
-<div class="headerTable">
+
     <div class="table-wrapper">
     <table class="fl-table">
         <thead>
@@ -42,6 +41,4 @@
           } }?>
         <tbody>
     </table>  
-</div>
-</div>
 </div>
