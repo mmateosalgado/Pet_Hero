@@ -12,8 +12,7 @@
     </form>
 </div>
 
-<div class="tabla">
-<div class="headerTable">
+
     <div class="table-wrapper">
 
     <table class="fl-table">
@@ -56,6 +55,5 @@
         <?php }?>
         <tbody>
     </table>  
-</div>
-</div>
+
 </div>

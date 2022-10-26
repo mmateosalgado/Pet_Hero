@@ -5,8 +5,7 @@
 <div class="headerSP">
 <div>Solicitudes <span>Disponibles</span></div>
 </div>
-<div class="tabla">
-<div class="headerTable">
+
     <div class="table-wrapper">
 
     <table class="fl-table">
@@ -43,6 +42,5 @@
           }?>
         <tbody>
     </table>  
-</div>
-</div>
+
 </div>

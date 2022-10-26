@@ -3,47 +3,30 @@ include('nav.php');?>
 <div class="headerSP">
 <div> Guardián: <span><?php echo $userGuardian->getuserName();?></span></div>
 </div>
-<div class="tabla">
-<div class="headerTable">
-    <div class="table-wrapper">
 
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th>Nombre de usuario</th>
-            <th>Nombre Completo</th>
-            <th>Fecha de nacimiento</th>
-            <th>Email</th>
-            <th>Genero</th>
-            <th>Telefono</th>
-            <th>Tamaño para Cuidar</th>
-            <th>CUIL</th>
-            <th>Precio x Hora</th>
-            <th>Fecha inicio</th>
-            <th>Fecha Fin</th>
-            <th>Foto Perfil</th>
+   
 
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td><?php echo $userGuardian->getuserName();?></td>
-            <td><?php echo $userGuardian->getFullName();?></td>
-            <td><?php echo $userGuardian->getAge();?> </td>
-            <td><?php echo $userGuardian->getEmail();?></td>
-            <td><?php echo $userGuardian->getGender();?></td>
-            <td><?php echo $userGuardian->getTelefono();?></td>
-            <td><?php echo $userGuardian->getTamanioParaCuidar();?></td>
-            <td><?php echo $userGuardian->getCuil();?></td>
-            <td><?php echo $userGuardian->getPrecioPorHora();?></td>
-            <td><?php echo $userGuardian->getFechaInicio();?></td>
-            <td><?php echo $userGuardian->getFechaFin();?></td>
-            <td ><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="50px" height="50px"></td>
-        </tr>
-        <tbody>
-    </table>
-</div>
-</div>
+      <!-- saquemos esta table -->
+        <center>
+        <div class="textInfo">
+            <span>Nombre de usuario:</span><?php echo $userGuardian->getuserName();?><br>
+            <span>Nombre Completo:</span><?php echo $userGuardian->getFullName();?><br>
+            <span>Fecha de nacimiento:</span><?php echo $userGuardian->getAge();?> <br>
+            <span>Email:</span><?php echo $userGuardian->getEmail();?><br>
+            <span>Genero:</span><?php echo $userGuardian->getGender();?><br>
+            <span>Telefono:</span><?php echo $userGuardian->getTelefono();?><br>
+            <span>Tamaño para Cuidar:</span><?php echo $userGuardian->getTamanioParaCuidar();?><br>
+            <span>CUIL:</span><?php echo $userGuardian->getCuil();?><br>
+            <span>Precio x Hora:</span><?php echo $userGuardian->getPrecioPorHora();?><br>
+            <span>Fecha inicio:</span><?php echo $userGuardian->getFechaInicio();?><br>
+            <span>Fecha Fin:</span><?php echo $userGuardian->getFechaFin();?><br>
+        </div>
+        <div class="photoProfile">
+        <span>Foto:<br></span><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="300px" height="300px">
+        </div>
+       
+      
+
 </div> 
 <div class="update">
     <form action="<?php echo FRONT_ROOT."Guardian/showUpdateGuardian"?>" method="post">

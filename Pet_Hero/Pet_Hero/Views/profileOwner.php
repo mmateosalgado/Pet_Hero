@@ -5,9 +5,7 @@ include('nav.php');?>
 <div>Dueño: <span><?php echo $userOwner->getuserName();?></span></div>
  
 </div>
-<div class="tabla">
-    <center>
-<div class="headerTable">
+
     <div class="table-wrapper">
 
     <table class="fl-table">
@@ -35,7 +33,3 @@ include('nav.php');?>
     </table>
 </div>
 </center>
-</div>
-</div>  <!-- aca esta el boton mate, si queres metelo dentro de un form o ponele un href
-           para que te lleve a donde te tenga que llevar (al home controller supongo) -->
-

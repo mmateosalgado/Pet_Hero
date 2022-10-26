@@ -21,22 +21,27 @@
                          <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
                     <?php } ?>
                     </div>
-                    <!-- 
+                    
                     <select name="mascota" required placeholder="Mascota" required>
-                    <optgroup label="Mascotas"></optgroup>
-                    <?php //foreach($petList as $pet){?>
-                         <option  value="<?php //echo $pet->getAnimal() ?>"> <?php //echo $pet->getName(). " (". $pet->getAnimal()."-". $pet->getRace().")";?> </option>
-
-                         <input type="hidden" name="race" value="<?php //echo $pet->getRace() ?>" />
-                         <input type="hidden" name="size" value="<?php //echo $pet->getSize() ?>" />
-                         <input type="hidden" name="idPet" value="<?php //echo $pet->getId() ?>" />
-
-                         <?php //} ?>
+                    
+                    <?php foreach($petList as $pet){
+                        
+                         echo'<option  value="'. $pet->getAnimal() .'">'. $pet->getName() . '</option>';
+                                                  ?>
+                         <input type="hidden" name="race" value="<?php echo $pet->getRace() ?>" />
+                         <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
+                         <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
+                         <?php } ?>
                         </select><br>
-                    -->
+                  
+
+
                     <input type="submit" value="Seleccionar Fechas"><br>
                     <div class="text">
                     </div>
                     <div><?php if($message !=null) {echo $message;} ?></div>
                 </div>
-   </form>
+</form>
+
+
+

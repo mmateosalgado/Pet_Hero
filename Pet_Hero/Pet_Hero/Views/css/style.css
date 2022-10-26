@@ -286,10 +286,33 @@ background-color: #595958;
 	height: 25px;
 	justify-content: center ;
 	padding: 2px;
+	position: absolute;
+}
+
+.textInfo {
+	font-family: 'Exo', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.6);
+	
+	left:20%;
+	
+	width: fit-content;
+	
+	
+    margin-top: 10px;
+	justify-content: center ;
+	padding: 2px;
+	position: absolute;
+	background-color: rgba(30,30,30,0.6);
+	border-radius: 7px;
+	box-shadow: 0 0 15px rgba(30,30,30);
 }
 
 .text a {
 	color: #6bca48;
+	margin-right: auto;
+	margin-left: auto;
 
 }
 
@@ -375,8 +398,23 @@ background-color: #595958;
 	margin-top: 10px;
 }
 
+.photoProfile {
+	left: 40%;
+	position: absolute;
+	font-family: 'Exo', sans-serif;
+	font-size: 14px;
+	font-weight: 400;
+	color: rgba(255,255,255,0.6);
+    margin-top: 10px;
+	justify-content: center ;
+	padding: 2px;
+	position: absolute;
+	background-color: rgba(30,30,30,0.6);
+	border-radius: 7px;
+	box-shadow: 0 0 15px rgba(30,30,30);
+}
 
-.update input[type=submit]
+.update input[type=submit]/*ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
 {
 	width: 130px;
 	height: 30px;
@@ -391,12 +429,12 @@ background-color: #595958;
 	padding: 6px;
 	margin-top: 10px;
 	position: absolute;
-	top: calc(60% - 75px);
+	top: calc(70% - 75px);
 	left: calc(27% - 50px);
 	z-index: 2;
 }
 
-.addPet input[type=submit]
+.addPet input[type=submit]  /*Boton de agregar mascota en mis mascotas*/
 {
 	width: 130px;
 	height: 30px;
@@ -412,7 +450,7 @@ background-color: #595958;
 	margin-top: 10px;
 	position: absolute;
 	top: calc(38.5% - 75px);
-	left: calc(27% - 50px);
+	left: calc(20.3% - 50px);
 	z-index: 2;
 }
 .addPet input[type=submit]:hover
@@ -539,20 +577,37 @@ background-color: #595958;
 	   
 	   /* Table Styles */
 	   
-	   .table-wrapper{
-		   margin: 10px 70px 70px;
-		   width: 700PX;
-		   box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
-		  /* font-family: 'Exo', sans-serif;
-		   font-size: 35px;
-		   font-weight: 200;*/
-		   float: center;
-		   position: relative;
-	   }
 	   
-	   .fl-table {
+	   .table-wrapper a {
+		   color: rgb(243, 245, 243);
+		   font-family: 'Exo', sans-serif;
+		   font-size: 35px;
+		   font-weight: 200;
+		   background-color: rgba( 60, 60, 60, 0.6 );
+		   border-radius: 10;
+		   box-shadow: 0 0 15px rgba(60,60,60);
+		}
+		.table-wrapper{
+			margin-right: auto;
+			margin-left: auto;
+			margin-top: auto;
+			top: 60px;
+			width: 931px;
+			box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
+		   /* font-family: 'Exo', sans-serif;
+			font-size: 35px;
+			font-weight: 200;*/
+			position: relative;
+		}
+		
+		.fl-table {
 		   border-radius: 5px;
+		   margin-left: auto;
+		   margin-right: auto;
 		   font-size: 12px;
+		   font-family: 'Exo', sans-serif;
+       	   font-weight: 200;
+		   color: #000000;
 		   font-weight: normal;
 		   border: none;
 		   border-collapse: collapse;
