@@ -62,6 +62,7 @@ body{
 .headerSP{
 	position: absolute;
 	z-index: 1;
+	height: 60px;
 	margin: 27px auto 0;
 	text-align: center;
 	position: relative;
@@ -302,7 +303,7 @@ background-color: #595958;
 	color: rgba(255,255,255,0.6);
 	
 	left:20%;
-	
+	display: block;
 	width: fit-content;
 	
 	
@@ -435,7 +436,7 @@ background-color: #595958;
 
 .photoProfile {
 	left: 40%;
-	position: absolute;
+	position: sticky;
 	font-family: 'Exo', sans-serif;
 	font-size: 14px;
 	font-weight: 400;
@@ -447,6 +448,8 @@ background-color: #595958;
 	background-color: rgba(30,30,30,0.6);
 	border-radius: 7px;
 	box-shadow: 0 0 15px rgba(30,30,30);
+	display: block;
+
 }
 
 .update input[type=submit]/*ACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA*/
@@ -464,9 +467,11 @@ background-color: #595958;
 	padding: 6px;
 	margin-top: 10px;
 	position: absolute;
-	top: calc(75% - 75px);
-	left: calc(27% - 50px);
+	
+	left: 20%;
+	top: 58%;
 	z-index: 2;
+	display: block;
 }
 
 .addPet input[type=submit]  /*Boton de agregar mascota en mis mascotas*/
