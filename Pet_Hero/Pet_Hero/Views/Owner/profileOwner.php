@@ -1,5 +1,6 @@
 <?php 
-include('nav.php');?>
+ include('Views/../../Section/nav.php');
+ ?>
 <div class="headerSP">
     
 <div>Dueño: <span><?php echo $userOwner->getuserName();?></span></div>

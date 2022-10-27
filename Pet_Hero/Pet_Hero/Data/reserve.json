@@ -34,5 +34,17 @@
         "raza": "golden",
         "total": 2400,
         "estado": "Confirmada"
+    },
+    {
+        "idReserve": 4,
+        "idGuardian": "3",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-10-27",
+        "fechaFin": "2022-10-28",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 2400,
+        "estado": "En espera"
     }
 ]

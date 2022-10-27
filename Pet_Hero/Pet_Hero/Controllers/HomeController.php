@@ -25,12 +25,12 @@ class HomeController
 
         public function Index($message = "")
         {
-            require_once(VIEWS_PATH."login.php");
+            require_once(VIEWS_PATH."Home/login.php");
         }
 
         public function ViewRegister()
         {
-            require_once(VIEWS_PATH."register.php");
+            require_once(VIEWS_PATH."Home/register.php");
         }
 
         public function Login($user,$password,$accountType)
@@ -49,7 +49,7 @@ class HomeController
                     $guardianList = $this->guardianDAO->GetAll();
                     $petList=array();
                     $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-                    require_once(VIEWS_PATH."lobbyOwner.php");
+                    require_once(VIEWS_PATH."Owner/lobbyOwner.php");
                 
                 }else
                 {
@@ -74,7 +74,7 @@ class HomeController
                     $reserveList = array();
                     $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
                     $petList = $this->petDAO->GetAll();
-                    require_once(VIEWS_PATH.'lobbyGuardian.php');
+                    require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
                 }else
                 {
                     $this->Index("Usuario o contraseña incorrectos"); 
@@ -129,7 +129,7 @@ class HomeController
                     if($validacionGuardianEmail!=null){
                         $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
                     }else{
-                        require_once(VIEWS_PATH."registerGuardian.php");
+                        require_once(VIEWS_PATH."Guardian/registerGuardian.php");
                     }
                 }
             }

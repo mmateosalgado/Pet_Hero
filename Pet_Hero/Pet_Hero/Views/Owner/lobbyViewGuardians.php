@@ -1,5 +1,5 @@
-<?php 
- include('nav.php');
+<?php
+ include('Views/../../Section/nav.php');
 ?>
 
 <div class="headerSP">
@@ -7,16 +7,16 @@
 
     <div class="table-wrapper">
     <a> <?php echo "Del: ".$fechaInicio. " Hasta el: ".$fechaFin. "<br>".
-    "Mascota: ".$mascota. "       Raza: ".$race. " Tamaño: ". $size;?></a>
+    "Mascota: ". $newPet->getAnimal(). "       Raza: ".$newPet->getRace(). " Tamaño: ". $newPet->getSize();?></a>
 
     <form action="<?php echo FRONT_ROOT . "Owner/addReserve"?>" method="post" enctype="multipart/form-data">
 
     <input type="hidden" value="<?php echo $_SESSION["id"]?>" name="idOwner" >
-    <input type="hidden" value="<?php  echo $fechaInicio?>" name="fechaInicio">
-    <input type="hidden" value="<?php  echo $fechaFin?>" name="fechaFin">
-    <input type="hidden" value="<?php  echo $mascota?>" name="mascota">
-    <input type="hidden" value="<?php  echo $race?>" name="race">
-    <input type="hidden" value="<?php  echo $idPet?>" name="idPet"> 
+    <input type="hidden" value="<?php  echo $fechaInicio;?>" name="fechaInicio">
+    <input type="hidden" value="<?php  echo $fechaFin;?>" name="fechaFin">
+    <input type="hidden" value="<?php  echo $newPet->getAnimal();?>" name="mascota">
+    <input type="hidden" value="<?php  echo $newPet->getRace();?>" name="race">
+    <input type="hidden" value="<?php  echo $newPet->getId();?>" name="idPet">
 
 
     <table class="fl-table">
@@ -35,7 +35,9 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($guardianList as $guardian){if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin() && $size == $guardian->getTamanioParaCuidar()){?>
+        <?php foreach($guardianList as $guardian){
+            if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin() && $newPet->getSize() == $guardian->getTamanioParaCuidar())
+            {?>
         <tr>
         <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
         <td><?php echo $guardian->getUserName() ;?></td>
@@ -46,8 +48,8 @@
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
 
-        <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio"> 
-        
+        <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio">
+
             <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
             <td><button class="btn_reject"> </button></td>
         </tr>
@@ -55,7 +57,6 @@
         <tbody>
     </table>
     </form>
-    
 </div>
 
 </div>
