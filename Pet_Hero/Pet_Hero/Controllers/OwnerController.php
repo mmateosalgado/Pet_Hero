@@ -29,53 +29,53 @@
 
         public function showOwnerLobby($message=null)
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
             $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-            require_once(VIEWS_PATH.'lobbyOwner.php');
+            require_once(VIEWS_PATH.'Owner/lobbyOwner.php');
         }
 
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $newPet = $this->petDAO->getById($idPet);
             $guardianList = $this->guardianDAO->GetAll();
-            require_once(VIEWS_PATH.'lobbyViewGuardians.php');
+            require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
         }
 
         public function showAddPet()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
-            require_once(VIEWS_PATH.'addPet.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            require_once(VIEWS_PATH.'Owner/Pet/addPet.php');
         }
 
         public function showOwnerProfile()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $userOwner = $this->ownerDAO->getByUser($_SESSION["userName"]);
-            require_once(VIEWS_PATH.'profileOwner.php');
+            require_once(VIEWS_PATH.'Owner/profileOwner.php');
         }
 
         public function showPets()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
             $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-            require_once(VIEWS_PATH.'myPets.php');
+            require_once(VIEWS_PATH.'Owner/myPets.php');
         }
 
         public function addPet($name,$animal,$size,$weight,$age,$gxp,$description)
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $pet= new Pet();
             $pet->setAnimal($animal);
-            require_once(VIEWS_PATH.'addRace.php');
+            require_once(VIEWS_PATH.'Owner/Pet/addRace.php');
 
         }
 
         public function addRace($name,$animal,$size,$weight,$age,$gxp,$description,$race,$files)
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $pet= new Pet();
             $pet->setName($name);
             $pet->setAnimal($animal);
@@ -132,12 +132,12 @@
 
         public function showReserves()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
             $guardianList = $this->guardianDAO->GetAll();
-            require_once(VIEWS_PATH.'viewReservesOwner.php');
+            require_once(VIEWS_PATH.'Owner/viewReservesOwner.php');
         }
 
     }

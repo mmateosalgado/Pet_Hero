@@ -37,7 +37,7 @@
             if($fechaInicio > $fechaFin)
             {
                 echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin!'));</script>";
-                require_once(VIEWS_PATH.'registerGuardian.php');
+                require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
 
             }
             else{
@@ -63,22 +63,22 @@
 
         public function showGuardianLobby()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
-            require_once(VIEWS_PATH.'lobbyGuardian.php');
+            require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
         }
         public function showGuardianProfile()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $userGuardian = $this->guardianDAO->getByUser($_SESSION["userName"]);
-            require_once(VIEWS_PATH.'profileGuardian.php');
+            require_once(VIEWS_PATH.'Guardian/profileGuardian.php');
         }
 
         public function showUpdateGuardian($user){//+ inicio disponibilidad, fin disponibilidad
-            require_once(VIEWS_PATH.'validate-sesion.php');
-            require_once(VIEWS_PATH.'updateGuardian.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
         }
 
         public function updateGuardian($iDisp,$fDisp,$user){
@@ -107,11 +107,11 @@
         }
         public function showReservas()
         {
-            require_once(VIEWS_PATH.'validate-sesion.php');
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
-            require_once(VIEWS_PATH.'viewReservesGuardian.php');
+            require_once(VIEWS_PATH.'Guardian/viewReservesGuardian.php');
         }
     }
 ?>
