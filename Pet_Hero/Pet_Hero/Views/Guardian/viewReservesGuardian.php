@@ -1,6 +1,6 @@
 <?php 
- include('nav.php');
-?>
+ include('Views/../../Section/nav.php');
+ ?>
 <div class="headerSP">
 <div>Reservas <span>Confirmadas</span></div>
 </div>

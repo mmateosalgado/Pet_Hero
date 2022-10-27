@@ -1,4 +1,6 @@
-<?php include('nav.php');?>
+<?php 
+ include('Views/../../Section/nav.php');
+ ?>
 
 <?php $minDate=date('Y-m-d');?>
 <form action="<?php echo FRONT_ROOT . "Guardian/UpdateGuardian" ?>" method="post">

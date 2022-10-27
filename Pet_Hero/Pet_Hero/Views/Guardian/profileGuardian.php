@@ -1,5 +1,6 @@
 <?php 
-include('nav.php');?>
+ include('Views/../../Section/nav.php');
+ ?>
 <div class="headerSP">
 <div> Guardián: <span><?php echo $userGuardian->getuserName();?></span></div>
 </div>

@@ -1,5 +1,5 @@
 <?php
- include('nav.php');
+ include('Views/../../Section/nav.php');
 ?>
 
 <div class="headerSP">

@@ -1,7 +1,8 @@
 <?php $maxDate=date('Y-m-d');?>
 
-<?php 
-include('nav.php');?>
+<?php
+include('Views/../../../Section/nav.php');
+?>
 
 <form action="<?php echo FRONT_ROOT . "Owner/addPet" ?>"id="agregarMascota" method="post" enctype="multipart/form-data">
 
