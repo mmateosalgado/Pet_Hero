@@ -19,8 +19,10 @@
             <span>Tamaño para Cuidar:</span><?php echo $userGuardian->getTamanioParaCuidar();?><br>
             <span>CUIL:</span><?php echo $userGuardian->getCuil();?><br>
             <span>Precio x Hora:</span><?php echo $userGuardian->getPrecioPorHora();?><br>
-            <span>Fecha inicio:</span><?php echo $userGuardian->getFechaInicio();?><br>
-            <span>Fecha Fin:</span><?php echo $userGuardian->getFechaFin();?><br>
+            <span>Disponibilidad:</span><br>
+            <?php foreach($userGuardian->getFechasDisponibles() as $date){?>
+                <?php echo " - ".$date?><br>
+            <?php } ?>
         </div>
         <div class="photoProfile">
         <span>Foto:<br></span><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="300px" height="300px">

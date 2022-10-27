@@ -97,10 +97,13 @@ class GuardianDAO{
                 $guardian->setCuil($valuesArray["cuil"]);
                 $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
                 $guardian->setCalificacion($valuesArray["calificacion"]);
-                $guardian->setFechaInicio($valuesArray["fechaInicio"]);
-                $guardian->setFechaFin($valuesArray["fechaFin"]);
-                $guardian->setFotoPerfil($valuesArray["photo"]);
 
+                    $arrayFechasDisponibles=array();
+                    $arrayFechasDisponibles=$valuesArray["fechasDisponibles"];
+                    $arrayDecoded=json_decode($arrayFechasDisponibles,true);
+                
+                $guardian->setFechasDisponibles($arrayDecoded);
+                $guardian->setFotoPerfil($valuesArray["photo"]);
 
                 array_push($this->guardianList, $guardian);
             }
@@ -125,8 +128,13 @@ class GuardianDAO{
                         $valuesArray["cuil"] = $guardian->getCuil();
                         $valuesArray["precioPorHora"]= $guardian->getPrecioPorHora();
                         $valuesArray["calificacion"]=  $guardian->getCalificacion();
-                        $valuesArray["fechaInicio"]=  $guardian->getFechaInicio();
-                        $valuesArray["fechaFin"]=  $guardian->getFechaFin();
+
+                            $fechasDisponibles=array();
+                            $fechasDisponibles=$guardian->getFechasDisponibles();
+                            $fechasDisponiblesEncoded=json_encode($fechasDisponibles,JSON_PRETTY_PRINT);
+                        
+                        $valuesArray["fechasDisponibles"]=$fechasDisponiblesEncoded;
+
                         $valuesArray["photo"] = $guardian->getFotoPerfil();
 
                         array_push($arrayToEncode,$valuesArray);

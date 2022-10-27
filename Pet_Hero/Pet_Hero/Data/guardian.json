@@ -1,23 +1,5 @@
 [
     {
-        "id": 1,
-        "userName": "pedromaster",
-        "password": "mmmm",
-        "fullName": "Pedro Pascal",
-        "age": "1995-06-16",
-        "email": "pedro@gmail.com",
-        "gender": "male",
-        "type": "guardian",
-        "telefono": "223345345",
-        "tamanioParaCuidar": "big",
-        "cuil": "938274652",
-        "precioPorHora": "50",
-        "calificacion": "https:\/\/t2.uc.ltmcdn.com\/es\/posts\/8\/7\/8\/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg",
-        "fechaInicio": "2022-10-28",
-        "fechaFin": "2022-10-28",
-        "photo": null
-    },
-    {
         "id": 3,
         "userName": "Romu",
         "password": "1234",
@@ -31,8 +13,7 @@
         "cuil": "5",
         "precioPorHora": "100",
         "calificacion": null,
-        "fechaInicio": "2022-10-18",
-        "fechaFin": "2022-10-28",
+        "fechasDisponibles": "null",
         "photo": "http:\/\/localhost\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/Screenshot_7.png"
     },
     {
@@ -49,8 +30,24 @@
         "cuil": "1231222",
         "precioPorHora": "200",
         "calificacion": null,
-        "fechaInicio": "2022-10-27",
-        "fechaFin": "2023-01-25",
+        "fechasDisponibles": "null",
         "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
+    },
+    {
+        "id": 1,
+        "userName": "pedromaster",
+        "password": "mmmm",
+        "fullName": "Pedro Pascal",
+        "age": "1995-06-16",
+        "email": "pedro@gmail.com",
+        "gender": "male",
+        "type": "guardian",
+        "telefono": "223345345",
+        "tamanioParaCuidar": "big",
+        "cuil": "938274652",
+        "precioPorHora": "50",
+        "calificacion": "https:\/\/t2.uc.ltmcdn.com\/es\/posts\/8\/7\/8\/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg",
+        "fechasDisponibles": "[\n    \"27-10-2022\",\n    \"28-10-2022\",\n    \"29-10-2022\",\n    \"30-10-2022\",\n    \"31-10-2022\"\n]",
+        "photo": null
     }
 ]
