@@ -117,18 +117,8 @@ body{
 	box-shadow: 0 0 15px rgba(60,60,60);	
 }
 
-.guardianRegister{
-	
-	height: 250px;
-	width: 280px;
-	position: absolute;
-	top: calc(50% - 75px);
-	left: calc(50% - 50px);
-	padding: 10px;
-	z-index: 2;
-	background-color: rgba(60,60,60,.4);
-	border-radius: 7px;
-	box-shadow: 0 0 15px rgba(60,60,60);	
+.guardianRegister{	
+	height: 320px;		
 }
 
 .addPetForm{
