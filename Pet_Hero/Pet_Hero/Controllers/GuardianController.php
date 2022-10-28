@@ -23,6 +23,8 @@
         public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
             $guardian=new Guardian();
 
+
+
             $guardian->setUserName($user);
             $guardian->setPassword($password);
             $guardian->setFullName($name);
@@ -41,8 +43,10 @@
 
             }
             else{
-                $guardian->setFechaInicio($fechaInicio);
-                $guardian->setFechaFin($fechaFin);
+                $guardian->setFechasDisponibles($this->getDatesBetween($fechaInicio,$fechaFin));
+               // $guardian->setFechaInicio($fechaInicio);
+               // $guardian->setFechaFin($fechaFin);
+               // --> crear arreglo con todos los dias
                 
                 $fileController = new FileController();
                 if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
@@ -58,7 +62,20 @@
     
                 $this->showGuardianLobby();
             }
+        }
 
+        private function getDatesBetween($inicio,$fin){
+            $formato="d-m-Y";
+            $dates=array();
+            $actual=strtotime($inicio);
+            $fin=strtotime($fin);
+            $stepVal='+1 day';
+            while($actual<=$fin){
+                $dates[]=date($formato,$actual);
+                $actual=strtotime($stepVal,$actual);
+            }
+
+            return $dates;
         }
 
         public function showGuardianLobby()
@@ -84,9 +101,10 @@
         public function updateGuardian($iDisp,$fDisp,$user){
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
+
             if($iDisp<$fDisp){
-                $guardianToUpdate->setFechaInicio($iDisp);
-                $guardianToUpdate->setFechaFin($fDisp);
+                $dates=$this->getDatesBetween($iDisp,$fDisp);
+                $guardianToUpdate->setFechasDisponibles($dates);
                 $this->guardianDAO->Update($guardianToUpdate);
                 echo "<script> if(confirm('Se actualizo la informacion correctamente!'));</script>";
                 $this->showGuardianProfile();

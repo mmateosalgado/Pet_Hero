@@ -7,21 +7,17 @@
         private $cuil;
         private $precioPorHora;
         private $calificacion;
-
-		private $fechaFin;
-
-		private $fechaInicio;
+		private $fechasDisponibles;
 		private $fotoPerfil;
 		private $tamanioParaCuidar;
-        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fechaInicio=null, $fechaFin=null,$fotoPerfil=null,$tamanioParaCuidar=null)
+        public function __construct($id=null,$userName=null,$password=null,$fullname=null,$age=null,$email=null,$gender=null,$type=null,$cuil=null,$precioPorHora=null,$calificacion=null,$telefono=null,$fotoPerfil=null,$tamanioParaCuidar=null)
         {
             parent::__construct($id,$userName,$password,$fullname,$age,$email,$gender,$type,$telefono);
             $this->id=$id;
             $this->cuil=$cuil;
             $this->precioPorHora= $precioPorHora;
             $this->calificacion= $calificacion;
-			$this->fechaInicio = $fechaInicio;
-			$this->fechaFin = $fechaFin;
+			$this->fechasDisponibles= array();
 			$this->fotoPerfil = $fotoPerfil;
 			$this->tamanioParaCuidar= $tamanioParaCuidar;
         }
@@ -54,28 +50,14 @@
 		return $this;
 	}
 
-	function getFechaFin() {
-		return $this->fechaFin;
+	function setFechasDisponibles($fechasDisponibles) {
+		$this->fechasDisponibles = $fechasDisponibles;
 	}
-	
 
-
-
-	function setFechaFin($fechaFin) {
-		$this->fechaFin = $fechaFin;
-		return $this;
+	function getFechasDisponibles(){
+		return $this->fechasDisponibles;
 	}
-	
 
-	function getFechaInicio() {
-		return $this->fechaInicio;
-	}
-	
-
-	function setFechaInicio($fechaInicio) {
-		$this->fechaInicio = $fechaInicio;
-		return $this;
-	}
 
 	function getFotoPerfil() {
 		return $this->fotoPerfil;
