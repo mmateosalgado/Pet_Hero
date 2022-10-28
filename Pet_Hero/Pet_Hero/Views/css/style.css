@@ -230,6 +230,9 @@ body{
 .addPetForm select:hover{
 background-color: #595958;
 }
+.login select:hover{
+	background-color: #595958;
+	}
 
 .addPetForm input[type=number]{
 	width: 250px;
@@ -434,6 +437,41 @@ background-color: #595958;
 	margin-top: 10px;
 }
 
+.login input[type=button]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.reserve a {
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+    font-weight: 400;	
+	color:#ead775 ;
+    text-align: center;
+	position: absolute;
+	background-color: rgb(209, 90, 96, 0.7);
+	padding: 6px;
+    border-radius: 2px;
+	border: 1px solid rgba(116, 13, 13, 0.6);
+	width: 260px;
+	margin-top: 10px;
+	height: 35px;
+}
+
+.date {
+	height: 240px;
+}
+
 .photoProfile {
 	left: 40%;
 	position: sticky;
@@ -515,6 +553,20 @@ background-color: #595958;
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
+}
+
+.login select{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+
 }
 
 .login input[type=button]:hover{
@@ -686,6 +738,20 @@ background-color: #595958;
 	   .fl-table tr:nth-child(even) {
 		   background: #F8F8F8;
 	   }
+
+	   .fl-tableReserve thead th {
+		color: BLACK;
+		font-family: 'Exo', sans-serif;
+	
+		background: #89d96c;
+		opacity: 0.8;
+	}
+	
+	
+	.fl-tableReserve thead th:nth-child(odd) {
+		color: black;
+		background: #46914a;
+	}
 
 	   
 	   

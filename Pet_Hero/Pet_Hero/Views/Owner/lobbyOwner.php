@@ -9,7 +9,7 @@
                 <div>Ow<span>ner:</span></div>
             </div>
             <br>
-            <div class="login">
+            <div class="login date reserve">
                     <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                     <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
                     <div class="ac_type" >      
@@ -32,11 +32,10 @@
                         </select><br>
 
                     <input type="submit" value="Seleccionar Fechas"><br>
-                    <div class="text">
-                    </div>
+                    <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas en Curso </a>
+                    <div class="text"></div>
                     <div><?php if($message !=null) {echo $message;} ?></div>
-                    <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas Confirmadas</a>
-                </div>
+            </div>
 </form>
 
 

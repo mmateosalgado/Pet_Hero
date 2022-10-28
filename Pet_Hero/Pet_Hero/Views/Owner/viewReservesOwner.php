@@ -7,7 +7,7 @@
 </div>
 
     <div class="table-wrapper">
-    <table class="fl-table">
+    <table class="fl-table fl-tableReserve">
         <thead>
         <tr>
             <th>Foto</th>
@@ -38,7 +38,7 @@
             <td><?php echo $reserve->getEstado(); ?></td>
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
-            <td><?php echo $reserve->getTotal()?></td>
+            <td><?php echo '$'.$reserve->getTotal()?></td>
             <td><?php echo $guardian->getUserName()?></td>
             <td><?php echo $guardian->getCuil()?></td>
             <td><?php echo $guardian->getTelefono()?></td>
