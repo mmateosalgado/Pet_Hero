@@ -230,6 +230,9 @@ body{
 .addPetForm select:hover{
 background-color: #595958;
 }
+.login select:hover{
+	background-color: #595958;
+	}
 
 .addPetForm input[type=number]{
 	width: 250px;
@@ -434,14 +437,39 @@ background-color: #595958;
 	margin-top: 10px;
 }
 
-.loguin a{
+.login input[type=button]{
+	width: 260px;
+	height: 35px;
+	background: #fff;
+	border: 1px solid #fff;
+	cursor: pointer;
+	border-radius: 2px;
+	color: #a18d6c;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 6px;
+	margin-top: 10px;
+}
+
+.login a{
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
     font-weight: 400;	
 	color:#ead775 ;
-    text-decoration: none;
-	margin-top: 10px;
+    text-align: center;
+
 	background-color: rgb(209, 90, 96, 0.7);
+	padding: 6px;
+    border-radius: 2px;
+	border: 1px solid rgba(116, 13, 13, 0.6);
+	display: inline-block;
+	width: 260px;
+	height: 35px;
+}
+
+.date {
+	height: 240px;
 }
 
 .photoProfile {
@@ -525,6 +553,20 @@ background-color: #595958;
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
+}
+
+.login select{
+	width: 250px;
+	height: 30px;
+	background: transparent;
+	border: 1px solid rgba(255,255,255,0.6);
+	border-radius: 2px;
+	color: #fff;
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+	font-weight: 400;
+	padding: 4px;
+
 }
 
 .login input[type=button]:hover{
