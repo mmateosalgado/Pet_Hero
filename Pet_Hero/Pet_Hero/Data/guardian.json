@@ -52,5 +52,23 @@
         "fechaInicio": "2022-10-27",
         "fechaFin": "2023-01-25",
         "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
+    },
+    {
+        "id": 5,
+        "userName": "test",
+        "password": "1234",
+        "fullName": "tester",
+        "age": "2022-10-13",
+        "email": "tester@mail.com",
+        "gender": "male",
+        "type": "guardian",
+        "telefono": "1234",
+        "tamanioParaCuidar": "medium",
+        "cuil": "12312",
+        "precioPorHora": "150",
+        "calificacion": null,
+        "fechaInicio": "2022-10-28",
+        "fechaFin": "2022-11-05",
+        "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/descarga.jpg"
     }
 ]

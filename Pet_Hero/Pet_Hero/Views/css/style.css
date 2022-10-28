@@ -434,6 +434,16 @@ background-color: #595958;
 	margin-top: 10px;
 }
 
+.loguin a{
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+    font-weight: 400;	
+	color:#ead775 ;
+    text-decoration: none;
+	margin-top: 10px;
+	background-color: rgb(209, 90, 96, 0.7);
+}
+
 .photoProfile {
 	left: 40%;
 	position: sticky;
@@ -686,6 +696,20 @@ background-color: #595958;
 	   .fl-table tr:nth-child(even) {
 		   background: #F8F8F8;
 	   }
+
+	   .fl-tableReserve thead th {
+		color: BLACK;
+		font-family: 'Exo', sans-serif;
+	
+		background: #89d96c;
+		opacity: 0.8;
+	}
+	
+	
+	.fl-tableReserve thead th:nth-child(odd) {
+		color: black;
+		background: #46914a;
+	}
 
 	   
 	   

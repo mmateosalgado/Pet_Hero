@@ -32,11 +32,10 @@
                         </select><br>
 
                     <input type="submit" value="Seleccionar Fechas"><br>
-                    <div class="text">
-                    </div>
+                    <div class="text"></div>
                     <div><?php if($message !=null) {echo $message;} ?></div>
                     <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas Confirmadas</a>
-                </div>
+            </div>
 </form>
 
 

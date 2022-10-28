@@ -6,7 +6,7 @@
 </div>
 
     <div class="table-wrapper">
-    <table class="fl-table">
+    <table class="fl-table fl-tableReserve" >
         <thead>
         <tr>
             <th>Foto</th>
@@ -17,8 +17,8 @@
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
-            <th>Cuidar</th>
-            <th>Rechazar</th>
+            <th>Dar por terminada</th> <!--elimina la reserva y se pide review al owner-->
+            <th>Dar de baja </th> <!--elimina la reserva-->
         </tr>
         </thead>
         <tbody>
@@ -36,6 +36,8 @@
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo $reserve->getTotal()?></td>
+            <td><button class="btn_check" name="estado" value="Confirmada"> </button></td>
+            <td><button class ="btn_reject" name="estado" value="Rechazada"> </button> </td>
         </tr>
        <?php  } }
           } }?>
