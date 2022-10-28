@@ -2,7 +2,6 @@
 
     define("ROOT", dirname(__DIR__) . "/");
     //Path to your project's root folder
-    define("FRONT_ROOT", "/Ejercicios/Pet_Hero/Pet_Hero/Pet_Hero/");
     define("FRONT_ROOT", "/1Actividades/Pet_Hero/Pet_Hero/Pet_Hero/");
     define("IMG_ROOT",ROOT."Views/Images");
     //EL ROOT DE ROMU:  /1Actividades/Pet_Hero/Pet_Hero/Pet_Hero/
