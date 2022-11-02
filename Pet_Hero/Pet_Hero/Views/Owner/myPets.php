@@ -15,7 +15,7 @@
 
     <div class="table-wrapper">
 
-    <table class="fl-table">
+    <table class="fl-table noWrap">
         <thead>
         <tr>
             <th>Foto</th>

@@ -34,7 +34,6 @@
         "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
     },
     {
-<<<<<<< HEAD
         "id": 5,
         "userName": "test",
         "password": "1234",
@@ -51,22 +50,5 @@
         "fechaInicio": "2022-10-28",
         "fechaFin": "2022-11-05",
         "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/descarga.jpg"
-=======
-        "id": 1,
-        "userName": "pedromaster",
-        "password": "mmmm",
-        "fullName": "Pedro Pascal",
-        "age": "1995-06-16",
-        "email": "pedro@gmail.com",
-        "gender": "male",
-        "type": "guardian",
-        "telefono": "223345345",
-        "tamanioParaCuidar": "big",
-        "cuil": "938274652",
-        "precioPorHora": "50",
-        "calificacion": "https:\/\/t2.uc.ltmcdn.com\/es\/posts\/8\/7\/8\/cuanto_mide_un_perro_chihuahua_29878_600_square.jpg",
-        "fechasDisponibles": "[\n    \"27-10-2022\",\n    \"28-10-2022\",\n    \"29-10-2022\",\n    \"30-10-2022\",\n    \"31-10-2022\"\n]",
-        "photo": null
->>>>>>> 0815d0c0627552010688ee65e0a3de91646b5619
     }
 ]
