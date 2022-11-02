@@ -526,7 +526,7 @@ label{
 	padding: 6px;
 	margin-top: 10px;
 	position: absolute;
-	top: calc(38.5% - 75px);
+	top: calc(37.5% - 75px);
 	left: calc(20.3% - 50px);
 	z-index: 2;
 }
