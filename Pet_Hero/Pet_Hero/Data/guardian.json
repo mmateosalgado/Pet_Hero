@@ -1,53 +1,40 @@
 [
     {
-        "id": 3,
-        "userName": "Romu",
-        "password": "1234",
-        "fullName": "aa",
-        "age": "2022-10-20",
-        "email": "juan@marin.com",
+        "id": 1,
+        "userName": "pedromaster",
+        "password": "mmmm",
+        "fullName": "Pedro Pascal",
+        "age": "1995-06-16",
+        "email": "pedro@gmail.com",
         "gender": "male",
         "type": "guardian",
-        "telefono": "13123121",
+        "telefono": "223345345",
         "tamanioParaCuidar": "medium",
-        "cuil": "5",
-        "precioPorHora": "100",
+        "cuil": "938274652",
+        "precioPorHora": "50",
         "calificacion": null,
-        "fechasDisponibles": "null",
-        "photo": "http:\/\/localhost\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/Screenshot_7.png"
+        "fechasDisponibles": "[\n    \"03-11-2022\",\n    \"04-11-2022\",\n    \"05-11-2022\",\n    \"06-11-2022\",\n    \"07-11-2022\",\n    \"08-11-2022\",\n    \"09-11-2022\",\n    \"10-11-2022\",\n    \"11-11-2022\",\n    \"12-11-2022\",\n    \"13-11-2022\",\n    \"14-11-2022\",\n    \"15-11-2022\",\n    \"16-11-2022\",\n    \"17-11-2022\",\n    \"18-11-2022\",\n    \"19-11-2022\",\n    \"20-11-2022\",\n    \"21-11-2022\",\n    \"22-11-2022\",\n    \"23-11-2022\",\n    \"24-11-2022\",\n    \"25-11-2022\",\n    \"26-11-2022\",\n    \"27-11-2022\",\n    \"28-11-2022\",\n    \"29-11-2022\",\n    \"30-11-2022\"\n]",
+        "photo": null
     },
     {
-        "id": 4,
-        "userName": "messi",
-        "password": "1",
-        "fullName": "Lionel Messi",
-        "age": "2022-10-19",
-        "email": "asdasd@aaaaaa",
+        "id": 2,
+        "userName": "Mateo",
+        "password": "mateo123",
+        "fullName": "Salgado",
+        "age": "2001-10-29",
+        "email": "salgadomateo001@gmail.com",
         "gender": "male",
         "type": "guardian",
-        "telefono": "2234646453",
-        "tamanioParaCuidar": "small",
-        "cuil": "1231222",
-        "precioPorHora": "200",
-        "calificacion": null,
-        "fechasDisponibles": "null",
-        "photo": "http:\/\/localhost\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/IMG_20211226_201508_495.jpg"
-    },
-    {
-        "id": 5,
-        "userName": "test",
-        "password": "1234",
-        "fullName": "tester",
-        "age": "2022-10-13",
-        "email": "tester@mail.com",
-        "gender": "male",
-        "type": "guardian",
-        "telefono": "1234",
+        "telefono": "2233044090",
         "tamanioParaCuidar": "medium",
-        "cuil": "12312",
+        "cuil": "938274652",
         "precioPorHora": "150",
         "calificacion": null,
         "fechasDisponibles": "[\n    \"03-11-2022\",\n    \"04-11-2022\",\n    \"05-11-2022\",\n    \"06-11-2022\",\n    \"07-11-2022\",\n    \"08-11-2022\",\n    \"09-11-2022\",\n    \"10-11-2022\",\n    \"11-11-2022\",\n    \"12-11-2022\",\n    \"13-11-2022\",\n    \"14-11-2022\",\n    \"15-11-2022\",\n    \"16-11-2022\",\n    \"17-11-2022\",\n    \"18-11-2022\",\n    \"19-11-2022\",\n    \"20-11-2022\",\n    \"21-11-2022\",\n    \"22-11-2022\",\n    \"23-11-2022\",\n    \"24-11-2022\",\n    \"25-11-2022\"\n]",
+<<<<<<< HEAD
         "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/descarga.jpg"
+=======
+        "photo": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/PerfilPetHero.png"
+>>>>>>> d7b54d857fecb0e1e4c5c0474a51dade118db4ff
     }
 ]

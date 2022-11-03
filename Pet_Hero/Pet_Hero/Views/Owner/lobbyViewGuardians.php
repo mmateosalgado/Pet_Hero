@@ -5,7 +5,7 @@
 <div class="headerSP">
 <div>Guardianes <span>Disponibles</span></div>
 
-    <div class="table-wrapper">
+    <div class="table-wrapper datesView">
     <a> <?php echo "Del: ".$fechaInicio. " Hasta el: ".$fechaFin. "<br>".
     "Mascota: ". $newPet->getAnimal(). "       Raza: ".$newPet->getRace(). " Tamaño: ". $newPet->getSize();?></a>
 
@@ -26,8 +26,6 @@
             <th>Nombre</th>
             <th>Calificacion</th>
             <th>Disponibilidad</th>
-            <th>Fecha inicio</th>
-            <th>Fecha fin</th>
             <th>Tamaño para cuidar</th>
             <th>Precio x Dia</th>
             <th>Aceptar</th>
@@ -35,16 +33,26 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($guardianList as $guardian){
-            if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin() && $newPet->getSize() == $guardian->getTamanioParaCuidar())
-            {?>
+        <?php 
+        //Generamos las fechas inbetewn
+        
+            $formato="d-m-Y";
+            $dates=array();//arreglo con todas las fechas a cubrir x el guardian
+            $actual=strtotime($fechaInicio);
+            $fin=strtotime($fechaFin);
+            $stepVal='+1 day';
+            while($actual<=$fin){
+                $dates[]=date($formato,$actual);
+                $actual=strtotime($stepVal,$actual);
+            }
+        
+            foreach($guardianList as $guardian){//que pasa con las del medio 
+                if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 &&  $newPet->getSize() == $guardian->getTamanioParaCuidar()){?>
         <tr>
         <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
         <td><?php echo $guardian->getUserName() ;?></td>
         <td><?php echo $guardian->getCalificacion() ;?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
-        <td><?php echo $guardian->getFechaInicio() ;?></td>
-        <td><?php echo $guardian->getFechaFin() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
 

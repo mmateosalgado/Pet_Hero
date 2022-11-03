@@ -34,7 +34,8 @@
                     <input type="submit" value="Seleccionar Fechas"><br>
                     <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas en Curso </a>
                     <div class="text"></div>
-                    <div><?php if($message !=null) {echo $message;} ?></div>
+                    <div><?php 
+                        if($message =" ") {echo $message;} ?></div>
             </div>
 </form>
 
