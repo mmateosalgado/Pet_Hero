@@ -133,6 +133,15 @@ body{
 	z-index: 2;
 }
 
+.addReview{
+	top: calc(50% - 75px);
+	left: calc(50% - 50px);
+	height: 200px;
+}
+
+.addReview label{
+	color: #e8e8e8;
+}
 .addPetForm input[type=text]{
 	width: 250px;
 	height: 30px;
@@ -966,4 +975,38 @@ label{
 	  
 	  #src-file2::before {
 		content: 'Seleccionar Plan de Vacunación';
+	  }
+
+	  /* ESTRELLITAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAS*/
+
+	  
+	  
+	 
+	  
+	  
+	  
+	  .clasificacion input[type="radio"] {
+		display: none;
+	  }
+	  
+	  .clasificacion label {
+		color: rgb(207, 205, 205);
+		font-size: 25px;
+	  }
+	  
+	  .clasificacion {
+		direction: rtl;
+		unicode-bidi: bidi-override;
+		top: 7.5%;
+		left: 7%;
+		
+	  }
+	  
+	  .clasificacion label:hover,
+	  .clasificacion label:hover ~ label {
+		color: orange;
+	  }
+	  
+	 .clasificacion input[type="radio"]:checked ~ label {
+		color: orange;
 	  }
