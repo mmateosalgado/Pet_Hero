@@ -26,8 +26,7 @@
             <th>Nombre</th>
             <th>Calificacion</th>
             <th>Disponibilidad</th>
-            <th>Fecha inicio</th>
-            <th>Fecha fin</th>
+            <th>Fechas Disponibles</th>
             <th>Tamaño para cuidar</th>
             <th>Precio x Dia</th>
             <th>Aceptar</th>
@@ -35,16 +34,15 @@
         </tr>
         </thead>
         <tbody>
-        <?php foreach($guardianList as $guardian){
-            if($fechaInicio>= $guardian->getFechaInicio() && $fechaFin<=$guardian->getFechaFin() && $newPet->getSize() == $guardian->getTamanioParaCuidar())
+        <?php foreach($guardianList as $guardian){//que pasa con las del medio
+            if(in_array($fechaInicio,$guardian->getFechasDisponibles())  &&  in_array($fechaFin,$guardian->getFechasDisponibles()) && $newPet->getSize() == $guardian->getTamanioParaCuidar())
             {?>
         <tr>
         <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
         <td><?php echo $guardian->getUserName() ;?></td>
         <td><?php echo $guardian->getCalificacion() ;?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
-        <td><?php echo $guardian->getFechaInicio() ;?></td>
-        <td><?php echo $guardian->getFechaFin() ;?></td>
+        <td><?php echo $guardian->getFechasDisponibles() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
 
