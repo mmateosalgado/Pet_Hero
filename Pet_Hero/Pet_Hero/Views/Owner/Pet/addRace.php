@@ -16,6 +16,7 @@
                     <?php if($animal == 'perro'){?>
                         <select name="race" required placeholder="Raza" required>
                         <optgroup label="Raza de Perro"></optgroup>
+                        <option  value="salchicha">Salchicha</option>
                          <option  value="caniche" >Caniche</option>
                          <option  value="bulldog">Bulldog</option>
                          <option   value="labrador">Labrador</option>
@@ -29,9 +30,9 @@
                         <optgroup label="Raza de Gato"></optgroup>
                          <option  value="persa" >Persa</option>
                          <option  value="siames">Siamés</option>
-                         <option   value="siberiano">Siberiano</option>
                          <option   value="ragdoll">Ragdoll</option>
                          <option   value="british">British shorthair</option>
+                         <option   value="siberiano">Siberiano</option>
                         </select><br>
                         <?php }else if($animal=='hamster')
                         { ?>
