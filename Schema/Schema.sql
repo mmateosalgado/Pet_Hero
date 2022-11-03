@@ -105,3 +105,9 @@ constraint fkGuardian foreign key (id_guardian) references guardian(id_guardian)
 constraint fkPet foreign key (id_pet) references pet(id_pet),
 constraint fkEstado foreign key (id_estado) references estado(id_estado)
 )Engine=InnoDB;
+
+insert into gender (gender) values ('female'),('male'),('other');
+insert into tamanio (tamanio) values ('small'),('medium'),('big');
+insert into race (race) values ('salchicha'),('caniche'),('bulldog'),('labrador'),('pitbull'),('golden'),('doberman'),('persa'),('siames'),('ragdoll'),('british'),('siberiano'),('china'),('ruso'),('campbell'),('roborowski'),('payaso'),('guppys'),('tetras'),('disco');
+insert into animal (animal,id_race) values ('perro',1),('perro',2),('perro',3),('perro',4),('perro',5),('perro',6),('perro',7),('gato',8),('gato',9),('gato',10),('gato',11),('gato',12),('hamster',13),('hamster',14),('hamster',15),('hamster',16),('pez',17),('pez',18),('pez',19),('pez',20);
+insert into estado (estado) values ('en espera'),('confirmada'),('rechazada'),('realizada');
