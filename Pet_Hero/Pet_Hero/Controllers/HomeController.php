@@ -25,7 +25,7 @@ class HomeController
 
         public function Index($message = "")
         {
-            require_once(VIEWS_PATH."Owner/newReview.php");
+            require_once(VIEWS_PATH."Home/login.php");
         }
 
         public function ViewRegister()

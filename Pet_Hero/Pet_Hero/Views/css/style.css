@@ -512,11 +512,9 @@ label{
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
-	position: absolute;
+	position: relative;
 	
-	left: 20%;
-	top: 58%;
-	z-index: 2;
+	z-index: 4;
 	display: block;
 }
 
