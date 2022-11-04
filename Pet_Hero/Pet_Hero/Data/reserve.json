@@ -58,5 +58,17 @@
         "raza": "payaso",
         "total": 3600,
         "estado": "En espera"
+    },
+    {
+        "idReserve": 6,
+        "idGuardian": "2",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-03",
+        "fechaFin": "2022-11-04",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 3600,
+        "estado": "Confirmada"
     }
 ]
