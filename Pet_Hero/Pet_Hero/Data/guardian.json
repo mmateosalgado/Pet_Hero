@@ -1,22 +1,5 @@
 [
     {
-        "id": 1,
-        "userName": "pedromaster",
-        "password": "mmmm",
-        "fullName": "Pedro Pascal",
-        "age": "1995-06-16",
-        "email": "pedro@gmail.com",
-        "gender": "male",
-        "type": "guardian",
-        "telefono": "223345345",
-        "tamanioParaCuidar": "medium",
-        "cuil": "938274652",
-        "precioPorHora": "50",
-        "calificacion": null,
-        "fechasDisponibles": "[\n    \"03-11-2022\",\n    \"04-11-2022\",\n    \"05-11-2022\",\n    \"06-11-2022\",\n    \"07-11-2022\",\n    \"08-11-2022\",\n    \"09-11-2022\",\n    \"10-11-2022\",\n    \"11-11-2022\",\n    \"12-11-2022\",\n    \"13-11-2022\",\n    \"14-11-2022\",\n    \"15-11-2022\",\n    \"16-11-2022\",\n    \"17-11-2022\",\n    \"18-11-2022\",\n    \"19-11-2022\",\n    \"20-11-2022\",\n    \"21-11-2022\",\n    \"22-11-2022\",\n    \"23-11-2022\",\n    \"24-11-2022\",\n    \"25-11-2022\",\n    \"26-11-2022\",\n    \"27-11-2022\",\n    \"28-11-2022\",\n    \"29-11-2022\",\n    \"30-11-2022\"\n]",
-        "photo": null
-    },
-    {
         "id": 2,
         "userName": "Mateo",
         "password": "mateo123",
@@ -32,5 +15,22 @@
         "calificacion": null,
         "fechasDisponibles": "[\n    \"03-11-2022\",\n    \"04-11-2022\",\n    \"05-11-2022\",\n    \"06-11-2022\",\n    \"07-11-2022\",\n    \"08-11-2022\",\n    \"09-11-2022\",\n    \"10-11-2022\",\n    \"11-11-2022\",\n    \"12-11-2022\",\n    \"13-11-2022\",\n    \"14-11-2022\",\n    \"15-11-2022\",\n    \"16-11-2022\",\n    \"17-11-2022\",\n    \"18-11-2022\",\n    \"19-11-2022\",\n    \"20-11-2022\",\n    \"21-11-2022\",\n    \"22-11-2022\",\n    \"23-11-2022\",\n    \"24-11-2022\",\n    \"25-11-2022\"\n]",
         "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/descarga.jpg"
+    },
+    {
+        "id": 1,
+        "userName": "pedromaster",
+        "password": "mmmm",
+        "fullName": "Pedro Pascal",
+        "age": "1995-06-16",
+        "email": "pedro@gmail.com",
+        "gender": "male",
+        "type": "guardian",
+        "telefono": "223345345",
+        "tamanioParaCuidar": "small",
+        "cuil": "938274652",
+        "precioPorHora": "50",
+        "calificacion": null,
+        "fechasDisponibles": "[\n    \"09-11-2022\",\n    \"10-11-2022\",\n    \"11-11-2022\"\n]",
+        "photo": null
     }
 ]

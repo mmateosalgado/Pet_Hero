@@ -98,13 +98,14 @@
             require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
         }
 
-        public function updateGuardian($iDisp,$fDisp,$user){
+        public function updateGuardian($iDisp,$fDisp,$size,$user){
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
 
             if($iDisp<$fDisp){
                 $dates=$this->getDatesBetween($iDisp,$fDisp);
                 $guardianToUpdate->setFechasDisponibles($dates);
+                $guardianToUpdate->setTamanioParaCuidar($size);
                 $this->guardianDAO->Update($guardianToUpdate);
                 echo "<script> if(confirm('Se actualizo la informacion correctamente!'));</script>";
                 $this->showGuardianProfile();
