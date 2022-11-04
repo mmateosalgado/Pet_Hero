@@ -882,7 +882,7 @@ label{
 	a:nth-child(5) {
 		width: 120px;
 	}
-	nav .start-home, a:nth-child(1):hover~.animation {
+	nav .start-lobby, a:nth-child(1):hover~.animation {
 		width: 100px;
 		left: 0;
 		background-color: #6bca48;
