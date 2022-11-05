@@ -3,6 +3,7 @@
     use DAO\OwnerDAO as OwnerDAO;
     use DAO\PetDao as PetDao;
     use DAO\GuardianDAO as GuardianDAO;
+    
 
     use Models\Owner as Owner;
     use Models\Pet as Pet;
@@ -40,6 +41,7 @@
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $newPet = $this->petDAO->getById($idPet);
             $guardianList = $this->guardianDAO->GetAll();
+            $reservasDao=new ReserveDAO();
             require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
         }
 
