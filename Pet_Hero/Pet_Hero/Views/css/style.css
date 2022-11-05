@@ -117,6 +117,11 @@ body{
 	box-shadow: 0 0 15px rgba(60,60,60);	
 }
 
+.guardianUpdate{
+	height: 270px;	
+}
+
+
 .guardianRegister{	
 	height: 320px;		
 }
@@ -241,6 +246,11 @@ body{
 .login select:hover{
 	background-color: #595958;
 }
+
+.hovers input[type="submit"]:hover{
+	opacity: 0.8;
+}
+
 
 .addPetForm input[type=number]{
 	width: 250px;
@@ -882,7 +892,7 @@ label{
 	a:nth-child(5) {
 		width: 120px;
 	}
-	nav .start-home, a:nth-child(1):hover~.animation {
+	nav .start-lobby, a:nth-child(1):hover~.animation {
 		width: 100px;
 		left: 0;
 		background-color: #6bca48;

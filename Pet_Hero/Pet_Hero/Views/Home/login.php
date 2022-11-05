@@ -4,7 +4,7 @@
                 <div>Pet<span>Hero</span></div>
             </div>
             <br>
-            <div class="login">
+            <div class="login hovers">
                     <input type="text" placeholder="Nombre de usuario" name="user" required><br>
                     <input type="password" placeholder="Contraseña" name="password" required><br>
                     <div class="ac_type" required>      

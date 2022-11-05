@@ -9,7 +9,7 @@
                 <div>Ow<span>ner:</span></div>
             </div>
             <br>
-            <div class="login date reserve">
+            <div class="login date reserve hovers">
                     <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                     <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
                     <div class="ac_type" >      
