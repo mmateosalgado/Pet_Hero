@@ -15,7 +15,8 @@
                     
                 <div class="text">
                 <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
-                </div>
+            </div>
+            <br>
                         
                      <?php if(isset($message)) 
                                 { echo "<div class='message'><a>". $message."</a></div>";} ?>

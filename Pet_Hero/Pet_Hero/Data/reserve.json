@@ -1,0 +1,14 @@
+[
+    {
+        "idReserve": 1,
+        "idGuardian": "1",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-06",
+        "fechaFin": "2022-11-09",
+        "tipoMascota": "perro",
+        "raza": "caniche",
+        "total": 3600,
+        "estado": "Confirmada"
+    }
+]
