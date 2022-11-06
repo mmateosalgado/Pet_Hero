@@ -564,8 +564,8 @@ label{
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
-	position: absolute;
-	top: calc(37.5% - 75px);
+	position: relative;
+	/*top: calc(37.5% - 75px);*/
 	left: calc(20.3% - 50px);
 	z-index: 2;
 }
@@ -721,7 +721,7 @@ label{
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: auto;
-	top: 60px;
+	top: 10px;
 	width: 931px;
 	box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
 	/* font-family: 'Exo', sans-serif;
@@ -1021,6 +1021,16 @@ label{
 	  
 	  .clasificacion label {
 		color: rgb(207, 205, 205);
+		font-size: 25px;
+	  }
+
+	  .showClasificacion label {
+		color: orange;
+		font-size: 25px;
+	  }
+
+	  .showClasificacion a {
+		color: rgb(207, 205, 205) !important;
 		font-size: 25px;
 	  }
 	  

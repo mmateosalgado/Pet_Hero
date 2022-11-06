@@ -12,7 +12,7 @@
         "tamanioParaCuidar": "small",
         "cuil": "12312",
         "precioPorHora": "150",
-        "calificacion": null,
+        "calificacion": 2,
         "fechasDisponibles": "{\n    \"4\": \"10-11-2022\",\n    \"5\": \"11-11-2022\",\n    \"6\": \"12-11-2022\",\n    \"7\": \"13-11-2022\",\n    \"8\": \"14-11-2022\"\n}",
         "photo": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil\/faker-return.jpg_1355442878-1.jpg"
     }

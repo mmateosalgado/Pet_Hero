@@ -10,8 +10,23 @@
         "age": "16",
         "grXfoodPortion": "100",
         "weight": "7",
-        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/20160519_071638.jpg",
-        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/0000001014cnt-2017-01-01_calendario-vacunacion_alta.jpg",
+        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/Foto-Pefil-Animal\/20160519_071638.jpg",
+        "planVacunacion": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/Plan-Vacunacion\/0000001014cnt-2017-01-01_calendario-vacunacion_alta.jpg",
+        "video": null
+    },
+    {
+        "id": 2,
+        "idOwner": 1,
+        "name": "perito",
+        "animal": "perro",
+        "size": "small",
+        "race": "salchicha",
+        "description": "moises",
+        "age": "2",
+        "grXfoodPortion": "120",
+        "weight": "3",
+        "photoProfile": null,
+        "planVacunacion": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/descarga.png",
         "video": null
     }
 ]
