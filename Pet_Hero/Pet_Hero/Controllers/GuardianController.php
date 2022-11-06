@@ -7,6 +7,8 @@
     use Models\Reserve as Reserve;
     use DAO\PetDao AS PetDao;
     use Controllers\FileController as FileController;
+use DAO\OwnerDAO;
+
     class GuardianController
     {
         private GuardianDAO $guardianDAO;
@@ -134,12 +136,44 @@
                 $actual=strtotime($stepVal,$actual);
             }
 
+           // $this->sendConfirmationEmail($reserva);
+
             $guardian->deleteDates($dates);
             $guardianDao->Update($guardian);
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate);
             $this->showReservas();
+        }
+
+        private function sendConfirmationEmail($reserva){
+            //Guardian
+            $guardianDao=new GuardianDAO();
+            $guardian=$guardianDao->getById($reserva->getIdGuardian());
+            //Owner
+            $ownerDao=new OwnerDAO();
+            $owner=$ownerDao->getById($reserva->getIdOwner());
+            //to
+            $to=$owner->getEmail();
+            //Tema
+            $subject="Confirmacion Reserva - PETHERO";
+            //Cuerpo
+            $mesg="LOLOLOLOL MAAAAIL GG";
+            
+            $body="<h1>Hola " . $owner->getFullName() . "! </h1>" 
+            . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . "pet" . "\n" 
+            . "desde el " . $reserva->getFechaInicio() . " hasta el " . $reserva->getFechaFin() . "\n" .
+            "<h2>--Informacion de contacto del Guardian!--</h2> \n" .
+            "       - Telefono : ". $guardian->getTelefono() ."\n" .
+            "       -     Mail : ". $guardian->getEmail() ."\n\n\n" .
+            "Gracias Por usar Pet Hero!" .
+            "(No responder a este mail, es un mail de confirmacion)";
+            //headers
+            $headers="From: Reservas Pet Hero <pethero@reservas.com>\r\n";
+            $headers.="Reply-To: " . $guardian->getEmail(). "\r\n".'X-Mailer: PHP/' . phpversion();
+            //$headers.="Content-type: text/html\r\n"
+            //Mandar 
+            @mail($to,$subject,$mesg,$headers);           
         }
 
         public function showReservas()

@@ -45,6 +45,16 @@ class OwnerDAO{
         return null;
     }
 
+    public function getById($id){
+        $this->RetrieveData();
+        foreach($this->ownerList as $owner) 
+        {
+        if($owner->getId() == $id)
+            return $owner;
+        }
+        return null;
+    }
+
     public function RetrieveData()
     {
         $this->ownerList= array();
