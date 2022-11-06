@@ -5,6 +5,7 @@
     
 <div>Dueño: <span><?php echo $userOwner->getuserName();?></span></div>
  
+</div>
 
     
         <div class="textInfoUser" >
