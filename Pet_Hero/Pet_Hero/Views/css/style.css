@@ -779,7 +779,18 @@ label{
 	   }
 	   
 	   .fl-table tr:nth-child(even) {
-		   background: #F8F8F8;
+		   background: #ffffff;
+		   border-top-color: transparent;
+		   border-top: solid;
+		   border-bottom: none;
+		   border-left: none;
+		   border-right: none;
+		   /*border-style: dashed;*/
+	   }
+
+	    .fl-table tr:nth-child(odd) {
+		   background: #ffffff;
+		  
 	   }
 
 	   .fl-tableReserve thead th {
