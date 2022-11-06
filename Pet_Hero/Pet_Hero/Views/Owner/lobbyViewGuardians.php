@@ -19,7 +19,7 @@
     <input type="hidden" value="<?php  echo $newPet->getId();?>" name="idPet">
 
 
-    <table class="fl-table photoGuardian">
+    <table class="fl-table photoGuardian showClasificacion ">
         <thead>
         <tr></tr>
             <th>Foto</th>
@@ -53,7 +53,31 @@
         <tr><?php $idPet=$newPet->getId();?>
         <td><a href="<?php echo FRONT_ROOT."Owner/showGuardian/".$guardian->getId()."/".$fechaInicio."/".$fechaFin."/".$idPet?>"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
         <td><?php echo $guardian->getUserName() ;?></td>
-        <td><?php echo $guardian->getCalificacion() ;?></td>
+        <td><?php 
+        
+        switch($guardian->getCalificacion())
+        {
+        case 0:
+            echo "Sin valoraciones" ;
+            break;
+        case 1:
+             echo "<label>"."★"."</label>"."<a>"."★★★★". "</a>" ;
+             break;
+        case 2:
+            echo "<label>"."★★"."</label>"."<a>"."★★★". "</a>";
+            break;
+        case 3:
+            echo "<label>"."★★★"."</label>"."<a>"."★★". "</a>" ;
+            break;
+        case 4:
+            echo "<label>"."★★★★"."</label>"."<a>"."★". "</a>" ;
+            break;
+        case 5:
+            echo "<label>"."★★★★★"."</label>" ;
+            break;
+    
+        } 
+        ?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
