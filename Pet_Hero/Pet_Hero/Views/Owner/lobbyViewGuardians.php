@@ -44,16 +44,14 @@
                 $dates[]=date($formato,$actual);
                 $actual=strtotime($stepVal,$actual);
             }
-        
-
 
             foreach($guardianList as $guardian){//que pasa con las del medio 
                             //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza
 
             if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
                 if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){?>
-        <tr>
-        <td><a href="*"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
+        <tr><?php $idPet=$newPet->getId();?>
+        <td><a href="<?php echo FRONT_ROOT."Owner/showGuardian/".$guardian->getId()."/".$fechaInicio."/".$fechaFin."/".$idPet?>"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
         <td><?php echo $guardian->getUserName() ;?></td>
         <td><?php echo $guardian->getCalificacion() ;?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
