@@ -118,12 +118,30 @@
         }
 
         public function changeReserve($estado,$idReserve)
-        {  
+        {   //Borramos de fechas disponibles la reserva
+            $guardianDao=new GuardianDAO();
+            $reserveDao=new ReserveDao();
+            $guardian=$guardianDao->getByUser($_SESSION["userName"]);
+            $reserva=$reserveDao->getByIdReserve($idReserve);
+
+            $formato="d-m-Y";
+            $dates=array();//arreglo con todas las fechas a cubrir x el guardian
+            $actual=strtotime($reserva->getFechaInicio());
+            $fin=strtotime($reserva->getFechaFin());
+            $stepVal='+1 day';
+            while($actual<=$fin){
+                $dates[]=date($formato,$actual);
+                $actual=strtotime($stepVal,$actual);
+            }
+
+            $guardian->deleteDates($dates);
+            $guardianDao->Update($guardian);
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate);
             $this->showReservas();
         }
+
         public function showReservas()
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');

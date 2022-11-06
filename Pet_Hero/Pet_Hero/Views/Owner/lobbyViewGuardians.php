@@ -25,11 +25,10 @@
             <th>Foto</th>
             <th>Nombre</th>
             <th>Calificacion</th>
-            <th>Disponibilidad</th>
+            <th>CUIL</th>
             <th>Tamaño para cuidar</th>
             <th>Precio x Dia</th>
-            <th>Aceptar</th>
-            <th>Rechazar</th>
+            <th>Reservar</th>
         </tr>
         </thead>
         <tbody>
@@ -46,8 +45,13 @@
                 $actual=strtotime($stepVal,$actual);
             }
         
+
+
             foreach($guardianList as $guardian){//que pasa con las del medio 
-                if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 &&  $newPet->getSize() == $guardian->getTamanioParaCuidar()){?>
+                            //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza
+
+            if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
+                if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){?>
         <tr>
         <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
         <td><?php echo $guardian->getUserName() ;?></td>
@@ -59,9 +63,8 @@
         <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio">
 
             <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
-            <td><button class="btn_reject"> </button></td>
         </tr>
-        <?php }}?>
+        <?php }}}?>
         <tbody>
     </table>
     </form>

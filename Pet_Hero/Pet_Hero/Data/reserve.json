@@ -70,5 +70,77 @@
         "raza": "golden",
         "total": 3600,
         "estado": "Confirmada"
+    },
+    {
+        "idReserve": 7,
+        "idGuardian": "2",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-05",
+        "fechaFin": "2022-11-09",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 3600,
+        "estado": "Confirmada"
+    },
+    {
+        "idReserve": 8,
+        "idGuardian": "1",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-11",
+        "fechaFin": "2022-11-12",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 3600,
+        "estado": "Confirmada"
+    },
+    {
+        "idReserve": 10,
+        "idGuardian": "2",
+        "idOwner": "1",
+        "idMascota": "2",
+        "fechaInicio": "2022-11-07",
+        "fechaFin": "2022-11-10",
+        "tipoMascota": "pez",
+        "raza": "payaso",
+        "total": 3600,
+        "estado": "Confirmada"
+    },
+    {
+        "idReserve": 11,
+        "idGuardian": "2",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-05",
+        "fechaFin": "2022-11-05",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 3600,
+        "estado": "En espera"
+    },
+    {
+        "idReserve": 9,
+        "idGuardian": "1",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-05",
+        "fechaFin": "2022-11-08",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 3600,
+        "estado": "Confirmada"
+    },
+    {
+        "idReserve": 12,
+        "idGuardian": "1",
+        "idOwner": "1",
+        "idMascota": "1",
+        "fechaInicio": "2022-11-10",
+        "fechaFin": "2022-11-13",
+        "tipoMascota": "perro",
+        "raza": "golden",
+        "total": 1200,
+        "estado": "Confirmada"
     }
 ]

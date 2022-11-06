@@ -54,6 +54,30 @@
             return null;
         }
 
+        public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
+            $this->RetrieveData();
+
+            foreach($this->reserveList as $reserve){
+                $formato="d-m-Y";
+                $datesReserve=array();//arreglo con todas las fechas a cubrir x el guardian
+                $actual=strtotime($reserve->getFechaInicio());
+                $fin=strtotime($reserve->getFechaFin());
+                $stepVal='+1 day';
+                while($actual<=$fin){
+                    $datesReserve[]=date($formato,$actual);
+                    $actual=strtotime($stepVal,$actual);
+                }
+
+                $arrayDifDates=array_diff($dates,$datesReserve);
+
+                
+                if($reserve->getIdGuardian() == $idGuardian && $reserve->getRace() == $race && count(array_diff($arrayDifDates,$fechasDispGuardian))==0){
+                    return  true;
+                }
+            }
+            return false;
+        }
+
         private function SaveData(){
             $arrayToEncode=array();
             foreach($this->reserveList as $reserve){

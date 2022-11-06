@@ -10,9 +10,9 @@
         "age": "5",
         "grXfoodPortion": "100",
         "weight": "10",
-        "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/golden-cachorro-e1549967733842-1024x650.jpg",
-        "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg",
-        "video": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Video\/video.mp4"
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/golden-cachorro-e1549967733842-1024x650.jpg",
+        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/calendario_de_vacunas_para_perros_20221_orig.jpg",
+        "video": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Video\/video.mp4"
     },
     {
         "id": 2,
@@ -25,8 +25,8 @@
         "age": "2",
         "grXfoodPortion": "50",
         "weight": "1",
-        "photoProfile": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/descarga.jpg",
-        "planVacunacion": "\/1Actividades\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/png-transparent-laughing-koi-fish-laughing-out-loud-koi-carp-thumbnail.png",
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/descarga.jpg",
+        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/png-transparent-laughing-koi-fish-laughing-out-loud-koi-carp-thumbnail.png",
         "video": null
     },
     {
@@ -40,8 +40,23 @@
         "age": "2",
         "grXfoodPortion": "270",
         "weight": "7",
-        "photoProfile": "\/Ejercicios\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/b0922b69bac5f67df40c7e3fad643040--website-friends.jpg",
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/b0922b69bac5f67df40c7e3fad643040--website-friends.jpg",
         "planVacunacion": null,
+        "video": null
+    },
+    {
+        "id": 4,
+        "idOwner": 1,
+        "name": "Toby",
+        "animal": "perro",
+        "size": "medium",
+        "race": "golden",
+        "description": "",
+        "age": "5",
+        "grXfoodPortion": "200",
+        "weight": "10",
+        "photoProfile": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Foto-Pefil-Animal\/toby.png",
+        "planVacunacion": "\/FACULTAD XAMP\/PET_HERO\/Pet_Hero\/Pet_Hero\/Pet_Hero\/Views\/Images\/\/Plan-Vacunacion\/toby.png",
         "video": null
     }
 ]

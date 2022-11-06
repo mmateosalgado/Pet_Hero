@@ -74,6 +74,16 @@ class GuardianDAO{
       return null;
     }
 
+    public function getById($id){
+        $this->RetrieveData();
+        foreach($this->guardianList as $guardian) 
+        {
+          if($guardian->getId() == $id)
+            return $guardian;
+        }
+        return null;
+    }
+
     public function RetrieveData()
     {
         $this->guardianList= array();

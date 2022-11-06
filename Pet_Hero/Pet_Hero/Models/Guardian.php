@@ -78,5 +78,11 @@
 		$this->tamanioParaCuidar = $tamanioParaCuidar;
 		return $this;
 	}
-}
+
+	function deleteDates($datesToDeleteArray){
+			$newFechasDisponibles=array_diff($this->getFechasDisponibles(),$datesToDeleteArray);
+			$this->setFechasDisponibles($newFechasDisponibles);
+			return $this;
+		}
+	}
 ?>
