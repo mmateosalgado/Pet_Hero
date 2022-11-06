@@ -19,7 +19,7 @@
     <input type="hidden" value="<?php  echo $newPet->getId();?>" name="idPet">
 
 
-    <table class="fl-table">
+    <table class="fl-table photoGuardian">
         <thead>
         <tr></tr>
             <th>Foto</th>
@@ -53,7 +53,7 @@
             if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
                 if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){?>
         <tr>
-        <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
+        <td><a href="*"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
         <td><?php echo $guardian->getUserName() ;?></td>
         <td><?php echo $guardian->getCalificacion() ;?></td>
         <td><?php echo $guardian->getCuil() ;?></td>

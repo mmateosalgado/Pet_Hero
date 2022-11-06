@@ -86,6 +86,17 @@ body{
 	font-size: 35px;
 	font-weight: 200;
 }
+.photoGuardian a {
+	color: transparent !important;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+.photoGuardian img{
+	border-radius: 80%;
+}
+
 .headerTable div{
 	color: black;
 	font-family: 'Exo', sans-serif;
@@ -365,6 +376,7 @@ body{
 	margin-left: auto;
 	
 }
+
 
 .message a {
 	font-family: 'Exo', sans-serif;
