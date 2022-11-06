@@ -93,8 +93,18 @@ body{
 	background-color: transparent !important;
 	box-shadow: none !important;
 }
+
+.photoGuardian a:hover {
+	opacity: 0.8;
+}
+
 .photoGuardian img{
 	border-radius: 80%;
+	height: 60px;
+	width: 60px;
+	overflow: hidden;
+	margin: 0px;
+	
 }
 
 .headerTable div{
