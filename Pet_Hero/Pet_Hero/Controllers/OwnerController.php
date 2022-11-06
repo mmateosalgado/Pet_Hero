@@ -75,6 +75,13 @@
 
         }
 
+        public function showGuardian( $id,$fechaInicio,$fechaFin,$idPet){
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $auxGdao=new GuardianDAO();
+            $guardian = $auxGdao->getById($id);
+            require_once(VIEWS_PATH.'Owner/viewGuardianProfile.php');
+        }
+
         public function addRace($name,$animal,$size,$weight,$age,$gxp,$description,$race,$files)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
