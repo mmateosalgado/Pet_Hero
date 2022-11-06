@@ -736,7 +736,7 @@ label{
 	border-radius: 5px;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 12px;
+	font-size: 15px;
 	font-family: 'Exo', sans-serif;
 	font-weight: 200;
 	color: #000000;
@@ -761,7 +761,7 @@ label{
 		
 		.fl-table td {
 		   border-right: 1px solid #f8f8f8;
-		   font-size: 12px;
+		   font-size: 17px;
 	   }
 	   
 	   .fl-table thead th {
