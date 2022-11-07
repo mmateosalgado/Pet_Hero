@@ -86,6 +86,26 @@ body{
 	font-size: 35px;
 	font-weight: 200;
 }
+.photoGuardian a {
+	color: transparent !important;
+	margin-right: auto;
+	margin-left: auto;
+	background-color: transparent !important;
+	box-shadow: none !important;
+}
+
+.photoGuardian a:hover {
+	opacity: 0.8;
+}
+
+.photoGuardian img{
+	border-radius: 80%;
+	height: 80px;
+	width: 80px;
+	overflow: hidden;
+	margin: 0px;
+}
+
 .headerTable div{
 	color: black;
 	font-family: 'Exo', sans-serif;
@@ -366,6 +386,7 @@ body{
 	
 }
 
+
 .message a {
 	font-family: 'Exo', sans-serif;
 	font-size: 16px;
@@ -543,8 +564,8 @@ label{
 	font-weight: 400;
 	padding: 6px;
 	margin-top: 10px;
-	position: absolute;
-	top: calc(37.5% - 75px);
+	position: relative;
+	/*top: calc(37.5% - 75px);*/
 	left: calc(20.3% - 50px);
 	z-index: 2;
 }
@@ -700,7 +721,7 @@ label{
 	margin-right: auto;
 	margin-left: auto;
 	margin-top: auto;
-	top: 60px;
+	top: 10px;
 	width: 931px;
 	box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
 	/* font-family: 'Exo', sans-serif;
@@ -715,7 +736,7 @@ label{
 	border-radius: 5px;
 	margin-left: auto;
 	margin-right: auto;
-	font-size: 12px;
+	font-size: 15px;
 	font-family: 'Exo', sans-serif;
 	font-weight: 200;
 	color: #000000;
@@ -740,7 +761,7 @@ label{
 		
 		.fl-table td {
 		   border-right: 1px solid #f8f8f8;
-		   font-size: 12px;
+		   font-size: 17px;
 	   }
 	   
 	   .fl-table thead th {
@@ -758,7 +779,18 @@ label{
 	   }
 	   
 	   .fl-table tr:nth-child(even) {
-		   background: #F8F8F8;
+		   background: #ffffff;
+		   border-top-color: transparent;
+		   border-top: solid;
+		   border-bottom: none;
+		   border-left: none;
+		   border-right: none;
+		   /*border-style: dashed;*/
+	   }
+
+	    .fl-table tr:nth-child(odd) {
+		   background: #ffffff;
+		  
 	   }
 
 	   .fl-tableReserve thead th {
@@ -1000,6 +1032,16 @@ label{
 	  
 	  .clasificacion label {
 		color: rgb(207, 205, 205);
+		font-size: 25px;
+	  }
+
+	  .showClasificacion label {
+		color: orange;
+		font-size: 25px;
+	  }
+
+	  .showClasificacion a {
+		color: rgb(207, 205, 205) !important;
 		font-size: 25px;
 	  }
 	  

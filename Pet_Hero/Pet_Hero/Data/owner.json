@@ -1,57 +1,13 @@
 [
     {
         "id": 1,
-        "userName": "Facu",
+        "userName": "veigar",
         "password": "1234",
-        "fullName": "Facundo Ferrari",
-        "age": "2003-2-25",
+        "fullName": "Mateo Salgado",
+        "age": "2022-10-30",
         "email": "ferrarifacundo@outlook.com",
         "gender": "male",
         "type": "owner",
-        "telefono": "223345345"
-    },
-    {
-        "id": 2,
-        "userName": "asd",
-        "password": "123",
-        "fullName": "dsa",
-        "age": "2022-10-05",
-        "email": "asd",
-        "gender": "female",
-        "type": "owner",
-        "telefono": "223345345"
-    },
-    {
-        "id": 3,
-        "userName": "Mateo",
-        "password": "ssss",
-        "fullName": "Salgado",
-        "age": "2022-09-29",
-        "email": "salgadomateo001@gmail.com",
-        "gender": "female",
-        "type": "owner",
-        "telefono": "223345345"
-    },
-    {
-        "id": 4,
-        "userName": "facu123",
-        "password": "1234",
-        "fullName": "Facundo Ferrari",
-        "age": "2003-02-25",
-        "email": "ferrarifacundof@outlook.com",
-        "gender": "male",
-        "type": "owner",
-        "telefono": "2233069546"
-    },
-    {
-        "id": 5,
-        "userName": "moniArgento",
-        "password": "1234",
-        "fullName": "Monica Argento",
-        "age": "2022-10-13",
-        "email": "moniArgento@gmail.com",
-        "gender": "female",
-        "type": "owner",
-        "telefono": "2234356465"
+        "telefono": "1231231"
     }
 ]

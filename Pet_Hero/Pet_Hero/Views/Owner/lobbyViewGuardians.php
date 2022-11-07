@@ -19,7 +19,7 @@
     <input type="hidden" value="<?php  echo $newPet->getId();?>" name="idPet">
 
 
-    <table class="fl-table">
+    <table class="fl-table photoGuardian showClasificacion ">
         <thead>
         <tr></tr>
             <th>Foto</th>
@@ -44,18 +44,40 @@
                 $dates[]=date($formato,$actual);
                 $actual=strtotime($stepVal,$actual);
             }
-        
-
 
             foreach($guardianList as $guardian){//que pasa con las del medio 
                             //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza
 
             if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
                 if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){?>
-        <tr>
-        <td><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></td>
+        <tr><?php $idPet=$newPet->getId();?>
+        <td><a href="<?php echo FRONT_ROOT."Owner/showGuardian/".$guardian->getId()."/".$fechaInicio."/".$fechaFin."/".$idPet?>"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
         <td><?php echo $guardian->getUserName() ;?></td>
-        <td><?php echo $guardian->getCalificacion() ;?></td>
+        <td><?php 
+        
+        switch($guardian->getCalificacion())
+        {
+        case 0:
+            echo "Sin valoraciones" ;
+            break;
+        case 1:
+             echo "<label>"."★"."</label>"."<a>"."★★★★". "</a>" ;
+             break;
+        case 2:
+            echo "<label>"."★★"."</label>"."<a>"."★★★". "</a>";
+            break;
+        case 3:
+            echo "<label>"."★★★"."</label>"."<a>"."★★". "</a>" ;
+            break;
+        case 4:
+            echo "<label>"."★★★★"."</label>"."<a>"."★". "</a>" ;
+            break;
+        case 5:
+            echo "<label>"."★★★★★"."</label>" ;
+            break;
+    
+        } 
+        ?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
         <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
