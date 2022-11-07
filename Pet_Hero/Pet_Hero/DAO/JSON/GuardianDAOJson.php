@@ -7,11 +7,11 @@ use \Exception as Exception;
 class GuardianDAO{
     private $guardianList= array();
     private $connection;
-    private $tableName;
+    private $fileName;
 
     public function __construct()
     {
-      $this->tableName = "guardian";
+      $this->fileName = "guardian.json";
     }
 
     public function GetAll()
