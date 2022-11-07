@@ -1,102 +1,149 @@
 <?php
 namespace DAO;
 use Models\Owner as Owner;
+use DAO\Connection as Connection;
+use \Exception as Exception;
+
 class OwnerDAO{
     private $ownerList= array();
-    private $fileName;
+    private $connection;
+    private $tableName;
 
     public function __construct()
     {
-      $this->fileName = dirname(__DIR__)."/Data/owner.json";
+      $this->tableName = "owner";
+      $this->ownerList = array();
     }
 
     public function GetAll()
     {
-        $this->RetrieveData();
+        try
+        {
+            $query = "CALL p_get_userNameOwner();";
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query);
+        
+        foreach($resultSet as $row) 
+        {
+
+            $owner = new Owner();
+            $owner->setUserName($row["userName"]);
+            $owner->setPassword($row["password"]);
+            $owner->setEmail($row["email"]);
+            $owner->setFullname($row["fullName"]);
+            $owner->setAge($row["age"]);
+            $owner->setId($row["id_owner"]);
+            $owner->setTelefono($row["telefono"]);
+            $owner->setGender($row["gender"]);
+            $owner->setType("owner");
+            array_push($this->ownerList, $owner);  
+        }
         return $this->ownerList;
     }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
+    }
+
 
     public function Add(Owner $owner)
     {
-        $this->RetrieveData();
-        $owner->setId($this->getNextId());
-        array_push($this->ownerList,$owner);
-        $this->SaveData();
+        try
+        {
+            $id = $this->GetGenderId($owner->getGender());
+            $owner->setGender($id);
+            $query = "CALL p_insert_owner ('".$owner->getUserName()."','".$owner->getPassword()."','".$owner->getFullName()."',".$owner->getAge().",'".$owner->getEmail()."',".$owner->getGender().",".$owner->getTelefono().");";
+            /*$parameters["pUserName"] = $owner->getUserName();
+            $parameters["pPassword"] = $owner->getPassword();
+            $parameters["pFUllName"] = $owner->getFullName();
+            $parameters["pAge"] = $owner->getAge();
+            $parameters["pEmail"] = $owner->getEmail();
+            $parameters["pId_Gender"] = $owner->getGender();
+            $parameters["pTelefono"] = $owner->getTelefono();*/
+
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->ExecuteNonQuery($query);
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
+    }
+
+    public function GetGenderId($gender)
+    {
+        try
+        {
+        $id = null;
+
+        $query = "CALL p_get_gender('".$gender."');";
+        $this->connection = Connection::GetInstance();
+        $resultSet= $this->connection->Execute($query);
+        foreach ($resultSet as $row)
+        {                
+            $id=($row["id_gender"]);
+        }
+        return $id;
+    }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
     }
 
     public function getByUser($user) 
     {
-        $this->RetrieveData();
-        foreach($this->ownerList as $owner) 
+        $this->GetAll();
+
+        foreach($this->ownerList as $row) 
         {
-        if($owner->getUserName() == $user)
+        if($row["userName"] == $user)
+        {
+            $owner = new Owner();
+            $owner->setUserName($row["userName"]);
+            $owner->setPassword($row["password"]);
+            $owner->setEmail($row["email"]);
+            $owner->setFullname($row["fullName"]);
+            $owner->setAge($row["age"]);
+            $owner->setId($row["id_owner"]);
+            $owner->setTelefono($row["telefono"]);
+            $owner->setGender($row["gender"]);
+            $owner->setType("owner");
             return $owner;
         }
+            
+        }
         return null;
-    }
+                    }
 
-    public function getByEmail($email){
-        $this->RetrieveData();
-        foreach($this->ownerList as $owner) 
+     public function getByEmail($email){
+       
+       $this->GetAll(); 
+        foreach($this->ownerList as $row) 
         {
-        if($owner->getEmail() == $email)
+        if($row["email"] == $email)
+        {
+            $owner = new Owner();
+            $owner->setUserName($row["userName"]);
+            $owner->setPassword($row["password"]);
+            $owner->setEmail($row["email"]);
+            $owner->setFullname($row["fullName"]);
+            $owner->setAge($row["age"]);
+            $owner->setId($row["id_owner"]);
+            $owner->setTelefono($row["telefono"]);
+            $owner->setGender($row["gender"]);
+            $owner->setType("owner");
             return $owner;
         }
+            
+        }
         return null;
-    }
+                     }
 
-    public function RetrieveData()
-    {
-        $this->ownerList= array();
-        if(file_exists($this->fileName))
-        {
-            $jsonContent = file_get_contents($this->fileName);
-            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-            foreach($arrayToDecode as $valuesArray)
-            {
-                $owner = new Owner();
-                $owner->setId($valuesArray["id"]);
-                $owner->setUserName($valuesArray["userName"]);
-                $owner->setPassword($valuesArray["password"]);
-                $owner->setFullName($valuesArray["fullName"]);
-                $owner->setAge($valuesArray["age"]);
-                $owner->setEmail($valuesArray["email"]);
-                $owner->setGender($valuesArray["gender"]);
-                $owner->setType( $valuesArray["type"]);
-                $owner->setTelefono( $valuesArray["telefono"]);
 
-                array_push($this->ownerList, $owner);
-           }
-        }
-    }
 
-    public function SaveData()
-    {
-        $arrayToEncode= array();
-        foreach($this->ownerList as $owner)
-        {
-            $valuesArray["id"]= $owner->getId();
-            $valuesArray["userName"]= $owner->getUserName();
-            $valuesArray["password"]= $owner->getPassword();
-            $valuesArray["fullName"]= $owner->getFullName();
-            $valuesArray["age"]= $owner->getAge();
-            $valuesArray["email"]= $owner->getEmail();
-            $valuesArray["gender"]= $owner->getGender();
-            $valuesArray["type"]= $owner->getType();
-            $valuesArray["telefono"]= $owner->getTelefono();
-            array_push($arrayToEncode,$valuesArray);
-        }
-        $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);
-        file_put_contents($this->fileName,$jsonContent);
-    }
-
-    private function getNextId(){
-        $id=0;
-        foreach($this->ownerList as $owner)
-        {
-            $id=($owner->getId() > $id) ? $owner->getId():$id;
-        }
-        return $id+ 1;
-        }
-    }   
-?>
+}

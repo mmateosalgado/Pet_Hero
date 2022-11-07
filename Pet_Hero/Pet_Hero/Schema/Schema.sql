@@ -13,6 +13,7 @@ tamanio varchar(30) not null,
 primary key(id_tamanio)
 )Engine=InnoDB;
 
+
 create table guardian(
 id_guardian integer auto_increment not null,
 userName varchar(30) not null unique,
@@ -26,6 +27,7 @@ cuil double not null unique,
 fotoPerfil varchar(300) not null,
 fechasDisponibles varchar(500),
 id_tamanioParaCuidar integer not null,
+calificacion integer not null,
 primary key (id_guardian),
 constraint fkGenderG foreign key (id_gender) references gender(id_gender),
 constraint fkTamanio foreign key (id_tamanioParaCuidar) references tamanio(id_tamanio)

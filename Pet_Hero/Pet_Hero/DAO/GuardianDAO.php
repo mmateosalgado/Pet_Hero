@@ -1,165 +1,245 @@
 <?php
 namespace DAO;
 use Models\Guardian as Guardian;
+use DAO\Connection as Connection;
+use \Exception as Exception;
+
 class GuardianDAO{
     private $guardianList= array();
-    private $fileName;
+    private $connection;
+    private $tableName;
 
     public function __construct()
     {
-      $this->fileName = dirname(__DIR__)."/Data/guardian.json";
+      $this->tableName = "guardian";
+      $this->guardianList = array();
     }
-
     public function GetAll()
     {
-        $this->RetrieveData();
-        return $this->guardianList;
-    }
+            try
+            {
+                $query = "CALL p_get_userNameGuardian();";
+    
+                $this->connection = Connection::GetInstance();
+    
+                $resultSet = $this->connection->Execute($query);
+            
+            foreach($resultSet as $row) 
+            {
+                $guardian = new Guardian();
+                $guardian->setUserName($row["userName"]);
+                $guardian->setPassword($row["password"]);
+                $guardian->setEmail($row["email"]);
+                $guardian->setFullname($row["fullName"]);
+                $guardian->setAge($row["age"]);
+                $guardian->setId($row["id_guardian"]);
+                $guardian->setTelefono($row["telefono"]);
+                $guardian->setGender($row["gender"]);
+                $guardian->setCuil($row["cuil"]);
+                $guardian->setFechasDisponibles($row["fechasDisponibles"]);
+                $guardian->setPrecioPorHora($row["precioPorHora"]);
+                $guardian->setFotoPerfil($row["fotoPerfil"]);
+                $guardian->setTamanioParaCuidar($row["tamanio"]);
+                $guardian->setCalificacion($row["calificacion"]);
+                $guardian->setType("guardian");
+                array_push($this->guardianList,$guardian);
+    
+            }
+            return $this->guardianList;
+        
+        }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
+    
 
     public function Add(Guardian $guardian)
     {
-        $this->RetrieveData();
+        try
+        {
+            $id = $this->GetGenderId($guardian->getGender());
+            $guardian->setGender($id);
+            $idSize = $this->GetSizeId($guardian->getTamanioParaCuidar());
+            $guardian->setTamanioParaCuidar($idSize);
+            $guardian->setCalificacion(0);
+            $fechasDisponibles=array();
+            $fechasDisponibles=$guardian->getFechasDisponibles();
+            $fechasDisponiblesEncoded=json_encode($fechasDisponibles,JSON_PRETTY_PRINT);
+            $query = "CALL p_insert_guardian ('".$guardian->getUserName()."','".$guardian->getPassword()."','"
+            .$guardian->getFullName()."',".$guardian->getAge().",'".$guardian->getEmail()."',".$guardian->getGender().","
+            .$guardian->getTelefono().",".$guardian->getCuil().",'".$guardian->getFotoPerfil()."','".$fechasDisponiblesEncoded."',"
+            .$guardian->getTamanioParaCuidar().",".$guardian->getPrecioPorHora().",".$guardian->getCalificacion().");";
 
-        $guardian->setId($this->getNextId());
+            $this->connection = Connection::GetInstance();
 
-        array_push($this->guardianList,$guardian);
-        
-        $this->SaveData();
+            $this->connection->ExecuteNonQuery($query);
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
+    }
+    public function GetGenderId($gender)
+    {
+        try
+        {
+        $id = null;
+
+        $query = "CALL p_get_gender('".$gender."');";
+        $this->connection = Connection::GetInstance();
+        $resultSet= $this->connection->Execute($query);
+        foreach ($resultSet as $row)
+        {                
+            $id=($row["id_gender"]);
+        }
+        return $id;
+    }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
     }
 
+    public function GetSizeId($size)
+    {
+        try
+        {
+        $id = null;
+
+        $query = "CALL p_get_tamanio('".$size."');";
+        $this->connection = Connection::GetInstance();
+        $resultSet= $this->connection->Execute($query);
+        foreach ($resultSet as $row)
+        {                
+            $id=($row["id_tamanio"]);
+        }
+        return $id;
+    }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
+    }
     public function Update(Guardian $guardian){
-        $this->RetrieveData();
-
-        $this->Delete($guardian->getUserName());
-        
-        //Ya deberia tener ID
-        array_push($this->guardianList,$guardian);
-
-        $this->SaveData();
+        try
+        {
+        $query = "CALL p_update_guardian('".$guardian->getUserName()."','".$guardian->getFechasDisponibles()."');";
+        $this->connection = Connection::GetInstance();
+        $this->connection->ExecuteNonQuery($query);
+         }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
     }
 
     public function Delete( $userName){
-        $this->RetrieveData();
-        $aux=0;
-
-        foreach ($this->guardianList as $savedGuardian) {
-            if($savedGuardian->getUserName()==$userName)
-            {
-                unset($this->guardianList[$aux]);
-            }
-            $aux++;
+        try
+        {
+        $query = "CALL p_delete_guardian('".$userName."');";
+        $this->connection = Connection::GetInstance();
+        $this->connection->ExecuteNonQuery($query);
+         }
+        catch(Exception $ex)
+        {
+        throw $ex;
         }
-        $this->SaveData();
     }
 
     public function getByUser($user) 
     {
-      $this->RetrieveData();
-      foreach($this->guardianList as $guardian) 
-      {
-        if($guardian->getUserName() == $user)
-          return $guardian;
-      }
-      return null;
+        $this->GetAll();
+
+        foreach($this->guardianList as $row) 
+        {
+        if($row["userName"] == $user)
+        {
+            $guardian = new Guardian();
+            $guardian->setUserName($row["userName"]);
+            $guardian->setPassword($row["password"]);
+            $guardian->setEmail($row["email"]);
+            $guardian->setFullname($row["fullName"]);
+            $guardian->setAge($row["age"]);
+            $guardian->setId($row["id_guardian"]);
+            $guardian->setTelefono($row["telefono"]);
+            $guardian->setGender($row["gender"]);
+            $guardian->setCuil($row["cuil"]);
+            $guardian->setFechasDisponibles($row["fechasDisponibles"]);
+            $guardian->setPrecioPorHora($row["precioPorHora"]);
+            $guardian->setFotoPerfil($row["fotoPerfil"]);
+            $guardian->setTamanioParaCuidar($row["tamanio"]);
+            $guardian->setCalificacion($row["calificacion"]);
+            $guardian->setType("guardian");
+            return $guardian;
+        }
+
+    }
+        return null;
     }
 
     public function getByEmail($email) 
     {
-      $this->RetrieveData();
-      foreach($this->guardianList as $guardian) 
-      {
-        if($guardian->getEmail() == $email)
-          return $guardian;
-      }
-      return null;
-    }
-
-    public function getById($id){
-        $this->RetrieveData();
-        foreach($this->guardianList as $guardian) 
+        $this->GetAll();
+        
+        foreach($this->guardianList as $row) 
         {
-          if($guardian->getId() == $id)
+        if($row["email"] == $email)
+        {
+            $guardian = new Guardian();
+            $guardian->setUserName($row["userName"]);
+            $guardian->setPassword($row["password"]);
+            $guardian->setEmail($row["email"]);
+            $guardian->setFullname($row["fullName"]);
+            $guardian->setAge($row["age"]);
+            $guardian->setId($row["id_guardian"]);
+            $guardian->setTelefono($row["telefono"]);
+            $guardian->setGender($row["gender"]);
+            $guardian->setCuil($row["cuil"]);
+            $guardian->setFechasDisponibles($row["fechasDisponibles"]);
+            $guardian->setPrecioPorHora($row["precioPorHora"]);
+            $guardian->setFotoPerfil($row["fotoPerfil"]);
+            $guardian->setTamanioParaCuidar($row["tamanio"]);
+            $guardian->setCalificacion($row["calificacion"]);
+            $guardian->setType("guardian");
             return $guardian;
+        }
+            
+
         }
         return null;
     }
 
-    public function RetrieveData()
-    {
-        $this->guardianList= array();
-        if(file_exists($this->fileName))
+    public function getById($id){
+        $this->GetAll();
+        foreach($this->guardianList as $row) 
         {
-            $jsonContent = file_get_contents($this->fileName);
-            $arrayToDecode = ($jsonContent) ? json_decode($jsonContent, true) : array();
-            foreach($arrayToDecode as $valuesArray)
-            {
-                $guardian = new Guardian();
-                $guardian->setId($valuesArray["id"]);
-                $guardian->setUserName($valuesArray["userName"]);                     
-                $guardian->setPassword($valuesArray["password"]);
-                $guardian->setFullName($valuesArray["fullName"]);
-                $guardian->setAge($valuesArray["age"]);
-                $guardian->setEmail($valuesArray["email"]);
-                $guardian->setGender($valuesArray["gender"]);
-                $guardian->setType($valuesArray["type"]);
-                $guardian->setTelefono($valuesArray["telefono"]);
-                $guardian->setTamanioParaCuidar($valuesArray["tamanioParaCuidar"]);
-                $guardian->setCuil($valuesArray["cuil"]);
-                $guardian->setPrecioPorHora($valuesArray["precioPorHora"]);
-                $guardian->setCalificacion($valuesArray["calificacion"]);
-
-                    $arrayFechasDisponibles=array();
-                    $arrayFechasDisponibles=$valuesArray["fechasDisponibles"];
-                    $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-                
-                $guardian->setFechasDisponibles($arrayDecoded);
-                $guardian->setFotoPerfil($valuesArray["photo"]);
-
-                array_push($this->guardianList, $guardian);
+        if($row["id_guardian"] == $id)
+             {
+            $guardian = new Guardian();
+            $guardian->setUserName($row["userName"]);
+            $guardian->setPassword($row["password"]);
+            $guardian->setEmail($row["email"]);
+            $guardian->setFullname($row["fullName"]);
+            $guardian->setAge($row["age"]);
+            $guardian->setId($row["id_guardian"]);
+            $guardian->setTelefono($row["telefono"]);
+            $guardian->setGender($row["gender"]);
+            $guardian->setCuil($row["cuil"]);
+            $guardian->setFechasDisponibles($row["fechasDisponibles"]);
+            $guardian->setPrecioPorHora($row["precioPorHora"]);
+            $guardian->setFotoPerfil($row["fotoPerfil"]);
+            $guardian->setTamanioParaCuidar($row["tamanio"]);
+            $guardian->setCalificacion($row["calificacion"]);
+            $guardian->setType("guardian");
+            return $guardian;
             }
+            
+
         }
-    }
+        return null;
 
-    public function SaveData()
-    {
-        $arrayToEncode= array();
-                    foreach($this->guardianList as $guardian)
-                    {
-                        $valuesArray["id"]= $guardian->getId();
-                        $valuesArray["userName"]= $guardian->getUserName();
-                        $valuesArray["password"]= $guardian->getPassword();
-                        $valuesArray["fullName"]= $guardian->getFullName();
-                        $valuesArray["age"]= $guardian->getAge();
-                        $valuesArray["email"]= $guardian->getEmail();
-                        $valuesArray["gender"]= $guardian->getGender();
-                        $valuesArray["type"]= $guardian->getType();
-                        $valuesArray["telefono"]=  $guardian->getTelefono();
-                        $valuesArray["tamanioParaCuidar"] = $guardian->getTamanioParaCuidar();
-                        $valuesArray["cuil"] = $guardian->getCuil();
-                        $valuesArray["precioPorHora"]= $guardian->getPrecioPorHora();
-                        $valuesArray["calificacion"]=  $guardian->getCalificacion();
-
-                            $fechasDisponibles=array();
-                            $fechasDisponibles=$guardian->getFechasDisponibles();
-                            $fechasDisponiblesEncoded=json_encode($fechasDisponibles,JSON_PRETTY_PRINT);
-                        
-                        $valuesArray["fechasDisponibles"]=$fechasDisponiblesEncoded;
-
-                        $valuesArray["photo"] = $guardian->getFotoPerfil();
-
-                        array_push($arrayToEncode,$valuesArray);
-                    }
-        $jsonContent= json_encode($arrayToEncode,JSON_PRETTY_PRINT);
-        file_put_contents($this->fileName,$jsonContent);
-    }
-
-    private function getNextId(){
-        $id=0;
-        foreach($this->guardianList as $guardian)
-        {
-            $id=($guardian->getId() > $id) ? $guardian->getId():$id;
-        }
-        return $id+ 1;
-        }
-    }
+                            }
+}
 ?>
