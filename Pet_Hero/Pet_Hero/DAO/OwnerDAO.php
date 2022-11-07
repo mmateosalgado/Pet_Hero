@@ -99,19 +99,10 @@ class OwnerDAO{
     {
         $this->GetAll();
 
-        foreach($this->ownerList as $row) 
+        foreach($this->ownerList as $owner) 
         {
-        if($row["userName"] == $user)
+        if($owner->getUserName() == $user)
         {
-            $owner = new Owner();
-            $owner->setUserName($row["userName"]);
-            $owner->setPassword($row["password"]);
-            $owner->setEmail($row["email"]);
-            $owner->setFullname($row["fullName"]);
-            $owner->setAge($row["age"]);
-            $owner->setId($row["id_owner"]);
-            $owner->setTelefono($row["telefono"]);
-            $owner->setGender($row["gender"]);
             $owner->setType("owner");
             return $owner;
         }
@@ -123,19 +114,10 @@ class OwnerDAO{
      public function getByEmail($email){
        
        $this->GetAll(); 
-        foreach($this->ownerList as $row) 
+        foreach($this->ownerList as $owner) 
         {
-        if($row["email"] == $email)
+        if($owner->getEmail() == $email)
         {
-            $owner = new Owner();
-            $owner->setUserName($row["userName"]);
-            $owner->setPassword($row["password"]);
-            $owner->setEmail($row["email"]);
-            $owner->setFullname($row["fullName"]);
-            $owner->setAge($row["age"]);
-            $owner->setId($row["id_owner"]);
-            $owner->setTelefono($row["telefono"]);
-            $owner->setGender($row["gender"]);
             $owner->setType("owner");
             return $owner;
         }
@@ -143,7 +125,21 @@ class OwnerDAO{
         }
         return null;
                      }
-
+                     
+    public function getById($id){
+       
+       $this->GetAll(); 
+        foreach($this->ownerList as $owner) 
+        {
+        if($owner->getId() == $id)
+        {
+            $owner->setType("owner");
+            return $owner;
+        }
+            
+        }
+        return null;
+                     }
 
 
 }

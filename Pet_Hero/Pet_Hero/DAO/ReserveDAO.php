@@ -2,28 +2,79 @@
     namespace DAO;
 
     use Models\Reserve as Reserve;
+    use DAO\Connection as Connection;
+    use \Exception as Exception;
 
     class ReserveDao
     {
         private $reserveList=array();
-        private $fileName;
+        
+        private $connection;
+        private $tableName;
 
         public function __construct()
         {
-            $this->fileName = dirname(__DIR__)."/Data/reserve.json";
+            $this->tableName = "reserve";
+            $this->reserveList=array();
         }
 
+        public function GetAll()
+        {
+            try
+            {
+                $query = "CALL p_get_reserve();";
+    
+                $this->connection = Connection::GetInstance();
+    
+                $resultSet = $this->connection->Execute($query);
+            
+            foreach($resultSet as $row) 
+            {
+                $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                array_push($this->reserveList,$reserve);
+    
+            }
+            return $this->reserveList;
+        
+        }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+        }
         public function Add(Reserve $reserve)
         {
-            $this->RetrieveData();
-            $reserve->setIdReserve($this->getNextId());
-            array_push($this->reserveList, $reserve);
-            $this->SaveData();
+            try {
+                $idEstado = $this->GetEstadoId($reserve->getEstado());
+                $reserve->setEstado($idEstado);
+                
+            $query = "CALL p_insert_reserve (".$reserve->getIdGuardian().",".$reserve->getIdMascota().
+            ",'".$reserve->getFechaInicio()."','".$reserve->getFechaFin()."',".$reserve->getTotal().",".$reserve->getEstado().");";
+            
+            $this->connection = Connection::GetInstance();
+
+            $this->connection->ExecuteNonQuery($query);
+            }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
         }
         
         public function getByIdGuardian($idGuardian){
-            $this->RetrieveData();
+            $this->GetAll();
             $reserveList= array();
+
             foreach($this->reserveList as $reserve){
                 if($reserve->getIdGuardian() == $idGuardian){
                     array_push($reserveList,$reserve);
@@ -34,8 +85,9 @@
 
         
         public function getbyIdOwner($idOwner){
-            $this->RetrieveData();
+            $this->GetAll();
             $reserveList= array();
+
             foreach($this->reserveList as $reserve){
                 if($reserve->getIdOwner() == $idOwner){
                     array_push($reserveList,$reserve);
@@ -45,7 +97,8 @@
         }
 
         public function getByIdReserve($idReserve){
-            $this->RetrieveData();
+            $this->GetAll();
+
             foreach($this->reserveList as $reserve){
                 if($reserve->getIdReserve() == $idReserve){
                     return  $reserve;
@@ -55,7 +108,7 @@
         }
 
         public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
-            $this->RetrieveData();
+            $this->GetAll();
 
             foreach($this->reserveList as $reserve){
                 $formato="d-m-Y";
@@ -78,82 +131,58 @@
             return false;
         }
 
-        private function SaveData(){
-            $arrayToEncode=array();
-            foreach($this->reserveList as $reserve){
-                $valuesArray["idReserve"]= $reserve->getIdReserve();
-                $valuesArray["idGuardian"]=$reserve->getIdGuardian();
-                $valuesArray["idOwner"]= $reserve->getIdOwner();
-                $valuesArray["idMascota"]=$reserve->getIdMascota();
-                $valuesArray["fechaInicio"]=$reserve->getFechaInicio();
-                $valuesArray["fechaFin"]=$reserve->getFechaFin();
-                $valuesArray["tipoMascota"]=$reserve->getTipoMascota();
-                $valuesArray["raza"] = $reserve->getrace();
-                $valuesArray["total"]=$reserve->getTotal();
-                $valuesArray["estado"] = $reserve->getEstado();
-                array_push($arrayToEncode,$valuesArray);
-            }
 
-            $jsonContent=json_encode($arrayToEncode,JSON_PRETTY_PRINT);
-            file_put_contents($this->fileName, $jsonContent);
-        }
-
-        private function RetrieveData(){
-
-            $this->reserveList=array();
-            if(file_exists($this->fileName)){
-
-                $jsonContent=file_get_contents($this->fileName);
-                $arrayToDecode=($jsonContent) ? json_decode($jsonContent,true):array();
-                foreach($arrayToDecode as $valuesArray)
-                {
-                    $reserve=new Reserve();
-                    $reserve->setIdReserve($valuesArray["idReserve"]);
-                    $reserve->setIdGuardian($valuesArray["idGuardian"]);
-                    $reserve->setIdOwner($valuesArray["idOwner"]);
-                    $reserve->setIdMascota($valuesArray["idMascota"]);
-                    $reserve->setFechaInicio($valuesArray["fechaInicio"]);
-                    $reserve->setFechaFin($valuesArray["fechaFin"]);
-                    $reserve->setTipoMascota($valuesArray["tipoMascota"]);
-                    $reserve->setRace($valuesArray["raza"]);
-                    $reserve->setTotal($valuesArray["total"]);
-                    $reserve->setEstado($valuesArray["estado"]);
-                    array_push($this->reserveList,$reserve);
-                }
-            }
-        }
 
         public function Update(Reserve $reserve)
         {
-            $this->RetrieveData();
-
-            $this->Delete($reserve->getIdReserve());
-            array_push($this->reserveList,$reserve);
-    
-            $this->SaveData();
-        }
-
-        public function Delete( $idReserve){
-            $this->RetrieveData();
-            $aux=0;
-    
-            foreach ($this->reserveList as $savedReserve) {
-                if($savedReserve->getIdReserve()==$idReserve)
-                {
-                    unset($this->reserveList[$aux]);
-                }
-                $aux++;
+            try
+            {
+            $idEstado = $this->GetEstadoId($reserve->getEstado());
+            $query = "CALL p_update_reserve(".$reserve->getIdReserve().",".$idEstado.",".$reserve->getTotal().");";
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query);
+             }
+            catch(Exception $ex)
+            {
+            throw $ex;
             }
-            $this->SaveData();
         }
 
-        private function getNextId(){
-            $id=0;
+        public function Delete($idReserve){
+        try
+        {
+        $query = "CALL p_delete_reserve('".$idReserve."');";
+        $this->connection = Connection::GetInstance();
+        $this->connection->ExecuteNonQuery($query);
+         }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
+           
+        }
 
-            foreach($this->reserveList as $reserve){  
-                $id=($reserve->getIdReserve()>$id) ? $reserve->getIdReserve() : $id;
+
+        public function GetEstadoId($estado)
+        {
+            try
+            {
+            $id = null;
+    
+            $query = "CALL p_get_IdEstado('".$estado."');";
+            $this->connection = Connection::GetInstance();
+            $resultSet= $this->connection->Execute($query);
+            foreach ($resultSet as $row)
+            {                
+                $id=($row["id_estado"]);
             }
-            return $id+1;
+            return $id;
         }
+            catch(Exception $ex)
+            {
+            throw $ex;
+            }
+        }
+
     }
 ?>
