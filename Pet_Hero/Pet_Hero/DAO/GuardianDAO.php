@@ -134,7 +134,12 @@ class GuardianDAO{
         try
         {
         $id = $this->GetSizeId($guardian->getTamanioParaCuidar());
-        $query = "CALL p_update_guardian('".$guardian->getUserName()."','".$guardian->getFechasDisponibles()."',".$id.");";
+        
+        $fechasDisponibles=array();
+        $fechasDisponibles=$guardian->getFechasDisponibles();
+        $fechasDisponiblesEncoded=json_encode($fechasDisponibles,JSON_PRETTY_PRINT);
+
+        $query = "CALL p_update_guardian('".$guardian->getUserName()."','".$fechasDisponiblesEncoded."',".$id.");";
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query);
          }

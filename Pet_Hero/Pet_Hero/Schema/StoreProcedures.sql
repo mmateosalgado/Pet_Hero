@@ -150,6 +150,30 @@ $$
 /*------------------------------Para llamarla ------------------------------*/
 /*------------------------------call p_get_Pet();*/
 
+/*-------------------------------------------------------------Borrar Pets --------------------------------*/
+DROP PROCEDURE IF EXISTS p_delete_pet;
+DELIMITER $$
+CREATE PROCEDURE p_delete_pet(IN pId_pet int) 
+BEGIN
+	DELETE FROM pet where pId_pet= id_pet;
+END;
+$$
+$$
+/*----------------------------------------------------------------Para llamarla --------------------------------*/
+/*-------------------------call p_delete_pet(1);*/
+
+/*-------------------------------------------------------------Modificar Pet --------------------------------*/
+DROP PROCEDURE IF EXISTS p_update_pet;
+DELIMITER $$
+CREATE PROCEDURE p_update_pet(in pId_pet int,IN pId_tamanio int,in pWeight int, in pgrXfoodPortion int) 
+BEGIN
+	update pet set  id_tamanio= pId_tamanio,  weight= pWeight, grXfoodPortion= pgrXfoodPortion where id_pet= pId_pet;
+END;
+$$
+/*----------------------------------------------------------------Para llamarla --------------------------------*/
+/*-------------------------call p_update_pet(1,1,5,250);*/
+
+
 /*-------------------------------------------------------------RESERVES----------------------------------------------------*/
 
 /*-------------------------------------------------------------Ver Estado --------------------------------*/

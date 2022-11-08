@@ -141,5 +141,32 @@
             }
         }
 
+        public function Update(Pet $pet){
+            try
+            {
+            $id = $this->GetSizeId($pet->getSize());
+            $query = "CALL p_update_pet(".$pet->getId().",".$id.",".$pet->getWeight().",".$pet->getGrXfoodPortion().",);";
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query);
+             }
+            catch(Exception $ex)
+            {
+            throw $ex;
+            }
+        }
+    
+        public function Delete( $idPet){
+            try
+            {
+            $query = "CALL p_delete_pet(".$idPet.");";
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query);
+             }
+            catch(Exception $ex)
+            {
+            throw $ex;
+            }
+        }
+
     }
 ?>
