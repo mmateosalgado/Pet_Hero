@@ -28,7 +28,7 @@
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
                 foreach($guardianList as $guardian){
-                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='Confirmada'  && $guardian->getId() == $reserve->getIdGuardian()) {
+                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='confirmada'  && $guardian->getId() == $reserve->getIdGuardian()) {
          ?>
         <tr>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
