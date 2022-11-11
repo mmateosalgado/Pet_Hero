@@ -80,7 +80,7 @@
         ?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
-        <td><?php echo $guardian->getPrecioPorHora()*24 ;?></td>
+        <td><?php echo "$".$guardian->getPrecioPorHora()*24 ;?></td>
 
         <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio">
 
