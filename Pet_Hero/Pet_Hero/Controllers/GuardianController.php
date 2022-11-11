@@ -113,7 +113,7 @@ use DAO\OwnerDAO;
             if($iDisp<=$fDisp){
                 $dates=$this->getDatesBetween($iDisp,$fDisp);
 
-                $reservesUser=$this->reserveDAO->GetAllByUser($user);
+                $reservesUser=$this->reserveDAO->GetAllByUser($user); //TODO en esta funcion esta el error
                 $reservesDates=array();
 
                 foreach ($reservesUser as $reserva) {

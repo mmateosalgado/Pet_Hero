@@ -189,7 +189,7 @@
             $reservas=array();
 
             foreach($this->reserveList as $reserve){
-                if($reserve->getUserName() == $user){
+                if($reserve->getUserName() == $user){ //TODO reserva no tiene getUserName
                     array_push($reservas,$reserve);
                 }
             }

@@ -142,7 +142,7 @@
             $reserve->setTotal($this->calcularTotal($fechaInicio,$fechaFin,$precio));
             $reserve->setEstado("En espera");
             $this->reserveDAO->Add($reserve);
-            $this->showOwnerLobby("Reserva enviada exitosamente");
+            $this->showOwnerLobby("Reserva solicitada exitosamente");
         }
 
         public function calcularTotal($fechaInicio,$fechaFin,$precio)

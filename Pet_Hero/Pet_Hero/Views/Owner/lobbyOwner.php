@@ -9,23 +9,17 @@
                 <div>Ow<span>ner:</span></div>
             </div>
             <br>
-            <div>
-             <br>     
-                <?php if(isset($message)) 
-                { //TODO:No se ve
-                     echo "<div class='message'><a>". $message."</a></div>";} ?>
-            </div>
             <div class="login date reserve hovers">
-                    <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
-                    <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
-                    <div class="ac_type" >      
+                <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
+                <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
+                <div class="ac_type" >      
                     <?php /*foreach($petList as $pet){?>
                         <?php echo $pet->getName(). " (". $pet->getAnimal()."-". $pet->getRace().")";?><input type="radio" name="mascota" value="<?php $pet->getAnimal();?>"required>
                         <input type="hidden" name="masctoa" value="<?php echo $pet->getAnimal() ?>" />
                         <input type="hidden" name="race" value="<?php echo $pet->getRace() ?>" />
-                         <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
-                         <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
-                    <?php } */?>
+                        <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
+                        <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
+                        <?php } */?>
                     </div>
                     
                     <select name="idPet" required placeholder="Mascota" required>
@@ -36,14 +30,23 @@
                                                   ?>
                          <?php } ?>
                         </select><br>
-
-                    <input type="submit" value="Seleccionar Fechas"><br>
-                    <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas en Curso </a>
-                    <div class="text"></div>
-                    <div><?php 
-                        if($message =" ") {echo $message;} ?></div>
+                        
+                        <input type="submit" value="Seleccionar Fechas"><br>
+                        <a href="<?php echo FRONT_ROOT."Owner\showReserves";?>"> Ver Reservas en Curso </a>
+                       
+                       
+                        <br>   
+                        <br>  
+                        <br>  
+                        <br> 
+                        <br>       
+                            <?php if(isset($message)) 
+                            { //TODO:No se ve
+                                echo "<font>". $message."</font>";} ?>
+                        </div>
             </div>
-</form>
+        </form>
+        
 
-
-
+        
+        

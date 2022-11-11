@@ -420,6 +420,14 @@ label{
 
 }
 
+font{
+	font-family: 'Exo', sans-serif;
+	font-size: 16px;
+    font-weight: 400;
+	color: rgba(0, 255, 98, 0.836);
+
+}
+
 .login input[type=number]{
 	width: 250px;
 	height: 30px;
