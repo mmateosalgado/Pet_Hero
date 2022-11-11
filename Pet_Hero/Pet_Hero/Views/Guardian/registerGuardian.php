@@ -6,6 +6,11 @@
                 <div>Guard<span>ianes:</span></div>
             </div>
             <br>
+            <div>
+                <br>  
+                <?php if(isset($message)) 
+                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+            </div>
             <div class="login guardianRegister">
                     <input type="hidden" value="<?php echo $user?>" name="user" >
                     <input type="hidden" value="<?php echo $password?>" name="password">

@@ -8,6 +8,11 @@
     <div class="header">
         <div>Modificar <br><span> Usuario</span></div>
     </div><br>
+    <div>
+            <br>            
+            <?php if(isset($message)) 
+            { echo "<div class='message'><a>". $message."</a></div>";} ?>
+    </div>
     <div class="login guardianUpdate hovers">
         <label>  </label>
         <label>Inicio de la disponibilidad</label>

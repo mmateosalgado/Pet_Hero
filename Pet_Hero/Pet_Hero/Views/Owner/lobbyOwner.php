@@ -9,6 +9,12 @@
                 <div>Ow<span>ner:</span></div>
             </div>
             <br>
+            <div>
+             <br>     
+                <?php if(isset($message)) 
+                { //TODO:No se ve
+                     echo "<div class='message'><a>". $message."</a></div>";} ?>
+            </div>
             <div class="login date reserve hovers">
                     <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                     <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
