@@ -18,7 +18,6 @@
     <input type="hidden" value="<?php  echo $newPet->getRace();?>" name="race">
     <input type="hidden" value="<?php  echo $newPet->getId();?>" name="idPet">
 
-
     <table class="fl-table photoGuardian showClasificacion ">
         <thead>
         <tr></tr>
@@ -35,15 +34,7 @@
         <?php 
         //Generamos las fechas inbetewn
         
-            $formato="d-m-Y";
-            $dates=array();//arreglo con todas las fechas a cubrir x el guardian
-            $actual=strtotime($fechaInicio);
-            $fin=strtotime($fechaFin);
-            $stepVal='+1 day';
-            while($actual<=$fin){
-                $dates[]=date($formato,$actual);
-                $actual=strtotime($stepVal,$actual);
-            }
+
 
             foreach($guardianList as $guardian){//que pasa con las del medio 
                             //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza

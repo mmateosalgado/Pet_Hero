@@ -184,5 +184,17 @@
             }
         }
 
+        public function GetAllByUser($user){//retorna todas las reservas de un user
+            $this->GetAll();
+            $reservas=array();
+
+            foreach($this->reserveList as $reserve){
+                if($reserve->getUserName() == $user){
+                    array_push($reservas,$reserve);
+                }
+            }
+
+            return $reservas;
+        }
     }
 ?>

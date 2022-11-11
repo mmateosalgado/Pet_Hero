@@ -24,6 +24,12 @@ use DAO\OwnerDAO;
             $this->petDAO=new PetDAO();
         }
 
+        public function Index($message = "")
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            require_once(VIEWS_PATH."Guardian/lobbyGuardian.php");
+        }
+
         public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
             $guardian=new Guardian();
 
@@ -42,15 +48,12 @@ use DAO\OwnerDAO;
             $guardian->setPrecioPorHora($pph);
             if($fechaInicio > $fechaFin)
             {
-                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin!'));</script>";
+                $message="La fecha de inicio de disponibilidad debe ser previa a la de fin!";
                 require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
 
             }
             else{
                 $guardian->setFechasDisponibles($this->getDatesBetween($fechaInicio,$fechaFin));
-               // $guardian->setFechaInicio($fechaInicio);
-               // $guardian->setFechaFin($fechaFin);
-               // --> crear arreglo con todos los dias
                 
                 $fileController = new FileController();
                 if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
@@ -90,71 +93,73 @@ use DAO\OwnerDAO;
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
         }
-        public function showGuardianProfile()
+        public function showGuardianProfile($message="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $userGuardian = $this->guardianDAO->getByUser($_SESSION["userName"]);
             require_once(VIEWS_PATH.'Guardian/profileGuardian.php');
         }
 
-        public function showUpdateGuardian($user){//+ inicio disponibilidad, fin disponibilidad
+        public function showUpdateGuardian($user,$message=""){
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            
             require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
         }
 
-        public function updateGuardian($iDisp,$fDisp,$size,$user){
+        public function updateGuardian($iDisp,$fDisp,$size,$user){//TODO:Testear
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
 
-            if($iDisp<$fDisp){
+            if($iDisp<=$fDisp){
                 $dates=$this->getDatesBetween($iDisp,$fDisp);
-                $guardianToUpdate->setFechasDisponibles($dates);
+
+                $reservesUser=$this->reserveDAO->GetAllByUser($user);
+                $reservesDates=array();
+
+                foreach ($reservesUser as $reserva) {
+                    $add=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFinal());
+                    array_merge($reservesDates,$dates);//arreglo que tendra todas las fechas de reservas del usuario
+                }
+
+                $datesToSave=array_intersect($dates,$reservesDates);
+
+                $guardianToUpdate->setFechasDisponibles($datesToSave);
                 $guardianToUpdate->setTamanioParaCuidar($size);
                 $this->guardianDAO->Update($guardianToUpdate);
-                echo "<script> if(confirm('Se actualizo la informacion correctamente!'));</script>";
-                $this->showGuardianProfile();
+
+
+                $this->showGuardianProfile("Se actualizo la informacion correctamente!");
             }else{
-                echo "<script> if(confirm('La fecha de inicio de disponibilidad debe ser previa a la de fin!'));</script>";
-                $this->showUpdateGuardian($user);
+
+                $this->showUpdateGuardian($user,"La fecha de inicio de disponibilidad debe ser previa a la de fin!");
             }
-
-
         }
 
         public function changeReserve($estado,$idReserve)
         {   //Borramos de fechas disponibles la reserva
-            $guardianDao=new GuardianDAO();
-            $reserveDao=new ReserveDao();
-            $guardian=$guardianDao->getByUser($_SESSION["userName"]);
-            $reserva=$reserveDao->getByIdReserve($idReserve);
+            $guardian=$this->guardianDAO->getByUser($_SESSION["userName"]);
+            $reserva=$this->reserveDAO->getByIdReserve($idReserve);
 
-            $formato="d-m-Y";
-            $dates=array();//arreglo con todas las fechas a cubrir x el guardian
-            $actual=strtotime($reserva->getFechaInicio());
-            $fin=strtotime($reserva->getFechaFin());
-            $stepVal='+1 day';
-            while($actual<=$fin){
-                $dates[]=date($formato,$actual);
-                $actual=strtotime($stepVal,$actual);
-            }
+            $dates=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
 
-            $this->sendConfirmationEmail($reserva);
+            $message=$this->sendConfirmationEmail($reserva);
 
             $guardian->deleteDates($dates);
-            $guardianDao->Update($guardian);
+            $this->guardianDAO->Update($guardian);
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate);
-            $this->showReservas();
+            $this->showReservas($message);
         }
 
         private function sendConfirmationEmail($reserva){
             //Guardian
-            $guardianDao=new GuardianDAO();
-            $guardian=$guardianDao->getById($reserva->getIdGuardian());
+            $guardian=$this->guardianDAO->getById($reserva->getIdGuardian());
             //Owner
             $ownerDao=new OwnerDAO();
             $owner=$ownerDao->getById($reserva->getIdOwner());
+            //Pet
+            $pet=$this->petDAO->getById($reserva->getIdMascota());
 
             //to--------------------------------------------------
             $mail=new PHPMailer(true);
@@ -171,7 +176,7 @@ use DAO\OwnerDAO;
             $mail->Subject="Confirmacion Reserva - PETHERO";
 
             $body="<h1>Hola " . $owner->getFullName() . "! </h1>" 
-            . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . "pet" . "\n" 
+            . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . $pet->getName() . "\n" 
             . "desde el " . $reserva->getFechaInicio() . " hasta el " . $reserva->getFechaFin() . "\n" .
             "<h2>--Informacion de contacto del Guardian!--</h2> \n" .
             "       - Telefono : ". $guardian->getTelefono() ."<br>".
@@ -182,9 +187,11 @@ use DAO\OwnerDAO;
             $mail->Body=$body;
 
             $mail->send();
+
+            return "Se a enviado la confirmacion al Dueño";
         }
 
-        public function showReservas()
+        public function showReservas($message="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();

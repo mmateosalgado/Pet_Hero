@@ -28,7 +28,7 @@
             $this->reserveDAO = new ReserveDAO();
         }
 
-        public function showOwnerLobby($message=null)
+        public function showOwnerLobby($message="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
@@ -39,10 +39,25 @@
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
-            $newPet = $this->petDAO->getById($idPet);
-            $guardianList = $this->guardianDAO->GetAll();
-            $reservasDao=new ReserveDAO();
-            require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
+            
+            if($fechaInicio<$fechaFin){
+                $formato="d-m-Y";
+                $dates=array();//arreglo con todas las fechas a cubrir x el guardian
+                $actual=strtotime($fechaInicio);
+                $fin=strtotime($fechaFin);
+                $stepVal='+1 day';
+
+                while($actual<=$fin){
+                    $dates[]=date($formato,$actual);
+                    $actual=strtotime($stepVal,$actual);
+                }
+                $newPet = $this->petDAO->getById($idPet);
+                $guardianList = $this->guardianDAO->GetAll();
+                $reservasDao=new ReserveDAO();
+                require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
+            }else{
+                $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
+            }
         }
 
         public function showAddPet()

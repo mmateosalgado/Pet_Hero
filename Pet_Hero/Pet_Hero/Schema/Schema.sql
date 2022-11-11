@@ -28,9 +28,12 @@ fotoPerfil varchar(300) not null,
 fechasDisponibles varchar(500),
 id_tamanioParaCuidar integer not null,
 calificacion integer not null,
+precioporhora integer not null,
+
 primary key (id_guardian),
 constraint fkGenderG foreign key (id_gender) references gender(id_gender),
 constraint fkTamanio foreign key (id_tamanioParaCuidar) references tamanio(id_tamanio)
+
 )Engine=InnoDB;
 
 create table owner(

@@ -5,6 +5,11 @@
 <div>Reservas <span>Confirmadas</span></div>
 </div>
 
+    <div>
+            <br>  
+            <?php if(isset($message)) 
+            { echo "<div class='message'><a>". $message."</a></div>";} ?>
+    </div>
     <div class="table-wrapper">
     <table class="fl-table fl-tableReserve photoGuardian" >
         <thead>

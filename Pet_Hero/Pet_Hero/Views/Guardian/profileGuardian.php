@@ -6,9 +6,11 @@
 </div>
 
    
-
-    
-        
+        <div>
+            <br>     
+                <?php if(isset($message)) 
+                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+        </div>
         <div class="textInfo update">
             <span>Nombre de usuario:</span><?php echo $userGuardian->getuserName();?><br>
             <span>Nombre Completo:</span><?php echo $userGuardian->getFullName();?><br>
