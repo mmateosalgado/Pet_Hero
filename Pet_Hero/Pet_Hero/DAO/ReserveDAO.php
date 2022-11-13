@@ -58,12 +58,17 @@
                 $idEstado = $this->GetEstadoId($reserve->getEstado());
                 $reserve->setEstado($idEstado);
                 
-            $query = "CALL p_insert_reserve (".$reserve->getIdGuardian().",".$reserve->getIdMascota().
-            ",'".$reserve->getFechaInicio()."','".$reserve->getFechaFin()."',".$reserve->getTotal().",".$reserve->getEstado().");";
+            $query = "CALL p_insert_reserve (:pIdGuardian, :pIdMascota, :pFechaInicio, :pFechaFin, :pTotal, :pEstado);";
+            $parameters["pIdGuardian"] = $reserve->getIdGuardian();
+            $parameters["pIdMascota"] = $reserve->getIdMascota();
+            $parameters["pFechaInicio"] = $reserve->getFechaInicio();
+            $parameters["pFechaFin"] = $reserve->getFechaFin();
+            $parameters["pTotal"] = $reserve->getTotal();
+            $parameters["pEstado"]= $reserve->getEstado();
             
             $this->connection = Connection::GetInstance();
 
-            $this->connection->ExecuteNonQuery($query);
+            $this->connection->ExecuteNonQuery($query, $parameters);
             }
             catch(Exception $ex)
             {
@@ -72,39 +77,102 @@
         }
         
         public function getByIdGuardian($idGuardian){
-            $this->GetAll();
+            try
+            {
+                $query = "CALL p_get_ByIdGuardianReserve(:pIdGuardian);";
+                $parameters["pIdGuardian"]=$idGuardian;
             $reserveList= array();
 
-            foreach($this->reserveList as $reserve){
-                if($reserve->getIdGuardian() == $idGuardian){
-                    array_push($reserveList,$reserve);
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+
+            foreach($resultSet as $row){
+                $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                 array_push($reserveList,$reserve);
                 }
-            }
             return $reserveList;
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
         }
 
         
         public function getbyIdOwner($idOwner){
-            $this->GetAll();
+            try
+            {
+                $query = "CALL p_get_ByIdOwnerReserve(:pIdOwner);";
+                $parameters["pIdOwner"]=$idOwner;
             $reserveList= array();
 
-            foreach($this->reserveList as $reserve){
-                if($reserve->getIdOwner() == $idOwner){
-                    array_push($reserveList,$reserve);
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+
+            foreach($resultSet as $row){
+                $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                 array_push($reserveList,$reserve);
                 }
-            }
             return $reserveList;
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
         }
 
         public function getByIdReserve($idReserve){
-            $this->GetAll();
+            try
+            {
+                $query = "CALL p_get_ByIdReserve(:pIdReserve);";
+                $parameters["pIdReserve"]=$idReserve;
 
-            foreach($this->reserveList as $reserve){
-                if($reserve->getIdReserve() == $idReserve){
-                    return  $reserve;
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+
+            foreach($resultSet as $row){
+                $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                 return $reserve;
                 }
-            }
             return null;
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
         }
 
         public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
@@ -138,9 +206,14 @@
             try
             {
             $idEstado = $this->GetEstadoId($reserve->getEstado());
-            $query = "CALL p_update_reserve(".$reserve->getIdReserve().",".$idEstado.",".$reserve->getTotal().");";
+            $query = "CALL p_update_reserve( :pIdReserve, :pIdEstado, :pTotal);";
+
+            $parameters["pIdReserve"] = $reserve->getIdReserve();
+            $parameters["pIdEstado"]=$idEstado;
+            $parameters["pTotal"]=$reserve->getTotal();
+
             $this->connection = Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query);
+            $this->connection->ExecuteNonQuery($query,$parameters);
              }
             catch(Exception $ex)
             {
@@ -151,9 +224,10 @@
         public function Delete($idReserve){
         try
         {
-        $query = "CALL p_delete_reserve('".$idReserve."');";
+        $query = "CALL p_delete_reserve(:pIdReserve);";
+        $parameters["pIdReserve"] = $idReserve;
         $this->connection = Connection::GetInstance();
-        $this->connection->ExecuteNonQuery($query);
+        $this->connection->ExecuteNonQuery($query,$parameters);
          }
         catch(Exception $ex)
         {
@@ -168,10 +242,11 @@
             try
             {
             $id = null;
-    
-            $query = "CALL p_get_IdEstado('".$estado."');";
+            $query = "CALL p_get_IdEstado(:pEstado);";
+            $parameters["pEstado"]=$estado;
+
             $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query);
+            $resultSet= $this->connection->Execute($query,$parameters);
             foreach ($resultSet as $row)
             {                
                 $id=($row["id_estado"]);

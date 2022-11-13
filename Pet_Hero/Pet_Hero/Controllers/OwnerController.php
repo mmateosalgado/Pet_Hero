@@ -110,6 +110,12 @@
             }
             
             $pet->setIdOwner($_SESSION["id"]);
+
+            if($pet->getVideo() == null)
+            {
+                $pet->setVideo("null");
+            }
+
             $this->petDAO->Add($pet);
             $this->showPets();
         }

@@ -21,18 +21,26 @@
         {
             try {
                 $idSize = $this->GetSizeId($pet->getSize());
-                $pet->setSize($idSize);
                 $this->getIdRace($pet->getRace(),$pet);
-                
-            $query = "CALL p_insert_pet (".$pet->getIdOwner().",'".$pet->getName()."',"
-            .$pet->getAnimal().",".$pet->getSize().",'".$pet->getDescription()."',".$pet->getAge().","
-            .$pet->getGrXfoodPortion().",".$pet->getWeight().",'".$pet->getFoto()."','".$pet->getPlanVacunacion()."','"
-            .$pet->getVideo()."');";
 
-            
+
+            $query = "CALL p_insert_pet (:pIdOwner, :pName, :pAnimal, :pSize, :pDescription, :pAge, :pGrXfoodPortion, :pWeight, :pPhotoProfile, :pPlanVacunacion, :pVideo);";
+
+            $parameters["pIdOwner"]= $pet->getIdOwner();
+            $parameters["pName"]=$pet->getName();
+            $parameters["pAnimal"]=$pet->getAnimal();
+            $parameters["pSize"]=$idSize;
+            $parameters["pDescription"]=$pet->getDescription();
+            $parameters["pAge"]=$pet->getAge();
+            $parameters["pGrXfoodPortion"]=$pet->getGrXfoodPortion();
+            $parameters["pWeight"]=$pet->getWeight();
+            $parameters["pPhotoProfile"]=$pet->getFoto();
+            $parameters["pPlanVacunacion"]=$pet->getPlanVacunacion();
+            $parameters["pVideo"]=$pet->getVideo();
+
             $this->connection = Connection::GetInstance();
 
-            $this->connection->ExecuteNonQuery($query);
+            $this->connection->ExecuteNonQuery($query, $parameters);
             }
             catch(Exception $ex)
             {
@@ -78,35 +86,84 @@
             }
         }
         public function getAllByOwnerId($idOwner){
-            $this->GetAll();
-            $ownerPets=array();
+            try
+            {
+                $query = "CALL p_get_PetByOwnerId(:pIdOwner);";
+                $parameters["pIdOwner"]=$idOwner;
+                $ownerPets=array();
 
-            foreach($this->petList as $pet){
-                if($pet->getIdOwner() == $idOwner){
-                    array_push($ownerPets, $pet);
-                }
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->Execute($query,$parameters);
+
+                foreach($resultSet as $row){
+                    $pet = new Pet();
+                    $pet->setId($row["id_pet"]);
+                    $pet->setIdOwner($row["id_owner"]);
+                    $pet->setName($row["name"]);
+                    $pet->setAnimal($row["animal"]);
+                    $pet->setRace($row["race"]);
+                    $pet->setSize($row["tamanio"]);
+                    $pet->setDescription($row["description"]);
+                    $pet->setAge($row["age"]);
+                    $pet->setGrXfoodPortion($row["grXfoodPortion"]);
+                    $pet->setWeight($row["weight"]);
+                    $pet->setFoto($row["foto"]);
+                    $pet->setPlanVacunacion($row["planVacunacion"]);
+                    $pet->setVideo($row["video"]);
+                    array_push($ownerPets,$pet);
+                    }
+             return $ownerPets;
             }
-
-            return $ownerPets;
-        }
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
+            
+            }
         
         public function getById($id){
-            $this->GetAll();
-            foreach($this->petList as $pet){
-                if($pet->getId() == $id){
+            try
+            {
+                $query = "CALL p_get_PetById(:pId);";
+                $parameters["pId"]=$id;
+                $this->connection = Connection::GetInstance();
+
+                $resultSet = $this->connection->Execute($query,$parameters);
+
+                foreach($resultSet as $row){
+                    $pet = new Pet();
+                    $pet->setId($row["id_pet"]);
+                    $pet->setIdOwner($row["id_owner"]);
+                    $pet->setName($row["name"]);
+                    $pet->setAnimal($row["animal"]);
+                    $pet->setRace($row["race"]);
+                    $pet->setSize($row["tamanio"]);
+                    $pet->setDescription($row["description"]);
+                    $pet->setAge($row["age"]);
+                    $pet->setGrXfoodPortion($row["grXfoodPortion"]);
+                    $pet->setWeight($row["weight"]);
+                    $pet->setFoto($row["foto"]);
+                    $pet->setPlanVacunacion($row["planVacunacion"]);
+                    $pet->setVideo($row["video"]);
                     return $pet;
-                }
+                    }
+             return null;
             }
-            return null;
+            catch(Exception $ex)
+            {
+                throw $ex;
+            }
         }
 
         public function getIdRace($race,$pet)
         {
             try
             {
-            $query = "CALL p_get_IdRace('".$race."');";
+            $query = "CALL p_get_IdRace(:pRace);";
+            $parameters["pRace"] = $race;
             $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query);
+            $resultSet= $this->connection->Execute($query,$parameters);
             foreach ($resultSet as $row)
             {                
                 $pet->setRace($row["id_race"]);
@@ -125,10 +182,11 @@
             try
             {
             $id = null;
-    
-            $query = "CALL p_get_tamanio('".$size."');";
+            $query = "CALL p_get_tamanio(:pSize);";
+            $parameters["pSize"] = $size;
+            
             $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query);
+            $resultSet= $this->connection->Execute($query,$parameters);
             foreach ($resultSet as $row)
             {                
                 $id=($row["id_tamanio"]);
@@ -145,9 +203,14 @@
             try
             {
             $id = $this->GetSizeId($pet->getSize());
-            $query = "CALL p_update_pet(".$pet->getId().",".$id.",".$pet->getWeight().",".$pet->getGrXfoodPortion().",);";
+            $query = "CALL p_update_pet(:pIdPet, :pIdSize, :pWeight, :pGr);";
+            $parameters["pIdPet"]=$pet->getId();
+            $parameters["pIdSize"]=$id;
+            $parameters["pWeight"]=$pet->getWeight();
+            $parameters["pGr"]=$pet->getGrXfoodPortion();
+
             $this->connection = Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query);
+            $this->connection->ExecuteNonQuery($query,$parameters);
              }
             catch(Exception $ex)
             {
@@ -158,9 +221,10 @@
         public function Delete( $idPet){
             try
             {
-            $query = "CALL p_delete_pet(".$idPet.");";
+            $query = "CALL p_delete_pet( :idPet);";
+            $parameters["idPet"] = $idPet;
             $this->connection = Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query);
+            $this->connection->ExecuteNonQuery($query,$parameters);
              }
             catch(Exception $ex)
             {
