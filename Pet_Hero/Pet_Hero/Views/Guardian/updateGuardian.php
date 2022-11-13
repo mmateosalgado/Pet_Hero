@@ -15,13 +15,18 @@
         <label><br>Fin de la disponibilidad</label>
         <input type="date" placeholder="Fin de la Disponibilidad" name="fDisp" min=<?php echo $minDate?> required><br><br><!-- fin disponibilidad-->
         <label for="size"> Tamaño de mascotas a cuidar: </label>
-                    <div class="ac_type" >      
-                                Grande <input type="radio" name="size" value="big" required id="size">
-                                Mediano <input type="radio" name="size" value="medium">
-                                Pequeño <input type="radio" name="size" value="small">
-                    </div>
+        <div class="ac_type" >      
+            Grande <input type="radio" name="size" value="big" required id="size">
+            Mediano <input type="radio" name="size" value="medium">
+            Pequeño <input type="radio" name="size" value="small">
+        </div>
         <input type="hidden" value="<?php echo $user?>" name="user">
         <input type="submit" value="Guardar cambios"><br>
+        <div>
+                <br>            
+                <?php if(isset($message)) 
+                { echo "<font>". $message."</font>";} ?>
+        </div>
     </div>
 </form>
 

@@ -323,6 +323,6 @@ class GuardianDAO{
             throw $ex;
         }
 
-                        }
-}
+        }
+    }
 ?>

@@ -2,13 +2,10 @@
  include('Views/../../Section/nav.php');
  ?>
 <div class="headerSP">
-<div> Guardián: <span><?php echo $userGuardian->getuserName();?></span></div>
+<div> Guardián: <span><?php echo $userGuardian->getUserName();?></span></div>
 </div>
 
-   
 
-    
-        
         <div class="textInfo update">
             <span>Nombre de usuario:</span><?php echo $userGuardian->getuserName();?><br>
             <span>Nombre Completo:</span><?php echo $userGuardian->getFullName();?><br>
@@ -29,6 +26,11 @@
         <input type="hidden" value="<?php echo $userGuardian->getuserName();?>" name="user">
         <input type="submit" value="Modificar Datos">
     </form>
+     <div>
+            <br>     
+                <?php if(isset($message)) 
+                { echo "<font>". $message."</font>";} ?>
+        </div>
         </div>
         <div class="photoProfile">
         <span>Foto:<br></span><img src="<?php echo $userGuardian->getFotoPerfil();?>" width="300px" height="300px">
