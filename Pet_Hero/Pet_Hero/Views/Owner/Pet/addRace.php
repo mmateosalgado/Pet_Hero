@@ -16,40 +16,40 @@
                     <?php if($animal == 'perro'){?>
                         <select name="race" required placeholder="Raza" required>
                         <optgroup label="Raza de Perro"></optgroup>
-                        <option  value="salchicha">Salchicha</option>
-                         <option  value="caniche" >Caniche</option>
-                         <option  value="bulldog">Bulldog</option>
-                         <option   value="labrador">Labrador</option>
-                         <option   value="pitbull">Pitbull</option>
-                         <option   value="golden">Golden</option>
-                         <option   value="doberman">Dóberman</option>
+                        <option  value="1">Salchicha</option>
+                         <option  value="2" >Caniche</option>
+                         <option  value="3">Bulldog</option>
+                         <option   value="4">Labrador</option>
+                         <option   value="5">Pitbull</option>
+                         <option   value="6">Golden</option>
+                         <option   value="7">Dóberman</option>
                         </select><br>
                         <?php }else if($animal=='gato')
                         { ?>
                          <select name="race" required placeholder="Raza" required>
                         <optgroup label="Raza de Gato"></optgroup>
-                         <option  value="persa" >Persa</option>
-                         <option  value="siames">Siamés</option>
-                         <option   value="ragdoll">Ragdoll</option>
-                         <option   value="british">British shorthair</option>
-                         <option   value="siberiano">Siberiano</option>
+                         <option  value="8" >Persa</option>
+                         <option  value="9">Siamés</option>
+                         <option   value="10">Ragdoll</option>
+                         <option   value="11">British shorthair</option>
+                         <option   value="12">Siberiano</option>
                         </select><br>
                         <?php }else if($animal=='hamster')
                         { ?>
                         <select name="race" required placeholder="Raza" required>
                         <optgroup label="Raza de Hamster"></optgroup>
-                         <option  value="china" >Enano de china.</option>
-                         <option  value="ruso">Enano ruso</option>
-                         <option   value="campbell">Enano de Campbell.</option>
-                         <option   value="roborowski">Enano Roborowski</option>
+                         <option  value="13" >Enano de china.</option>
+                         <option  value="14">Enano ruso</option>
+                         <option   value="15">Enano de Campbell.</option>
+                         <option   value="16">Enano Roborowski</option>
                         </select><br>
                         <?php }else if($animal=='pez') { ?>
                         <select name="race" required placeholder="Raza" required>
                         <optgroup label="Raza de Pez"></optgroup>
-                         <option  value="payaso" >Payaso</option>
-                         <option  value="guppys ">Guppys </option>
-                         <option   value="tetras ">Tetras </option>
-                         <option   value="disco ">Disco </option>
+                         <option  value="17" >Payaso</option>
+                         <option  value="18 ">Guppys </option>
+                         <option   value="19 ">Tetras </option>
+                         <option   value="20 ">Disco </option>
                         </select><br>
                         <?php } ?>
                     <label for="photoProfile"> Foto de la Mascota :             </label>

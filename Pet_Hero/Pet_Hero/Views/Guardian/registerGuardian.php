@@ -23,9 +23,9 @@
                     
                     <label for="size"> Tamaño de mascotas a cuidar: </label>
                     <div class="ac_type" >      
-                                Grande <input type="radio" name="size" value="big" required id="size">
-                                Mediano <input type="radio" name="size" value="medium">
-                                Pequeño <input type="radio" name="size" value="small">
+                                Grande <input type="radio" name="size" value="3" required id="size">
+                                Mediano <input type="radio" name="size" value="2">
+                                Pequeño <input type="radio" name="size" value="1">
                     </div>
                             <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
                             <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>

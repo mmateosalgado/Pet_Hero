@@ -20,16 +20,12 @@
         public function Add(Pet $pet)
         {
             try {
-                $idSize = $this->GetSizeId($pet->getSize());
-                $this->getIdRace($pet->getRace(),$pet);
-
-
             $query = "CALL p_insert_pet (:pIdOwner, :pName, :pAnimal, :pSize, :pDescription, :pAge, :pGrXfoodPortion, :pWeight, :pPhotoProfile, :pPlanVacunacion, :pVideo);";
 
             $parameters["pIdOwner"]= $pet->getIdOwner();
             $parameters["pName"]=$pet->getName();
-            $parameters["pAnimal"]=$pet->getAnimal();
-            $parameters["pSize"]=$idSize;
+            $parameters["pAnimal"]=$pet->getRace(); /*Contiene la id de la raza*/
+            $parameters["pSize"]=$pet->getSize();
             $parameters["pDescription"]=$pet->getDescription();
             $parameters["pAge"]=$pet->getAge();
             $parameters["pGrXfoodPortion"]=$pet->getGrXfoodPortion();
@@ -156,56 +152,12 @@
             }
         }
 
-        public function getIdRace($race,$pet)
-        {
-            try
-            {
-            $query = "CALL p_get_IdRace(:pRace);";
-            $parameters["pRace"] = $race;
-            $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query,$parameters);
-            foreach ($resultSet as $row)
-            {                
-                $pet->setRace($row["id_race"]);
-                $pet->setAnimal($row["id_tipoAnimal"]);
-            }
-            return $pet;
-        }
-            catch(Exception $ex)
-            {
-            throw $ex;
-            }
-        }
-
-        public function GetSizeId($size)
-        {
-            try
-            {
-            $id = null;
-            $query = "CALL p_get_tamanio(:pSize);";
-            $parameters["pSize"] = $size;
-            
-            $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query,$parameters);
-            foreach ($resultSet as $row)
-            {                
-                $id=($row["id_tamanio"]);
-            }
-            return $id;
-        }
-            catch(Exception $ex)
-            {
-            throw $ex;
-            }
-        }
-
         public function Update(Pet $pet){
             try
             {
-            $id = $this->GetSizeId($pet->getSize());
             $query = "CALL p_update_pet(:pIdPet, :pIdSize, :pWeight, :pGr);";
             $parameters["pIdPet"]=$pet->getId();
-            $parameters["pIdSize"]=$id;
+            $parameters["pIdSize"]=$pet->getSize();
             $parameters["pWeight"]=$pet->getWeight();
             $parameters["pGr"]=$pet->getGrXfoodPortion();
 

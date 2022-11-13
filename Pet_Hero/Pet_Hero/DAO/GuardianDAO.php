@@ -65,10 +65,6 @@ class GuardianDAO{
     {
         try
         {
-            $id = $this->GetGenderId($guardian->getGender());
-            $guardian->setGender($id);
-            $idSize = $this->GetSizeId($guardian->getTamanioParaCuidar());
-            $guardian->setTamanioParaCuidar($idSize);
             $guardian->setCalificacion(0);
 
             $fechasDisponibles=array();
@@ -102,55 +98,10 @@ class GuardianDAO{
             throw $ex;
         }
     }
-    public function GetGenderId($gender)
-    {
-        try
-        {
-        $id = null;
-
-        $query = "CALL p_get_gender(:pGender);";
-        $parameters["pGender"] = $gender;
-
-        $this->connection = Connection::GetInstance();
-        $resultSet= $this->connection->Execute($query,$parameters);
-        foreach ($resultSet as $row)
-        {                
-            $id=($row["id_gender"]);
-        }
-        return $id;
-    }
-        catch(Exception $ex)
-        {
-        throw $ex;
-        }
-    }
-
-    public function GetSizeId($size)
-    {
-        try
-        {
-        $id = null;
-        $query = "CALL p_get_tamanio(:pSize);";
-        $parameters["pSize"] = $size;
-
-        $this->connection = Connection::GetInstance();
-        $resultSet= $this->connection->Execute($query,$parameters);
-
-        foreach ($resultSet as $row)
-        {                
-            $id=($row["id_tamanio"]);
-        }
-        return $id;
-    }
-        catch(Exception $ex)
-        {
-        throw $ex;
-        }
-    }
+    
     public function Update(Guardian $guardian){
         try
         {
-        $id = $this->GetSizeId($guardian->getTamanioParaCuidar());
         
         $fechasDisponibles=array();
         $fechasDisponibles=$guardian->getFechasDisponibles();
@@ -159,7 +110,7 @@ class GuardianDAO{
         $query = "CALL p_update_guardian(:pUserName, :pFechasDisponibles, :pId);";
         $parameters[":pUserName"]=$guardian->getUserName();
         $parameters[":pFechasDisponibles"]=$fechasDisponiblesEncoded;
-        $parameters[":pId"]=$id;
+        $parameters[":pId"]=$guardian->getTamanioParaCuidar();
 
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query,$parameters);

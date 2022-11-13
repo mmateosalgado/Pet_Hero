@@ -126,11 +126,6 @@
             
             $pet->setIdOwner($_SESSION["id"]);
 
-            if($pet->getVideo() == null)
-            {
-                $pet->setVideo("null");
-            }
-
             $this->petDAO->Add($pet);
             $this->showPets();
         }
@@ -146,7 +141,7 @@
             $reserve->setIdMascota($idPet);
             $reserve->setIdGuardian($idGuardian);
             $reserve->setTotal($this->calcularTotal($fechaInicio,$fechaFin,$precio));
-            $reserve->setEstado("En espera");
+            $reserve->setEstado(1);
             $this->reserveDAO->Add($reserve);
             $this->showOwnerLobby("Reserva solicitada exitosamente");
         }

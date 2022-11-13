@@ -148,7 +148,7 @@ use DAO\OwnerDAO;
             $this->guardianDAO->Update($guardian);
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
-            $this->reserveDAO->Update($reserveToUpdate);
+            $this->reserveDAO->Update($reserveToUpdate); //TODO Acordarse de mandar la id del Estado a cambiar//
             $this->showReservas($message);
         }
 

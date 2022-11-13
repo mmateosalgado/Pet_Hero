@@ -1,19 +1,5 @@
 
 /* ------------------------------ -----------------PET ----------------------------------------------------------------------------------------------------------------*/
-/*-----------------------------------------------------Devolder Id Race e IdtipoAnimal--------------------------------------------------------*/
-
-DELIMITER $$
-CREATE PROCEDURE p_get_IdRace(IN pRace varchar(50)) 
-BEGIN
-	SELECT r.id_race, a.id_tipoAnimal
-    FROM animal as a 
-    inner join race as r 
-    on r.id_race = a.id_race
-    WHERE r.race=pRace;
-END;
-$$
-/*-----------------------------------------------Para llamarla */
-                /*call p_get_IdRace ("golden");
 
 /*-----------------------------------------------Agregar PET ----------------------------------------------------------------*/
 DROP PROCEDURE IF EXISTS p_insert_pet;

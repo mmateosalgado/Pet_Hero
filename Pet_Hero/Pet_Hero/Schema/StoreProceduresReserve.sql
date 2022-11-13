@@ -1,16 +1,6 @@
 
 /*-------------------------------------------------------------RESERVES----------------------------------------------------*/
 
-/*-------------------------------------------------------------Ver Estado --------------------------------*/
-DELIMITER $$
-CREATE PROCEDURE p_get_IdEstado(IN pEstado varchar(50)) 
-BEGIN
-	SELECT id_estado  FROM estado WHERE estado=pEstado;
-END;
-$$
-/*----------------------------------------------------------------Para llamarla --------------------------------*/
-/*-------------------------call p_get_IdEstado("realizada");*/
-
 /*-------------------------------------------------------------Agregar Reserva --------------------------------*/
 DROP PROCEDURE IF EXISTS p_insert_reserve;
 DELIMITER $$

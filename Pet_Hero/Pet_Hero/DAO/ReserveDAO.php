@@ -55,8 +55,6 @@
         public function Add(Reserve $reserve)
         {
             try {
-                $idEstado = $this->GetEstadoId($reserve->getEstado());
-                $reserve->setEstado($idEstado);
                 
             $query = "CALL p_insert_reserve (:pIdGuardian, :pIdMascota, :pFechaInicio, :pFechaFin, :pTotal, :pEstado);";
             $parameters["pIdGuardian"] = $reserve->getIdGuardian();
@@ -205,11 +203,10 @@
         {
             try
             {
-            $idEstado = $this->GetEstadoId($reserve->getEstado());
             $query = "CALL p_update_reserve( :pIdReserve, :pIdEstado, :pTotal);";
 
             $parameters["pIdReserve"] = $reserve->getIdReserve();
-            $parameters["pIdEstado"]=$idEstado;
+            $parameters["pIdEstado"]=$reserve->getEstado();
             $parameters["pTotal"]=$reserve->getTotal();
 
             $this->connection = Connection::GetInstance();
@@ -234,29 +231,6 @@
         throw $ex;
         }
            
-        }
-
-
-        public function GetEstadoId($estado)
-        {
-            try
-            {
-            $id = null;
-            $query = "CALL p_get_IdEstado(:pEstado);";
-            $parameters["pEstado"]=$estado;
-
-            $this->connection = Connection::GetInstance();
-            $resultSet= $this->connection->Execute($query,$parameters);
-            foreach ($resultSet as $row)
-            {                
-                $id=($row["id_estado"]);
-            }
-            return $id;
-        }
-            catch(Exception $ex)
-            {
-            throw $ex;
-            }
         }
 
         public function GetAllByUser($user){//retorna todas las reservas de un user

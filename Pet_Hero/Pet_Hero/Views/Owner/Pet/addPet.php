@@ -21,9 +21,9 @@ include('Views/../../../Section/nav.php');
                         </select><br>
                         <label for="size"> Tamaño: </label>
             <div class="ac_type" >      
-                        Grande <input type="radio" name="size" value="big" required id="size">
-                        Mediano <input type="radio" name="size" value="medium">
-                        Pequeño <input type="radio" name="size" value="small">
+                        Grande <input type="radio" name="size" value="3" required id="size">
+                        Mediano <input type="radio" name="size" value="2">
+                        Pequeño <input type="radio" name="size" value="1">
             </div>
                     <input type="number" placeholder="Peso" name="weight" min="0" required><br>
                     <input type="number" placeholder="Edad" name="age" min="0" required><br>

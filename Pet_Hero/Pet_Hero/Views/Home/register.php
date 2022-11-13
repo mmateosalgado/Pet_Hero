@@ -17,9 +17,9 @@
                         Guardián <input type="radio" name="accountType" value="guardian">
                     </div>
                     <div class="ac_type" >      
-                        Mujer <input type="radio" name="gender" value="female" required>
-                        Hombre <input type="radio" name="gender" value="male">
-                        Otro <input type="radio" name="gender" value="other">
+                        Mujer <input type="radio" name="gender" value="1" required>
+                        Hombre <input type="radio" name="gender" value="2">
+                        Otro <input type="radio" name="gender" value="3">
                     </div>
                     <input type ="number" placeholder="telefono" name="telefono" required min=0><br>
                     <input type="submit" value="Registrarse"><br><br><br>

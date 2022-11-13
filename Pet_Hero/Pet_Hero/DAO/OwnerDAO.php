@@ -36,7 +36,7 @@ class OwnerDAO{
             $owner->setId($row["id_owner"]);
             $owner->setTelefono($row["telefono"]);
             $owner->setGender($row["gender"]);
-            $owner->setType("owner"); //TODO Acordarde de esto al buscar owner y guardian
+            $owner->setType("owner"); 
             array_push($this->ownerList, $owner);  
         }
         return $this->ownerList;
@@ -52,8 +52,6 @@ class OwnerDAO{
     {
         try
         {
-            $id = $this->GetGenderId($owner->getGender());
-            $owner->setGender($id);
             $query = "CALL p_insert_owner (:pUserName, :pPassword, :pFUllName, :pAge, :pEmail, :pId_Gender, :pTelefono);";
             $parameters["pUserName"] = $owner->getUserName();
             $parameters["pPassword"] = $owner->getPassword();
@@ -70,28 +68,6 @@ class OwnerDAO{
         catch(Exception $ex)
         {
             throw $ex;
-        }
-    }
-
-    public function GetGenderId($gender)
-    {
-        try
-        {
-        $id = null;
-
-        $query = "CALL p_get_gender(:gender);";
-        $parameters["gender"] = $gender;
-        $this->connection = Connection::GetInstance();
-        $resultSet= $this->connection->Execute($query,$parameters);
-        foreach ($resultSet as $row)
-        {                
-            $id=($row["id_gender"]);
-        }
-        return $id;
-    }
-        catch(Exception $ex)
-        {
-        throw $ex;
         }
     }
 
