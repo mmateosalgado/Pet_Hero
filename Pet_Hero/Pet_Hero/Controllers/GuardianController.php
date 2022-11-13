@@ -113,8 +113,8 @@ use DAO\OwnerDAO;
             if($iDisp<=$fDisp){
                 $dates=$this->getDatesBetween($iDisp,$fDisp);
 
-                $reservesUser=$this->reserveDAO->GetAllByUser($user); //TODO en esta funcion esta el error
-                $reservesDates=array();
+                $reservesUser=$this->reserveDAO->getByIdGuardian($_SESSION["id"]); //TODO en esta funcion esta el error
+                $reservesDates=array();                                            //TODO Ahora debería funcionar
 
                 foreach ($reservesUser as $reserva) {
                     $add=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFinal());
