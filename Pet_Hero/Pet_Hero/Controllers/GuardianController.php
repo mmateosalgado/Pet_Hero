@@ -106,27 +106,33 @@ use DAO\OwnerDAO;
             require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
         }
 
-        public function updateGuardian($iDisp,$fDisp,$size,$user){//TODO:Testear
+        public function UpdateGuardian($iDisp,$fDisp,$size,$user){
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
-
             if($iDisp<=$fDisp){
-                $dates=$this->getDatesBetween($iDisp,$fDisp);
+                $newDates=array();//Fechas Nueva Reservas                                           
+                $newDates=$this->getDatesBetween($iDisp,$fDisp);//Nuevas fechas disponibles
 
-                $reservesUser=$this->reserveDAO->getByIdGuardian($_SESSION["id"]); //TODO en esta funcion esta el error
-                $reservesDates=array();                                            //TODO Ahora debería funcionar
+                $reservesUser=$this->reserveDAO->getByIdGuardianConfirm($_SESSION["id"]); 
+
+                $reserveDates=array();//Fechas Reservas Confirmadas
 
                 foreach ($reservesUser as $reserva) {
-                    $add=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFinal());
-                    array_merge($reservesDates,$dates);//arreglo que tendra todas las fechas de reservas del usuario
+                    $fechasReserva=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                    $reserveDates=array_merge($reserveDates,$fechasReserva);
                 }
+                
+                //Sacar Repetidos
+                $reserveDates=array_unique($reserveDates);
 
-                $datesToSave=array_intersect($dates,$reservesDates);
+                //Diferencia
+                $datesToSave=array_diff($newDates,$reserveDates);
 
+                //Guardar
                 $guardianToUpdate->setFechasDisponibles($datesToSave);
                 $guardianToUpdate->setTamanioParaCuidar($size);
-                $this->guardianDAO->Update($guardianToUpdate);
 
+                $this->guardianDAO->Update($guardianToUpdate);
 
                 $this->showGuardianProfile("Se actualizo la informacion correctamente!");
             }else{
@@ -145,11 +151,25 @@ use DAO\OwnerDAO;
             $message=$this->sendConfirmationEmail($reserva);
 
             $guardian->deleteDates($dates);
+            $guardian->setTamanioParaCuidar($this->getSizeId($guardian->getTamanioParaCuidar()));
+
             $this->guardianDAO->Update($guardian);
+
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
-            $this->reserveDAO->Update($reserveToUpdate); //TODO Acordarse de mandar la id del Estado a cambiar//
+            $this->reserveDAO->Update($reserveToUpdate); 
             $this->showReservas($message);
+        }
+
+        public function getSizeId($tamanio){
+
+            if($tamanio=='small'){
+                return 1;
+            }else if($tamanio=="medium"){
+                return 2;
+            }else if($tamanio=="big"){
+                return 3;
+            }
         }
 
         private function sendConfirmationEmail($reserva){

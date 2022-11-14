@@ -41,7 +41,6 @@
             <td><button class="btn_check" name="estado" value="2"> </button></td>
 
             <input type="hidden" value="<?php  echo $reserve->getIdReserve()?>" name="idReserve"> 
-
         </tr>
        <?php  } }
           } }?>

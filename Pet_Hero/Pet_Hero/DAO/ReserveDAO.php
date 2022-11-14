@@ -73,11 +73,44 @@
                 throw $ex;
             }
         }
-        
+
         public function getByIdGuardian($idGuardian){
             try
             {
                 $query = "CALL p_get_ByIdGuardianReserve(:pIdGuardian);";
+                $parameters["pIdGuardian"]=$idGuardian;
+            $reserveList= array();
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+
+            foreach($resultSet as $row){
+                $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                 array_push($reserveList,$reserve);
+                }
+            return $reserveList;
+        }
+        catch(Exception $ex)
+        {
+            throw $ex;
+        }
+        }
+
+        public function getByIdGuardianConfirm($idGuardian){ 
+            try
+            {
+                $query = "CALL p_get_ByIdGuardianReserveConfirmadas(:pIdGuardian);";
                 $parameters["pIdGuardian"]=$idGuardian;
             $reserveList= array();
 

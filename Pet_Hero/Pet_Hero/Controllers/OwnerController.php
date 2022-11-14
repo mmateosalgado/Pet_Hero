@@ -51,6 +51,7 @@
                     $dates[]=date($formato,$actual);
                     $actual=strtotime($stepVal,$actual);
                 }
+                $days=count($dates);
                 $newPet = $this->petDAO->getById($idPet);
                 $guardianList = $this->guardianDAO->GetAll();
                 $reservasDao=new ReserveDAO();

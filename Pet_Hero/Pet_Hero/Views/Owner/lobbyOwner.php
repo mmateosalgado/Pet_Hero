@@ -12,15 +12,6 @@
             <div class="login date reserve hovers">
                 <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                 <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
-                <div class="ac_type" >      
-                    <?php /*foreach($petList as $pet){?>
-                        <?php echo $pet->getName(). " (". $pet->getAnimal()."-". $pet->getRace().")";?><input type="radio" name="mascota" value="<?php $pet->getAnimal();?>"required>
-                        <input type="hidden" name="masctoa" value="<?php echo $pet->getAnimal() ?>" />
-                        <input type="hidden" name="race" value="<?php echo $pet->getRace() ?>" />
-                        <input type="hidden" name="size" value="<?php echo $pet->getSize() ?>" />
-                        <input type="hidden" name="idPet" value="<?php echo $pet->getId() ?>" />
-                        <?php } */?>
-                    </div>
                     
                     <select name="idPet" required placeholder="Mascota" required>
                     
@@ -41,7 +32,7 @@
                         <br> 
                         <br>       
                             <?php if(isset($message)) 
-                            { //TODO:No se ve
+                            { 
                                 echo "<font>". $message."</font>";} ?>
                         </div>
             </div>

@@ -108,13 +108,13 @@ class GuardianDAO{
         $fechasDisponiblesEncoded=json_encode($fechasDisponibles,JSON_PRETTY_PRINT);
 
         $query = "CALL p_update_guardian(:pUserName, :pFechasDisponibles, :pId);";
-        $parameters[":pUserName"]=$guardian->getUserName();
-        $parameters[":pFechasDisponibles"]=$fechasDisponiblesEncoded;
-        $parameters[":pId"]=$guardian->getTamanioParaCuidar();
+        $parameters["pUserName"]=$guardian->getUserName();
+        $parameters["pFechasDisponibles"]=$fechasDisponiblesEncoded;
+        $parameters["pId"]=$guardian->getTamanioParaCuidar();
 
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query,$parameters);
-         }
+        }
         catch(Exception $ex)
         {
         throw $ex;
@@ -125,7 +125,7 @@ class GuardianDAO{
         try
         {
         $query = "CALL p_delete_guardian(:pUserName);";
-        $parameters[":pUserName"]=$userName;
+        $parameters["pUserName"]=$userName;
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query,$parameters);
          }

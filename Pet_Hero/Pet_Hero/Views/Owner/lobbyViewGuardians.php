@@ -27,6 +27,7 @@
             <th>CUIL</th>
             <th>Tamaño para cuidar</th>
             <th>Precio x Dia</th>
+            <th>Total</th>
             <th>Reservar</th>
         </tr>
         </thead>
@@ -71,9 +72,11 @@
         ?></td>
         <td><?php echo $guardian->getCuil() ;?></td>
         <td><?php echo $guardian->getTamanioParaCuidar() ;?></td>
-        <td><?php echo "$".$guardian->getPrecioPorHora()*24 ;?></td>
+        <td><?php echo "$".$guardian->getPrecioPorHora() *24 ;?></td>
+        <td><?php echo "$".$guardian->getPrecioPorHora() * 24 * $days?></td>
 
-        <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24?>" name="precio">
+
+        <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24*$days?>" name="precio">
 
             <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
         </tr>

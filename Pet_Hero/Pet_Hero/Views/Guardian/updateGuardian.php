@@ -16,7 +16,7 @@
         <input type="date" placeholder="Fin de la Disponibilidad" name="fDisp" min=<?php echo $minDate?> required><br><br><!-- fin disponibilidad-->
         <label for="size"> Tamaño de mascotas a cuidar: </label>
         <div class="ac_type" >      
-            Grande <input type="radio" name="size" value="3" required id="size">
+            Grande  <input type="radio" name="size" value="3" required id="size">
             Mediano <input type="radio" name="size" value="2">
             Pequeño <input type="radio" name="size" value="1">
         </div>
