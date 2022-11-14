@@ -107,7 +107,7 @@
         }
         }
 
-        public function getByIdGuardianConfirm($idGuardian){ 
+        public function getByIdGuardianConfirm($idGuardian){  /*Trea solo las reservas que esten confirmadas o pagadas*/
             try
             {
                 $query = "CALL p_get_ByIdGuardianReserveConfirmadas(:pIdGuardian);";
@@ -208,7 +208,7 @@
         public function getbyIdPet($idPet){
             try
             {
-                $query = "CALL p_get_ByIdPetReserve(:pIdPet);";
+                $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdPet"]=$idPet;
             $reserveList= array();
 
