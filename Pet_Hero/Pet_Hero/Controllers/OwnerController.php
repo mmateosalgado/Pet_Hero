@@ -166,6 +166,24 @@
             require_once(VIEWS_PATH.'Owner/viewReservesOwner.php');
         }
 
+        public function DeletePet($idPet)
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $arrayReservesPet = $this->reserveDAO->getbyIdPet($idPet);
+            if($arrayReservesPet == null)
+            {
+                $this->petDAO->Delete($idPet);
+            }
+            else
+            {
+                $message = "Error, el Pet Tiene Reservas, no es posible eliminarlo";
+            }
+
+            $petList=array();
+            $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
+            require_once(VIEWS_PATH.'Owner/myPets.php');
+        }
+
     }
 
 ?>

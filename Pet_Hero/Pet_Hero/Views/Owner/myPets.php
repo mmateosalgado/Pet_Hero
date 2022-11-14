@@ -51,10 +51,14 @@
             <?php } else{ ?>
             <td><iframe width="200" height="200" src="<?php echo $pet->getVideo();?>" frameborder="0" allowfullscreen ></iframe></td>
             <?php } ?>
-            <td><button class ="btn_reject"> </button> </td>
+            <form action="<?php echo FRONT_ROOT."Owner/DeletePet"?>" method="post">
+            <input type="hidden" value="<?php echo $pet->getId();?>" name="id" >
+            <td><button class ="btn_reject" type="submit"> </button> </td>
+        </form>              
         </tr>
         <?php }?>
         <tbody>
     </table>  
-
+    <?php if(isset($message)) 
+                                { echo "<div class='message'><a>". $message."</a></div>";} ?>
 </div>
