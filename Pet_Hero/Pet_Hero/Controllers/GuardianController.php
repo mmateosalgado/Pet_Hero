@@ -219,10 +219,21 @@ use DAO\OwnerDAO;
         public function showReservas($message="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/viewReservesGuardian.php');
+        }
+
+        public function showHistorialReserves($message="")
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
+            $reserveList = array();
+            $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            $petList = $this->petDAO->GetAll();
+            require_once(VIEWS_PATH.'Guardian/viewHistorialReservesGuardian.php');
         }
     }
 ?>

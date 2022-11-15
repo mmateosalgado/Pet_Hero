@@ -296,5 +296,20 @@
         }
            
         }
+
+        public function ControlarFinalizadas()
+        {
+            try
+            {
+            $query = "CALL p_get_ControlarFechas(:pFechaActual);";
+            $parameters["pFechaActual"] = $minDate=date('Y-m-d');
+            $this->connection = Connection::GetInstance();
+            $this->connection->ExecuteNonQuery($query,$parameters);
+            }
+            catch(Exception $ex)
+            {
+            throw $ex;
+            }
+        }
     }
 ?>

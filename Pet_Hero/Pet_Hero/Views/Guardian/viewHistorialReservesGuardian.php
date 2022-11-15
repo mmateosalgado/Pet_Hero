@@ -2,12 +2,7 @@
  include('Views/../../Section/nav.php');
  ?>
 <div class="headerSP">
-<div>Reservas <span>Confirmadas</span></div>
-</div>
-<div class="addPet">
-    <form action="<?php echo FRONT_ROOT."Guardian/showHistorialReserves"?>" method="post">
-        <input type="submit" value="Ver Historial">
-    </form>
+<div>Historial <span>Reservas</span></div>
 </div>
 
     <div>
@@ -27,14 +22,13 @@
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
-            <th>Dar por finalizada</th> <!--elimina la reserva y se pide review al owner-->
         </tr>
         </thead>
         <tbody>
         <?php if($reserveList != null) {        /*La LISTA DE RESERVAS ES SOLO DEL GUARDIAN CON LA ID DEL SESSION*/ 
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
-                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='confirmada' ) {
+                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='realizada' ) {
          ?>
         <tr>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
@@ -45,7 +39,7 @@
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
-            <td><button class="btn_check" name="estado" value="confirmada"> </button></td>
+            <td><button class="btn_check" name="estado" value="Confirmada"> </button></td>
         </tr>
        <?php  } }
           } }?>

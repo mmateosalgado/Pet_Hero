@@ -179,4 +179,13 @@ $$
 
     /*----------------------------------------------------------------Para llamarla --------------------------------*/
     /*-------------------------call p_get_ByIdGuardianAndPet(1);*/
-    
+    /*-------------------------------------------------------------Cambiar Estado a finalizadas--------------------------------*/
+            DROP PROCEDURE IF EXISTS p_get_ControlarFechas;
+        DELIMITER $$
+        CREATE PROCEDURE p_get_ControlarFechas(in pFechaActual varchar(50)) 
+        BEGIN
+            update reserve set id_estado = 4 where (fechaFin < pFechaActual and id_estado=5);
+        END;
+        $$
+    /*----------------------------------------------------------------Para llamarla --------------------------------*/
+    /*-------------------------call p_get_ControlarFechas(now());*/

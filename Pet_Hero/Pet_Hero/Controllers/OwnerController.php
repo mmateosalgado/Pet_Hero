@@ -159,10 +159,12 @@
         public function showReserves()
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
             $reserveList = $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
             $guardianList = $this->guardianDAO->GetAll();
+            
             require_once(VIEWS_PATH.'Owner/viewReservesOwner.php');
         }
 
