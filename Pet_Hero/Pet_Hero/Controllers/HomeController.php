@@ -25,7 +25,7 @@ class HomeController
 
         public function Index($message = "")
         {
-            require_once(VIEWS_PATH."Owner/pay.php");
+            require_once(VIEWS_PATH."home/Login.php");
         }
 
         public function ViewRegister()

@@ -21,6 +21,7 @@
             <th>Fecha fin</th>
             <th>Total</th>
             <th>Cuidar</th>
+            <th>Rechazar</th>
         </tr>
         </thead>
         <tbody>
@@ -39,6 +40,7 @@
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo $reserve->getTotal()?></td>
             <td><button class="btn_check" name="estado" value="2"> </button></td>
+            <td><button class="btn_reject" name="estado" value="3"> </button></td>
 
             <input type="hidden" value="<?php  echo $reserve->getIdReserve()?>" name="idReserve"> 
         </tr>
