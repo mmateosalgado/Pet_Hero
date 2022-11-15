@@ -142,7 +142,11 @@ use DAO\OwnerDAO;
         }
 
         public function changeReserve($estado,$idReserve)
-        {   //Borramos de fechas disponibles la reserva
+        {   
+            //Si la reserva está confirmada
+            if($estado == 2)
+            {
+            //Borramos de fechas disponibles la reserva
             $guardian=$this->guardianDAO->getByUser($_SESSION["userName"]);
             $reserva=$this->reserveDAO->getByIdReserve($idReserve);
 
@@ -154,6 +158,7 @@ use DAO\OwnerDAO;
             $guardian->setTamanioParaCuidar($this->getSizeId($guardian->getTamanioParaCuidar()));
 
             $this->guardianDAO->Update($guardian);
+            }
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
