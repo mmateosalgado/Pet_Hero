@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 
@@ -59,3 +60,4 @@
         <tbody>
     </table>  
 </div>
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

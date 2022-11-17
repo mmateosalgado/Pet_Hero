@@ -1,5 +1,6 @@
 <?php
- include('Views/../../Section/nav.php');
+require_once(VIEWS_PATH."Section/header.php");
+    include('Views/../../Section/nav.php');
 ?>
 
 <div class="headerSP">
@@ -33,15 +34,8 @@
         </thead>
         <tbody>
         <?php 
-        //Generamos las fechas inbetewn
-        
 
-
-            foreach($guardianList as $guardian){//que pasa con las del medio 
-                            //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza
-
-            if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
-                if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){?>
+            foreach($guardianList as $guardian){?>
         <tr><?php $idPet=$newPet->getId();?>
         <td><a title="Ver perfil" href="<?php echo FRONT_ROOT."Owner/showGuardian/".$guardian->getId()."/".$fechaInicio."/".$fechaFin."/".$idPet?>"><img width="60" height="60" src="<?php echo $guardian->getfotoPerfil();?>"></a></td>
         <td><?php echo $guardian->getUserName() ;?></td>
@@ -53,8 +47,8 @@
             echo "Sin valoraciones" ;
             break;
         case 1:
-             echo "<label>"."★"."</label>"."<a>"."★★★★". "</a>" ;
-             break;
+            echo "<label>"."★"."</label>"."<a>"."★★★★". "</a>" ;
+            break;
         case 2:
             echo "<label>"."★★"."</label>"."<a>"."★★★". "</a>";
             break;
@@ -80,10 +74,11 @@
 
             <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
         </tr>
-        <?php }}}?>
+        <?php }?>
         <tbody>
     </table>
     </form>
 </div>
 
 </div>
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

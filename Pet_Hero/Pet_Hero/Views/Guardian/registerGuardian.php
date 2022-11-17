@@ -1,4 +1,7 @@
-<?php $minDate=date('Y-m-d');?>
+<?php
+require_once(VIEWS_PATH."Section/header.php");
+ $minDate=date('Y-m-d');?>
+ 
 <form action="<?php echo FRONT_ROOT . "Guardian/addCuilAndPPH"?>" method="post" enctype="multipart/form-data"><!-- No nos deja con el POST-->
 
             <div class="header">
@@ -40,3 +43,4 @@
 
                 </div>
    </form>
+   <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

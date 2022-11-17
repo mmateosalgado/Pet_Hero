@@ -1,3 +1,6 @@
+<?php 
+require_once(VIEWS_PATH."Section/header.php");?>
+
    <form action="<?php echo FRONT_ROOT . "Home/Login"?>" method="post">
 
             <div class="header">
@@ -22,3 +25,5 @@
                                 { echo "<div class='message'><a>". $message."</a></div>";} ?>
             </div>
    </form>
+
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

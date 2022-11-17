@@ -103,3 +103,21 @@ $$
 
 /*-----------------------------------------------Para llamarla */
         /*CALL p_get_ByIdGuardian(1);  */
+/*----------------------------------------------- Devolver Gurdianes por Size-----------------------------------------------*/   
+DROP PROCEDURE IF EXISTS p_get_BySizeGuardian;
+DELIMITER $$
+CREATE PROCEDURE p_get_BySizeGuardian(in pSize varchar(30)) 
+BEGIN
+    declare idSize integer;
+    set idSize = (select t.id_tamanio from tamanio as t where t.tamanio = pSize);
+    select g.id_guardian,g.userName,g.password,g.fullName,g.age,g.email,g.telefono, ge.gender, t.tamanio, g.cuil,g.fotoPerfil,g.fechasDisponibles,g.precioPorHora,g.calificacion
+    FROM guardian as g 
+    inner join gender as ge
+    on g.id_gender = ge.id_gender
+    inner join tamanio as t
+    on t.id_tamanio=g.id_tamanioParaCuidar
+    where idSize = g.id_tamanioParaCuidar;
+END;
+$$
+/*-----------------------------------------------Para llamarla */
+        /*call p_get_BySizeGuardian(3);  */
