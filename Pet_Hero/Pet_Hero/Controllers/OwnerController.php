@@ -186,6 +186,12 @@
             require_once(VIEWS_PATH.'Owner/myPets.php');
         }
 
+        public function goToPay()
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            require_once(VIEWS_PATH.'Owner/pay.php');
+        }
+
     }
 
 ?>

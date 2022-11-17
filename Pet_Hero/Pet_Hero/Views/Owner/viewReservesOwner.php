@@ -11,16 +11,17 @@
         <thead>
         <tr>
             <th>Foto</th>
-            <th>Nombre de la Mascota</th>
+            <th>Mascota</th>
             <th>Animal</th>
             <th>Raza</th>
             <th>Estado</th>
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
-            <th>Nombre Guardian</th>
+            <th>Guardian</th>
             <th>CUIL</th>
             <th>Teléfono</th>
+            <th>Pagar</th>
         </tr>
         </thead>
         <tbody>
@@ -28,7 +29,7 @@
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
                 foreach($guardianList as $guardian){
-                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='confirmada'  && $guardian->getId() == $reserve->getIdGuardian()) {
+                if($pet->getId() == $reserve->getIdMascota() && ($reserve->getEstado()=='confirmada' || $reserve->getEstado()=='pagada')  && $guardian->getId() == $reserve->getIdGuardian()) {
          ?>
         <tr>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
@@ -42,6 +43,16 @@
             <td><?php echo $guardian->getUserName()?></td>
             <td><?php echo $guardian->getCuil()?></td>
             <td><?php echo $guardian->getTelefono()?></td>
+            <?php if ($reserve->getEstado()=='confirmada') 
+            {
+            ?>
+            <form action="<?php echo FRONT_ROOT . "Owner/goToPay"?>" method="post" enctype="multipart/form-data">
+            <td><button class="btn_pay" name="estado" title="Ir a pagar" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            </form>
+            <?php } else if ($reserve->getEstado()=='pagada') {?>
+                <td><button class="btn_ok" name="estado" title="Ya esta pago"> </button></td>
+                <?php } ?>
+            
         </tr>
        <?php  } } }
           } }?>

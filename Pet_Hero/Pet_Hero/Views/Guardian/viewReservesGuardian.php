@@ -34,7 +34,7 @@
         <?php if($reserveList != null) {        /*La LISTA DE RESERVAS ES SOLO DEL GUARDIAN CON LA ID DEL SESSION*/ 
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
-                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='confirmada' ) {
+                if($pet->getId() == $reserve->getIdMascota() && ($reserve->getEstado()=='confirmada' || $reserve->getEstado()=='pagada')) {
          ?>
         <tr>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>

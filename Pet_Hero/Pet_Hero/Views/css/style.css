@@ -698,7 +698,33 @@ font{
 	border: none;
 	cursor: pointer;
 }
+
+.btn_pay{
+	background-image:url('https://img.freepik.com/premium-vector/money-icon-vector-dollar-symbol-sign_666746-34.jpg');
+        background-repeat:no-repeat;
+        height:50px;
+        width:50px;
+	/*	border-radius: 100%;*/
+	background-size: 64px 64px;
+	background-position:center;
+	border: none;
+	cursor: pointer;
+}
+
+.btn_ok{
+	background-image:url('https://static.vecteezy.com/system/resources/previews/009/832/462/non_2x/thumb-up-flat-icon-like-sign-with-hand-communication-symbol-white-hand-with-gesture-on-green-round-background-isolated-on-white-web-button-mood-sticker-free-vector.jpg');
+        background-repeat:no-repeat;
+        height:50px;
+        width:50px;
+	/*	border-radius: 100%;*/
+	background-size: 64px 64px;
+	background-position:center;
+	border: none;
+}
 .btn_check:hover{
+	opacity: 0.5;
+}
+.btn_pay:hover{
 	opacity: 0.5;
 }
 
@@ -730,7 +756,7 @@ font{
 	margin-left: auto;
 	margin-top: auto;
 	top: 10px;
-	width: 931px;
+	width: 1219px;
 	box-shadow: 20px 40px 45px rgba( 0, 0, 0, 0.6 );
 	/* font-family: 'Exo', sans-serif;
 	font-size: 35px;
@@ -765,10 +791,13 @@ font{
 	   .fl-table td, .fl-table th {
 		   text-align: center;
 		   padding: 8px;
+		   border-bottom: solid;
+		   border-color: #929292;
 		}
 		
 		.fl-table td {
 		   border-right: 1px solid #f8f8f8;
+		   
 		   font-size: 17px;
 	   }
 	   

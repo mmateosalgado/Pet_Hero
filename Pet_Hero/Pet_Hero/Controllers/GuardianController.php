@@ -144,7 +144,7 @@ use DAO\OwnerDAO;
         public function changeReserve($estado,$idReserve)
         {   
             //Si la reserva está confirmada
-            if($estado == 2)
+            if($estado == 2 || $estado == 5)
             {
             //Borramos de fechas disponibles la reserva
             $guardian=$this->guardianDAO->getByUser($_SESSION["userName"]);
