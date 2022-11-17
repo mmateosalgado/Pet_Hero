@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 <?php $minDate=date('Y-m-d');?>
@@ -38,6 +39,6 @@
             </div>
         </form>
         
-
+        <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>
         
         

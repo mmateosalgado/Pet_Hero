@@ -1,4 +1,6 @@
-<?php $maxDate=date('Y-m-d');?>
+<?php 
+require_once(VIEWS_PATH."Section/header.php");
+$maxDate=date('Y-m-d');?>
 
 <form action="<?php echo FRONT_ROOT . "Home/Register" ?>" method="post">
 
@@ -28,3 +30,5 @@
                     </div>
             </div>
 </form>
+
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

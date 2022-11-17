@@ -1,3 +1,5 @@
+<?php 
+require_once(VIEWS_PATH."Section/header.php");?>
 <form action="<?php echo FRONT_ROOT ."Owner/addRace"?>" method="post" enctype="multipart/form-data">
 
             <div class="header">
@@ -63,3 +65,5 @@
                     </div>
                 </div>
    </form>
+
+   <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

@@ -1,3 +1,6 @@
+<?php 
+require_once(VIEWS_PATH."Section/header.php");
+?>
 <form>
 <div class="header">
                 <div>Rev<span>iew</span></div>
@@ -24,3 +27,5 @@
                     <input type="submit" value="Enviar"><br>
             </div>
 </form>
+
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>
