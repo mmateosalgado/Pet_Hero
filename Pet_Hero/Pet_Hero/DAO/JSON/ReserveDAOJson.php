@@ -54,7 +54,7 @@
             return null;
         }
 
-        public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
+    /*    public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
             $this->RetrieveData();
 
             foreach($this->reserveList as $reserve){
@@ -76,7 +76,7 @@
                 }
             }
             return false;
-        }
+        }*/
 
         private function SaveData(){
             $arrayToEncode=array();

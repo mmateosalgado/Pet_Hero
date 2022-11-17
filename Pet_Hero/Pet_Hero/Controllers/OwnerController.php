@@ -55,9 +55,9 @@
                 $reservasPet=$this->reserveDAO->getbyIdPet($idPet);
                 
                 //armar arreglo reservasDates
-                $reservasPetDates=array();
+
                 foreach($reservasPet as $reserva){
-                    $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                    
 
                     //Mesclar array
                 }*/
@@ -67,23 +67,41 @@
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             
             if($fechaInicio<$fechaFin){
-                $reservasDao=new ReserveDAO();//Se usa luego
 
                 $dates=$this->getDatesBetween($fechaInicio,$fechaFin);
-
-                $days=count($dates);
+                $days=count($dates);//Se usa para multiplicar el precio
                 $newPet = $this->petDAO->getById($idPet);
 
-                //Se rompio lo del Romu
                 $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($newPet->getSize());
 
-                $guardianList=array();
+                $guardianList=array();//Lista que mostramos!
 
                 foreach($guardianListToFilter as $guardian){
-                    if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){
-                        //Condicion para evitar dos veces la "misma" reserva
+                    if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
+                    {
+                        $existingReservesPetGuardian=$this->reserveDAO->getbyIdGuardianAndPet($guardian->getId(),$newPet->getId());
 
-                        array_push($guardianList,$guardianListToFilter);
+                        if($existingReservesPetGuardian==null){
+                            array_push($guardianList,$guardian);
+                        }else{
+                            $count=0;
+                            $reservasPetDates=array();
+
+                            foreach($existingReservesPetGuardian as $reserve){
+                                $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                                $reservasPetDates=array_merge($reservasPetDates,$datesReserve);
+                            }
+
+                            foreach($reservasPetDates as $date){
+                                if(in_array($date,$dates)){
+                                    $count++;
+                                }
+                            }
+
+                            if($count==0){
+                                array_push($guardianList,$guardian);
+                            }
+                        }
                     }
                 }
 
