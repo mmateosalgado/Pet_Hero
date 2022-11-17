@@ -88,7 +88,7 @@
                             $reservasPetDates=array();
 
                             foreach($existingReservesPetGuardian as $reserve){
-                                $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                                $datesReserve=$this->getDatesBetween($reserve->getFechaInicio(),$reserve->getFechaFin());
                                 $reservasPetDates=array_merge($reservasPetDates,$datesReserve);
                             }
 

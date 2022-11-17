@@ -241,7 +241,7 @@
         public function getbyIdGuardianAndPet($idGuardian,$idPet){
             try
             {
-                $query = "CALL p_get_ByIdGuardianAndPet(:pIdGuardian, pIdPet);"; 
+                $query = "CALL p_get_ByIdGuardianAndPet(:pIdGuardian, :pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdGuardian"]=$idGuardian;
                 $parameters["pIdPet"]=$idPet;
             $reserveList= array();
