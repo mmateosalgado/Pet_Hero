@@ -1,4 +1,6 @@
-<?php $maxDate=date('Y-m-d');?>
+<?php 
+require_once(VIEWS_PATH."Section/header.php");
+$maxDate=date('Y-m-d');?>
 
 <?php
 include('Views/../../../Section/nav.php');
@@ -33,3 +35,5 @@ include('Views/../../../Section/nav.php');
                 
             </div>
 </form>  
+
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

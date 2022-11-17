@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 
@@ -51,3 +52,4 @@
 		</form>
 	</section>
 </main>
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

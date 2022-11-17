@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 <div class="headerSP">
@@ -17,4 +18,4 @@
             <span>Telefono:</span><?php echo $userOwner->getTelefono();?><br>
         </div>
         
-
+        <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

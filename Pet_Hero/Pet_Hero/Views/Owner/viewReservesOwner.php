@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 
@@ -28,7 +29,7 @@
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
                 foreach($guardianList as $guardian){
-                if($pet->getId() == $reserve->getIdMascota() && $reserve->getEstado()=='confirmada'  && $guardian->getId() == $reserve->getIdGuardian()) {
+                if($pet->getId() == $reserve->getIdMascota() && ($reserve->getEstado()=='confirmada' || $reserve->getEstado()=='pagada') && $guardian->getId() == $reserve->getIdGuardian()) {
          ?>
         <tr>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
@@ -48,3 +49,4 @@
         <tbody>
     </table>  
 </div>
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

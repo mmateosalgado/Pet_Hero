@@ -1,4 +1,5 @@
 <?php 
+require_once(VIEWS_PATH."Section/header.php");
  include('Views/../../Section/nav.php');
  ?>
 
@@ -62,3 +63,4 @@
     <?php if(isset($message)) 
                                 { echo "<div class='message'><a>". $message."</a></div>";} ?>
 </div>
+<?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>
