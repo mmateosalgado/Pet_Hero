@@ -36,26 +36,72 @@
             require_once(VIEWS_PATH.'Owner/lobbyOwner.php');
         }
 
+        private function getDatesBetween($inicio,$fin){
+            $formato="d-m-Y";
+            $dates=array();
+            $actual=strtotime($inicio);
+            $fin=strtotime($fin);
+            $stepVal='+1 day';
+            while($actual<=$fin){
+                $dates[]=date($formato,$actual);
+                $actual=strtotime($stepVal,$actual);
+            }
+
+            return $dates;
+        }
+
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             
             if($fechaInicio<$fechaFin){
-                $formato="d-m-Y";
-                $dates=array();//arreglo con todas las fechas a cubrir x el guardian
-                $actual=strtotime($fechaInicio);
-                $fin=strtotime($fechaFin);
-                $stepVal='+1 day';
+                $reservasDao=new ReserveDAO();//Se usa luego
 
-                while($actual<=$fin){
-                    $dates[]=date($formato,$actual);
-                    $actual=strtotime($stepVal,$actual);
-                }
+                $dates=$this->getDatesBetween($fechaInicio,$fechaFin);
+
                 $days=count($dates);
                 $newPet = $this->petDAO->getById($idPet);
                 $guardianList = $this->guardianDAO->GetAll();
-                $reservasDao=new ReserveDAO();
+
+                /*
+                $reservasPet=$this->reserveDAO->getbyIdPet($idPet);
+                
+                //armar arreglo reservasDates
+                $reservasPetDates=array();
+                foreach($reservasPet as $reserva){
+                    $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+
+                    //Mesclar array
+                }*/
+                
+                //if($newPet->getSize() == $guardian->getTamanioParaCuidar()) --> E
+              //  if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+                //Compara en el if del for each
+
                 require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
+
             }else{
                 $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
             }
