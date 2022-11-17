@@ -75,7 +75,7 @@
                 $newPet = $this->petDAO->getById($idPet);
 
                 //Se rompio lo del Romu
-                $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($idPet->getSize());
+                $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($newPet->getSize());
 
                 $guardianList=array();
 

@@ -38,7 +38,7 @@ require_once(VIEWS_PATH."Section/header.php");
         
 
 
-            foreach($guardianList as $guardian){//que pasa con las del medio 
+            foreach($guardianListToFilter as $guardian){//que pasa con las del medio 
                             //Modificar para que muestre los que tienen en esos dias una reserva con mismo tipo de animal-raza
 
             if($newPet->getSize() == $guardian->getTamanioParaCuidar()){
