@@ -50,6 +50,18 @@
             return $dates;
         }
 
+        //Filtr5ado para evitr hacer 2 veces la "misma" reserva!
+                        /*
+                $reservasPet=$this->reserveDAO->getbyIdPet($idPet);
+                
+                //armar arreglo reservasDates
+                $reservasPetDates=array();
+                foreach($reservasPet as $reserva){
+                    $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+
+                    //Mesclar array
+                }*/
+
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -61,44 +73,19 @@
 
                 $days=count($dates);
                 $newPet = $this->petDAO->getById($idPet);
-                $guardianList = $this->guardianDAO->GetAll();
 
-                /*
-                $reservasPet=$this->reserveDAO->getbyIdPet($idPet);
-                
-                //armar arreglo reservasDates
-                $reservasPetDates=array();
-                foreach($reservasPet as $reserva){
-                    $datesReserve=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                //Se rompio lo del Romu
+                $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($idPet->getSize());
 
-                    //Mesclar array
-                }*/
-                
-                //if($newPet->getSize() == $guardian->getTamanioParaCuidar()) --> E
-              //  if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $reservasDao->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
-        
+                $guardianList=array();
 
+                foreach($guardianListToFilter as $guardian){
+                    if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles())){
+                        //Condicion para evitar dos veces la "misma" reserva
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                
-                //Compara en el if del for each
+                        array_push($guardianList,$guardianListToFilter);
+                    }
+                }
 
                 require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
 

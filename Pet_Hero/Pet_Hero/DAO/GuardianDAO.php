@@ -281,7 +281,7 @@ class GuardianDAO{
     {
             try
             {
-                $query = "CALL p_get_BySizeeGuardian(:pSizeId);";
+                $query = "CALL p_get_BySizeGuardian(:pSizeId);";
                 $parameters["pSizeId"] = $sizeId;
 
     
