@@ -46,7 +46,6 @@ use Models\Owner;
             $guardian=new Guardian();
 
 
-
             $guardian->setUserName($user);
             $guardian->setPassword($password);
             $guardian->setFullName($name);
@@ -188,7 +187,7 @@ use Models\Owner;
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate); 
-            $this->showReservas($message);
+            $this->showReservas();
         }
 
         public function getSizeId($tamanio){
@@ -237,8 +236,6 @@ use Models\Owner;
             $mail->Body=$body;
 
             $mail->send();
-
-            return "Se a enviado la confirmacion al Dueño";
         }
 
         public function showReservas($message="")
