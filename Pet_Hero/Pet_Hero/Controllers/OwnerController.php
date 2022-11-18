@@ -5,11 +5,11 @@
     use DAO\GuardianDAO as GuardianDAO;
     
 
-    use Exception;
     use Models\Owner as Owner;
     use Models\Pet as Pet;
     use Models\Guardian as Guardian;
     use Models\Reserve as Reserve;
+    use Models\Review as Review;
 
     use Controllers\FileController as FileController;
     use DAO\ReserveDao as ReserveDao;
@@ -20,6 +20,7 @@
         private PetDao $petDAO;
         private GuardianDAO $guardianDAO;
         private ReserveDao $reserveDAO;
+        private ReviewDAO $reviewDAO;
 
         public function __construct()
         {
@@ -27,6 +28,7 @@
             $this->petDAO=new PetDao();
             $this->guardianDAO=new GuardianDAO();
             $this->reserveDAO = new ReserveDAO();
+            $this->reviewDAO = new ReviewDAO();
         }
 
         public function showOwnerLobby($message="")
@@ -273,6 +275,55 @@
             $reserveList = $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Owner/viewHistorialReservesOwner.php');
+        }
+
+        public function setCalificacion($calificacion, $description, $idReserve)
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            /*reserva calificada*/
+            $reserve = $this->reserveDAO->getByIdReserve($idReserve);
+            $guardian = $this->guardianDAO->getById($reserve->getIdGuardian());
+            
+            $review = new Review();
+            $review->setCalificacion($calificacion);
+            $review->setDescription($description);
+            $review->setIdReserve($idReserve);
+            $this->reviewDAO->Add($review);
+
+
+            $reviewList = $this->reviewDAO->getByIdGuardian($reserve->getIdGuardian());
+            /*Reviews de ese Guardian*/
+            $cantidad =0;
+            $suma =0;
+            foreach ($reviewList as $review) {
+            $suma = $suma+ $review->getCalificacion();
+            $cantidad = $cantidad+ 1;
+            }
+            /* Si tiene calificacion 0 es porque nunca antes tuvo una calificacion*/
+            if($guardian->getCalificacion() == 0)
+            {
+                $guardian->setCalificacion($calificacion);
+            }
+            else
+            {
+                $calificacion = ($suma + $calificacion) / $cantidad;
+                $guardian->setCalificacion($calificacion);
+            }
+            
+        }
+
+        public function optionReview($idReserve)
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $review = $this->reviewDAO->getByIdReserve($idReserve);
+            if($review==null)
+            {
+                /*Vista para agregar Review*/
+            }
+            else
+            {
+                /*Vista para mostrar Review*/
+            }
         }
 
         public function goToCalify($idReserve)
