@@ -23,6 +23,7 @@ require_once(VIEWS_PATH."Section/header.php");
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
+            <th>Ver Review</th>
         </tr>
         </thead>
         <tbody>
@@ -40,7 +41,7 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
-            <td><button class="btn_check" name="estado" value="Confirmada"> </button></td>
+            <td><button class="btn_calify btn_view" name="estado" value="Confirmada"> </button></td>
         </tr>
        <?php  } }
           } }?>

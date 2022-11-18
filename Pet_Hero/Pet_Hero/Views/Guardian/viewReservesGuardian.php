@@ -5,18 +5,18 @@
 <div class="headerSP">
 <div>Reservas <span>Confirmadas</span></div>
 </div>
-<div class="addPet">
-    <form action="<?php echo FRONT_ROOT."Guardian/showHistorialReserves"?>" method="post">
-        <input type="submit" value="Ver Historial">
-    </form>
-</div>
 
-    <div>
-            <br>  
-            <?php if(isset($message)) 
+<div>
+    <br>  
+    <?php if(isset($message)) 
             { echo "<div class='message'><a>". $message."</a></div>";} ?>
     </div>
     <div class="table-wrapper">
+        <div class="addPet">
+            <form action="<?php echo FRONT_ROOT."Guardian/showHistorialReserves"?>" method="post">
+                <input type="submit" value="Ver Historial">
+            </form>
+        </div>
     <table class="fl-table fl-tableReserve photoGuardian" >
         <thead>
         <tr>
