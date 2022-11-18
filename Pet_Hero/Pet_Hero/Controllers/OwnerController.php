@@ -263,6 +263,16 @@
 
         }
 
+        public function showHistorialReserves()
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
+            $reserveList = array();
+            $reserveList = $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
+            $petList = $this->petDAO->GetAll();
+            require_once(VIEWS_PATH.'Owner/viewHistorialReservesOwner.php');
+        }
+
     }
 
 ?>
