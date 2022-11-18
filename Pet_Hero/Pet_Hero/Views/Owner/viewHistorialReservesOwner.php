@@ -42,8 +42,8 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
 
-            <form action="<?php echo FRONT_ROOT . "Owner/goToCalify"?>" method="post" enctype="multipart/form-data">
-            <td><button class="btn_calify" name="estado" title="Calificar" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            <form action="<?php echo FRONT_ROOT . "Owner/optionReview"?>" method="post" enctype="multipart/form-data">
+            <td><button class="btn_calify btn_view" name="estado" title="Calificar" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
             </form>
         </tr>
        <?php  } }

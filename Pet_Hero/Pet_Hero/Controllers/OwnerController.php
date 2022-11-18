@@ -326,7 +326,7 @@
             $review = $this->reviewDAO->getByIdReserve($idReserve);
             if($review==null)
             {
-                require_once(VIEWS_PATH.'Owner/newReview.php');
+                $this->goToCalify($idReserve);
             }
             else
             {

@@ -6,12 +6,13 @@ require_once(VIEWS_PATH."Section/header.php");
 <div>Historial <span>Reservas</span></div>
 </div>
 
+
+    <div class="table-wrapper">
     <div>
             <br>  
             <?php if(isset($message)) 
             { echo "<div class='message'><a>". $message."</a></div>";} ?>
     </div>
-    <div class="table-wrapper">
     <table class="fl-table fl-tableReserve photoGuardian" >
         <thead>
         <tr>
@@ -41,7 +42,9 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
-            <td><button class="btn_calify btn_view" name="estado" value="Confirmada"> </button></td>
+            <form action="<?php echo FRONT_ROOT . "Guardian/viewReview"?>" method="post" enctype="multipart/form-data">
+            <td><button class="btn_calify btn_view" name="review" title="Review" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            </form>
         </tr>
        <?php  } }
           } }?>

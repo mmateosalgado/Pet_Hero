@@ -1,28 +1,39 @@
 <?php 
     namespace Controllers;
+
+    use Models\Review as Review;
+    use Models\Guardian as Guardian;
+    use Models\Reserve as Reserve;
+
+
     use DAO\GuardianDAO as GuardianDAO;
+    use DAO\ReviewDAO as ReviewDAO;
+    use DAO\PetDao AS PetDao;
+    use DAO\ReserveDao as ReserveDao;
+    use DAO\OwnerDAO as OwnerDAO;
+   
     use Exception;
-use Models\Guardian as Guardian;
     use PHPMailer\PHPMailer as PHPMailer;
     use PHPMailer\Exception as ExceptionMail;
 
-    use DAO\ReserveDao as ReserveDao;
-    use Models\Reserve as Reserve;
-    use DAO\PetDao AS PetDao;
     use Controllers\FileController as FileController;
-use DAO\OwnerDAO;
+use Models\Owner;
 
     class GuardianController
     {
         private GuardianDAO $guardianDAO;
         private ReserveDao $reserveDAO;
         private PetDAO $petDAO;
+        private ReviewDAO $reviewDAO;
+        private OwnerDAO $ownerDAO;
 
         public function __construct()
         {
             $this->guardianDAO=new GuardianDAO();
             $this->reserveDAO=new ReserveDAO();
             $this->petDAO=new PetDAO();
+            $this->reviewDAO=new ReviewDAO;
+            $this->ownerDAO=new OwnerDAO();
         }
 
         public function Index($message = "")
@@ -249,5 +260,24 @@ use DAO\OwnerDAO;
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/viewHistorialReservesGuardian.php');
         }
+
+        public function viewReview($idReserve)
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $review = $this->reviewDAO->getByIdReserve($idReserve);
+            if($review==null)
+            {
+                $message = "Todavía no hay ninguna Review para esa Reserva";
+                $this->showHistorialReserves($message);
+            }
+            else 
+            {
+                $reservePay= $this->reserveDAO->getByIdReserve($review->getIdReserve());
+                $userOwner=  $this->ownerDAO->getById($reservePay->getIdGuardian());
+                require_once(VIEWS_PATH.'Guardian/viewReviewGuardian.php');
+            }
+
+        }
+
     }
 ?>
