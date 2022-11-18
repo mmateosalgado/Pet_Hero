@@ -8,10 +8,12 @@ require_once(VIEWS_PATH."Section/header.php");
 </div>
 
     <div class="table-wrapper">
-    <table class="fl-table fl-tableReserve">
+        <div class = "addPet">
     <form action="<?php echo FRONT_ROOT."Owner/showHistorialReserves"?>" method="post">
         <input type="submit" value="Ver Historial">
     </form>
+    </div>
+    <table class="fl-table fl-tableReserve">
         <thead>
         <tr>
             <th>Foto</th>

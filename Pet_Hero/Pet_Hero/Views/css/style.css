@@ -574,9 +574,11 @@ font{
 	margin-top: 10px;
 	position: relative;
 	/*top: calc(37.5% - 75px);*/
-	left: calc(20.3% - 50px);
+	margin-bottom: 5px ;
 	z-index: 2;
 }
+
+
 .addPet input[type=submit]:hover
 {
 	opacity: 0.8;
