@@ -70,10 +70,13 @@ require_once(VIEWS_PATH."Section/header.php");
         <td><?php echo "$".$guardian->getPrecioPorHora() * 24 * $days?></td>
 
 
+
         <input type="hidden" value="<?php echo $guardian->getPrecioPorHora()*24*$days?>" name="precio">
 
             <td><button class="btn_check" name="idGuardian" value="<?php echo $guardian->getId() ;?>"> </button></td>
+    
         </tr>
+
         <?php }?>
         <tbody>
     </table>
@@ -82,3 +85,4 @@ require_once(VIEWS_PATH."Section/header.php");
 
 </div>
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>
+

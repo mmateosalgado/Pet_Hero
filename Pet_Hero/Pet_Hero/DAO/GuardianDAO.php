@@ -121,6 +121,21 @@ class GuardianDAO{
         }
     }
 
+    public function UpdateCalificacion(Guardian $guardian){
+        try{
+        $query = "CALL p_UpdateCalificacionGuardian (:pCalificacion, :pId);";
+        $parameters["pCalificacion"]=$guardian->getCalificacion();
+        $parameters["pId"]=$guardian->getId();
+
+        $this->connection = Connection::GetInstance();
+        $this->connection->ExecuteNonQuery($query,$parameters);
+        }
+        catch(Exception $ex)
+        {
+        throw $ex;
+        }
+    }
+
     public function Delete( $userName){
         try
         {

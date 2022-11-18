@@ -3,7 +3,9 @@
     use DAO\OwnerDAO as OwnerDAO;
     use DAO\PetDao as PetDao;
     use DAO\GuardianDAO as GuardianDAO;
-    
+    use DAO\ReviewDAO as ReviewDAO;
+
+    use \Exception as Exception;
 
     use Models\Owner as Owner;
     use Models\Pet as Pet;
@@ -295,21 +297,27 @@
             /*Reviews de ese Guardian*/
             $cantidad =0;
             $suma =0;
-            foreach ($reviewList as $review) {
-            $suma = $suma+ $review->getCalificacion();
-            $cantidad = $cantidad+ 1;
-            }
+
             /* Si tiene calificacion 0 es porque nunca antes tuvo una calificacion*/
-            if($guardian->getCalificacion() == 0)
+            if($reviewList== null)
             {
                 $guardian->setCalificacion($calificacion);
             }
             else
             {
-                $calificacion = ($suma + $calificacion) / $cantidad;
+                foreach ($reviewList as $review) {
+
+                    $suma = $suma+ $review->getCalificacion();
+                    $cantidad = $cantidad+ 1;
+                }
+
+                $calificacion =(int) (($suma + $calificacion) / $cantidad);
                 $guardian->setCalificacion($calificacion);
             }
             
+        $this->guardianDAO->UpdateCalificacion($guardian);
+        $this->showHistorialReserves();
+
         }
 
         public function optionReview($idReserve)
@@ -318,11 +326,13 @@
             $review = $this->reviewDAO->getByIdReserve($idReserve);
             if($review==null)
             {
-                /*Vista para agregar Review*/
+                require_once(VIEWS_PATH.'Owner/newReview.php');
             }
             else
             {
-                /*Vista para mostrar Review*/
+            $reservePay= $this->reserveDAO->getByIdReserve($review->getIdReserve());
+            $userGuardian=  $this->guardianDAO->getById($reservePay->getIdGuardian());
+             require_once(VIEWS_PATH.'Owner/viewReviewOwner.php');
             }
         }
 

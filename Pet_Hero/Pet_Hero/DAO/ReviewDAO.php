@@ -82,7 +82,7 @@
                 $review = new Review();
                 $review->setIdReview($row["id_review"]);
                 $review->setIdReserve($row["id_reserve"]);
-                $review->setIdGuardian($row["id_Guardian"]);
+                $review->setIdGuardian($row["id_guardian"]);
                 $review->setCalificacion($row["calificacion"]);
                 $review->setDescription($row["description"]);
                 array_push($this->reserveList,$review);
