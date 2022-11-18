@@ -51,7 +51,7 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><button class="btn_pay" name="estado" title="Ir a pagar" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
             </form>
             <?php } else if ($reserve->getEstado()=='pagada') {?>
-                <td><button class="btn_ok" name="estado" title="Ya esta pago"> </button></td>
+                <td><button class="btn_ok" name="estado" title="Ya está pago"> </button></td>
                 <?php } ?>
             
         </tr>

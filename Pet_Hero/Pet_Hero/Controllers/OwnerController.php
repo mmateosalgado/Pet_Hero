@@ -237,10 +237,30 @@
             require_once(VIEWS_PATH.'Owner/myPets.php');
         }
 
-        public function goToPay()
+        public function goToPay($idReserve)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $reserve = $this->reserveDAO->getByIdReserve($idReserve);
             require_once(VIEWS_PATH.'Owner/pay.php');
+        }
+
+        public function payReserve($idReserve, $precio, $idEstado)
+        {
+            /*Cambiamos precio*/
+            $precio = $precio/2;
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $reserve = new Reserve();
+            $reserve->setEstado($idEstado);
+            $reserve->setTotal($precio);
+            $reserve->setIdReserve($idReserve);
+            $this->reserveDAO->update($reserve);
+            
+            $reservePay = $this->reserveDAO->getByIdReserve($idReserve);
+            $userGuardian= $this->guardianDAO->getById($reservePay->getIdGuardian());
+            $userOwner = $this->ownerDAO->getById($reservePay->getIdOwner());
+            require_once(VIEWS_PATH.'Owner/bill.php');
+
+
         }
 
     }

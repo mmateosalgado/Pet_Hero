@@ -9,11 +9,14 @@ require_once(VIEWS_PATH."Section/header.php");
 			<h1>Pet-Hero</h1>
 			<p>Lo mejor para ellos </p>
 		</div>
-		<h3>Monto: $15.000 <br> Del 25/2 al 27/2</h3>
+		<h3>Monto: <?php echo $reserve->getTotal()?> <br> <?php echo "Del ". substr($reserve->getFechaInicio(),5)." al ". substr($reserve->getFechaFin(),5); ?></h3>
 	</section>
 	<section id="right">
 		<h1>Pagar 50% del total</h1>
-		<form action="#">
+		<form action="<?php echo FRONT_ROOT . "Owner/payReserve"?>" method="post" enctype="multipart/form-data">
+		<input type="hidden" value="<?php echo $reserve->getIdReserve()?>" name="idReserve" >
+        <input type="hidden" value="<?php echo $reserve->getTotal()?>" name="precio">
+        <input type="hidden" value="5" name="idEstado">
 			<div id="form-card" class="form-field">
 				<label for="cc-number">Nro de tarjeta:</label>
 				<input id="cc-number" maxlength="19" placeholder="1111 - 2222 - 3333 - 4444 " required>

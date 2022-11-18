@@ -2,7 +2,7 @@
 require_once(VIEWS_PATH."Section/header.php");
  $minDate=date('Y-m-d');?>
  
-<form action="<?php echo FRONT_ROOT . "Guardian/addCuilAndPPH"?>" method="post" enctype="multipart/form-data"><!-- No nos deja con el POST-->
+<form action="<?php echo FRONT_ROOT . "Guardian/addCuilAndPPH"?>" method="post" enctype="multipart/form-data">
 
             <div class="header">
                 <div>Pet<span>Hero</span></div><br>
@@ -30,7 +30,7 @@ require_once(VIEWS_PATH."Section/header.php");
                                 Mediano <input type="radio" name="size" value="2">
                                 Pequeño <input type="radio" name="size" value="1">
                     </div>
-                            <input type="number" placeholder="Cuil" name="cuil" required min=0><br>
+                            <input type="number" placeholder="Cuil" name="cuil" required min=10><br>
                             <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
                             <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                             <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
