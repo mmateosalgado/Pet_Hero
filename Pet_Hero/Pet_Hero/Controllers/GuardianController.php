@@ -46,6 +46,12 @@ use DAO\OwnerDAO;
             $guardian->setTamanioParaCuidar($size);
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
+            $validacionCuilGuardian=$this->guardianDAO->getByCuil($cuil);
+            if($validacionCuilGuardian!=null)
+            {
+                $message="Ya hay un usuario con este cuil!";
+                require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
+            }
             if($fechaInicio > $fechaFin)
             {
                 $message="La fecha de inicio de disponibilidad debe ser previa a la de fin!";

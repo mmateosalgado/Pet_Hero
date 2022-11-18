@@ -208,7 +208,7 @@
         public function getbyIdPet($idPet){
             try
             {
-                $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
+                $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trae solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdPet"]=$idPet;
             $reserveList= array();
 
@@ -234,7 +234,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw $ex;//TODO Excepcion de que la mascota tiene una reserva 
         }
         }
 

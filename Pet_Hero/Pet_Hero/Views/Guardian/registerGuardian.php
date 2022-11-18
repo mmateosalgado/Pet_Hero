@@ -9,12 +9,13 @@ require_once(VIEWS_PATH."Section/header.php");
                 <div>Guard<span>ianes:</span></div>
             </div>
             <br>
+            <div class="login guardianRegister">
             <div>
                 <br>  
                 <?php if(isset($message)) 
                 { echo "<div class='message'><a>". $message."</a></div>";} ?>
             </div>
-            <div class="login guardianRegister">
+
                     <input type="hidden" value="<?php echo $user?>" name="user" >
                     <input type="hidden" value="<?php echo $password?>" name="password">
                     <input type="hidden" value="<?php echo $name?>" name="name">

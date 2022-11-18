@@ -27,8 +27,8 @@ include('Views/../../../Section/nav.php');
                         Mediano <input type="radio" name="size" value="2">
                         Pequeño <input type="radio" name="size" value="1">
             </div>
-                    <input type="number" placeholder="Peso" name="weight" min="0" required><br>
-                    <input type="number" placeholder="Edad" name="age" min="0" required><br>
+                    <input type="number" placeholder="Peso" name="weight" min="0" max=100 required><br>
+                    <input type="number" placeholder="Edad" name="age" min="0" max= 100 required><br>
                     <input type="number" placeholder="Gr x Porción de comida" min="0" step="10" name="gxp" required><br>
                     <textarea placeholder="Descripción" form="agregarMascota" name="description"></textarea><br>
                     <input type="submit" value="Añadir"><br>
