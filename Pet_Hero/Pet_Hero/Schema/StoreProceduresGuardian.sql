@@ -121,7 +121,7 @@ END;
 $$
 /*-----------------------------------------------Para llamarla */
         /*call p_get_BySizeGuardian(3);  */
- /*----------------------------------------------- Devolver Gurdian por Cuil-----------------------------------------------*/   
+ /*----------------------------------------------- Devolver Guardian por Cuil-----------------------------------------------*/   
 DROP PROCEDURE IF EXISTS p_get_ByCuilGuardian;
 DELIMITER $$
 CREATE PROCEDURE p_get_ByCuilGuardian(in pCuil int) 
@@ -137,3 +137,13 @@ END;
 $$
 /*-----------------------------------------------Para llamarla */
         /*call p_get_ByCuilGuardian(5);;  */
+         /*----------------------------------------------- Cambiar Calificación Guardian -----------------------------------------------*/   
+DROP PROCEDURE IF EXISTS p_UpdateCalificacionGuardian;
+DELIMITER $$
+CREATE PROCEDURE p_UpdateCalificacionGuardian(in pCalificacion int, in pIdGuardian int) 
+BEGIN
+	update guardian set calificacion = pCalificacion where pIdguardian = id_guardian;
+END;
+$$
+/*-----------------------------------------------Para llamarla */
+/*call p_UpdateCalificacionGuardian(1,1);*/
