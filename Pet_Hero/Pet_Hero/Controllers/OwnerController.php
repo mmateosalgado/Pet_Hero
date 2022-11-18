@@ -51,17 +51,6 @@
             return $dates;
         }
 
-        //Filtr5ado para evitr hacer 2 veces la "misma" reserva!
-                        /*
-                $reservasPet=$this->reserveDAO->getbyIdPet($idPet);
-                
-                //armar arreglo reservasDates
-
-                foreach($reservasPet as $reserva){
-                    
-
-                    //Mesclar array
-                }*/
 
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
@@ -131,7 +120,7 @@
             require_once(VIEWS_PATH.'Owner/profileOwner.php');
         }
 
-        public function showPets()
+        public function showPets($alert=null)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
@@ -245,10 +234,8 @@
                 $alert=[
                     "text"=>$ex->getMessage()
                 ];
-
             }finally{
-
-                require_once(VIEWS_PATH.'Owner/myPets.php');
+                $this->showPets($alert);
             }
         }
 
