@@ -7,15 +7,14 @@ require_once(VIEWS_PATH."Section/header.php");
 <div>Tus <span>Mascotas</span></div>
 </div>
 
-<div class="addPet">
-    <form action="<?php echo FRONT_ROOT."Owner/showAddPet"?>" method="post">
-        <input type="submit" value="Agregar Mascota">
-    </form>
 
 
-
-
-    <div class="table-wrapper">
+<div class="table-wrapper">
+        <div class="addPet">
+            <form action="<?php echo FRONT_ROOT."Owner/showAddPet"?>" method="post">
+                <input type="submit" value="Agregar Mascota">
+            </form>
+        </div>
 
     <table class="fl-table noWrap">
         <thead>
