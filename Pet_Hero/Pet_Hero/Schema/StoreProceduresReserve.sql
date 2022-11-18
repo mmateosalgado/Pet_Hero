@@ -189,3 +189,23 @@ $$
         $$
     /*----------------------------------------------------------------Para llamarla --------------------------------*/
     /*-------------------------call p_get_ControlarFechas(now());*/
+
+        /*-------------------------------------------------------------Devolver reservas en espera con id guardian--------------------------------*/
+        DELIMITER $$
+        CREATE PROCEDURE p_get_ByIdGuardianEnEsperaReserve(in pIdGuardian int) 
+        BEGIN
+            select r.id_reserve, r.id_guardian, r.id_pet, r.fechaInicio, r.fechaFin, r.total, e.estado, p.id_owner, a.animal, ra.race
+            from reserve as r
+            inner join estado as e
+            on e.id_estado = r.id_estado
+            inner join pet as p
+            on p.id_pet = r.id_pet
+            inner join animal as a
+            on a.id_tipoAnimal = p.id_animal
+            inner join race as ra
+            on ra.id_race = a.id_race
+            where pIdGuardian = r.id_guardian and r.id_estado =1;
+        END;
+        $$
+    /*----------------------------------------------------------------Para llamarla --------------------------------*/
+    /*-------------------------call p_get_ByIdGuardianEnEsperaReserve(now());*/

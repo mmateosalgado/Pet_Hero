@@ -28,7 +28,6 @@
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
-            <th>Dar por finalizada</th> <!--elimina la reserva y se pide review al owner-->
         </tr>
         </thead>
         <tbody>
@@ -46,7 +45,6 @@
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
-            <td><button class="btn_check" name="estado" value="confirmada"> </button></td>
         </tr>
        <?php  } }
           } }?>
