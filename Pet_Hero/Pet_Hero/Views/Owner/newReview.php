@@ -1,6 +1,7 @@
 <?php 
 require_once(VIEWS_PATH."Section/header.php");
-?>
+ include('Views/../../Section/nav.php');
+ ?>
 
 <form action="<?php echo FRONT_ROOT . "Owner/setCalificacion" ?>"id="newReview" method="post" enctype="multipart/form-data">
 

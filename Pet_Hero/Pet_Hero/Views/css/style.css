@@ -689,6 +689,11 @@ font{
 	cursor: pointer;
 }
 
+.btn_view{
+	background-image:url('https://us.123rf.com/450wm/faysalfarhan/faysalfarhan1501/faysalfarhan150100654/35424257-pregunta-icono-de-signo-de-bot%C3%B3n-redondo-verde-brillante.jpg?ver=6') !important;
+	background-size: 50px 50px !important;
+}
+
 .btn_reject{
 	background-image:url('https://i.pinimg.com/564x/94/b4/7e/94b47e3843f8944e5a1e506a8322c060.jpg');
         background-repeat:no-repeat;
