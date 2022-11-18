@@ -183,10 +183,23 @@ use Models\Owner;
 
                 $this->guardianDAO->Update($guardian);
 
-                //Borrar reservas estado == 1 si se superponen las fechas siendo la mascota !=raza && !=tamanio
-                $reservasEnEspeta=$this->reserveDAO->GetAll();//ByIdGuardianEnEspera
+                //TODO: TESTEAR
+                //Borrar reservas estado == 1 && id_guardian=id_guardian 
+                $reservasEnEspeta=$this->reserveDAO->getByIdGuardianEnEsperaReserve($guardian->getId());
                 
-                
+                foreach ($reservasEnEspeta as $reservaEE) {
+                    $fechasReserva=$this->getDatesBetween($reservaEE->getFechaInicio(),$reservaEE->getFechaFin());
+
+                    $datesDiff=array_intersect($dates,$fechasReserva);
+                    
+                    if(!empty($datesDiff)){
+                        if($reservaEE->getTipoMascota()!=$reserva->getTipoMascota() && $reserva->getRace()!=$reservaEE->getRace()){
+                            //Cambia estado a Rechazada
+                            $reservaEE->setEstado(3);//Rechazada
+                            $this->reserveDAO->Update($reservaEE); 
+                        }
+                    }
+                }
             }
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
