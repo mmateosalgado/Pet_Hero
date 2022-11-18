@@ -177,18 +177,23 @@ use Models\Owner;
 
                 $dates=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
 
-                $message=$this->sendConfirmationEmail($reserva);
+                $this->sendConfirmationEmail($reserva);
 
                 $guardian->deleteDates($dates);
                 $guardian->setTamanioParaCuidar($this->getSizeId($guardian->getTamanioParaCuidar()));
 
                 $this->guardianDAO->Update($guardian);
+
+                //Borrar reservas estado == 1 si se superponen las fechas siendo la mascota !=raza && !=tamanio
+                $reservasEnEspeta=$this->reserveDAO->GetAll();//ByIdGuardianEnEspera
+                
+                
             }
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate); 
-            $this->showReservas($message);
+            $this->showReservas();
         }
 
         public function getSizeId($tamanio){
@@ -237,8 +242,6 @@ use Models\Owner;
             $mail->Body=$body;
 
             $mail->send();
-
-            return "Se a enviado la confirmacion al Dueño";
         }
 
         public function showReservas($message="")
