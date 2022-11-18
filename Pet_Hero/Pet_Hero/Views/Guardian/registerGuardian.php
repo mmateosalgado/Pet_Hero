@@ -10,11 +10,7 @@ require_once(VIEWS_PATH."Section/header.php");
             </div>
             <br>
             <div class="login guardianRegister">
-            <div>
-                <br>  
-                <?php if(isset($message)) 
-                { echo "<div class='message'><a>". $message."</a></div>";} ?>
-            </div>
+
 
                     <input type="hidden" value="<?php echo $user?>" name="user" >
                     <input type="hidden" value="<?php echo $password?>" name="password">
@@ -42,6 +38,14 @@ require_once(VIEWS_PATH."Section/header.php");
                             <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
                             </div>
 
+                    <div>
+                    <br>  
+                    <?php if($alert){?>
+                            <div class="message">
+                                <a><?php echo $alert["text"]?></a></div>
+                            </div>
+                        <?php } ?> 
+                    </div>
                 </div>
    </form>
    <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

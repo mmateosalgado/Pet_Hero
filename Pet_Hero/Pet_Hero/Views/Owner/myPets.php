@@ -60,7 +60,10 @@ require_once(VIEWS_PATH."Section/header.php");
         <?php }?>
         <tbody>
     </table>  
-    <?php if(isset($message)) 
-                                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+    <?php if($alert){?>
+        <div class="message">
+            <a><?php echo $alert["text"]?></a></div>
+        </div>
+    <?php } ?> 
 </div>
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

@@ -97,7 +97,7 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 array_push($reserveList,$reserve);
+                array_push($reserveList,$reserve);
                 }
             return $reserveList;
         }
@@ -130,7 +130,7 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 array_push($reserveList,$reserve);
+                array_push($reserveList,$reserve);
                 }
             return $reserveList;
         }
@@ -164,7 +164,7 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 array_push($reserveList,$reserve);
+                array_push($reserveList,$reserve);
                 }
             return $reserveList;
         }
@@ -196,7 +196,7 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 return $reserve;
+                return $reserve;
                 }
             return null;
         }
@@ -208,7 +208,7 @@
         public function getbyIdPet($idPet){
             try
             {
-                $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trae solo las reservas que esten confirmadas o pagadas*/
+                $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdPet"]=$idPet;
             $reserveList= array();
 
@@ -228,13 +228,13 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 array_push($reserveList,$reserve);
+                array_push($reserveList,$reserve);
                 }
             return $reserveList;
         }
         catch(Exception $ex)
         {
-            throw $ex;//TODO Excepcion de que la mascota tiene una reserva 
+            throw $ex;
         }
         }
 
@@ -262,7 +262,7 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                 array_push($reserveList,$reserve);
+                array_push($reserveList,$reserve);
                 }
             return $reserveList;
         }
@@ -309,7 +309,7 @@
 
             $this->connection = Connection::GetInstance();
             $this->connection->ExecuteNonQuery($query,$parameters);
-             }
+            }
             catch(Exception $ex)
             {
             throw $ex;
@@ -323,26 +323,25 @@
         $parameters["pIdReserve"] = $idReserve;
         $this->connection = Connection::GetInstance();
         $this->connection->ExecuteNonQuery($query,$parameters);
-         }
+        }
         catch(Exception $ex)
         {
         throw $ex;
         }
-           
         }
 
         public function ControlarFinalizadas()
         {
             try
             {
-            $query = "CALL p_get_ControlarFechas(:pFechaActual);";
-            $parameters["pFechaActual"] = $minDate=date('Y-m-d');
-            $this->connection = Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query,$parameters);
+                $query = "CALL p_get_ControlarFechas(:pFechaActual);";
+                $parameters["pFechaActual"] = $minDate=date('Y-m-d');
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
             }
             catch(Exception $ex)
             {
-            throw $ex;
+                throw $ex;
             }
         }
     }
