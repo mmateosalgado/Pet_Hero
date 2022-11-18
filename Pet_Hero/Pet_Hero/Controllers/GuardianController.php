@@ -126,7 +126,6 @@ use Models\Owner;
 
         public function showUpdateGuardian($user,$message=""){
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
-            
             require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
         }
 

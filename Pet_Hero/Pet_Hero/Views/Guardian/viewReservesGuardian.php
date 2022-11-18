@@ -7,10 +7,6 @@
 </div>
 
 <div>
-    <br>  
-    <?php if(isset($message)) 
-            { echo "<div class='message'><a>". $message."</a></div>";} ?>
-    </div>
     <div class="table-wrapper">
         <div class="addPet">
             <form action="<?php echo FRONT_ROOT."Guardian/showHistorialReserves"?>" method="post">
