@@ -5,6 +5,7 @@ use DAO\OwnerDAO as OwnerDAO;
 use DAO\PetDao as PetDao;
 use DAO\ReserveDao as ReserveDao;
 
+use Exception;
 use Models\Guardian;
 use Models\Owner;
 class HomeController
@@ -28,7 +29,7 @@ class HomeController
             require_once(VIEWS_PATH."Home/login.php");
         }
 
-        public function ViewRegister()
+        public function ViewRegister($alert=null)
         {
             require_once(VIEWS_PATH."Home/register.php");
         }
@@ -41,20 +42,23 @@ class HomeController
                 $owner = $this->ownerDAO->getByUser($user);
                 if(isset($owner))
                 {
-                if($owner->getPassword()==$password)
-                {
-                    $_SESSION['userName'] = $owner->getUserName();
-                    $_SESSION['type'] = $owner->getType();
-                    $_SESSION["id"]= $owner->getId();
-                    $guardianList = $this->guardianDAO->GetAll();
-                    $petList=array();
-                    $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-                    require_once(VIEWS_PATH."Owner/lobbyOwner.php");
-                
-                }else
-                {
-                    $this->Index("Usuario o contraseña incorrectos"); 
-                }}else
+                    if($owner->getPassword()==$password)
+                    {
+                        $_SESSION['userName'] = $owner->getUserName();
+                        $_SESSION['type'] = $owner->getType();
+                        $_SESSION["id"]= $owner->getId();
+                        $guardianList = $this->guardianDAO->GetAll();
+                        $petList=array();
+                        $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
+                        require_once(VIEWS_PATH."Owner/lobbyOwner.php");
+                    
+                    }
+                    else
+                    {
+                        $this->Index("Usuario o contraseña incorrectos"); 
+                    }
+                }
+                else
                 {
                     $this->Index("Usuario o contraseña incorrectos"); 
                 }
@@ -65,20 +69,23 @@ class HomeController
                 $guardian = $this->guardianDAO->getByUser($user);
                 if(isset($guardian))
                 {
-                if($guardian->getPassword()==$password)
-                {
-                    $_SESSION['userName'] = $guardian->getUserName();
-                    $_SESSION['type'] = $guardian->getType();
-                    $_SESSION['URL'] = $guardian->getCalificacion();
-                    $_SESSION["id"]= $guardian->getId();
-                    $reserveList = array();
-                    $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
-                    $petList = $this->petDAO->GetAll();
-                    require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
+                    if($guardian->getPassword()==$password)
+                    {
+                        $_SESSION['userName'] = $guardian->getUserName();
+                        $_SESSION['type'] = $guardian->getType();
+                        $_SESSION['URL'] = $guardian->getCalificacion();
+                        $_SESSION["id"]= $guardian->getId();
+
+                        $reserveList = array();
+                        $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+                        $petList = $this->petDAO->GetAll();
+                        
+                        require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
+                    }else
+                        {
+                            $this->Index("Usuario o contraseña incorrectos"); 
+                        }
                 }else
-                {
-                    $this->Index("Usuario o contraseña incorrectos"); 
-                }}else
                 {
                     $this->Index("Usuario o contraseña incorrectos"); 
                 }
@@ -86,52 +93,59 @@ class HomeController
             else{
                 $this->Index("TIPO DE CUENTA NO ENCONTRADA");
             }
-
         }
 
         public function Register($user,$name,$email,$password,$date,$accountType,$gender,$telefono)
         {
-            if($accountType=="owner")
-            {   
-                $validacionOwnerUser=$this->ownerDAO->getByUser($user);
+            try{
+                if($accountType=="owner")
+                {   
+                    $validacionOwnerUser=$this->ownerDAO->getByUser($user);
 
-                if($validacionOwnerUser!=null){
-                    $this->Index("- El usuario ya existe!");
-                }else{
-                    $validacionOwnerEmail=$this->ownerDAO->getByEmail($email);
-
-                    if($validacionOwnerEmail!=null){
-                        $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
+                    if($validacionOwnerUser!=null){
+                        throw new Exception("- El usuario ya existe!");
                     }else{
-                        $owner = new Owner();
+                        $validacionOwnerEmail=$this->ownerDAO->getByEmail($email);
 
-                        $owner->setUserName($user);
-                        $owner->setPassword($password);
-                        $owner->setFullName($name);
-                        $owner->setAge($date);//fecha de nacimiento 
-                        $owner->setEmail($email);
-                        $owner->setGender($gender);
-                        $owner->setType( $accountType);
-                        $owner->setTelefono($telefono);
-                        $this->ownerDAO->Add($owner);
-                        $this->Index("- Cuenta creada exitosamente!!");
+                        if($validacionOwnerEmail!=null){
+                            throw new Exception("- No se puede crear mas de una cuenta por EMAIL!");
+                        }else{
+                            $owner = new Owner();
+
+                            $owner->setUserName($user);
+                            $owner->setPassword($password);
+                            $owner->setFullName($name);
+                            $owner->setAge($date);//fecha de nacimiento 
+                            $owner->setEmail($email);
+                            $owner->setGender($gender);
+                            $owner->setType( $accountType);
+                            $owner->setTelefono($telefono);
+                            $this->ownerDAO->Add($owner);
+                            $this->Index("- Cuenta creada exitosamente!!");
+                        }
                     }
                 }
-            }
-            else if($accountType=="guardian")
-            {
-                $validacionGuardianUser=$this->guardianDAO->getByUser($user);
-                if($validacionGuardianUser!=null){
-                    $this->Index("- El usuario ya existe!");
-                }else {
-                    $validacionGuardianEmail=$this->guardianDAO->getByEmail($email);
+                else if($accountType=="guardian")
+                {
+                    $validacionGuardianUser=$this->guardianDAO->getByUser($user);
+                    if($validacionGuardianUser!=null){
+                        throw new Exception("- El usuario ya existe!");
+                    }else {
+                        $validacionGuardianEmail=$this->guardianDAO->getByEmail($email);
 
-                    if($validacionGuardianEmail!=null){
-                        $this->Index("- No se puede crear mas de una cuenta por EMAIL!");
-                    }else{
-                        require_once(VIEWS_PATH."Guardian/registerGuardian.php");
+                        if($validacionGuardianEmail!=null){
+                            throw new Exception("- No se puede crear mas de una cuenta por EMAIL!");
+                        }else{
+                            require_once(VIEWS_PATH."Guardian/registerGuardian.php");
+                        }
                     }
                 }
+
+            }catch(Exception $ex){
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->ViewRegister($alert);
             }
         }
         public function Logout()

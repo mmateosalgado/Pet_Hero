@@ -5,6 +5,7 @@
     use DAO\GuardianDAO as GuardianDAO;
     
 
+    use Exception;
     use Models\Owner as Owner;
     use Models\Pet as Pet;
     use Models\Guardian as Guardian;
@@ -66,50 +67,55 @@
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             
-            if($fechaInicio<$fechaFin){
 
-                $dates=$this->getDatesBetween($fechaInicio,$fechaFin);
-                $days=count($dates);//Se usa para multiplicar el precio
-                $newPet = $this->petDAO->getById($idPet);
+                if($fechaInicio<$fechaFin){
 
-                $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($newPet->getSize());
+                    $dates=$this->getDatesBetween($fechaInicio,$fechaFin);
+                    $days=count($dates);//Se usa para multiplicar el precio
 
-                $guardianList=array();//Lista que mostramos!
+                
+                    $newPet = $this->petDAO->getById($idPet);
 
-                foreach($guardianListToFilter as $guardian){
-                    if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
-                    {
-                        $existingReservesPetGuardian=$this->reserveDAO->getbyIdGuardianAndPet($guardian->getId(),$newPet->getId());
+                    $guardianListToFilter = $this->guardianDAO->GetBySizeGuardian($newPet->getSize());
 
-                        if($existingReservesPetGuardian==null){
-                            array_push($guardianList,$guardian);
-                        }else{
-                            $count=0;
-                            $reservasPetDates=array();
+                    $guardianList=array();//Lista que mostramos!
 
-                            foreach($existingReservesPetGuardian as $reserve){
-                                $datesReserve=$this->getDatesBetween($reserve->getFechaInicio(),$reserve->getFechaFin());
-                                $reservasPetDates=array_merge($reservasPetDates,$datesReserve);
-                            }
+                    foreach($guardianListToFilter as $guardian){
+                        if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
+                        {
+                            $existingReservesPetGuardian=$this->reserveDAO->getbyIdGuardianAndPet($guardian->getId(),$newPet->getId());
 
-                            foreach($reservasPetDates as $date){
-                                if(in_array($date,$dates)){
-                                    $count++;
-                                }
-                            }
-
-                            if($count==0){
+                            if($existingReservesPetGuardian==null){
                                 array_push($guardianList,$guardian);
+                            }else{
+                                $count=0;
+                                $reservasPetDates=array();
+
+                                foreach($existingReservesPetGuardian as $reserve){
+                                    $datesReserve=$this->getDatesBetween($reserve->getFechaInicio(),$reserve->getFechaFin());
+                                    $reservasPetDates=array_merge($reservasPetDates,$datesReserve);
+                                }
+
+                                foreach($reservasPetDates as $date){
+                                    if(in_array($date,$dates)){
+                                        $count++;
+                                    }
+                                }
+
+                                if($count==0){
+                                    array_push($guardianList,$guardian);
+                                }
                             }
                         }
                     }
+                
+
+                    require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
+
+                }else{
+                    $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
                 }
-
-                require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
-
-            }else{
-                $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
-            }
+            
         }
 
         public function showAddPet()
@@ -222,19 +228,28 @@
         public function DeletePet($idPet)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
-            $arrayReservesPet = $this->reserveDAO->getbyIdPet($idPet);
-            if($arrayReservesPet == null)
-            {
-                $this->petDAO->Delete($idPet);
-            }
-            else
-            {
-                $message = "Error, el Pet Tiene Reservas, no es posible eliminarlo";
-            }
+            try{
+                $petList=array();
+                $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
 
-            $petList=array();
-            $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-            require_once(VIEWS_PATH.'Owner/myPets.php');
+                $arrayReservesPet = $this->reserveDAO->getbyIdPet($idPet);
+
+                if($arrayReservesPet == null)
+                {
+                    $this->petDAO->Delete($idPet);
+                }else{
+                    throw new Exception("Esta Mascota tiene una reserva en el Sistema!");
+                }
+
+            }catch(Exception $ex){
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+
+            }finally{
+
+                require_once(VIEWS_PATH.'Owner/myPets.php');
+            }
         }
 
         public function goToPay($idReserve)
