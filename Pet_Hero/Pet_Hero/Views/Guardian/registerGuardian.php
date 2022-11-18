@@ -27,7 +27,7 @@ require_once(VIEWS_PATH."Section/header.php");
                                 Mediano <input type="radio" name="size" value="2">
                                 Pequeño <input type="radio" name="size" value="1">
                     </div>
-                            <input type="number" placeholder="Cuil" name="cuil" required min=10><br>
+                            <input type="number" placeholder="Cuil" name="cuil" required min=999999999><br>
                             <input type="number" placeholder="Precio por hora" name="pph" min="0" step="50" required><br>
                             <input type="date" placeholder="Fecha Inicio" name="fechaInicio" min=<?php echo $minDate?> required>
                             <input type="date" placeholder="Fecha Fin" name="fechaFin" min=<?php echo $minDate?> required><br>
@@ -40,7 +40,7 @@ require_once(VIEWS_PATH."Section/header.php");
 
                     <div>
                     <br>  
-                    <?php if($alert){?>
+                    <?php if(isset($alert)){?>
                             <div class="message">
                                 <a><?php echo $alert["text"]?></a></div>
                             </div>
