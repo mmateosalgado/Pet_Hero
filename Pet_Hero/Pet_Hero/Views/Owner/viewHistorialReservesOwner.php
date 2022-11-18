@@ -16,13 +16,14 @@ require_once(VIEWS_PATH."Section/header.php");
         <thead>
         <tr>
             <th>Foto</th>
-            <th>Nombre de la Mascota</th>
+            <th>Nombre Mascota</th>
             <th>Animal</th>
             <th>Raza</th>
             <th>Estado</th>
             <th>Fecha inicio</th>
             <th>Fecha fin</th>
             <th>Total</th>
+            <th>Calificar</th>
         </tr>
         </thead>
         <tbody>
@@ -40,7 +41,9 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
-            <td><button class="btn_check" name="estado" value="Confirmada"> </button></td>
+            <form action="<?php echo FRONT_ROOT . "Owner/goToCalify"?>" method="post" enctype="multipart/form-data">
+            <td><button class="btn_calify" name="estado" title="Calificar" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            </form>
         </tr>
        <?php  } }
           } }?>

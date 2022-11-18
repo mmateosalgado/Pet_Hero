@@ -273,6 +273,14 @@
             require_once(VIEWS_PATH.'Owner/viewHistorialReservesOwner.php');
         }
 
+        public function goToCalify($idReserve)
+        {
+            require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            $reserve = $this->reserveDAO->getByIdReserve($idReserve);
+            require_once(VIEWS_PATH.'Owner/newReview.php');
+        }
+
     }
+
 
 ?>

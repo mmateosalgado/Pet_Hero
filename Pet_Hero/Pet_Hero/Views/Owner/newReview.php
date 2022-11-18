@@ -1,7 +1,9 @@
 <?php 
 require_once(VIEWS_PATH."Section/header.php");
 ?>
-<form>
+
+<form action="<?php echo FRONT_ROOT . "Owner/setCalificacion" ?>"id="newReview" method="post" enctype="multipart/form-data">
+
 <div class="header">
                 <div>Rev<span>iew</span></div>
             </div>
@@ -10,7 +12,7 @@ require_once(VIEWS_PATH."Section/header.php");
                 <br>
                 <label> Calificación:</label>
                 <p class="clasificacion">
-                    <input id="radio1" type="radio" name="estrellas" value="5"><!--
+                    <input id="radio1" type="radio" name="estrellas" value="5" required><!--
                     --><label for="radio1">★</label><!--
                     --><input id="radio2" type="radio" name="estrellas" value="4"><!--
                     --><label for="radio2">★</label><!--
@@ -22,7 +24,8 @@ require_once(VIEWS_PATH."Section/header.php");
                     --><label for="radio5">★</label>
                 </p><br>
                     <label > Reseña del Guardian: </label><br>
-                    <textarea placeholder="Preguntale a tu amiguito animal como la paso!" form="*" name="review"></textarea><br><br>
+                    <textarea placeholder="Preguntale a tu amiguito animal como la paso!" form="newReview" name="review" required></textarea><br>
+                    <input type="hidden" value="<?php echo $reserve->getIdReserve();?>" name="id" >
             
                     <input type="submit" value="Enviar"><br>
             </div>
