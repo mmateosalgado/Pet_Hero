@@ -7,14 +7,14 @@ require_once(VIEWS_PATH."Section/header.php");
 <div>Tus <span>Mascotas</span></div>
 </div>
 
-<div class="addPet">
-    <form action="<?php echo FRONT_ROOT."Owner/showAddPet"?>" method="post">
-        <input type="submit" value="Agregar Mascota">
-    </form>
-</div>
 
 
-    <div class="table-wrapper">
+<div class="table-wrapper">
+        <div class="addPet">
+            <form action="<?php echo FRONT_ROOT."Owner/showAddPet"?>" method="post">
+                <input type="submit" value="Agregar Mascota">
+            </form>
+        </div>
 
     <table class="fl-table noWrap">
         <thead>
@@ -60,7 +60,10 @@ require_once(VIEWS_PATH."Section/header.php");
         <?php }?>
         <tbody>
     </table>  
-    <?php if(isset($message)) 
-                                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+    <?php if($alert){?>
+        <div class="message">
+            <a><?php echo $alert["text"]?></a></div>
+        </div>
+    <?php } ?> 
 </div>
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

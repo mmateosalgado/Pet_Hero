@@ -1,7 +1,8 @@
 <?php 
     namespace Controllers;
     use DAO\GuardianDAO as GuardianDAO;
-    use Models\Guardian as Guardian;
+    use Exception;
+use Models\Guardian as Guardian;
     use PHPMailer\PHPMailer as PHPMailer;
     use PHPMailer\Exception as ExceptionMail;
 
@@ -46,34 +47,41 @@ use DAO\OwnerDAO;
             $guardian->setTamanioParaCuidar($size);
             $guardian->setCuil($cuil);
             $guardian->setPrecioPorHora($pph);
-            $validacionCuilGuardian=$this->guardianDAO->getByCuil($cuil);
-            if($validacionCuilGuardian!=null)
-            {
-                $message="Ya hay un usuario con este cuil!";
-                require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
-            }
-            if($fechaInicio > $fechaFin)
-            {
-                $message="La fecha de inicio de disponibilidad debe ser previa a la de fin!";
-                require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
 
-            }
-            else{
-                $guardian->setFechasDisponibles($this->getDatesBetween($fechaInicio,$fechaFin));
-                
-                $fileController = new FileController();
-                if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
+            $validacionCuilGuardian=$this->guardianDAO->getByCuil($cuil);
+            try{
+                if($validacionCuilGuardian!=null)
                 {
-                    $guardian->setFotoPerfil($path_File1);
+                    throw new Exception ("Ya hay un usuario con este cuil!");
                 }
-                else 
+
+                if($fechaInicio > $fechaFin)
                 {
-                    $guardian->setFotoPerfil("Error else");
-    
+                    throw new Exception("La fecha de inicio de disponibilidad debe ser previa a la de fin!");
                 }
-                $this->guardianDAO->Add($guardian);
-    
-                $this->showGuardianLobby();
+                else{
+                    $guardian->setFechasDisponibles($this->getDatesBetween($fechaInicio,$fechaFin));
+                    
+                    $fileController = new FileController();
+                    if($path_File1 = $fileController->upload($files["photo"],"Foto-Pefil"))
+                    {
+                        $guardian->setFotoPerfil($path_File1);
+                    }
+                    else 
+                    {
+                        $guardian->setFotoPerfil("Error else");
+        
+                    }
+                    $this->guardianDAO->Add($guardian);
+        
+                    $this->showGuardianLobby();
+                }
+            }catch(Exception $ex){
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+
+                require_once(VIEWS_PATH.'Guardian/registerGuardian.php');
             }
         }
 
@@ -152,18 +160,18 @@ use DAO\OwnerDAO;
             //Si la reserva está confirmada
             if($estado == 2 || $estado == 5)
             {
-            //Borramos de fechas disponibles la reserva
-            $guardian=$this->guardianDAO->getByUser($_SESSION["userName"]);
-            $reserva=$this->reserveDAO->getByIdReserve($idReserve);
+                //Borramos de fechas disponibles la reserva
+                $guardian=$this->guardianDAO->getByUser($_SESSION["userName"]);
+                $reserva=$this->reserveDAO->getByIdReserve($idReserve);
 
-            $dates=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
+                $dates=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
 
-            $message=$this->sendConfirmationEmail($reserva);
+                $message=$this->sendConfirmationEmail($reserva);
 
-            $guardian->deleteDates($dates);
-            $guardian->setTamanioParaCuidar($this->getSizeId($guardian->getTamanioParaCuidar()));
+                $guardian->deleteDates($dates);
+                $guardian->setTamanioParaCuidar($this->getSizeId($guardian->getTamanioParaCuidar()));
 
-            $this->guardianDAO->Update($guardian);
+                $this->guardianDAO->Update($guardian);
             }
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);

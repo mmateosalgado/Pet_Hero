@@ -144,7 +144,7 @@
                     $pet->setVideo($row["video"]);
                     return $pet;
                     }
-             return null;
+            return null;
             }
             catch(Exception $ex)
             {
@@ -163,24 +163,24 @@
 
             $this->connection = Connection::GetInstance();
             $this->connection->ExecuteNonQuery($query,$parameters);
-             }
+            }
             catch(Exception $ex)
             {
-            throw $ex;
+                throw $ex;
             }
         }
     
         public function Delete( $idPet){
             try
             {
-            $query = "CALL p_delete_pet( :idPet);";
-            $parameters["idPet"] = $idPet;
-            $this->connection = Connection::GetInstance();
-            $this->connection->ExecuteNonQuery($query,$parameters);
-             }
+                $query = "CALL p_delete_pet( :idPet);";
+                $parameters["idPet"] = $idPet;
+                $this->connection = Connection::GetInstance();
+                $this->connection->ExecuteNonQuery($query,$parameters);
+            }
             catch(Exception $ex)
             {
-            throw $ex;
+                throw new Exception("Esta Mascota tiene una reserva en el Sistema!");
             }
         }
 

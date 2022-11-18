@@ -81,31 +81,30 @@ class OwnerDAO{
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
-        
-        foreach($resultSet as $row) 
-        {
-            $owner = new Owner();
-            $owner->setUserName($row["userName"]);
-            $owner->setPassword($row["password"]);
-            $owner->setEmail($row["email"]);
-            $owner->setFullname($row["fullName"]);
-            $owner->setAge($row["age"]);
-            $owner->setId($row["id_owner"]);
-            $owner->setTelefono($row["telefono"]);
-            $owner->setGender($row["gender"]);
-            $owner->setType("owner"); 
-            return $owner;
+            
+            foreach($resultSet as $row) 
+            {
+                $owner = new Owner();
+                $owner->setUserName($row["userName"]);
+                $owner->setPassword($row["password"]);
+                $owner->setEmail($row["email"]);
+                $owner->setFullname($row["fullName"]);
+                $owner->setAge($row["age"]);
+                $owner->setId($row["id_owner"]);
+                $owner->setTelefono($row["telefono"]);
+                $owner->setGender($row["gender"]);
+                $owner->setType("owner"); 
+                return $owner;
+            }
+            return null;
         }
-        return null;
-         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception("-El usuario ya existe!");
         }
-     }
+    }
 
-     public function getByEmail($email){
-       
+    public function getByEmail($email){
         try
         {
             $query = "CALL p_get_ByEmailOwner(:pEmail);";
