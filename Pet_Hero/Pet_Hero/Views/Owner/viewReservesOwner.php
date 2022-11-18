@@ -9,6 +9,9 @@ require_once(VIEWS_PATH."Section/header.php");
 
     <div class="table-wrapper">
     <table class="fl-table fl-tableReserve">
+    <form action="<?php echo FRONT_ROOT."Owner/showHistorialReserves"?>" method="post">
+        <input type="submit" value="Ver Historial">
+    </form>
         <thead>
         <tr>
             <th>Foto</th>
