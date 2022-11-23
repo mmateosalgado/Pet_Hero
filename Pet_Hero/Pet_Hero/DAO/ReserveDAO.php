@@ -28,9 +28,21 @@
     
                 $resultSet = $this->connection->Execute($query);
             
-            foreach($resultSet as $row) 
+                return $this->getReserveList($resultSet);
+
+        
+        }
+            catch(Exception $ex)
             {
-                $reserve = new Reserve();
+                throw $ex;
+            }
+        }
+
+        public function getReserve($resultSet)
+        {
+            if($resultSet !=  null)
+            foreach($resultSet as $row){
+            {   $reserve = new Reserve();
                 $reserve->setIdReserve($row["id_reserve"]);
                 $reserve->setIdGuardian($row["id_guardian"]);
                 $reserve->setIdMascota($row["id_pet"]);
@@ -41,17 +53,37 @@
                 $reserve->setIdOwner($row["id_owner"]);
                 $reserve->setTipoMascota($row["animal"]);
                 $reserve->setRace($row["race"]);
-                array_push($this->reserveList,$reserve);
-    
+                return $reserve;
             }
-            return $this->reserveList;
-        
         }
-            catch(Exception $ex)
+            else 
             {
-                throw $ex;
+                return null;
             }
         }
+
+        public function getReserveList($resultSet)
+        {
+            $array= array();
+            if($resultSet !=  null)
+            foreach($resultSet as $row){
+            {   $reserve = new Reserve();
+                $reserve->setIdReserve($row["id_reserve"]);
+                $reserve->setIdGuardian($row["id_guardian"]);
+                $reserve->setIdMascota($row["id_pet"]);
+                $reserve->setFechaInicio($row["fechaInicio"]);
+                $reserve->setFechaFin($row["fechaFin"]);
+                $reserve->setTotal($row["total"]);
+                $reserve->setEstado($row["estado"]);
+                $reserve->setIdOwner($row["id_owner"]);
+                $reserve->setTipoMascota($row["animal"]);
+                $reserve->setRace($row["race"]);
+                array_push($array,$reserve);
+            }
+        }
+            return  $array;
+        }
+        
         public function Add(Reserve $reserve)
         {
             try {
@@ -79,27 +111,13 @@
             {
                 $query = "CALL p_get_ByIdGuardianReserve(:pIdGuardian);";
                 $parameters["pIdGuardian"]=$idGuardian;
-            $reserveList= array();
+
 
             $this->connection = Connection::GetInstance();
-
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
+
         }
         catch(Exception $ex)
         {
@@ -112,27 +130,13 @@
             {
                 $query = "CALL p_get_ByIdGuardianReserveConfirmadas(:pIdGuardian);";
                 $parameters["pIdGuardian"]=$idGuardian;
-            $reserveList= array();
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
+
         }
         catch(Exception $ex)
         {
@@ -145,27 +149,12 @@
             {
                 $query = "CALL p_get_ByIdGuardianEnEsperaReserve(:pIdGuardian);";
                 $parameters["pIdGuardian"]=$idGuardian;
-            $reserveList= array();
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
         }
         catch(Exception $ex)
         {
@@ -179,27 +168,13 @@
             {
                 $query = "CALL p_get_ByIdOwnerReserve(:pIdOwner);";
                 $parameters["pIdOwner"]=$idOwner;
-            $reserveList= array();
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
+
         }
         catch(Exception $ex)
         {
@@ -215,24 +190,9 @@
 
             $this->connection = Connection::GetInstance();
 
-            $resultSet = $this->connection->Execute($query,$parameters);
-
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                return $reserve;
-                }
-            return null;
-        }
+            $row = $this->connection->Execute($query,$parameters);
+            return $this->getReserve($row);
+          }
         catch(Exception $ex)
         {
             throw $ex;
@@ -243,27 +203,13 @@
             {
                 $query = "CALL p_get_ByIdPetReserve(:pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdPet"]=$idPet;
-            $reserveList= array();
+
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
         }
         catch(Exception $ex)
         {
@@ -277,27 +223,12 @@
                 $query = "CALL p_get_ByIdGuardianAndPet(:pIdGuardian, :pIdPet);"; /*Trea solo las reservas que esten confirmadas o pagadas*/
                 $parameters["pIdGuardian"]=$idGuardian;
                 $parameters["pIdPet"]=$idPet;
-            $reserveList= array();
 
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row){
-                $reserve = new Reserve();
-                $reserve->setIdReserve($row["id_reserve"]);
-                $reserve->setIdGuardian($row["id_guardian"]);
-                $reserve->setIdMascota($row["id_pet"]);
-                $reserve->setFechaInicio($row["fechaInicio"]);
-                $reserve->setFechaFin($row["fechaFin"]);
-                $reserve->setTotal($row["total"]);
-                $reserve->setEstado($row["estado"]);
-                $reserve->setIdOwner($row["id_owner"]);
-                $reserve->setTipoMascota($row["animal"]);
-                $reserve->setRace($row["race"]);
-                array_push($reserveList,$reserve);
-                }
-            return $reserveList;
+            return $this->getReserveList($resultSet);
         }
         catch(Exception $ex)
         {

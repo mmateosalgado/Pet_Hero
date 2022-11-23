@@ -53,9 +53,48 @@
                 $this->connection = Connection::GetInstance();
     
                 $resultSet = $this->connection->Execute($query);
-            
-            foreach($resultSet as $row) 
+                return $this->getPetList($resultSet);
+
+        
+        }
+            catch(Exception $ex)
             {
+                throw $ex;
+            }
+        }
+        public function getPet($resultSet)
+        {
+            if($resultSet != null)
+            {
+            foreach($resultSet as $row){
+            $pet = new Pet();
+            $pet->setId($row["id_pet"]);
+            $pet->setIdOwner($row["id_owner"]);
+            $pet->setName($row["name"]);
+            $pet->setAnimal($row["animal"]);
+            $pet->setRace($row["race"]);
+            $pet->setSize($row["tamanio"]);
+            $pet->setDescription($row["description"]);
+            $pet->setAge($row["age"]);
+            $pet->setGrXfoodPortion($row["grXfoodPortion"]);
+            $pet->setWeight($row["weight"]);
+            $pet->setFoto($row["foto"]);
+            $pet->setPlanVacunacion($row["planVacunacion"]);
+            $pet->setVideo($row["video"]);
+            return $pet;
+            }
+            }else 
+            {
+                return null;
+            }
+        }
+
+        public function getPetList($resultSet)
+        {
+            $array = array();
+                if($resultSet != null)
+                {
+                foreach($resultSet as $row){
                 $pet = new Pet();
                 $pet->setId($row["id_pet"]);
                 $pet->setIdOwner($row["id_owner"]);
@@ -70,46 +109,25 @@
                 $pet->setFoto($row["foto"]);
                 $pet->setPlanVacunacion($row["planVacunacion"]);
                 $pet->setVideo($row["video"]);
-                array_push($this->petList,$pet);
-    
-            }
-            return $this->petList;
-        
+                
+                array_push($array,$pet);
+                }
+                /*$pet = $this->getPet($row);*/
+                }
+         return $array;
         }
-            catch(Exception $ex)
-            {
-                throw $ex;
-            }
-        }
+
         public function getAllByOwnerId($idOwner){
             try
             {
                 $query = "CALL p_get_PetByOwnerId(:pIdOwner);";
                 $parameters["pIdOwner"]=$idOwner;
-                $ownerPets=array();
 
                 $this->connection = Connection::GetInstance();
 
                 $resultSet = $this->connection->Execute($query,$parameters);
-
-                foreach($resultSet as $row){
-                    $pet = new Pet();
-                    $pet->setId($row["id_pet"]);
-                    $pet->setIdOwner($row["id_owner"]);
-                    $pet->setName($row["name"]);
-                    $pet->setAnimal($row["animal"]);
-                    $pet->setRace($row["race"]);
-                    $pet->setSize($row["tamanio"]);
-                    $pet->setDescription($row["description"]);
-                    $pet->setAge($row["age"]);
-                    $pet->setGrXfoodPortion($row["grXfoodPortion"]);
-                    $pet->setWeight($row["weight"]);
-                    $pet->setFoto($row["foto"]);
-                    $pet->setPlanVacunacion($row["planVacunacion"]);
-                    $pet->setVideo($row["video"]);
-                    array_push($ownerPets,$pet);
-                    }
-             return $ownerPets;
+                $ownerPets = $this->getPetList($resultSet);
+                return $ownerPets;
             }
             catch(Exception $ex)
             {
@@ -125,26 +143,9 @@
                 $parameters["pId"]=$id;
                 $this->connection = Connection::GetInstance();
 
-                $resultSet = $this->connection->Execute($query,$parameters);
+                $row = $this->connection->Execute($query,$parameters);
 
-                foreach($resultSet as $row){
-                    $pet = new Pet();
-                    $pet->setId($row["id_pet"]);
-                    $pet->setIdOwner($row["id_owner"]);
-                    $pet->setName($row["name"]);
-                    $pet->setAnimal($row["animal"]);
-                    $pet->setRace($row["race"]);
-                    $pet->setSize($row["tamanio"]);
-                    $pet->setDescription($row["description"]);
-                    $pet->setAge($row["age"]);
-                    $pet->setGrXfoodPortion($row["grXfoodPortion"]);
-                    $pet->setWeight($row["weight"]);
-                    $pet->setFoto($row["foto"]);
-                    $pet->setPlanVacunacion($row["planVacunacion"]);
-                    $pet->setVideo($row["video"]);
-                    return $pet;
-                    }
-            return null;
+                return $this->getPet($row);
             }
             catch(Exception $ex)
             {

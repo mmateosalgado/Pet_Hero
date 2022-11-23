@@ -24,9 +24,20 @@ class OwnerDAO{
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query);
-        
-        foreach($resultSet as $row) 
+            return $this->getOwnerList($resultSet);
+    }
+        catch(Exception $ex)
         {
+            throw $ex;
+        }
+    }
+
+    public function getOwner($resultSet)
+    {
+
+       if($resultSet != null) 
+        {
+            foreach($resultSet as $row){
             $owner = new Owner();
             $owner->setUserName($row["userName"]);
             $owner->setPassword($row["password"]);
@@ -37,14 +48,36 @@ class OwnerDAO{
             $owner->setTelefono($row["telefono"]);
             $owner->setGender($row["gender"]);
             $owner->setType("owner"); 
-            array_push($this->ownerList, $owner);  
+            return $owner;
+            }
         }
-        return $this->ownerList;
-    }
-        catch(Exception $ex)
+        else 
         {
-            throw $ex;
+        return null;
         }
+    }
+
+    public function getOwnerList($resultSet)
+    {
+        $array= array();
+            if($resultSet != null) 
+            {
+                foreach($resultSet as $row){
+                $owner = new Owner();
+                $owner->setUserName($row["userName"]);
+                $owner->setPassword($row["password"]);
+                $owner->setEmail($row["email"]);
+                $owner->setFullname($row["fullName"]);
+                $owner->setAge($row["age"]);
+                $owner->setId($row["id_owner"]);
+                $owner->setTelefono($row["telefono"]);
+                $owner->setGender($row["gender"]);
+                $owner->setType("owner"); 
+                array_push($array, $owner);  
+                }
+            }
+                /* $owner = $this->getOwner($row);*/
+                return $array;
     }
 
 
@@ -81,22 +114,10 @@ class OwnerDAO{
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
+         
+            return $this->getOwner($resultSet);
             
-            foreach($resultSet as $row) 
-            {
-                $owner = new Owner();
-                $owner->setUserName($row["userName"]);
-                $owner->setPassword($row["password"]);
-                $owner->setEmail($row["email"]);
-                $owner->setFullname($row["fullName"]);
-                $owner->setAge($row["age"]);
-                $owner->setId($row["id_owner"]);
-                $owner->setTelefono($row["telefono"]);
-                $owner->setGender($row["gender"]);
-                $owner->setType("owner"); 
-                return $owner;
-            }
-            return null;
+
         }
         catch(Exception $ex)
         {
@@ -114,21 +135,7 @@ class OwnerDAO{
 
             $resultSet = $this->connection->Execute($query,$parameters);
         
-        foreach($resultSet as $row) 
-        {
-            $owner = new Owner();
-            $owner->setUserName($row["userName"]);
-            $owner->setPassword($row["password"]);
-            $owner->setEmail($row["email"]);
-            $owner->setFullname($row["fullName"]);
-            $owner->setAge($row["age"]);
-            $owner->setId($row["id_owner"]);
-            $owner->setTelefono($row["telefono"]);
-            $owner->setGender($row["gender"]);
-            $owner->setType("owner"); 
-            return $owner;
-        }
-        return null;
+            return $this->getOwner($resultSet);
          }
         catch(Exception $ex)
         {
@@ -147,21 +154,7 @@ class OwnerDAO{
 
             $resultSet = $this->connection->Execute($query,$parameters);
         
-        foreach($resultSet as $row) 
-        {
-            $owner = new Owner();
-            $owner->setUserName($row["userName"]);
-            $owner->setPassword($row["password"]);
-            $owner->setEmail($row["email"]);
-            $owner->setFullname($row["fullName"]);
-            $owner->setAge($row["age"]);
-            $owner->setId($row["id_owner"]);
-            $owner->setTelefono($row["telefono"]);
-            $owner->setGender($row["gender"]);
-            $owner->setType("owner"); 
-            return $owner;
-        }
-        return null;
+            return $this->getOwner($resultSet);
          }
         catch(Exception $ex)
         {

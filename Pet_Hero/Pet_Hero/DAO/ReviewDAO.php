@@ -7,7 +7,7 @@
 
     class ReviewDAO
     {
-        private $reserveList=array();
+        private $reviewList=array();
         
         private $connection;
         private $tableName;
@@ -15,7 +15,7 @@
         public function __construct()
         {
             $this->tableName = "review";
-            $this->reserveList=array();
+            $this->reviewList=array();
         }
 
         public function GetAll()
@@ -27,25 +27,52 @@
                 $this->connection = Connection::GetInstance();
     
                 $resultSet = $this->connection->Execute($query);
-            
-            foreach($resultSet as $row) 
-            {
-                $review = new Review();
-                $review->setIdReview($row["id_review"]);
-                $review->setIdReserve($row["id_reserve"]);
-                $review->setIdGuardian($row["id_guardian"]);
-                $review->setCalificacion($row["calificacion"]);
-                $review->setDescription($row["description"]);
-                array_push($this->reserveList,$review);
-    
-            }
-            return $this->reserveList;
+                return $this->getReviewList($resultSet);
         
         }
             catch(Exception $ex)
             {
                 throw $ex;
             }
+        }
+        public function getReview($resultSet)
+        {
+            if($resultSet !== null) 
+            {
+                foreach($resultSet as $row) {
+                $review = new Review();
+                $review->setIdReview($row["id_review"]);
+                $review->setIdReserve($row["id_reserve"]);
+                $review->setIdGuardian($row["id_guardian"]);
+                $review->setCalificacion($row["calificacion"]);
+                $review->setDescription($row["description"]);
+                return $review;
+    
+            }
+        }
+            else 
+            {
+            return null;
+            }
+        }
+
+        public function getReviewList($resultSet)
+        {
+            $array= array();
+            if($resultSet !== null) 
+            {
+                foreach($resultSet as $row) {
+                $review = new Review();
+                $review->setIdReview($row["id_review"]);
+                $review->setIdReserve($row["id_reserve"]);
+                $review->setIdGuardian($row["id_guardian"]);
+                $review->setCalificacion($row["calificacion"]);
+                $review->setDescription($row["description"]);
+                array_push($array,$review);
+            }
+        }
+            
+            return $array;
         }
 
         public function Add(Review $review)
@@ -77,18 +104,7 @@
 
             $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row) 
-            {
-                $review = new Review();
-                $review->setIdReview($row["id_review"]);
-                $review->setIdReserve($row["id_reserve"]);
-                $review->setIdGuardian($row["id_guardian"]);
-                $review->setCalificacion($row["calificacion"]);
-                $review->setDescription($row["description"]);
-                array_push($this->reserveList,$review);
-    
-            }
-            return $this->reserveList;
+             return $this->getReviewList($resultSet);
         }
         catch(Exception $ex)
         {
@@ -103,20 +119,9 @@
 
             $this->connection = Connection::GetInstance();
 
-            $resultSet = $this->connection->Execute($query,$parameters);
+            $row = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row) 
-            {
-                $review = new Review();
-                $review->setIdReview($row["id_review"]);
-                $review->setIdReserve($row["id_reserve"]);
-                $review->setIdGuardian($row["id_guardian"]);
-                $review->setCalificacion($row["calificacion"]);
-                $review->setDescription($row["description"]);
-                return $review;
-    
-            }
-            return null;
+            return $this->getReview($row);
         }
         catch(Exception $ex)
         {
@@ -132,20 +137,9 @@
 
             $this->connection = Connection::GetInstance();
 
-            $resultSet = $this->connection->Execute($query,$parameters);
+            $row = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row) 
-            {
-                $review = new Review();
-                $review->setIdReview($row["id_review"]);
-                $review->setIdReserve($row["id_reserve"]);
-                $review->setIdGuardian($row["id_Guardian"]);
-                $review->setCalificacion($row["calificacion"]);
-                $review->setDescription($row["description"]);
-                return $review;
-    
-            }
-            return null;
+            return $this->getReview($row);
         }
         catch(Exception $ex)
         {

@@ -23,9 +23,22 @@ class GuardianDAO{
                 $this->connection = Connection::GetInstance();
     
                 $resultSet = $this->connection->Execute($query);
-            
-            foreach($resultSet as $row) 
+                
+            return $this->getGuardianList($resultSet);
+        
+        }
+            catch(Exception $ex)
             {
+                throw $ex;
+            }
+        }
+
+        public function getGuardian($resultSet)
+        {
+            if($resultSet != null) 
+            {
+                foreach($resultSet as $row)
+                {
                 $guardian = new Guardian();
                 $guardian->setUserName($row["userName"]);
                 $guardian->setPassword($row["password"]);
@@ -42,22 +55,55 @@ class GuardianDAO{
                 $arrayDecoded=json_decode($arrayFechasDisponibles,true);
             
                 $guardian->setFechasDisponibles($arrayDecoded);
-
+    
                 $guardian->setPrecioPorHora($row["precioPorHora"]);
                 $guardian->setFotoPerfil($row["fotoPerfil"]);
                 $guardian->setTamanioParaCuidar($row["tamanio"]);
                 $guardian->setCalificacion($row["calificacion"]);
                 $guardian->setType("guardian");
-                array_push($this->guardianList,$guardian);
-    
+                return $guardian;
+                }
             }
-            return $this->guardianList;
-        
-        }
-            catch(Exception $ex)
+            else
             {
-                throw $ex;
+            return null;
             }
+        }
+
+        public function getGuardianList($resultSet)
+        {
+            $array= array();
+            if($resultSet != null) 
+            {
+                foreach($resultSet as $row)
+                {
+                $guardian = new Guardian();
+                $guardian->setUserName($row["userName"]);
+                $guardian->setPassword($row["password"]);
+                $guardian->setEmail($row["email"]);
+                $guardian->setFullname($row["fullName"]);
+                $guardian->setAge($row["age"]);
+                $guardian->setId($row["id_guardian"]);
+                $guardian->setTelefono($row["telefono"]);
+                $guardian->setGender($row["gender"]);
+                $guardian->setCuil($row["cuil"]);
+                
+                $arrayFechasDisponibles=array();
+                $arrayFechasDisponibles=$row["fechasDisponibles"];
+                $arrayDecoded=json_decode($arrayFechasDisponibles,true);
+            
+                $guardian->setFechasDisponibles($arrayDecoded);
+    
+                $guardian->setPrecioPorHora($row["precioPorHora"]);
+                $guardian->setFotoPerfil($row["fotoPerfil"]);
+                $guardian->setTamanioParaCuidar($row["tamanio"]);
+                $guardian->setCalificacion($row["calificacion"]);
+                $guardian->setType("guardian");
+                array_push($array,$guardian);
+                }
+            }
+                /*$guardian = $this->getGuardian($row);*/
+            return $array;
         }
     
 
@@ -160,35 +206,7 @@ class GuardianDAO{
             $this->connection = Connection::GetInstance();
 
             $resultSet = $this->connection->Execute($query,$parameters);
-        
-        foreach($resultSet as $row) 
-        {
-            $guardian = new Guardian();
-            $guardian->setUserName($row["userName"]);
-            $guardian->setPassword($row["password"]);
-            $guardian->setEmail($row["email"]);
-            $guardian->setFullname($row["fullName"]);
-            $guardian->setAge($row["age"]);
-            $guardian->setId($row["id_guardian"]);
-            $guardian->setTelefono($row["telefono"]);
-            $guardian->setGender($row["gender"]);
-            $guardian->setCuil($row["cuil"]);
-            
-            $arrayFechasDisponibles=array();
-            $arrayFechasDisponibles=$row["fechasDisponibles"];
-            $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-        
-            $guardian->setFechasDisponibles($arrayDecoded);
-
-            $guardian->setPrecioPorHora($row["precioPorHora"]);
-            $guardian->setFotoPerfil($row["fotoPerfil"]);
-            $guardian->setTamanioParaCuidar($row["tamanio"]);
-            $guardian->setCalificacion($row["calificacion"]);
-            $guardian->setType("guardian");
-            return $guardian;
-
-        }
-        return null;
+            return $this->getGuardian($resultSet);
     
     }
         catch(Exception $ex)
@@ -208,34 +226,7 @@ class GuardianDAO{
 
             $resultSet = $this->connection->Execute($query,$parameters);
         
-        foreach($resultSet as $row) 
-        {
-            $guardian = new Guardian();
-            $guardian->setUserName($row["userName"]);
-            $guardian->setPassword($row["password"]);
-            $guardian->setEmail($row["email"]);
-            $guardian->setFullname($row["fullName"]);
-            $guardian->setAge($row["age"]);
-            $guardian->setId($row["id_guardian"]);
-            $guardian->setTelefono($row["telefono"]);
-            $guardian->setGender($row["gender"]);
-            $guardian->setCuil($row["cuil"]);
-            
-            $arrayFechasDisponibles=array();
-            $arrayFechasDisponibles=$row["fechasDisponibles"];
-            $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-        
-            $guardian->setFechasDisponibles($arrayDecoded);
-
-            $guardian->setPrecioPorHora($row["precioPorHora"]);
-            $guardian->setFotoPerfil($row["fotoPerfil"]);
-            $guardian->setTamanioParaCuidar($row["tamanio"]);
-            $guardian->setCalificacion($row["calificacion"]);
-            $guardian->setType("guardian");
-            return $guardian;
-
-        }
-        return null;
+            return $this->getGuardian($resultSet);
     
     }
         catch(Exception $ex)
@@ -254,35 +245,7 @@ class GuardianDAO{
 
             $resultSet = $this->connection->Execute($query,$parameters);
             
-            foreach($resultSet as $row) 
-            {
-                $guardian = new Guardian();
-                $guardian->setUserName($row["userName"]);
-                $guardian->setPassword($row["password"]);
-                $guardian->setEmail($row["email"]);
-                $guardian->setFullname($row["fullName"]);
-                $guardian->setAge($row["age"]);
-                $guardian->setId($row["id_guardian"]);
-                $guardian->setTelefono($row["telefono"]);
-                $guardian->setGender($row["gender"]);
-                $guardian->setCuil($row["cuil"]);
-                
-                $arrayFechasDisponibles=array();
-                $arrayFechasDisponibles=$row["fechasDisponibles"];
-                $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-            
-                $guardian->setFechasDisponibles($arrayDecoded);
-
-                $guardian->setPrecioPorHora($row["precioPorHora"]);
-                $guardian->setFotoPerfil($row["fotoPerfil"]);
-                $guardian->setTamanioParaCuidar($row["tamanio"]);
-                $guardian->setCalificacion($row["calificacion"]);
-                $guardian->setType("guardian");
-                return $guardian;
-
-            }
-            return null;
-    
+            return $this->getGuardian($resultSet);
         }
         catch(Exception $ex)
         {
@@ -303,35 +266,8 @@ class GuardianDAO{
                 $this->connection = Connection::GetInstance();
     
                 $resultSet = $this->connection->Execute($query,$parameters);
-            
-            foreach($resultSet as $row) 
-            {
-                $guardian = new Guardian();
-                $guardian->setUserName($row["userName"]);
-                $guardian->setPassword($row["password"]);
-                $guardian->setEmail($row["email"]);
-                $guardian->setFullname($row["fullName"]);
-                $guardian->setAge($row["age"]);
-                $guardian->setId($row["id_guardian"]);
-                $guardian->setTelefono($row["telefono"]);
-                $guardian->setGender($row["gender"]);
-                $guardian->setCuil($row["cuil"]);
                 
-                $arrayFechasDisponibles=array();
-                $arrayFechasDisponibles=$row["fechasDisponibles"];
-                $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-            
-                $guardian->setFechasDisponibles($arrayDecoded);
-
-                $guardian->setPrecioPorHora($row["precioPorHora"]);
-                $guardian->setFotoPerfil($row["fotoPerfil"]);
-                $guardian->setTamanioParaCuidar($row["tamanio"]);
-                $guardian->setCalificacion($row["calificacion"]);
-                $guardian->setType("guardian");
-                array_push($this->guardianList,$guardian);
-    
-            }
-            return $this->guardianList;
+                return $this->getGuardianList($resultSet);
         
         }
             catch(Exception $ex)
@@ -351,34 +287,7 @@ class GuardianDAO{
 
                 $resultSet = $this->connection->Execute($query,$parameters);
 
-            foreach($resultSet as $row) 
-            {
-                $guardian = new Guardian();
-                $guardian->setUserName($row["userName"]);
-                $guardian->setPassword($row["password"]);
-                $guardian->setEmail($row["email"]);
-                $guardian->setFullname($row["fullName"]);
-                $guardian->setAge($row["age"]);
-                $guardian->setId($row["id_guardian"]);
-                $guardian->setTelefono($row["telefono"]);
-                $guardian->setGender($row["gender"]);
-                $guardian->setCuil($row["cuil"]);
-
-                $arrayFechasDisponibles=array();
-                $arrayFechasDisponibles=$row["fechasDisponibles"];
-                $arrayDecoded=json_decode($arrayFechasDisponibles,true);
-
-                $guardian->setFechasDisponibles($arrayDecoded);
-
-                $guardian->setPrecioPorHora($row["precioPorHora"]);
-                $guardian->setFotoPerfil($row["fotoPerfil"]);
-                $guardian->setTamanioParaCuidar($row["tamanio"]);
-                $guardian->setCalificacion($row["calificacion"]);
-                $guardian->setType("guardian");
-                return $guardian;
-
-            }
-            return null;
+                return $this->getGuardian($resultSet);
 
         }
             catch(Exception $ex)

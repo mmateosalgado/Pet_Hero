@@ -76,6 +76,7 @@
                     foreach($guardianListToFilter as $guardian){
                         if( count(array_diff($dates,$guardian->getFechasDisponibles())) == 0 || $this->reserveDAO->VerifyByDateAndRace($guardian->getId(),$dates,$newPet->getRace(),$guardian->getFechasDisponibles()))
                         {
+                            $guardian = $this->giveCalification($guardian);
                             $existingReservesPetGuardian=$this->reserveDAO->getbyIdGuardianAndPet($guardian->getId(),$newPet->getId());
 
                             if($existingReservesPetGuardian==null){
@@ -99,6 +100,7 @@
                                     array_push($guardianList,$guardian);
                                 }
                             }
+
                         }
                     }
                 
@@ -108,6 +110,26 @@
                 }else{
                     $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
                 }
+            
+        }
+
+        public function giveCalification($guardian)
+        {
+            /*Reviews de ese Guardian*/
+            $reviewList = $this->reviewDAO->getByIdGuardian($guardian->getId());
+            $cantidad =0;
+            $suma =0;
+            $calificacion = 0;
+
+                foreach ($reviewList as $review) {
+
+                    $suma = $suma+ $review->getCalificacion();
+                    $cantidad ++;
+                }
+
+            $calificacion = (int) ($suma / $cantidad);
+            $guardian->setCalificacion($calificacion);
+            return $guardian;
             
         }
 
@@ -342,6 +364,7 @@
             $reserve = $this->reserveDAO->getByIdReserve($idReserve);
             require_once(VIEWS_PATH.'Owner/newReview.php');
         }
+        
 
     }
 

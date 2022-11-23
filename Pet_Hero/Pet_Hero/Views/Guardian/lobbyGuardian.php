@@ -9,7 +9,6 @@ require_once(VIEWS_PATH."Section/header.php");
 
     <div class="table-wrapper">
 
-    <form action="<?php echo FRONT_ROOT . "Guardian/changeReserve"?>" method="post" enctype="multipart/form-data">
     <table class="fl-table">
         <thead>
         <tr>
@@ -40,15 +39,20 @@ require_once(VIEWS_PATH."Section/header.php");
             <td><?php echo $reserve->getFechaInicio()?></td>
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo $reserve->getTotal()?></td>
+            <form action="<?php echo FRONT_ROOT . "Guardian/changeReserve"?>" method="post">
             <td><button class="btn_check" name="estado" value="2"> </button></td>
             <td><button class="btn_reject" name="estado" value="3"> </button></td>
-
             <input type="hidden" value="<?php  echo $reserve->getIdReserve()?>" name="idReserve"> 
+            </form>
         </tr>
        <?php  } }
+       ?>
+       
+
+       <?php
           } }?>
         <tbody>
     </table>  
-</div>
+</div> 
 
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

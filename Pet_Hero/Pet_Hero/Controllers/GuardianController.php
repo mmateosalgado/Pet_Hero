@@ -184,9 +184,9 @@ use Models\Owner;
 
                 //TODO: TESTEAR
                 //Borrar reservas estado == 1 && id_guardian=id_guardian 
-                $reservasEnEspeta=$this->reserveDAO->getByIdGuardianEnEsperaReserve($guardian->getId());
+                $reservasEnEspera=$this->reserveDAO->getByIdGuardianEnEsperaReserve($guardian->getId());
                 
-                foreach ($reservasEnEspeta as $reservaEE) {
+                foreach ($reservasEnEspera as $reservaEE) {
                     $fechasReserva=$this->getDatesBetween($reservaEE->getFechaInicio(),$reservaEE->getFechaFin());
 
                     $datesDiff=array_intersect($dates,$fechasReserva);
