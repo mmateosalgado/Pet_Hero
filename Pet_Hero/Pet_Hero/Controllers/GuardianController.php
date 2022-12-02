@@ -230,13 +230,13 @@ use Models\Owner;
             //to--------------------------------------------------
             $mail=new PHPMailer(true);
             $mail->isSMTP();
-            $mail->Host='smtp.gmail.com';
-            $mail->SMTPAuth=true;
-            $mail->Username='petheroreserves@gmail.com';//gmail
-            $mail->Password='picsqulweticpqeo';//gmail app password
-            $mail->SMTPSecure='ssl';
-            $mail->Port=465;
-            $mail->setFrom('petheroreserves@gmail.com');
+            $mail->Host = MAIL_HOST;
+            $mail->SMTPAuth=SMTPAuth;
+            $mail->Username=MAILUSERNAME;//gmail
+            $mail->Password=MAILPASSWORD;//gmail app password
+            $mail->SMTPSecure=SMTPSECURE;
+            $mail->Port=MAILPORT;
+            $mail->setFrom(MAILUSERNAME);
             $mail->addAddress($owner->getEmail());
             $mail->isHTML(true);
             $mail->Subject="Confirmacion Reserva - PETHERO";

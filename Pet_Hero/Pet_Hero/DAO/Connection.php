@@ -19,7 +19,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error en la BBDD ". $ex->getMessage());
             }
         }
 
@@ -45,7 +45,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error en la Ejecución". $ex->getMessage());
             }
         }
         
@@ -63,7 +63,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error en la Ejecución Sin Query". $ex->getMessage());
             }        	    	
         }
         
@@ -75,7 +75,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error en la Preparación". $ex->getMessage());
             }
         }
         

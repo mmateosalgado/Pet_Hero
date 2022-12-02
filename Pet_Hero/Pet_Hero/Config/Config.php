@@ -16,6 +16,16 @@
     define("DB_NAME", "Pet_Hero");
     define("DB_USER", "root");
     define("DB_PASS", "");
+
+    /* MAILER */
+    define("MAIL_HOST", "smtp.gmail.com"); '';
+    define("SMTPAuth", true);
+    define("MAILUSERNAME", "petheroreserves@gmail.com");
+    define("MAILPASSWORD", "picsqulweticpqeo");
+    define("SMTPSECURE", "ssl");
+    define("MAILPORT", 465);
+
+
 ?>
 
 

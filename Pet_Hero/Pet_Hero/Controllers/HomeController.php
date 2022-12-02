@@ -24,7 +24,7 @@ class HomeController
         $this->reserveDAO=new ReserveDAO();
         }
 
-        public function Index($message = "")
+        public function Index($alert = null)
         {
             require_once(VIEWS_PATH."Home/login.php");
         }
@@ -36,62 +36,58 @@ class HomeController
 
         public function Login($user,$password,$accountType)
         {
-            if($accountType=="owner")
-            {   
+        try {
+            if ($accountType == "owner") {
                 $owner = new Owner();
                 $owner = $this->ownerDAO->getByUser($user);
-                if(isset($owner))
-                {
-                    if($owner->getPassword()==$password)
-                    {
+                if (isset($owner)) {
+                    if ($owner->getPassword() == $password) {
                         $_SESSION['userName'] = $owner->getUserName();
                         $_SESSION['type'] = $owner->getType();
-                        $_SESSION["id"]= $owner->getId();
+                        $_SESSION["id"] = $owner->getId();
                         $guardianList = $this->guardianDAO->GetAll();
-                        $petList=array();
-                        $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
-                        require_once(VIEWS_PATH."Owner/lobbyOwner.php");
-                    
+                        $petList = array();
+                        $petList = $this->petDAO->getAllByOwnerId($_SESSION["id"]);
+                        require_once(VIEWS_PATH . "Owner/lobbyOwner.php");
+
+                    } else {
+                        throw new Exception("- Usuario o contraseña incorrectos!");
                     }
-                    else
-                    {
-                        $this->Index("Usuario o contraseña incorrectos"); 
-                    }
+                } else {
+                    throw new Exception("- Usuario o contraseña incorrectos!");
                 }
-                else
-                {
-                    $this->Index("Usuario o contraseña incorrectos"); 
-                }
-                
-            }elseif($accountType=="guardian")
-            {
+
+            } elseif ($accountType == "guardian") {
                 $guardian = new Guardian();
                 $guardian = $this->guardianDAO->getByUser($user);
-                if(isset($guardian))
-                {
-                    if($guardian->getPassword()==$password)
-                    {
+                if (isset($guardian)) {
+                    if ($guardian->getPassword() == $password) {
                         $_SESSION['userName'] = $guardian->getUserName();
                         $_SESSION['type'] = $guardian->getType();
                         $_SESSION['URL'] = $guardian->getCalificacion();
-                        $_SESSION["id"]= $guardian->getId();
+                        $_SESSION["id"] = $guardian->getId();
 
                         $reserveList = array();
                         $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
                         $petList = $this->petDAO->GetAll();
-                        
-                        require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
-                    }else
-                        {
-                            $this->Index("Usuario o contraseña incorrectos"); 
-                        }
-                }else
-                {
-                    $this->Index("Usuario o contraseña incorrectos"); 
+
+                        require_once(VIEWS_PATH . 'Guardian/lobbyGuardian.php');
+                    } else {
+                        throw new Exception("- Usuario o contraseña incorrectos!");
+                    }
+                } else {
+                    throw new Exception("- Usuario o contraseña incorrectos!");
                 }
+            } else {
+                throw new Exception("- Tipo de cuenta no encontrada!");
             }
-            else{
-                $this->Index("TIPO DE CUENTA NO ENCONTRADA");
+        }
+            catch(Exception $ex){
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+
+                $this->Index($alert);
             }
         }
 
@@ -150,9 +146,15 @@ class HomeController
         }
         public function Logout()
         {
+        try {
             session_destroy();
-
-            $this->Index("Sesión Cerrada con éxito");
+            throw new Exception("- Sesión cerrada con éxito");
+        } catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->Index($alert);
+        }
         }
     }
 ?>

@@ -19,10 +19,14 @@ require_once(VIEWS_PATH."Section/header.php");?>
                 <div class="text">
                 <a href="<?php echo FRONT_ROOT ?>Home/ViewRegister"> No tienes una cuenta? </a>
             </div>
-            <br>
-                        
-                     <?php if(isset($message)) 
-                                { echo "<div class='message'><a>". $message."</a></div>";} ?>
+                     
+            <br>  
+                    <?php if(isset($alert)){?>
+                            <div class="message">
+                                <a><?php echo $alert["text"]?></a></div>
+                            </div>
+                        <?php } ?> 
+                    </div>
             </div>
    </form>
 
