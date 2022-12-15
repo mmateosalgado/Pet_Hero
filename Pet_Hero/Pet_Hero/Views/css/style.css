@@ -938,7 +938,7 @@ font{
 	   nav {
 		margin: 27px auto 0;
 		position: relative;
-		width: 430px;
+		width: 530px;
 		height: 50px;
 		background-color: rgba(60,60,60,.5);;
 		border-radius: 8px;
@@ -968,8 +968,7 @@ font{
 		border-radius: 8px;
 	}
 	a:nth-child(1) {
-		width: 100px;
-		background-image: "https://cdn-icons-png.flaticon.com/512/4645/4645949.png";
+		width: 110px;
 	}
 	a:nth-child(2) {
 		width: 110px;
@@ -978,11 +977,12 @@ font{
 		width: 110px;
 	}
 	a:nth-child(4) {
-		width: 110px;
+		width: 120px;
 	}
 	a:nth-child(5) {
 		width: 120px;
 	}
+	
 	nav .start-lobby, a:nth-child(1):hover~.animation {
 		width: 100px;
 		left: 0;
@@ -991,24 +991,23 @@ font{
 	nav .start-about, a:nth-child(2):hover~.animation {
 		width: 110px;
 		left: 100px;
-		/*background-color: #ead775;*/
 		background-color: #ead775;
 	}
 	nav .start-blog, a:nth-child(3):hover~.animation {
 		width: 110px;
 		left: 210px;
-		background-color: #967456;
+		background-color: #f9a408;
 	}
 	nav .start-portefolio, a:nth-child(4):hover~.animation {
 		width: 110px;
 		left: 320px;
-		background-color: #bc4b51;
+		background-color: #e57627;
 	}
-	/*nav .start-contact, a:nth-child(5):hover~.animation {
+	nav .start-contact, a:nth-child(5):hover~.animation {
 		width: 120px;
 		left: 470px;
-		background-color: #967456;
-	}*/
+		background-color: #d73924;
+	}
 	
 	body {
 		font-size: 12px;

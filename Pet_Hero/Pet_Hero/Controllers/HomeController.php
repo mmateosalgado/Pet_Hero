@@ -144,6 +144,12 @@ class HomeController
                 $this->ViewRegister($alert);
             }
         }
+
+        public function Chat($alert=null)
+        {
+            require_once(VIEWS_PATH."chat.php");
+        }
+
         public function Logout()
         {
         try {

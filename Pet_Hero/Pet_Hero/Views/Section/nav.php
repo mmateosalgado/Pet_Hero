@@ -10,6 +10,7 @@
 	<a href="<?php echo FRONT_ROOT."Owner\showPets";?>"> Mascotas </a>
 	<?php }?>
 	<a href="<?php echo FRONT_ROOT."Home\Logout";?>">Logout</a>
+	<a href="<?php echo FRONT_ROOT."Home\Chat"?>">Chats</a>
 	<div class="animation start-home"></div>
 </nav>
 
