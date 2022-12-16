@@ -706,13 +706,22 @@ font{
 	cursor: pointer;
 }
 
+.btn_send{
+	background-image:url('https://cdn.icon-icons.com/icons2/1880/PNG/512/iconfinder-send-4341325_120524.png') !important;
+	background-repeat:no-repeat;
+	height:50px;
+	width:50px;
+	margin-left: 10px;
+  }
+
 .btn_calify{
 	background-image:url('https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-valid-icon-for-your-project-png-image_1905013.jpg');
 	background-repeat:no-repeat;
 	height:50px;
 	width:50px;
-	background-size: 60px 60px;
+	background-size: 50px 50px;
 	background-position:center;
+	background-color: transparent;
 	border: none;
 	cursor: pointer;
 }
@@ -968,7 +977,7 @@ font{
 		border-radius: 8px;
 	}
 	a:nth-child(1) {
-		width: 110px;
+		width: 100px;
 	}
 	a:nth-child(2) {
 		width: 110px;
@@ -977,10 +986,10 @@ font{
 		width: 110px;
 	}
 	a:nth-child(4) {
-		width: 120px;
+		width: 110px;
 	}
 	a:nth-child(5) {
-		width: 120px;
+		width: 100px;
 	}
 	
 	nav .start-lobby, a:nth-child(1):hover~.animation {
@@ -1004,8 +1013,8 @@ font{
 		background-color: #e57627;
 	}
 	nav .start-contact, a:nth-child(5):hover~.animation {
-		width: 120px;
-		left: 470px;
+		width: 100px;
+		left: 430px;
 		background-color: #d73924;
 	}
 	
@@ -1253,3 +1262,355 @@ font{
 		text-shadow: 2px 2px 4px #000000;
 		font-family: "Raleway", sans-serif;
 	}
+
+	
+	  
+	  .container {
+		padding:0;
+	
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+		height: 700px;
+		position: relative;
+	  }
+	  
+	  /* ===== MENU ===== */
+	  .menu {
+		float: left;
+		height: 700px;;
+		width: 70px;
+		background: #4768b5;
+		background: -webkit-linear-gradient(#4768b5, #35488e);
+		background: -o-linear-gradient(#4768b5, #35488e);
+		background: -moz-linear-gradient(#4768b5, #35488e);
+		background: linear-gradient(#4768b5, #35488e);
+		box-shadow: 0 10px 20px rgba(0,0,0,0.19);
+	  }
+	  
+	  .menu .items {
+		list-style:none;
+		margin: auto;
+		padding: 0;
+	  }
+	  
+	  .menu .items .item {
+		height: 70px;
+		border-bottom: 1px solid #6780cc;
+		display:flex;
+		justify-content: center;
+		align-items: center;
+		color: #9fb5ef;
+		font-size: 17pt;
+	  }
+	  
+	  .menu .items .item-active {
+		background-color:#5172c3;
+		color: #FFF;
+	  }
+	  
+	  .menu .items .item:hover {
+		cursor: pointer;
+		background-color: #4f6ebd;
+		color: #cfe5ff;
+	  }
+	  
+	  /* === CONVERSATIONS === */
+	  
+	  .discussions {
+		width: 25%;
+		height: auto;
+		position: relative;
+		left: 10%;
+		margin-top: 10px;
+		box-shadow: 0px 8px 10px rgba(0,0,0,0.20);
+		overflow: hidden;
+		display: inline-block;
+		background-color:rgba(0,0,0,0.5) ;
+	  }
+	  
+	  .discussions .discussion {
+		width: 100%;
+		height: 90px;
+		background-color: #FAFAFA;
+		border-bottom: solid 1px #E0E0E0;
+		display:flex;
+		align-items: center;
+		cursor: pointer;
+	  }
+	  
+	  .discussions .search {
+		display:flex;
+		align-items: center;
+		justify-content: center;
+		color: #E0E0E0;
+	  }
+	  
+	  .discussions .search .searchbar {
+		height: 40px;
+		background-color: #FFF;
+		width: 70%;
+		padding: 0 20px;
+		border-radius: 50px;
+		border: 1px solid #EEEEEE;
+		display:flex;
+		align-items: center;
+		cursor: pointer;
+	  }
+	  
+	  .discussions .search .searchbar input {
+		margin-left: 15px;
+		height:38px;
+		width:100%;
+		border:none;
+		font-family: 'Montserrat', sans-serif;;
+	  }
+	  
+	  .discussions .search .searchbar *::-webkit-input-placeholder {
+		  color: #E0E0E0;
+	  }
+	  .discussions .search .searchbar input *:-moz-placeholder {
+		  color: #E0E0E0;
+	  }
+	  .discussions .search .searchbar input *::-moz-placeholder {
+		  color: #E0E0E0;
+	  }
+	  .discussions .search .searchbar input *:-ms-input-placeholder {
+		  color: #E0E0E0;
+	  }
+	  
+	  .discussions .message-active {
+		width: 100%;
+		height: 90px;
+		
+		border-bottom: solid 1px #E0E0E0;
+	  }
+	  
+	  .discussions .discussion .photo {
+		  margin-left:20px;
+		  display: block;
+		  width: 45px;
+		  height: 45px;
+		  background: #E6E7ED;
+		  -moz-border-radius: 50px;
+		  -webkit-border-radius: 50px;
+		  background-position: center;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+	  }
+	  
+	  .online {
+		position: relative;
+		top: 30px;
+		left: 35px;
+		width: 13px;
+		height: 13px;
+		background-color: #8BC34A;
+		border-radius: 13px;
+		border: 3px solid #FAFAFA;
+	  }
+	  
+	  .desc-contact {
+		height: 43px;
+		width:50%;
+		white-space: nowrap;
+		position: relative;
+		overflow: hidden;
+		text-overflow: ellipsis;
+	  }
+	  
+	  .discussions .discussion .name {
+		margin: 0 0 0 20px;
+		font-family:'Montserrat', sans-serif;
+		font-size: 11pt;
+		color:#515151;
+		width: 0%;
+	  }
+	  
+	  .discussions .discussion .message {
+		margin: 6px 0 0 20px;
+		font-family:'Montserrat', sans-serif;
+		position: absolute;
+		font-size: 9pt;
+		color:#515151;
+	  }
+	  
+	  .timer {
+		margin-left: 15%;
+		font-family:'Open Sans', sans-serif;
+		font-size: 11px;
+		padding: 3px 8px;
+		color: #BBB;
+		background-color: #FFF;
+		border: 1px solid #E5E5E5;
+		border-radius: 15px;
+		
+	  }
+	  
+	  .chat {
+		width: calc(65% - 85px);
+		position: relative;
+		margin-top: 10px;
+		
+		right: 5%;
+		float:right;
+		height: 450px;
+	  }
+	  
+	  .header-chat {
+		background-color: #FFF;
+		height: 70px;
+		box-shadow: 0px 3px 2px rgba(0,0,0,0.100);
+		display:flex;
+		position: relative;
+		align-items: center;
+	  }
+	  
+	  .chat .header-chat .icon {
+		margin-left: 30px;
+		color:#515151;
+		font-size: 14pt;
+		position: relative;
+	  }
+	  
+	  .chat .header-chat .name {
+		margin: 0 0 0 20px;
+		text-transform: uppercase;
+		font-family:'Montserrat', sans-serif;
+		font-size: 13pt;
+		color:#515151;
+	  }
+	  
+	  .chat .header-chat .right {
+		position: absolute;
+		right: 40px;
+	  }
+	  
+	  .chat .messages-chat {
+		padding: 25px 35px;
+		height: 400px;
+		background-color: rgba(136, 221, 164, 0.404);
+	  }
+	  
+	  .chat .messages-chat .message {
+		display:flex;
+		align-items: center;
+		margin-bottom: 8px;
+	  }
+	  
+	  .chat .messages-chat .message .photo {
+		  display: block;
+		  width: 45px;
+		  height: 45px;
+		  background: #E6E7ED;
+		  -moz-border-radius: 50px;
+		  -webkit-border-radius: 50px;
+		  background-position: center;
+		  background-size: cover;
+		  background-repeat: no-repeat;
+	  }
+	  
+	  .chat .messages-chat .texto {
+		margin: 0 35px;
+		background-color: rgba(61, 56, 56, 0.6);
+		padding: 15px;
+		border-radius: 12px;
+		position: relative;
+		text-align: unset;
+		bottom: 0%;
+		width: auto;
+	  }
+	  
+	  .texto-only {
+		margin-left: 45px;
+	  }
+	  
+	  .time {
+		font-size: 10px;
+		color:rgb(255, 255, 255);
+		margin-bottom:10px;
+		margin-left: 11%;
+		text-align: left;
+		position: relative;
+		bottom: 0%;
+		width: 0%;
+	  }
+	  
+	  .response-time {
+		position: relative;
+		float: right;
+		margin-right: 10%;
+		
+		
+	  }
+	  
+	  .response {
+		float: right;
+		margin-right: 5px !important;
+		margin-left:auto; /* flexbox alignment rule */
+	  }
+	  
+	  .response .texto {
+		background-color: rgba(61, 56, 56, 0.6) !important;
+	  }
+	  
+	  .footer-chat {
+		height: 80px;
+		display:flex;
+		align-items: center;
+		bottom: 0;
+		background-color: rgba(61, 56, 56, 0.6);
+		border-top: 2px solid #EEE;
+		
+	  }
+	  
+	  .chat .footer-chat .icon {
+		margin-left: 30px;
+		color:#C0C0C0;
+		font-size: 14pt;
+	  }
+	  
+	  
+	  
+	  .chat .footer-chat .name {
+		margin: 0 0 0 20px;
+		text-transform: uppercase;
+		font-family:'Montserrat', sans-serif;
+		font-size: 13pt;
+		color:#515151;
+	  }
+	  
+	  .chat .footer-chat .right {
+		position: absolute;
+		right: 40px;
+	  }
+	  
+	  .write-message {
+		border:none !important;
+		width:90%;
+		height: 50px;
+		margin-left: 20px;
+		padding: 10px;
+		position: relative;
+		border-radius: 8px;
+	  }
+	  
+	  .footer-chat *::-webkit-input-placeholder {
+		color: #C0C0C0;
+		font-size: 13pt;
+	  }
+	  .footer-chat input *:-moz-placeholder {
+		color: #C0C0C0;
+		font-size: 13pt;
+	  }
+	  .footer-chat input *::-moz-placeholder {
+		color: #C0C0C0;
+		font-size: 13pt;
+		margin-left:5px;
+	  }
+	  .footer-chat input *:-ms-input-placeholder {
+		color: #C0C0C0;
+		font-size: 13pt;
+	  }
+	  
+	  .clickable {
+		cursor: pointer;
+	  }
