@@ -66,28 +66,40 @@
           <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
         </div>
         <div class="messages-chat">
-          <div class="message">
-            <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-              <div class="online"></div>
-            </div>
-            <p class="texto"> Hola como estas ? </p>
-          </div>
+          
           <div class="message texto-only">
+            <p class="time"> 14:58</p>
             <p class="texto"> Apartir de las 17:00 puedo pasar a buscar a tu mascota ?</p>
           </div>
-          <p class="time"> 14:58</p>
+          
           <div class="message texto-only">
             <div class="response">
+            <p class="response-time time"> 15:04</p>
               <p class="texto"> Obvio ran 😃</p>
             </div>
           </div>
           <div class="message texto-only">
             <div class="response">
+            <p class="response-time time"> 15:04</p>
               <p class="texto"> Mandale mecha </p>
             </div>
           </div>
-          <p class="response-time time"> 15:04</p>
+          
          
+          
+          <div class="message texto-only">
+            <p class="time"> 14:58</p>
+            <p class="texto"> Apartir de las 17:00 puedo pasar a buscar a tu mascota ?</p>
+          </div>
+          
+          <div class="message texto-only">
+            <div class="response">
+              <p class="response-time time"> 15:04</p>
+              <p class="texto"> Obvio ran 😃</p>
+            </div>
+          </div>
+         
+          
         
         </div>
         <div class="footer-chat">
