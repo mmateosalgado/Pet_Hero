@@ -59,13 +59,13 @@
           <div class="timer">1 week</div>
         </div>
       </section>
-      <section class="chat">
+      <section class="chat"> <!-- ******************* Encabezado del chat (nombre del contacto) ****************** -->
         <div class="header-chat">
           <i class="icon fa fa-user-o" aria-hidden="true"></i>
           <p class="name">Megan Leib</p>
           <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
         </div>
-        <div class="messages-chat">
+        <div class="messages-chat"> <!-- ********************************** aca arranca el chat ***************************************** -->
           
           <div class="message texto-only">
             <p class="time"> 14:58</p>
@@ -101,7 +101,7 @@
          
           
         
-        </div>
+        </div> <!-- ********************************** aca termina el chat ***************************************** -->
         <div class="footer-chat">
 
           <input type="texto" class="write-message" placeholder="Escriba aqui"></input>
