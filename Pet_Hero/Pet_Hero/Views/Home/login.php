@@ -21,7 +21,7 @@ require_once(VIEWS_PATH."Section/header.php");?>
             </div>
                      
             <br>  
-                    <?php if(isset($alert)){?>
+                    <?php if($alert != ''){?>
                             <div class="message">
                                 <a><?php echo $alert["text"]?></a></div>
                             </div>

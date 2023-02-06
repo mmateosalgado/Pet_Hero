@@ -146,7 +146,7 @@
             require_once(VIEWS_PATH.'Owner/profileOwner.php');
         }
 
-        public function showPets($alert=null)
+        public function showPets($alert='')
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();

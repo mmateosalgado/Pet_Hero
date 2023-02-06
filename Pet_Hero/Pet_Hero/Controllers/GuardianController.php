@@ -12,12 +12,12 @@
     use DAO\ReserveDao as ReserveDao;
     use DAO\OwnerDAO as OwnerDAO;
    
-    use Exception;
+    use \Exception as Exception;
     use PHPMailer\PHPMailer as PHPMailer;
     use PHPMailer\Exception as ExceptionMail;
 
     use Controllers\FileController as FileController;
-use Models\Owner;
+    use Models\Owner;
 
     class GuardianController
     {
@@ -133,7 +133,7 @@ use Models\Owner;
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
             if($iDisp<=$fDisp){
-                $newDates=array();//Fechas Nueva Reservas                                           
+                $newDates=array();//Fechas Nueva Reservas
                 $newDates=$this->getDatesBetween($iDisp,$fDisp);//Nuevas fechas disponibles
 
                 $reservesUser=$this->reserveDAO->getByIdGuardianConfirm($_SESSION["id"]); 
@@ -144,7 +144,7 @@ use Models\Owner;
                     $fechasReserva=$this->getDatesBetween($reserva->getFechaInicio(),$reserva->getFechaFin());
                     $reserveDates=array_merge($reserveDates,$fechasReserva);
                 }
-                
+
                 //Sacar Repetidos
                 $reserveDates=array_unique($reserveDates);
 
@@ -165,7 +165,7 @@ use Models\Owner;
         }
 
         public function changeReserve($estado,$idReserve)
-        {   
+        {
             //Si la reserva está confirmada
             if($estado == 2 || $estado == 5)
             {
@@ -183,19 +183,19 @@ use Models\Owner;
                 $this->guardianDAO->Update($guardian);
 
                 //TODO: TESTEAR
-                //Borrar reservas estado == 1 && id_guardian=id_guardian 
+                //Borrar reservas estado == 1 && id_guardian=id_guardian
                 $reservasEnEspera=$this->reserveDAO->getByIdGuardianEnEsperaReserve($guardian->getId());
-                
+
                 foreach ($reservasEnEspera as $reservaEE) {
                     $fechasReserva=$this->getDatesBetween($reservaEE->getFechaInicio(),$reservaEE->getFechaFin());
 
                     $datesDiff=array_intersect($dates,$fechasReserva);
-                    
+
                     if(!empty($datesDiff)){
                         if($reservaEE->getTipoMascota()!=$reserva->getTipoMascota() && $reserva->getRace()!=$reservaEE->getRace()){
                             //Cambia estado a Rechazada
                             $reservaEE->setEstado(3);//Rechazada
-                            $this->reserveDAO->Update($reservaEE); 
+                            $this->reserveDAO->Update($reservaEE);
                         }
                     }
                 }
@@ -203,7 +203,7 @@ use Models\Owner;
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
             $reserveToUpdate->setEstado($estado);
-            $this->reserveDAO->Update($reserveToUpdate); 
+            $this->reserveDAO->Update($reserveToUpdate);
             $this->showReservas();
         }
 
@@ -241,7 +241,7 @@ use Models\Owner;
             $mail->isHTML(true);
             $mail->Subject="Confirmacion Reserva - PETHERO";
 
-            $body="<h1>Hola " . $owner->getFullName() . "! </h1>" 
+            $body="<h1>Hola " . $owner->getFullName() . "! </h1>"
             . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . $pet->getName() . "\n" 
             . "desde el " . $reserva->getFechaInicio() . " hasta el " . $reserva->getFechaFin() . "\n" .
             "<h2>--Informacion de contacto del Guardian!--</h2> \n" .
@@ -284,7 +284,7 @@ use Models\Owner;
                 $message = "Todavía no hay ninguna Review para esa Reserva";
                 $this->showHistorialReserves($message);
             }
-            else 
+            else
             {
                 $reservePay= $this->reserveDAO->getByIdReserve($review->getIdReserve());
                 $userOwner=  $this->ownerDAO->getById($reservePay->getIdGuardian());
