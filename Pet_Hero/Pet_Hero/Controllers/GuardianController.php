@@ -12,12 +12,12 @@
     use DAO\ReserveDao as ReserveDao;
     use DAO\OwnerDAO as OwnerDAO;
    
-    use Exception;
+    use \Exception as Exception;
     use PHPMailer\PHPMailer as PHPMailer;
     use PHPMailer\Exception as ExceptionMail;
 
     use Controllers\FileController as FileController;
-use Models\Owner;
+    use Models\Owner;
 
     class GuardianController
     {
