@@ -24,12 +24,12 @@ class HomeController
         $this->reserveDAO=new ReserveDAO();
         }
 
-        public function Index($alert = null)
+        public function Index($alert='')
         {
             require_once(VIEWS_PATH."Home/login.php");
         }
 
-        public function ViewRegister($alert=null)
+        public function ViewRegister($alert='')
         {
             require_once(VIEWS_PATH."Home/register.php");
         }
@@ -95,7 +95,7 @@ class HomeController
         {
             try{
                 if($accountType=="owner")
-                {   
+                {
                     $validacionOwnerUser=$this->ownerDAO->getByUser($user);
 
                     if($validacionOwnerUser!=null){
@@ -111,7 +111,7 @@ class HomeController
                             $owner->setUserName($user);
                             $owner->setPassword($password);
                             $owner->setFullName($name);
-                            $owner->setAge($date);//fecha de nacimiento 
+                            $owner->setAge($date);//fecha de nacimiento
                             $owner->setEmail($email);
                             $owner->setGender($gender);
                             $owner->setType( $accountType);
@@ -145,7 +145,7 @@ class HomeController
             }
         }
 
-        public function Chat($alert=null)
+        public function Chat($alert='')
         {
             require_once(VIEWS_PATH."chat.php");
         }
