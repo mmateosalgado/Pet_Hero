@@ -52,10 +52,10 @@ constraint fkGenderO foreign key (id_gender) references gender(id_gender)
 create table review(
 id_review integer auto_increment not null,
 calificacion integer not null,
-id_guardian integer not null,
+id_reserve integer not null,
 description nvarchar(100) not null,
 primary key (id_review),
-constraint fkGuardianR foreign key (id_guardian) references guardian(id_guardian)
+constraint fkReserve foreign key (id_reserve) references reserve(id_reserve)
 )Engine=InnoDB;
 
 create table race(
@@ -116,3 +116,23 @@ insert into tamanio (tamanio) values ('small'),('medium'),('big');
 insert into race (race) values ('salchicha'),('caniche'),('bulldog'),('labrador'),('pitbull'),('golden'),('doberman'),('persa'),('siames'),('ragdoll'),('british'),('siberiano'),('china'),('ruso'),('campbell'),('roborowski'),('payaso'),('guppys'),('tetras'),('disco');
 insert into animal (animal,id_race) values ('perro',1),('perro',2),('perro',3),('perro',4),('perro',5),('perro',6),('perro',7),('gato',8),('gato',9),('gato',10),('gato',11),('gato',12),('hamster',13),('hamster',14),('hamster',15),('hamster',16),('pez',17),('pez',18),('pez',19),('pez',20);
 insert into estado (estado) values ('en espera'),('confirmada'),('rechazada'),('realizada'),('pagada');
+
+
+create table chat(
+id_chat integer auto_increment not null,
+id_reserve integer not null,
+mensaje_guardian nvarchar(100) not null,
+mensaje_dueno nvarchar(100) not null,
+primary key (id_chat),
+constraint fkReserve2 foreign key (id_reserve) references reserve(id_reserve)
+);
+
+create table lineaChat(
+id_lineaChat integer auto_increment not null,
+id_chat integer not null,         
+user_type integer not null, /*En la lógica poner user_type =0 si es guardian (_Session)  */
+mensaje nvarchar(300) not null,
+fecha datetime not null,
+primary key (id_lineaChat),
+constraint fkChat foreign key (id_chat) references chat(id_chat)
+);
