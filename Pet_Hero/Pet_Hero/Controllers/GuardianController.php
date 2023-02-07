@@ -4,8 +4,9 @@
     use Models\Review as Review;
     use Models\Guardian as Guardian;
     use Models\Reserve as Reserve;
+    use Models\Owner as Owner;
 
-
+    use DAO\ChatDAO as ChatDAO;
     use DAO\GuardianDAO as GuardianDAO;
     use DAO\ReviewDAO as ReviewDAO;
     use DAO\PetDao AS PetDao;
@@ -17,7 +18,6 @@
     use PHPMailer\Exception as ExceptionMail;
 
     use Controllers\FileController as FileController;
-    use Models\Owner;
 
     class GuardianController
     {
@@ -26,6 +26,7 @@
         private PetDAO $petDAO;
         private ReviewDAO $reviewDAO;
         private OwnerDAO $ownerDAO;
+        private ChatDAO $chatDAO;
 
         public function __construct()
         {
@@ -34,6 +35,7 @@
             $this->petDAO=new PetDAO();
             $this->reviewDAO=new ReviewDAO;
             $this->ownerDAO=new OwnerDAO();
+            $this->chatDAO=new ChatDAO();
         }
 
         public function Index($message = "")
@@ -199,6 +201,11 @@
                         }
                     }
                 }
+            }
+
+            if($estado == 2)/* Creo el chat si el estado recién se confirma*/
+            {
+            $this->chatDAO->AddChat($idReserve);
             }
 
             $reserveToUpdate= $this->reserveDAO->getByIdReserve($idReserve);
