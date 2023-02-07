@@ -29,7 +29,7 @@ class GuardianDAO{
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar todos los guardianes");
             }
         }
 
@@ -102,7 +102,6 @@ class GuardianDAO{
                 array_push($array,$guardian);
                 }
             }
-                /*$guardian = $this->getGuardian($row);*/
             return $array;
         }
     
@@ -141,7 +140,7 @@ class GuardianDAO{
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al agregar el guardian");
         }
     }
     
@@ -163,7 +162,7 @@ class GuardianDAO{
         }
         catch(Exception $ex)
         {
-        throw $ex;
+            throw new Exception ("Error al modificar el guardian");
         }
     }
 
@@ -178,7 +177,7 @@ class GuardianDAO{
         }
         catch(Exception $ex)
         {
-        throw $ex;
+            throw new Exception ("Error al modificar la calificación del guardian");
         }
     }
 
@@ -192,7 +191,7 @@ class GuardianDAO{
         }
         catch(Exception $ex)
         {
-        throw $ex;
+            throw new Exception ("Error al borrar el guardian");
         }
     }
 
@@ -211,7 +210,7 @@ class GuardianDAO{
     }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception("-El usuario ya existe!");
         }
     }
 
@@ -231,7 +230,7 @@ class GuardianDAO{
     }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar el guardian");
         }
     }
 
@@ -249,7 +248,7 @@ class GuardianDAO{
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar el guardian");
         }
 
     }
@@ -272,7 +271,7 @@ class GuardianDAO{
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar los guardianes");
             }
         }
     
@@ -292,7 +291,7 @@ class GuardianDAO{
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar el guardian");
             }
         }
     }

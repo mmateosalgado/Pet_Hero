@@ -76,7 +76,6 @@ class OwnerDAO{
                 array_push($array, $owner);  
                 }
             }
-                /* $owner = $this->getOwner($row);*/
                 return $array;
     }
 
@@ -100,7 +99,7 @@ class OwnerDAO{
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al agregar el owner");
         }
     }
 
@@ -139,7 +138,7 @@ class OwnerDAO{
          }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar el owner");
         }
                      }
                      
@@ -158,7 +157,7 @@ class OwnerDAO{
          }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar el owner");
         }
                      }
 

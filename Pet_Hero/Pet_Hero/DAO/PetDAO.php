@@ -40,7 +40,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al agregar la mascota");
             }
         }
 
@@ -59,7 +59,7 @@
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar las mascotas");
             }
         }
         public function getPet($resultSet)
@@ -112,7 +112,7 @@
                 
                 array_push($array,$pet);
                 }
-                /*$pet = $this->getPet($row);*/
+                /*TODO Ver esto $pet = $this->getPet($row);*/
                 }
          return $array;
         }
@@ -131,7 +131,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar todas sus mascotas");
             }
             
             }
@@ -149,7 +149,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar su mascota");
             }
         }
 
@@ -167,7 +167,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al modificar la mascota");
             }
         }
     

@@ -34,7 +34,7 @@
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar todas las reservas");
             }
         }
 
@@ -102,7 +102,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al agregar la reserva");
             }
         }
 
@@ -121,7 +121,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar el guardian");
         }
         }
 
@@ -140,7 +140,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar las reservas del guardian");
         }
         }
 
@@ -155,10 +155,10 @@
             $resultSet = $this->connection->Execute($query,$parameters);
 
             return $this->getReserveList($resultSet);
-        }
+            }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar las reservas del guardian");
         }
         }
 
@@ -175,10 +175,10 @@
 
             return $this->getReserveList($resultSet);
 
-        }
+            }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar las reservas del owner");
         }
         }
 
@@ -195,7 +195,7 @@
           }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar esa reserva");
         }
         }
         public function getbyIdPet($idPet){
@@ -213,7 +213,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar las reservas de esa mascota");
         }
         }
 
@@ -232,7 +232,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar esas reservas");
         }
         }
         public function VerifyByDateAndRace($idGuardian,$dates,$race,$fechasDispGuardian){
@@ -276,7 +276,7 @@
             }
             catch(Exception $ex)
             {
-            throw $ex;
+                throw new Exception ("Error al modificar esa reserva");
             }
         }
 
@@ -290,7 +290,7 @@
         }
         catch(Exception $ex)
         {
-        throw $ex;
+            throw new Exception ("Error al borrar esa reserva");
         }
         }
 
@@ -305,7 +305,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al controlar las reservas");
             }
         }
     }

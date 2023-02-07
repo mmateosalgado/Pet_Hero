@@ -32,7 +32,7 @@
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar todas las reviews");
             }
         }
         public function getReview($resultSet)
@@ -90,7 +90,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al agregar la review");
             }
         }
 
@@ -108,7 +108,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar las reviews de ese guardian");
         }
         }
         public function getByIdReserve($idReserve){
@@ -125,7 +125,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar la review de esa reserva");
         }
         }
 
@@ -143,7 +143,7 @@
         }
         catch(Exception $ex)
         {
-            throw $ex;
+            throw new Exception ("Error al mostrar la review");
         }
         }
 

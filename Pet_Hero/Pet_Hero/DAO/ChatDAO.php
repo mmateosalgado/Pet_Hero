@@ -33,7 +33,7 @@
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar todos los chats");
             }
         }
 
@@ -106,7 +106,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al crear el chat");
             }
         }
 
@@ -126,7 +126,7 @@
             }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al agregar la linea del chat");
             }
         }
 
@@ -145,7 +145,7 @@
         }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al cargar el chat");
             }
         }
 
@@ -162,15 +162,12 @@
                 $resultSet = $this->connection->Execute($query, $parameters);
                 return $this->getLineaChatList($resultSet);
         
-        }
+            }
             catch(Exception $ex)
             {
-                throw $ex;
+                throw new Exception ("Error al mostrar el chat");
             }
         }
-
-
-
 
         
     }
