@@ -8,57 +8,6 @@
   <div class="container">
     <div class="row">
 
-      <section class="discussions">
-       
-        <div class="discussion message-active">
-          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80);">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name">Megan Leib</p>
-          </div>
-          <div class="timer">12 sec</div>
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: url(https://i.pinimg.com/originals/a9/26/52/a926525d966c9479c18d3b4f8e64b434.jpg);">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name">El bryan</p>
-          </div>
-          <div class="timer">3 min</div>
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1497551060073-4c5ab6435f12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=667&q=80);">
-          </div>
-          <div class="desc-contact">
-            <p class="name">El risas</p>
-          </div>
-          <div class="timer">42 min</div>
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: url(https://card.thomasdaubenton.com/img/photo.jpg);">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name">El billetes</p>
-          </div>
-          <div class="timer">2 hour</div>
-        </div>
-
-        <div class="discussion">
-          <div class="photo" style="background-image: url(https://images.unsplash.com/photo-1435348773030-a1d74f568bc2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80);">
-            <div class="online"></div>
-          </div>
-          <div class="desc-contact">
-            <p class="name">Paul Walker</p>
-          </div>
-          <div class="timer">1 week</div>
-        </div>
-      </section>
       <section class="chat"> <!-- ******************* Encabezado del chat (nombre del contacto) ****************** -->
         <div class="header-chat">
           <i class="icon fa fa-user-o" aria-hidden="true"></i>
@@ -107,7 +56,7 @@
           <input type="texto" class="write-message" placeholder="Escriba aqui"></input>
           
           <form action="<?php echo FRONT_ROOT . "Guardian/viewReview"?>" method="post" enctype="multipart/form-data">
-            <td><button class="btn_calify btn_send" name="send" title="send" value="<?php echo "" ?>"> </button></td>
+            <td><button class="btn_check btn_send" name="send" title="send" value="<?php echo "" ?>"> </button></td>
             </form>
         
         </div>

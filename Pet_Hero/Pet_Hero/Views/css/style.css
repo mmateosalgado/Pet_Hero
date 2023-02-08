@@ -707,7 +707,15 @@ font{
 }
 
 .btn_send{
-	background-image:url('https://cdn.icon-icons.com/icons2/1880/PNG/512/iconfinder-send-4341325_120524.png') !important;
+	background-image:url('https://st2.depositphotos.com/1432405/45256/v/600/depositphotos_452562140-stock-illustration-send-button-icon-outline-send.jpg') !important;
+	background-repeat:no-repeat;
+	height:50px;
+	width:50px;
+	margin-left: 10px;
+  }
+
+  .btn_chat{
+	background-image:url('https://static.vecteezy.com/system/resources/previews/005/337/802/original/icon-symbol-chat-outline-illustration-free-vector.jpg') !important;
 	background-repeat:no-repeat;
 	height:50px;
 	width:50px;
@@ -947,7 +955,7 @@ font{
 	   nav {
 		margin: 27px auto 0;
 		position: relative;
-		width: 530px;
+		width: 425px;
 		height: 50px;
 		background-color: rgba(60,60,60,.5);;
 		border-radius: 8px;
@@ -986,9 +994,6 @@ font{
 		width: 110px;
 	}
 	a:nth-child(4) {
-		width: 110px;
-	}
-	a:nth-child(5) {
 		width: 100px;
 	}
 	
@@ -1009,14 +1014,10 @@ font{
 	}
 	nav .start-portefolio, a:nth-child(4):hover~.animation {
 		width: 110px;
-		left: 320px;
-		background-color: #e57627;
+		left: 315px;
+		background-color: #e52b1d;
 	}
-	nav .start-contact, a:nth-child(5):hover~.animation {
-		width: 100px;
-		left: 430px;
-		background-color: #d73924;
-	}
+	
 	
 	body {
 		font-size: 12px;
@@ -1450,12 +1451,14 @@ font{
 	  }
 	  
 	  .chat {
-		width: calc(65% - 85px);
+		width: 80%;
 		
 		margin-top: 10px;
+		margin-left: 10%;
+		margin-right: 10%;
 		display: inline-block;
 		
-		right: 5%;
+		right: 50%;
 		/*float:right;*/
 		height: 450px;
 	  }

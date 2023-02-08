@@ -16,6 +16,7 @@ require_once(VIEWS_PATH."Section/header.php");
     <table class="fl-table fl-tableReserve">
         <thead>
         <tr>
+            <th>Chat</th>
             <th>Foto</th>
             <th>Mascota</th>
             <th>Animal</th>
@@ -38,6 +39,9 @@ require_once(VIEWS_PATH."Section/header.php");
                 if($pet->getId() == $reserve->getIdMascota() && ($reserve->getEstado()=='confirmada' || $reserve->getEstado()=='pagada')  && $guardian->getId() == $reserve->getIdGuardian()) {
          ?>
         <tr>
+            <form action="<?php echo FRONT_ROOT . "Home/chat"?>" method="post" enctype="multipart/form-data"> <!-- aca el redireccionamiento -->
+             <td><button class="btn_calify btn_chat" name="chat" title="Ir al chat" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            </form>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
             <td><?php echo $pet->getName()?></td>
             <td><?php echo $reserve->getTipoMascota()?></td>
