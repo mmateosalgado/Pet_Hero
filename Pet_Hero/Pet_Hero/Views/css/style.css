@@ -707,11 +707,14 @@ font{
 }
 
 .btn_send{
-	background-image:url('https://st2.depositphotos.com/1432405/45256/v/600/depositphotos_452562140-stock-illustration-send-button-icon-outline-send.jpg') !important;
+	background-image:url('https://cdn-icons-png.flaticon.com/512/6532/6532019.png') !important;
 	background-repeat:no-repeat;
+	background-size: 37px 37px;
+	background-color: #00000000;
 	height:50px;
 	width:50px;
 	margin-left: 10px;
+	border-radius: 100%;
   }
 
   .btn_chat{
