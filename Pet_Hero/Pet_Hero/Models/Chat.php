@@ -21,7 +21,7 @@ class Chat {
             return $this->id;
         }
         
-        public function setId($id): self {
+        public function setId($id) {
             $this->id = $id;
             return $this;
         }
@@ -30,9 +30,29 @@ class Chat {
             return $this->id_reserva;
         }
 
-        public function setId_reserva($id_reserva): self {
+        public function setId_reserva($id_reserva) {
             $this->id_reserva = $id_reserva;
             return $this;
         }
-    }
+    
+
+        public function getMensajesGuardian() {
+            return $this->mensajesGuardian;
+        }
+        
+
+        public function setMensajesGuardian($mensajesGuardian) {
+            $this->mensajesGuardian = $mensajesGuardian;
+            return $this;
+        }
+
+        public function getMensajesDueno() {
+            return $this->mensajesDueno;
+        }
+        
+        public function setMensajesDueno($mensajesDueno) {
+            $this->mensajesDueno = $mensajesDueno;
+            return $this;
+        }
+}
 ?>

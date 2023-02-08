@@ -4,18 +4,19 @@ namespace Models;
 class LineaChat {//Para cada linea de Chat
 
         private $id;
+        private $id_chat;
         
         private $mensaje;
 
         private $fecha;
 
-        private $id_user;
+        private $user_type;
     
         public function getId() {
             return $this->id;
         }
         
-        public function setId($id): self {
+        public function setId($id) {
             $this->id = $id;
             return $this;
         }
@@ -25,7 +26,7 @@ class LineaChat {//Para cada linea de Chat
         }
         
 
-        public function setMensaje($mensaje): self {
+        public function setMensaje($mensaje) {
             $this->mensaje = $mensaje;
             return $this;
         }
@@ -34,18 +35,29 @@ class LineaChat {//Para cada linea de Chat
             return $this->fecha;
         }
         
-        public function setFecha($fecha): self {
+        public function setFecha($fecha) {
             $this->fecha = $fecha;
             return $this;
         }
 
-        public function getId_user() {
-            return $this->id_user;
+        public function getUser_type() {
+            return $this->user_type;
         }
         
-        public function setId_user($id_user): self {
-            $this->id_user = $id_user;
+        public function setUser_type($user_type) {
+            $this->user_type = $user_type;
             return $this;
         }
-    }
+    
+
+        public function getId_chat() {
+            return $this->id_chat;
+        }
+
+
+        public function setId_chat($id_chat) {
+            $this->id_chat = $id_chat;
+            return $this;
+        }
+}
 ?>
