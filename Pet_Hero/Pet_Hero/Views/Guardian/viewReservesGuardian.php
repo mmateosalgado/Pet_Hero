@@ -32,10 +32,13 @@
         foreach($reserveList as $reserve){
             foreach($petList as $pet){
                 if($pet->getId() == $reserve->getIdMascota() && ($reserve->getEstado()=='confirmada' || $reserve->getEstado()=='pagada')) {
-         ?>
+        ?>
         <tr>
-            <form action="<?php echo FRONT_ROOT . "Home/chat"?>" method="post" enctype="multipart/form-data">
-            <td><button class="btn_calify btn_chat" name="chat" title="Ir al chat" value="<?php echo $reserve->getIdReserve() ?>"> </button></td>
+            <form action="<?php echo FRONT_ROOT . "Chat/Index"?>" method="post" enctype="multipart/form-data">
+                <td>
+                    <input type="hidden" name="idReserve" value=<?php echo $reserve->getIdReserve()?>>
+                    <button class="btn_calify btn_chat" name="chat" title="Ir al chat" value="<?php echo $reserve->getIdReserve() ?>"> </button>
+                </td>
             </form>
             <td><img width="60" height="60" src="<?php echo $pet->getFoto() ?>"></td>
             <td><?php echo $pet->getName()?></td>
@@ -46,8 +49,8 @@
             <td><?php echo $reserve->getFechaFin()?></td>
             <td><?php echo "$".$reserve->getTotal()?></td>
         </tr>
-       <?php  } }
-          } }?>
+        <?php  } }
+        } }?>
         <tbody>
     </table>  
 </div>

@@ -165,7 +165,7 @@
             }
             catch(Exception $ex)
             {
-                throw new Exception ("Error al mostrar el chat");
+           //     throw new Exception ("Error al mostrar el chat");
             }
         }
 

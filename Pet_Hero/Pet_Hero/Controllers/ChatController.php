@@ -15,13 +15,17 @@
             $this->chatDAO=new ChatDAO();
         }
 
-        public function showLineaChat($id_reserve)
+        public function Index($alert='',$idReserve)//TODO: Hay que encontrar la forma de que reciva la idReserve
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
-            $chatList = $this->chatDAO->getLineaChatByIdreserve($id_reserve);
-            //Mostrar View de chat
+            $chat = $this->chatDAO->getLineaChatByIdreserve($idReserve);
+            $other;//Nombre Persona con la que chateamos
+                //TODO: Traer Nombre Usuario al que le chateamos, 
+                //podriamos hacer una query que solo con el idReserve nos lo traiga (para hacerlo mas eficiente),
+                //Deberia ir el reserveDAO
+            require_once(VIEWS_PATH."chat.php");
         }
-
+        
         public function sendMessage($id_reserve, $message, $fecha)
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');

@@ -11,7 +11,7 @@
       <section class="chat"> <!-- ******************* Encabezado del chat (nombre del contacto) ****************** -->
         <div class="header-chat">
           <i class="icon fa fa-user-o" aria-hidden="true"></i>
-          <p class="name">Megan Leib</p>
+          <p class="name">Megan Leib</p><!--TODO: Aca va nomrbe -->
           <i class="icon clickable fa fa-ellipsis-h right" aria-hidden="true"></i>
         </div>
         <div class="messages-chat"> <!-- ********************************** aca arranca el chat ***************************************** -->

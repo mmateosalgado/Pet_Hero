@@ -26,6 +26,7 @@ class HomeController
 
         public function Index($alert='')
         {
+            session_destroy();//Para evitar manejos manuales de la URL
             require_once(VIEWS_PATH."Home/login.php");
         }
 
@@ -143,11 +144,6 @@ class HomeController
                 ];
                 $this->ViewRegister($alert);
             }
-        }
-
-        public function Chat($alert='')
-        {
-            require_once(VIEWS_PATH."chat.php");
         }
 
         public function Logout()
