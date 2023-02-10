@@ -4,25 +4,39 @@
     use Models\LineaChat as LineaChat;
 
     use DAO\ChatDAO as ChatDAO;
+    use DAO\ReserveDao as ReserveDao;
     use \Exception as Exception;
 
         class ChatController
         {
             private ChatDAO $chatDAO;
+            private ReserveDao $reserveDao;
             
         public function __construct()
         {
             $this->chatDAO=new ChatDAO();
+            $this->reserveDao=new ReserveDao();
         }
 
-        public function Index($alert='',$idReserve)//TODO: Hay que encontrar la forma de que reciva la idReserve
+        public function Index($alert='',$idReserve)//TODO: Hay que encontrar la forma de que reciba la idReserve
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
+            
             $chat = $this->chatDAO->getLineaChatByIdreserve($idReserve);
             $other;//Nombre Persona con la que chateamos
                 //TODO: Traer Nombre Usuario al que le chateamos, 
                 //podriamos hacer una query que solo con el idReserve nos lo traiga (para hacerlo mas eficiente),
                 //Deberia ir el reserveDAO
+
+                if($_SESSION['type'] == 'guardian')
+                {
+                    $other= $this->reserveDao->getUserNameGuardianByIdReserve($idReserve);
+                }
+                else
+                {
+                    $other= $this->reserveDao->getUserNameOwnerByIdReserve($idReserve);
+                }
+
             require_once(VIEWS_PATH."chat.php");
         }
         

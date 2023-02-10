@@ -308,5 +308,47 @@
                 throw new Exception ("Error al controlar las reservas");
             }
         }
+
+        public function getUserNameOwnerByIdReserve($idReserve){
+            try
+            {
+                $query = "CALL p_get_usernameOwner(:pIdReserve);";
+                $parameters["pIdReserve"]=$idReserve;
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+            foreach($resultSet as $row)
+            {
+                $user = $row["userName"];
+            }
+            return $user;
+          }
+        catch(Exception $ex)
+        {
+            throw new Exception ("Error al mostrar ese usuario");
+        }
+        }
+
+        public function getUserNameGuardianByIdReserve($idReserve){
+            try
+            {
+                $query = "CALL p_get_usernameGuardian(:pIdReserve);";
+                $parameters["pIdReserve"]=$idReserve;
+
+            $this->connection = Connection::GetInstance();
+
+            $resultSet = $this->connection->Execute($query,$parameters);
+            foreach($resultSet as $row)
+            {
+                $user = $row["userName"];
+            }
+            return $user;
+          }
+        catch(Exception $ex)
+        {
+            throw new Exception ("Error al mostrar ese usuario");
+        }
+        }
     }
 ?>

@@ -11,7 +11,7 @@ END;
 $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
 
-call p_insert_chat(2);
+/*-------------------------call p_insert_chat(2);*/
 
 /*-----------------------------------------------------Crear Mensaje--------------------------------------------------------*/
 DROP PROCEDURE IF EXISTS p_insert_lineaChat;
@@ -23,7 +23,7 @@ BEGIN
 END;
 $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
-call p_insert_lineaChat(2, 1, 'Todo bien???', now());
+/*-------------------------call p_insert_lineaChat(2, 1, 'Todo bien???', now());*/
 /*-----------------------------------------------------Devolver Chat Por Id Reserva--------------------------------------------------------*/
 DROP PROCEDURE IF EXISTS p_get_ByIdReserveChat;
 DELIMITER $$
@@ -35,7 +35,7 @@ BEGIN
 END;
 $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
-call p_get_ByIdReserveChat(2);
+/*-------------------------call p_get_ByIdReserveChat(2);*/
 
 /*-----------------------------------------------------Devolver Todos los Mensajes Chat Por Id Reserva--------------------------------------------------------*/
 DROP PROCEDURE IF EXISTS p_get_LineaChatByIdreserve;
@@ -50,4 +50,4 @@ BEGIN
 END;
 $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
-call p_get_Chat(2);
+/*-------------------------call p_get_LineaChatByIdreserve(2);*/

@@ -209,3 +209,36 @@ $$
         $$
     /*----------------------------------------------------------------Para llamarla --------------------------------*/
     /*-------------------------call p_get_ByIdGuardianEnEsperaReserve(now());*/
+/*-------------------------------------------------------------Devolver nombre del owner mediante id reserva--------------------------------*/
+    /*----------------------------------------------------------------Para llamarla --------------------------------*/
+                DROP PROCEDURE IF EXISTS p_get_usernameOwner;
+                DELIMITER $$
+                CREATE PROCEDURE p_get_usernameOwner(in pId_reserve int) 
+                BEGIN
+                    select o.userName
+                    from owner as o
+                    inner join pet as p
+                    on p.id_owner = o.id_owner
+                    inner join reserve as r
+                    on r.id_pet = p.id_pet
+                    where pId_reserve = r.id_reserve;
+                END;
+                $$
+/*-------------------------call p_get_usernameOwner(2);*/
+/*-------------------------------------------------------------Devolver nombre del guardian mediante id reserva--------------------------------*/
+
+        DROP PROCEDURE IF EXISTS p_get_usernameGuardian;
+        DELIMITER $$
+        CREATE PROCEDURE p_get_usernameGuardian(in pId_reserve int) 
+        BEGIN
+            select g.userName
+            from guardian as g
+            inner join reserve as r
+            on r.id_guardian = g.id_guardian
+            where pId_reserve = r.id_reserve;
+        END;
+        $$
+/*----------------------------------------------------------------Para llamarla --------------------------------*/
+/*-------------------------  call p_get_usernameGuardian(2);*/
+
+
