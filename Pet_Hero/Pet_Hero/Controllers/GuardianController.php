@@ -38,15 +38,15 @@
             $this->chatDAO=new ChatDAO();
         }
 
-        public function Index($message = "")
+        public function Index($alert = "")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             require_once(VIEWS_PATH."Guardian/lobbyGuardian.php");
         }
 
         public function addCuilAndPPH($user,$password,$name,$date,$email,$gender,$accountType,$telefono,$size,$cuil,$pph,$fechaInicio,$fechaFin,$files){//PPH-> precio por hora o price per hour
+           
             $guardian=new Guardian();
-
 
             $guardian->setUserName($user);
             $guardian->setPassword($password);
@@ -113,25 +113,51 @@
 
         public function showGuardianLobby()
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->Index($alert);
+            }
         }
-        public function showGuardianProfile($message="")
+        public function showGuardianProfile($alert="")
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $userGuardian = $this->guardianDAO->getByUser($_SESSION["userName"]);
             require_once(VIEWS_PATH.'Guardian/profileGuardian.php');
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->Index($alert);
+            }
         }
 
-        public function showUpdateGuardian($user,$message=""){
+        public function showUpdateGuardian($user,$alert=""){
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             require_once(VIEWS_PATH.'Guardian/updateGuardian.php');
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->Index($alert);
+            }
         }
 
         public function UpdateGuardian($iDisp,$fDisp,$size,$user){
+
+            try{
             $guardianToUpdate=$this->guardianDAO->getByUser($user);
 
             if($iDisp<=$fDisp){
@@ -162,12 +188,21 @@
                 $this->showGuardianProfile("Se actualizo la informacion correctamente!");
             }else{
 
-                $this->showUpdateGuardian($user,"La fecha de inicio de disponibilidad debe ser previa a la de fin!");
+                throw new Exception($user,"La fecha de inicio de disponibilidad debe ser previa a la de fin!"); //TODO Probar exception
             }
+                }
+                catch (Exception $ex) {
+                    $alert=[
+                        "text"=>$ex->getMessage()
+                    ];
+                    $this->showUpdateGuardian($alert);
+                }
         }
 
         public function changeReserve($estado,$idReserve)
         {
+
+            try{
             //Si la reserva está confirmada
             if($estado == 2 || $estado == 5)
             {
@@ -212,6 +247,13 @@
             $reserveToUpdate->setEstado($estado);
             $this->reserveDAO->Update($reserveToUpdate);
             $this->showReservas();
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->Index($alert);
+            }
         }
 
         public function getSizeId($tamanio){
@@ -226,6 +268,8 @@
         }
 
         private function sendConfirmationEmail($reserva){
+
+            try{
             //Guardian
             $guardian=$this->guardianDAO->getById($reserva->getIdGuardian());
             //Owner
@@ -261,9 +305,17 @@
 
             $mail->send();
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->Index($alert);
+        }
+        }
 
-        public function showReservas($message="")
+        public function showReservas($alert="")
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
@@ -271,9 +323,17 @@
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/viewReservesGuardian.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->Index($alert);
+        }
+        }
 
-        public function showHistorialReserves($message="")
+        public function showHistorialReserves($alert="")
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
@@ -281,9 +341,17 @@
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/viewHistorialReservesGuardian.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->Index($alert);
+        }
+        }
 
         public function viewReview($idReserve)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $review = $this->reviewDAO->getByIdReserve($idReserve);
             if($review==null)
@@ -297,6 +365,13 @@
                 $userOwner=  $this->ownerDAO->getById($reservePay->getIdGuardian());
                 require_once(VIEWS_PATH.'Guardian/viewReviewGuardian.php');
             }
+        }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->Index($alert);
+        }
 
         }
 

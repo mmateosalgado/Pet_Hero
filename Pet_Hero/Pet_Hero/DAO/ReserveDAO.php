@@ -41,7 +41,8 @@
         public function getReserve($resultSet)
         {
             if($resultSet !=  null)
-            foreach($resultSet as $row){
+            {
+            foreach($resultSet as $row)
             {   $reserve = new Reserve();
                 $reserve->setIdReserve($row["id_reserve"]);
                 $reserve->setIdGuardian($row["id_guardian"]);

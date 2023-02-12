@@ -36,7 +36,7 @@
         <tr>
             <form action="<?php echo FRONT_ROOT . "Chat/Index"?>" method="post" enctype="multipart/form-data">
                 <td>
-                    <input type="hidden" name="idReserve" value=<?php echo $reserve->getIdReserve()?>>
+                    <input type="hidden" value="<?php echo $guardian->getUserName()?>" name="user" >
                     <button class="btn_calify btn_chat" name="chat" title="Ir al chat" value="<?php echo $reserve->getIdReserve() ?>"> </button>
                 </td>
             </form>

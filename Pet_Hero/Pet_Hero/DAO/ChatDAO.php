@@ -39,12 +39,12 @@
 
         public function getChat($resultSet)
         {
-            if($resultSet !== null) 
+            if($resultSet != null) 
             {
-                foreach($resultSet as $row) {
-                    $id_chat=($row["id_chat"]);
-
-                return $id_chat;
+                foreach($resultSet as $row){
+                    $chat = new Chat();
+                    $chat->setId($row["id_chat"]);
+                return $chat;
             }
             }
             else 
@@ -55,7 +55,7 @@
 
         public function getLineaChat($resultSet)
         {
-            if($resultSet !== null) 
+            if($resultSet != null) 
             {
                 foreach($resultSet as $row) {
                     $LineaChat = new LineaChat();
@@ -77,7 +77,7 @@
         public function getLineaChatList($resultSet)
         {
             $array= array();
-            if($resultSet !== null) 
+            if($resultSet != null) 
             {
                 foreach($resultSet as $row) {
                 $LineaChat = new LineaChat();
@@ -133,16 +133,17 @@
         public function getChatByIdreserve($idReserve)
         {
             try
+
             {
-                $query = "CALL p_get_ByIdReserveChat(:pId_reserve);";
-                $parameters["pId_Reserve"] = $idReserve;
-    
+            
+                $query = "CALL p_get_ChatByIdReserve (:pIdReserve);";
+                $parameters ["pIdReserve"] = $idReserve;
                 $this->connection = Connection::GetInstance();
-    
-                $resultSet = $this->connection->Execute($query, $parameters);
+                $resultSet = $this->connection->Execute($query,$parameters);
+
                 return $this->getChat($resultSet);
-        
-        }
+
+            }
             catch(Exception $ex)
             {
                 throw new Exception ("Error al cargar el chat");
@@ -155,7 +156,7 @@
             try
             {
                 $query = "CALL p_get_LineaChatByIdreserve(:pId_reserve);";
-                $parameters["pId_Reserve"] = $idReserve;
+                $parameters["pId_reserve"] = $idReserve;
     
                 $this->connection = Connection::GetInstance();
     
@@ -165,7 +166,7 @@
             }
             catch(Exception $ex)
             {
-           //     throw new Exception ("Error al mostrar el chat");
+                throw new Exception ("Error al mostrar el chat");
             }
         }
 

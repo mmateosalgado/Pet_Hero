@@ -31,11 +31,13 @@ require_once(VIEWS_PATH."Section/header.php");
                         <br>  
                         <br>  
                         <br> 
-                        <br>       
-                            <?php if(isset($message)) 
-                            { 
-                                echo "<font>". $message."</font>";} ?>
-                        </div>
+                        <br>        
+                    <?php if($alert != ""){?>
+                            <div class="message">
+                                <a><?php echo $alert["text"]?></a></div>
+                            </div>
+                        <?php } ?> 
+                    </div>
             </div>
         </form>
         

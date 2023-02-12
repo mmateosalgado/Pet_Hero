@@ -29,7 +29,7 @@ $maxDate=date('Y-m-d');?>
                     <br> <a href="<?php echo FRONT_ROOT?>Home/Index"> Ya tienes una cuenta? </a>
                     </div>
                     <br><br><br><br>
-                    <?php if($alert){?>
+                    <?php if($alert != ""){?>
                         <div class="message">
                             <a><?php echo $alert["text"]?></a></div>
                         </div>

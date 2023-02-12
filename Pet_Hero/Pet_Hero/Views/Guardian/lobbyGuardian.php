@@ -53,6 +53,13 @@ require_once(VIEWS_PATH."Section/header.php");
           } }?>
         <tbody>
     </table>  
+    <br>  
+                    <?php if($alert != ""){?>
+                            <div class="message">
+                                <a><?php echo $alert["text"]?></a></div>
+                            </div>
+                        <?php } ?> 
+                    </div>
 </div> 
 
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

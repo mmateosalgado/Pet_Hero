@@ -25,17 +25,17 @@ $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
 /*-------------------------call p_insert_lineaChat(2, 1, 'Todo bien???', now());*/
 /*-----------------------------------------------------Devolver Chat Por Id Reserva--------------------------------------------------------*/
-DROP PROCEDURE IF EXISTS p_get_ByIdReserveChat;
+DROP PROCEDURE IF EXISTS p_get_ChatByIdReserve;
 DELIMITER $$
-CREATE PROCEDURE p_get_ByIdReserveChat(in pId_reserve int) 
+CREATE PROCEDURE p_get_ChatByIdReserve(in pIdReserve int) 
 BEGIN
 	select c.id_chat
     from chat as c
-    where pId_reserve = c.id_reserve;
+    where c.id_reserve  = pIdReserve;
 END;
 $$
 /*-----------------------------------------------------Para llamarla--------------------------------------------------------*/
-/*-------------------------call p_get_ByIdReserveChat(2);*/
+/*-------------------------call p_get_ChatByIdReserve(2);*/
 
 /*-----------------------------------------------------Devolver Todos los Mensajes Chat Por Id Reserva--------------------------------------------------------*/
 DROP PROCEDURE IF EXISTS p_get_LineaChatByIdreserve;

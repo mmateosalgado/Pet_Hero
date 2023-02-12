@@ -18,15 +18,16 @@
             $this->reserveDao=new ReserveDao();
         }
 
-        public function Index($alert='',$idReserve)//TODO: Hay que encontrar la forma de que reciba la idReserve
+        public function Index($user, $idReserve, $alert='')
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             
-            $chat = $this->chatDAO->getLineaChatByIdreserve($idReserve);
-            $other;//Nombre Persona con la que chateamos
-                //TODO: Traer Nombre Usuario al que le chateamos, 
-                //podriamos hacer una query que solo con el idReserve nos lo traiga (para hacerlo mas eficiente),
-                //Deberia ir el reserveDAO
+            $chatUser = $this->chatDAO->getLineaChatByIdreserve($idReserve);
+            $chat = new Chat();
+            $chat->setId_reserva($idReserve);
+            //  --------------Ya está en User --------------------------------//
+           /* $other;//Nombre Persona con la que chateamos
 
                 if($_SESSION['type'] == 'guardian')
                 {
@@ -35,19 +36,32 @@
                 else
                 {
                     $other= $this->reserveDao->getUserNameOwnerByIdReserve($idReserve);
-                }
+                }*/
+                require_once(VIEWS_PATH."chat.php");
 
-            require_once(VIEWS_PATH."chat.php");
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                require_once(VIEWS_PATH."chat.php");
+            }
         }
         
-        public function sendMessage($id_reserve, $message, $fecha)
-        {
+        public function sendMessage($message, $user, $id_reserve)
+        {        
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
-            $id_chat  = $this->chatDAO->getChatByIdreserve($id_reserve);
+
+            $fecha = date('d/m/y h:i:s');
+            $chat =  new Chat();
+
+            $chat  = $this->chatDAO->getChatByIdreserve($id_reserve);
+            $chat->setId_reserva($id_reserve);
             
             $lineaChat = new LineaChat();
             $lineaChat->setFecha($fecha);
-            $lineaChat->setId_chat($id_chat);
+            $lineaChat->setId_chat($chat->getId());
             $lineaChat->setMensaje($message);
 
             if($_SESSION['type'] == 'guardian')
@@ -61,8 +75,15 @@
 
             $this->chatDAO->AddLineaChat($lineaChat);
 
-            $chatList = $this->chatDAO->getLineaChatByIdreserve($id_reserve);
-            //Mostrar view de Chat
+            $chatUser = $this->chatDAO->getLineaChatByIdreserve($id_reserve);
+            require_once(VIEWS_PATH."chat.php");
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                require_once(VIEWS_PATH."chat.php");
+            }
         }
 
         }

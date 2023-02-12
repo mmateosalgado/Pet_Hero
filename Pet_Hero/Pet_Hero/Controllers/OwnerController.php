@@ -33,7 +33,7 @@
             $this->reviewDAO = new ReviewDAO();
         }
 
-        public function showOwnerLobby($message="")
+        public function showOwnerLobby($alert="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
@@ -58,6 +58,9 @@
 
         public function showOwnerViewGuardians($fechaInicio,$fechaFin,$idPet)
         {
+
+            try{
+
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             
 
@@ -108,13 +111,21 @@
                     require_once(VIEWS_PATH.'Owner/lobbyViewGuardians.php');
 
                 }else{
-                    $this->showOwnerLobby("La fecha de inicio debe ser previa a la de fin!");
+                    throw new Exception("La fecha de inicio debe ser previa a la de fin!");
                 }
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->showOwnerLobby($alert);
+            }
             
         }
 
         public function giveCalification($guardian)
         {
+            try{
             /*Reviews de ese Guardian*/
             $reviewList = $this->reviewDAO->getByIdGuardian($guardian->getId());
             $cantidad =0;
@@ -130,48 +141,95 @@
             $calificacion = (int) ($suma / $cantidad);
             $guardian->setCalificacion($calificacion);
             return $guardian;
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->showOwnerLobby($alert);
+            }
             
         }
 
         public function showAddPet()
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             require_once(VIEWS_PATH.'Owner/Pet/addPet.php');
+        }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
         }
 
         public function showOwnerProfile()
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $userOwner = $this->ownerDAO->getByUser($_SESSION["userName"]);
             require_once(VIEWS_PATH.'Owner/profileOwner.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function showPets($alert='')
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
             $petList=$this->petDAO->getAllByOwnerId($_SESSION["id"]);
             require_once(VIEWS_PATH.'Owner/myPets.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function addPet($name,$animal,$size,$weight,$age,$gxp,$description)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $pet= new Pet();
             $pet->setAnimal($animal);
             require_once(VIEWS_PATH.'Owner/Pet/addRace.php');
-
+        }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }    
         }
 
         public function showGuardian( $id,$fechaInicio,$fechaFin,$idPet){
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $auxGdao=new GuardianDAO();
             $guardian = $auxGdao->getById($id);
             require_once(VIEWS_PATH.'Owner/viewGuardianProfile.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function addRace($name,$animal,$size,$weight,$age,$gxp,$description,$race,$files)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $pet= new Pet();
             $pet->setName($name);
@@ -202,9 +260,17 @@
             $this->petDAO->Add($pet);
             $this->showPets();
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function addReserve($idOwner,$fechaInicio,$fechaFin,$mascota,$race,$idPet,$precio,$idGuardian)
         {
+            try{
             $reserve = new Reserve();
             $reserve->setIdOwner($idOwner);
             $reserve->setFechaInicio($fechaInicio);
@@ -218,6 +284,13 @@
             $this->reserveDAO->Add($reserve);
             $this->showOwnerLobby("Reserva solicitada exitosamente");
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function calcularTotal($fechaInicio,$fechaFin,$precio)
         {
@@ -230,6 +303,7 @@
 
         public function showReserves()
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
@@ -238,6 +312,13 @@
             $guardianList = $this->guardianDAO->GetAll();
             
             require_once(VIEWS_PATH.'Owner/viewReservesOwner.php');
+        }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
         }
 
         public function DeletePet($idPet)
@@ -267,13 +348,22 @@
 
         public function goToPay($idReserve)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserve = $this->reserveDAO->getByIdReserve($idReserve);
             require_once(VIEWS_PATH.'Owner/pay.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function payReserve($idReserve, $precio, $idEstado)
         {
+            try{
             /*Cambiamos precio*/
             $precio = $precio/2;
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -287,12 +377,19 @@
             $userGuardian= $this->guardianDAO->getById($reservePay->getIdGuardian());
             $userOwner = $this->ownerDAO->getById($reservePay->getIdOwner());
             require_once(VIEWS_PATH.'Owner/bill.php');
-
+        }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
 
         }
 
         public function showHistorialReserves()
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
             $reserveList = array();
@@ -300,9 +397,17 @@
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Owner/viewHistorialReservesOwner.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function setCalificacion($calificacion, $description, $idReserve)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             /*reserva calificada*/
             $reserve = $this->reserveDAO->getByIdReserve($idReserve);
@@ -339,11 +444,18 @@
             
         $this->guardianDAO->UpdateCalificacion($guardian);
         $this->showHistorialReserves();
-
+    }
+    catch (Exception $ex) {
+        $alert=[
+            "text"=>$ex->getMessage()
+        ];
+        $this->showOwnerLobby($alert);
+    }
         }
 
         public function optionReview($idReserve)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $review = $this->reviewDAO->getByIdReserve($idReserve);
             if($review==null)
@@ -357,15 +469,30 @@
              require_once(VIEWS_PATH.'Owner/viewReviewOwner.php');
             }
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
 
         public function goToCalify($idReserve)
         {
+            try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserve = $this->reserveDAO->getByIdReserve($idReserve);
             require_once(VIEWS_PATH.'Owner/newReview.php');
         }
+        catch (Exception $ex) {
+            $alert=[
+                "text"=>$ex->getMessage()
+            ];
+            $this->showOwnerLobby($alert);
+        }
+        }
         
-
+        
     }
 
 
