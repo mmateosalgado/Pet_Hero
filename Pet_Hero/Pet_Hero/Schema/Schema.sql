@@ -49,15 +49,6 @@ primary key (id_owner),
 constraint fkGenderO foreign key (id_gender) references gender(id_gender)
 )Engine=InnoDB;
 
-create table review(
-id_review integer auto_increment not null,
-calificacion integer not null,
-id_reserve integer not null,
-description nvarchar(100) not null,
-primary key (id_review),
-constraint fkReserve foreign key (id_reserve) references reserve(id_reserve)
-)Engine=InnoDB;
-
 create table race(
 id_race integer auto_increment not null,
 race varchar(30) not null,
@@ -70,6 +61,12 @@ animal varchar(30) not null,
 id_race integer not null,
 primary key (id_tipoAnimal),
 constraint fkRace foreign key (id_race) references race(id_race)
+)Engine=InnoDB;
+
+create table estado(
+id_estado integer auto_increment not null,
+estado varchar(30) not null,
+primary key(id_estado)
 )Engine=InnoDB;
 
 create table pet(
@@ -91,12 +88,6 @@ constraint fkAnimal foreign key (id_animal) references animal(id_tipoAnimal),
 constraint fkTamanioPet foreign key (id_tamanio) references tamanio(id_tamanio)
 )Engine=InnoDB;
 
-create table estado(
-id_estado integer auto_increment not null,
-estado varchar(30) not null,
-primary key(id_estado)
-)Engine=InnoDB;
-
 create table reserve(
 id_reserve integer auto_increment not null,
 id_guardian integer not null,
@@ -111,12 +102,20 @@ constraint fkPet foreign key (id_pet) references pet(id_pet),
 constraint fkEstado foreign key (id_estado) references estado(id_estado)
 )Engine=InnoDB;
 
+create table review(
+id_review integer auto_increment not null,
+calificacion integer not null,
+id_reserve integer not null,
+description nvarchar(100) not null,
+primary key (id_review),
+constraint fkReserve foreign key (id_reserve) references reserve(id_reserve)
+)Engine=InnoDB;
+
 insert into gender (gender) values ('female'),('male'),('other');
 insert into tamanio (tamanio) values ('small'),('medium'),('big');
 insert into race (race) values ('salchicha'),('caniche'),('bulldog'),('labrador'),('pitbull'),('golden'),('doberman'),('persa'),('siames'),('ragdoll'),('british'),('siberiano'),('china'),('ruso'),('campbell'),('roborowski'),('payaso'),('guppys'),('tetras'),('disco');
 insert into animal (animal,id_race) values ('perro',1),('perro',2),('perro',3),('perro',4),('perro',5),('perro',6),('perro',7),('gato',8),('gato',9),('gato',10),('gato',11),('gato',12),('hamster',13),('hamster',14),('hamster',15),('hamster',16),('pez',17),('pez',18),('pez',19),('pez',20);
 insert into estado (estado) values ('en espera'),('confirmada'),('rechazada'),('realizada'),('pagada');
-
 
 create table chat(
 id_chat integer auto_increment not null,
@@ -136,3 +135,4 @@ fecha datetime not null,
 primary key (id_lineaChat),
 constraint fkChat foreign key (id_chat) references chat(id_chat)
 );
+
