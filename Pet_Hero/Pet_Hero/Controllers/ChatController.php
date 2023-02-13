@@ -54,13 +54,14 @@
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
 
             $fecha = date('d/m/y h:i:s');
-            $chat =  new Chat();
+            $chat =  new Chat(); 
 
-            $chat  = $this->chatDAO->getChatByIdreserve($id_reserve);
-            $chat->setId_reserva($id_reserve);
+            $chat  = $this->chatDAO->getChatByIdreserve($id_reserve); //trae todas las lineas de chat con el id de la reserva en cuestion
+            
+            $chat->setId_reserva($id_reserve);  //seteamos el id de la reserva en cuestion
             
             $lineaChat = new LineaChat();
-            $lineaChat->setFecha($fecha);
+            $lineaChat->setFecha($fecha); // hora actual
             $lineaChat->setId_chat($chat->getId());
             $lineaChat->setMensaje($message);
 
@@ -76,7 +77,7 @@
             $this->chatDAO->AddLineaChat($lineaChat);
 
             $chatUser = $this->chatDAO->getLineaChatByIdreserve($id_reserve);
-            require_once(VIEWS_PATH."chat.php");
+            $this->Index($user,$id_reserve);
             }
             catch (Exception $ex) {
                 $alert=[

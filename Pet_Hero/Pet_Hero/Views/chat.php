@@ -16,52 +16,45 @@
         </div>
         <div class="messages-chat"> <!-- ********************************** aca arranca el chat ***************************************** -->
           
-          <div class="message texto-only">
-            <p class="time"> 14:58</p>
-            <p class="texto"> Apartir de las 17:00 puedo pasar a buscar a tu mascota ?</p>
-          </div>
           
           <a> <?php //echo $idReserve; ?></a>
-          <a> <?php //echo $alert; ?></a>
+          <a> <?php // echo $alert; ?></a>
 
 
           <a> <?php if(isset($chatUser)) { foreach($chatUser as $chat)
-          { ?></a>
-          <td> <?php echo $chat->getMensaje(); ?> </td>
+          {   if ($chat->getUser_type() == 1) //ownerr
+            {?>
+
+              <div class="message texto-only">
+              <p class="time"> <?php echo substr($chat->getFecha(),10,6) ?> </p>
+               <p class="texto"> <?php echo $chat->getMensaje(); ?> </p>
+              </div>
+
+            <?php } else{?>
+
+              <div class="message texto-only">
+              <div class="response">
+              <p class="response-time time"> <?php echo substr($chat->getFecha(),10,6) ?> </p>
+                <p class="texto"> <?php echo $chat->getMensaje(); ?> </p>
+              </div>
+            </div>
+
+            <?php }
+            ?></a>
+
+          <td>  </td>
           <br>
           <?php } }?>
-          <div class="message texto-only">
-            <div class="response">
-            <p class="response-time time"> 15:04</p>
-              <p class="texto"> Obvio ran 😃</p>
-            </div>
-          </div>
-          <div class="message texto-only">
-            <div class="response">
-            <p class="response-time time"> 15:04</p>
-              <p class="texto"> Mandale mecha </p>
-            </div>
-          </div>
-          
-          <div class="message texto-only">
-            <p class="time"> 14:58</p>
-            <p class="texto"> Apartir de las 17:00 puedo pasar a buscar a tu mascota ?</p>
-          </div>
-          
-          <div class="message texto-only">
-            <div class="response">
-              <p class="response-time time"> 15:04</p>
-              <p class="texto"> Obvio ran 😃</p>
-            </div>
-          </div>
-         
+       
         </div> <!-- ********************************** aca termina el chat ***************************************** -->
         <form action="<?php echo FRONT_ROOT . "Chat/sendMessage"?>" method="post" enctype="multipart/form-data">
         <div class="footer-chat">
           <input type="texto" class="write-message" placeholder="Escriba aqui" name="message"></input>
           <input type="hidden" value="<?php echo $user?>" name="user" >
-          <td><button class="btn_check btn_send" name="id_reserve" title="send" value="<?php echo $chat->getId_reserva()?>"> </button></td>
-            </form>
+          <input type="hidden" value="<?php echo $idReserve?>" name="id_reserve" >
+          <td><button class="btn_check btn_send" title="send" type="submit"> </button></td>
+        </form>
+           
         </div>
       </section>
 

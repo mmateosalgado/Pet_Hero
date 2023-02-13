@@ -711,6 +711,7 @@ font{
 	background-repeat:no-repeat;
 	background-size: 37px 37px;
 	background-color: #00000000;
+
 	height:50px;
 	width:50px;
 	margin-left: 10px;
@@ -1603,7 +1604,7 @@ font{
 	  
 	  .write-message {
 		border:none !important;
-		width:90%;
+		width:40%;
 		height: 50px;
 		margin-left: 20px;
 		padding: 10px;
