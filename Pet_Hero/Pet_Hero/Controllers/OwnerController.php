@@ -137,8 +137,11 @@
                     $suma = $suma+ $review->getCalificacion();
                     $cantidad ++;
                 }
-
+                
+            if($cantidad!=0)
+            {
             $calificacion = (int) ($suma / $cantidad);
+            }
             $guardian->setCalificacion($calificacion);
             return $guardian;
             }

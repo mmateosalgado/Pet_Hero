@@ -111,7 +111,7 @@
             return $dates;
         }
 
-        public function showGuardianLobby()
+        public function showGuardianLobby($alert="")
         {
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');

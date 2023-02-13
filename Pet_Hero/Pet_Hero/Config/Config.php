@@ -2,7 +2,7 @@
 
     define("ROOT", dirname(__DIR__) . "/");
     //Path to your project's root folder
-    define("FRONT_ROOT", "/Ejercicios/Pet_Hero/Pet_Hero/Pet_Hero/");
+    define("FRONT_ROOT", "/1Actividades/Pet_Hero/Pet_Hero/Pet_Hero/");
     define("IMG_ROOT",ROOT."Views/Images");
     //EL ROOT DE ROMU:  /1Actividades/Pet_Hero/Pet_Hero/Pet_Hero/
     //EL ROOT DE SALGA: /FACULTAD XAMP/PET_HERO/Pet_Hero/Pet_Hero/Pet_Hero/
@@ -18,7 +18,7 @@
     define("DB_PASS", "");
 
     /* MAILER */
-    define("MAIL_HOST", "smtp.gmail.com"); '';
+    define("MAIL_HOST", "smtp.gmail.com");
     define("SMTPAuth", true);
     define("MAILUSERNAME", "petheroreserves@gmail.com");
     define("MAILPASSWORD", "picsqulweticpqeo");
