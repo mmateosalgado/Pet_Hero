@@ -274,49 +274,50 @@
         private function sendConfirmationEmail($reserva){
 
             try{
-            //Guardian
-            $guardian=$this->guardianDAO->getById($reserva->getIdGuardian());
-            //Owner
-            $ownerDao=new OwnerDAO();
-            $owner=$ownerDao->getById($reserva->getIdOwner());
-            //Pet
-            $pet=$this->petDAO->getById($reserva->getIdMascota());
+                //Guardian
+                $guardian=$this->guardianDAO->getById($reserva->getIdGuardian());
+                //Owner
+                $ownerDao=new OwnerDAO();
+                $owner=$ownerDao->getById($reserva->getIdOwner());
+                //Pet
+                $pet=$this->petDAO->getById($reserva->getIdMascota());
 
-            //to--------------------------------------------------
+                //to--------------------------------------------------
 
-                /* MAILER */ 
-            $mail=new PHPMailer(true);
-            $mail->isSMTP();
-            $mail->Host='smtp.gmail.com';
-            $mail->SMTPAuth=true;
-            $mail->Username='pet.hero.reserve.0000@gmail.com';
-            $mail->Password='zftluzohrejrofkr';
-            $mail->SMTPSecure='ssl';
-            $mail->Port=465;
-            $mail->setFrom('pet.hero.reserve.0000@gmail.com');
-            $mail->addAddress($owner->getEmail());
-            $mail->isHTML(true);
-            $mail->Subject="Confirmacion Reserva - Pet Hero";
 
-            $body="<h1>Hola " . $owner->getFullName() . "! </h1>"
-            . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . $pet->getName() . "\n" 
-            . "desde el " . $reserva->getFechaInicio() . " hasta el " . $reserva->getFechaFin() . "\n" .
-            "<h2>--Informacion de contacto del Guardian!--</h2> \n" .
-            "       - Telefono : ". $guardian->getTelefono() ."<br>".
-            "       -     Mail : ". $guardian->getEmail() ."<br>".
-            "Gracias Por usar Pet Hero!" .
-            "(No responder a este mail, es un mail de confirmacion)";
+                $mail=new PHPMailer(true);
+                $mail->isSMTP();
+                $mail->Host=HOST_MAIL;
+                $mail->SMTPAuth=true;
+                $mail->Username=USERNAME;
+                $mail->Password=APP_PSW;
+                $mail->SMTPSecure='ssl';
+                $mail->Port=465;
+                $mail->setFrom(USERNAME);
+                $mail->addAddress($owner->getEmail());
+                $mail->isHTML(true);
+                $mail->Subject="Confirmacion Reserva - Pet Hero";
 
-            $mail->Body=$body;
+                $body="<h1>Hola " . $owner->getFullName() . "! </h1>"
+                . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . $pet->getName() . "\n" 
+                . "desde el " . $reserva->getFechaInicio() . " hasta el " . $reserva->getFechaFin() . "\n" .
+                "<h2>--Informacion de contacto del Guardian!--</h2> \n" .
+                "       - Telefono : ". $guardian->getTelefono() ."<br>".
+                "       -     Mail : ". $guardian->getEmail() ."<br>".
+                "Gracias Por usar Pet Hero!" .
+                "(No responder a este mail, es un mail de confirmacion)";
 
-            $mail->send();
-        }
-        catch (Exception $ex) {
-            $alert=[
-                "text"=>$ex->getMessage()
-            ];
-            $this->Index($alert);
-        }
+
+                $mail->Body=$body;
+                
+                $mail->send();
+            }
+            catch (Exception $ex) {
+                $alert=[
+                    "text"=>$ex->getMessage()
+                ];
+                $this->Index($alert);
+            }
         }
 
         public function showReservas($alert="")
