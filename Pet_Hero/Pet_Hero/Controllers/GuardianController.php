@@ -117,6 +117,9 @@
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $reserveList = array();
             $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+
+
+
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/lobbyGuardian.php');
             }
@@ -318,8 +321,11 @@
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $this->reserveDAO->ControlarFinalizadas();/*Verificamos que no haya finalizado ninguna ya pagada*/ 
-            $reserveList = array();
-            $reserveList = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            $reserveList2 = array();
+            $reserveList2 = $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+
+            $reserveList = $this->VerificarExpiración($reserveList2);
+            
             $petList = $this->petDAO->GetAll();
             require_once(VIEWS_PATH.'Guardian/viewReservesGuardian.php');
         }
@@ -373,6 +379,21 @@
             $this->Index($alert);
         }
 
+        }
+
+        public function VerificarExpiración($reserveList)
+        {
+            foreach ($reserveList as $reserve)
+            {
+                $fecha= date("Y-m-d"); 
+                if(($reserve->getEstado() == "confirmada") && ($reserve->getFechaInicio()<= $fecha))
+                {
+                    $reserve->setEstado(6);
+                    $this->reserveDAO->update($reserve);
+                }
+            }
+            $newReserveList= $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            return $newReserveList;
         }
 
     }
