@@ -39,14 +39,14 @@
                     $user = $owner->getUserName();
                 }
 
-                require_once(VIEWS_PATH."chat.php");
+                require_once(VIEWS_PATH."chat/chat.php");
 
             }
             catch (Exception $ex) {
                 $alert=[
                     "text"=>$ex->getMessage()
                 ];
-                require_once(VIEWS_PATH."chat.php");
+                require_once(VIEWS_PATH."chat/chat.php");
             }
         }
         
@@ -85,7 +85,7 @@
                 $alert=[
                     "text"=>$ex->getMessage()
                 ];
-                require_once(VIEWS_PATH."chat.php");
+                require_once(VIEWS_PATH."chat/chat.php");
             }
         }
 

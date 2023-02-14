@@ -20,12 +20,13 @@
     /* MAILER */
     define("MAIL_HOST", "smtp.gmail.com");
     define("SMTPAuth", true);
-    define("MAILUSERNAME", "petheroreserves@gmail.com");
-    define("MAILPASSWORD", "picsqulweticpqeo");
+    define("MAILUSERNAME", "pet.hero.reserve.0000@gmail.com");
+    define("MAILPASSWORD", "rcohbyputcqtnptg");
     define("SMTPSECURE", "ssl");
     define("MAILPORT", 465);
 
-
+    /*ZONA HORARIO*/
+    date_default_timezone_set("America/Argentina/Buenos_Aires");
 ?>
 
 
