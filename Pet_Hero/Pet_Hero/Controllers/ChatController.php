@@ -1,9 +1,11 @@
 <?php
     namespace Controllers;
+    use Models\Guardian as Guardian;
     use Models\Owner as Owner;
     use Models\Chat as Chat;
     use Models\LineaChat as LineaChat;
-
+    
+    use DAO\GuardianDAO as GuardianDAO;
     use DAO\ChatDAO as ChatDAO;
     use DAO\ReserveDao as ReserveDao;
     use DAO\OwnerDAO as OwnerDAO;
@@ -13,12 +15,14 @@
         {
             private ChatDAO $chatDAO;
             private ReserveDao $reserveDao;
+            private GuardianDAO $guardianDAO;
             private OwnerDAO $ownerDAO;
         public function __construct()
         {
             $this->chatDAO=new ChatDAO();
             $this->reserveDao=new ReserveDao();
             $this->ownerDAO=new OwnerDAO();
+            $this->guardianDAO = new GuardianDAO();
         }
 
         public function Index($user, $idReserve, $alert='')
@@ -37,6 +41,12 @@
                     $owner = New Owner();
                     $owner= $this->ownerDAO->getById($user);
                     $user = $owner->getUserName();
+                }
+                else
+                {
+                    $guardian = New Guardian();
+                    $guardian = $this->guardianDAO->getById($user);
+                    $user = $guardian->getUserName();
                 }
 
                 require_once(VIEWS_PATH."chat.php");
