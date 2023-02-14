@@ -35,7 +35,7 @@ class HomeController
             require_once(VIEWS_PATH."Home/register.php");
         }
 
-        public function Login($user,$password,$accountType,$alert="")
+        public function Login($user,$password,$accountType,$alert="",$message="")
         {
         try {
             if ($accountType == "owner") {
