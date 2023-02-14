@@ -24,7 +24,7 @@
     /*MAILER*/
     define("HOST_MAIL", "smtp.gmail.com");
     define("USERNAME", "reserves.pethero@gmail.com");
-    define("APP_PSW", "voxsasvcxahyvsaa");
+    define("APP_PSW", "xsasvcxhyvsa");
 
 
 
