@@ -50,7 +50,6 @@
         <form action="<?php echo FRONT_ROOT . "Chat/sendMessage"?>" method="post" enctype="multipart/form-data">
         <div class="footer-chat">
           <input type="texto" class="write-message" placeholder="Escriba aqui" name="message"></input>
-          <input type="hidden" value="<?php echo $user?>" name="user" >
           <input type="hidden" value="<?php echo $idReserve?>" name="id_reserve" >
           <td><button class="btn_check btn_send" title="send" type="submit"> </button></td>
         </form>
