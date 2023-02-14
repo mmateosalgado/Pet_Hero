@@ -25,7 +25,7 @@
             $this->guardianDAO = new GuardianDAO();
         }
 
-        public function Index($user, $idReserve, $alert='')
+        public function Index($idReserve, $alert='')
         {
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -33,20 +33,16 @@
             $chatUser = $this->chatDAO->getLineaChatByIdreserve($idReserve);
             $chat = new Chat();
             $chat->setId_reserva($idReserve);
-            //  --------------Ya está en User --------------------------------//
-           // $other;//Nombre Persona con la que chateamos
+
+                $user;//Nombre Persona con la que chateamos
 
                 if($_SESSION['type'] == 'guardian')
                 {
-                    $owner = New Owner();
-                    $owner= $this->ownerDAO->getById($user);
-                    $user = $owner->getUserName();
+                    $user= $this->reserveDao->getUserNameOwnerByIdReserve($idReserve);
                 }
                 else
                 {
-                    $guardian = New Guardian();
-                    $guardian = $this->guardianDAO->getById($user);
-                    $user = $guardian->getUserName();
+                    $user= $this->reserveDao->getUserNameGuardianByIdReserve($idReserve);
                 }
 
                 require_once(VIEWS_PATH."chat.php");
@@ -60,7 +56,7 @@
             }
         }
         
-        public function sendMessage($message, $user, $id_reserve)
+        public function sendMessage($message, $id_reserve)
         {        
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -89,7 +85,8 @@
             $this->chatDAO->AddLineaChat($lineaChat);
 
             $chatUser = $this->chatDAO->getLineaChatByIdreserve($id_reserve);
-            $this->Index($user,$id_reserve);
+
+            $this->Index($id_reserve);
             }
             catch (Exception $ex) {
                 $alert=[
