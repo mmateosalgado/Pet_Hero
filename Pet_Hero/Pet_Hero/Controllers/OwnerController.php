@@ -316,7 +316,6 @@
             
             $petList = $this->petDAO->GetAll();
             $guardianList = $this->guardianDAO->GetAll();
-            
             require_once(VIEWS_PATH.'Owner/viewReservesOwner.php');
         }
         catch (Exception $ex) {
@@ -508,7 +507,7 @@
                     $this->reserveDAO->update($reserve);
                 }
             }
-            $newReserveList= $this->reserveDAO->getByIdGuardian($_SESSION["id"]);
+            $newReserveList= $this->reserveDAO->getbyIdOwner($_SESSION["id"]);
             return $newReserveList;
         }
         
