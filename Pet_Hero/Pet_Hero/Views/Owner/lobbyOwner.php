@@ -33,13 +33,15 @@ require_once(VIEWS_PATH."Section/header.php");
                         <br> 
                         <br>       
                         <?php if($message != ""){/*TODO VER CSS */?>
-                            <div class="message">
-                                <a><?php echo $message?></a></div>
+                            <br>
+                            <div class="success">
+                                <?php echo $message?>
                             </div>
                         <?php } ?> 
                     <?php if($alert != ""){?>
-                            <div class="message">
-                                <a><?php echo $alert["text"]?></a></div>
+                            <br>
+                            <div class="success">
+                                <?php echo $alert["text"]?>
                             </div>
                         <?php } ?> 
                     </div>
