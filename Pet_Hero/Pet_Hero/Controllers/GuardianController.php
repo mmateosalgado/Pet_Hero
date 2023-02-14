@@ -12,12 +12,13 @@
     use DAO\PetDao AS PetDao;
     use DAO\ReserveDao as ReserveDao;
     use DAO\OwnerDAO as OwnerDAO;
-   
+
     use \Exception as Exception;
     use PHPMailer\PHPMailer as PHPMailer;
     use PHPMailer\Exception as ExceptionMail;
 
     use Controllers\FileController as FileController;
+
 
     class GuardianController
     {
@@ -282,18 +283,20 @@
             $pet=$this->petDAO->getById($reserva->getIdMascota());
 
             //to--------------------------------------------------
+
+                /* MAILER */ 
             $mail=new PHPMailer(true);
             $mail->isSMTP();
-            $mail->Host = MAIL_HOST;
-            $mail->SMTPAuth=SMTPAuth;
-            $mail->Username=MAILUSERNAME;//gmail
-            $mail->Password=MAILPASSWORD;//gmail app password
-            $mail->SMTPSecure=SMTPSECURE;
-            $mail->Port=MAILPORT;
-            $mail->setFrom(MAILUSERNAME);
+            $mail->Host='smtp.gmail.com';
+            $mail->SMTPAuth=true;
+            $mail->Username='pet.hero.reserve.0000@gmail.com';
+            $mail->Password='zftluzohrejrofkr';
+            $mail->SMTPSecure='ssl';
+            $mail->Port=465;
+            $mail->setFrom('pet.hero.reserve.0000@gmail.com');
             $mail->addAddress($owner->getEmail());
             $mail->isHTML(true);
-            $mail->Subject="Confirmacion Reserva - PETHERO";
+            $mail->Subject="Confirmacion Reserva - Pet Hero";
 
             $body="<h1>Hola " . $owner->getFullName() . "! </h1>"
             . "\n" . $guardian->getUserName() . " ha ACEPTADO la reserva para cuidar a " . $pet->getName() . "\n" 

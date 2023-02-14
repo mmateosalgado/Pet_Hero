@@ -1,5 +1,8 @@
 <?php 
+
     require_once(VIEWS_PATH."Section/header.php");
+    include('Views/../../Section/nav.php');
+
     include('Section/nav.php');
 ?>
 
