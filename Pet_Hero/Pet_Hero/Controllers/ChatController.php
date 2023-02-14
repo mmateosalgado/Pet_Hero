@@ -1,21 +1,24 @@
 <?php
     namespace Controllers;
+    use Models\Owner as Owner;
     use Models\Chat as Chat;
     use Models\LineaChat as LineaChat;
 
     use DAO\ChatDAO as ChatDAO;
     use DAO\ReserveDao as ReserveDao;
+    use DAO\OwnerDAO as OwnerDAO;
     use \Exception as Exception;
 
         class ChatController
         {
             private ChatDAO $chatDAO;
             private ReserveDao $reserveDao;
-            
+            private OwnerDAO $ownerDAO;
         public function __construct()
         {
             $this->chatDAO=new ChatDAO();
             $this->reserveDao=new ReserveDao();
+            $this->ownerDAO=new OwnerDAO();
         }
 
         public function Index($user, $idReserve, $alert='')
@@ -27,16 +30,15 @@
             $chat = new Chat();
             $chat->setId_reserva($idReserve);
             //  --------------Ya está en User --------------------------------//
-           /* $other;//Nombre Persona con la que chateamos
+           // $other;//Nombre Persona con la que chateamos
 
                 if($_SESSION['type'] == 'guardian')
                 {
-                    $other= $this->reserveDao->getUserNameGuardianByIdReserve($idReserve);
+                    $owner = New Owner();
+                    $owner= $this->ownerDAO->getById($user);
+                    $user = $owner->getUserName();
                 }
-                else
-                {
-                    $other= $this->reserveDao->getUserNameOwnerByIdReserve($idReserve);
-                }*/
+
                 require_once(VIEWS_PATH."chat.php");
 
             }
