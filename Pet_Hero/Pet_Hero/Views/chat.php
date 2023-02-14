@@ -71,4 +71,5 @@
                             </div>
                         <?php } ?> 
                     </div>
+
 <?php 	require_once(VIEWS_PATH."Section/footer.php"); ?>

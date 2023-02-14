@@ -10,8 +10,11 @@ require_once(VIEWS_PATH."Section/header.php");
     <div class="table-wrapper">
     <div>
             <br>  
-            <?php if(isset($message)) 
-            { echo "<div class='message'><a>". $message."</a></div>";} ?>
+            <?php if($message != ""){ /*TODO VER CSS */?> 
+                            <div class="message">
+                                <a><?php echo $message?></a></div>
+                            </div>
+                        <?php } ?> 
     </div>
     <table class="fl-table fl-tableReserve photoGuardian" >
         <thead>

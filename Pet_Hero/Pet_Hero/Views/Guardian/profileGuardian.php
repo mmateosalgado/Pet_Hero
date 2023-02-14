@@ -29,8 +29,11 @@ require_once(VIEWS_PATH."Section/header.php");
     </form>
      <div>
             <br>     
-                <?php if(isset($message)) 
-                { echo "<font>". $message."</font>";} ?>
+            <?php if($message != ""){ /*TODO VER CSS */?>
+                            <div class="message">
+                                <a><?php echo $message?></a></div>
+                            </div>
+                        <?php } ?> 
         </div>
         </div>
         <div class="photoProfile">

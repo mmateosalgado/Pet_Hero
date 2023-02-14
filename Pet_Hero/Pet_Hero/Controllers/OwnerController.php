@@ -33,7 +33,7 @@
             $this->reviewDAO = new ReviewDAO();
         }
 
-        public function showOwnerLobby($alert="")
+        public function showOwnerLobby($alert="",$message="")
         {
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
             $petList=array();
@@ -285,7 +285,7 @@
             $reserve->setTotal($this->calcularTotal($fechaInicio,$fechaFin,$precio));
             $reserve->setEstado(1);
             $this->reserveDAO->Add($reserve);
-            $this->showOwnerLobby("Reserva solicitada exitosamente");
+            $this->showOwnerLobby("","Reserva solicitada exitosamente");
         }
         catch (Exception $ex) {
             $alert=[

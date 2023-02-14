@@ -24,7 +24,7 @@ class HomeController
         $this->reserveDAO=new ReserveDAO();
         }
 
-        public function Index($alert='')
+        public function Index($alert='',$message="")
         {
             session_destroy();//Para evitar manejos manuales de la URL
             require_once(VIEWS_PATH."Home/login.php");
@@ -118,7 +118,7 @@ class HomeController
                             $owner->setType( $accountType);
                             $owner->setTelefono($telefono);
                             $this->ownerDAO->Add($owner);
-                            $this->Index("- Cuenta creada exitosamente!!");
+                            $this->Index("","- Cuenta creada exitosamente!!");
                         }
                     }
                 }

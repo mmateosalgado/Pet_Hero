@@ -127,7 +127,7 @@
                 $this->Index($alert);
             }
         }
-        public function showGuardianProfile($alert="")
+        public function showGuardianProfile($alert="",$message="")
         {
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -185,7 +185,7 @@
 
                 $this->guardianDAO->Update($guardianToUpdate);
 
-                $this->showGuardianProfile("Se actualizo la informacion correctamente!");
+                $this->showGuardianProfile("","Se actualizo la informacion correctamente!");
             }else{
 
                 throw new Exception($user,"La fecha de inicio de disponibilidad debe ser previa a la de fin!"); //TODO Probar exception
@@ -331,7 +331,7 @@
         }
         }
 
-        public function showHistorialReserves($alert="")
+        public function showHistorialReserves($alert="",$message="")
         {
             try{
             require_once(VIEWS_PATH.'Section/validate-sesion.php');
@@ -357,7 +357,7 @@
             if($review==null)
             {
                 $message = "Todavía no hay ninguna Review para esa Reserva";
-                $this->showHistorialReserves($message);
+                $this->showHistorialReserves("",$message);
             }
             else
             {
