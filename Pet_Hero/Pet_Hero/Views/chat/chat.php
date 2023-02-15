@@ -24,10 +24,16 @@
           <a> <?php // echo $alert; ?></a>
 
 
-          <a> <?php if(isset($chatUser)) { foreach($chatUser as $chat)
-          {   if ($chat->getUser_type() == 1) //ownerr
-            {?>
+          <a> <?php 
+          if($_SESSION['type']=='guardian'){
+            $currentUserType=0;
+          }else{
+            $currentUserType=1;
+          }
 
+          if(isset($chatUser)) { foreach($chatUser as $chat)
+          {   if ($chat->getUser_type() != $currentUserType) 
+            {?>
               <div class="message texto-only">
               <p class="time"> <?php echo substr($chat->getFecha(),10,6) ?> </p>
                <p class="texto"> <?php echo $chat->getMensaje(); ?> </p>

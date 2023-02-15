@@ -391,7 +391,7 @@
             foreach ($reserveList as $reserve)
             {
                 $fecha= date("Y-m-d"); 
-                if(($reserve->getEstado() == "confirmada") && ($reserve->getFechaInicio()<= $fecha))
+                if(($reserve->getEstado() == "confirmada") && ($reserve->getFechaInicio()< $fecha))
                 {
                     $reserve->setEstado(6);
                     $this->reserveDAO->update($reserve);
