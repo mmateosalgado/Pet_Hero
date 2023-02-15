@@ -87,7 +87,8 @@
                     }
                     $this->guardianDAO->Add($guardian);
         
-                    $this->showGuardianLobby();
+                    $message = ("-Cuentra creada exitosamente");
+                    require_once(VIEWS_PATH."Home/login.php");
                 }
             }catch(Exception $ex){
                 $alert=[
