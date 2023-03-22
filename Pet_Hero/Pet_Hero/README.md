@@ -1,6 +1,6 @@
 # Pet_Hero
 <h4 align="center">
-:construction: Proyecto en construcción :construction:
+Proyecto Terminado
 </h4>  
 
 Pet Hero es una red social de Dueños y Cuidadores de Mascotas (Owner's y Guardian's).  
